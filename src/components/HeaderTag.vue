@@ -3,12 +3,6 @@
     <span class="country">CN</span>
     <span class="phone">Phone:13811111111</span>
     <span class="email">Email:0123456789@qq.com</span>
-    <span class="login">
-      <el-button type="text" style="color: black">注册/登录</el-button>
-    </span>
-    <span class="myHome">
-      <el-button type="text" style="color: black">我的主页</el-button>
-    </span>
   </div>
 
   <div>
@@ -28,6 +22,8 @@
       <el-menu-item index="/board">宠物寄养</el-menu-item>
       <el-menu-item index="/lostPet">帮它找家</el-menu-item>
       <el-menu-item index="/store">用品商城</el-menu-item>
+      <el-menu-item index="/login" style="margin-left: 645px;">注册/登录</el-menu-item>
+      <el-menu-item index="/mine">我的主页</el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -55,7 +51,7 @@ export default {
 <style scoped>
 .info{
   text-align: left;
-  padding-top: 5px;
+  padding-top: 2px;
   background-color: darkgrey;
 }
 
