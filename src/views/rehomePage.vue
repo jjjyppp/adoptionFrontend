@@ -140,6 +140,8 @@
           :on-success="uploadFileSuccess"
           :on-exceed="exceedFile"
           :on-remove="removeFile">
+        <img v-if="imageUrl" :src="imageUrl" class="avatar">
+
       </el-upload>
     </div>
 
@@ -203,6 +205,7 @@ export default {
 
   data() {
     return {
+      imageUrl: "src/assets/icons/upload_icon.png",
       petName: "",
       petSize: "",
       petGender: "",
@@ -401,7 +404,7 @@ export default {
 .form {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  text-align: left;
   margin: auto;
   max-width: 900px;
   padding: 20px;
@@ -412,7 +415,7 @@ export default {
 
 .input-group {
   display: flex;
-  align-items: left;
+  text-align: left;
   margin-bottom: 10px;
 }
 
@@ -441,10 +444,16 @@ export default {
   border-radius: 10px;
 }
 
-.uploadImage .el-upload-dragger {
+.uploadImage .el-upload {
   background-image: url("../assets/icons/upload_icon.png");
   background-size: cover;
 }
-
+.avatar {
+  width: 150px;
+  height: 150px;
+  display: block;
+  opacity: 0.7;
+  border-radius: inherit;
+}
 
 </style>
