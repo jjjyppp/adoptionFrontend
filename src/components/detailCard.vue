@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-  <el-card class="card-container" shadow="hover">
+  <el-card class="card-container" shadow="hover" style = "border-radius: 15px">
 
 <!--      <el-container>-->
         <el-header class="header">

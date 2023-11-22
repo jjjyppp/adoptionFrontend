@@ -27,20 +27,16 @@ import DetailCard from "@/components/detailCard.vue";
     <div class="right">
 
 
-      <el-card class="adoption" shadow="hover">
+      <el-card class="adoption" shadow="hover" style = "border-radius: 15px">
         <div class="adoption-body">
           <p class="adoption-title">考虑收养我吗？</p>
-          <el-button class="button1" round>开始您的询价</el-button><br>
-          <el-button class="button2" round>常见问题解答</el-button><br>
-        </div>
-        <div class="adoption-foot">
-          <el-button class="button3" type="text">赞助我们</el-button>
-          <el-button class="button4" type="text">加入收藏</el-button>
+          <el-button class="button1" round>我要收养</el-button><br>
+          <el-button class="button2" round>加入收藏</el-button><br>
         </div>
       </el-card>
 
 
-      <el-card class="el-card" shadow="hover">
+      <el-card class="el-card" shadow="hover" style = "border-radius: 15px">
         <span class="owner-information-title">送养人信息</span><br>
         <div class="owner-information">
             <img class="owner-img" src="https://box.nju.edu.cn/f/2b41d91a7d094e618fc6/?dl=1">
@@ -118,7 +114,7 @@ export default {
 .adoption {
   margin: 0;
   background: #6504B5;
-  height: 300px;
+  height: 250px;
 }
 .adoption-title {
   font-size: 25px;
@@ -126,13 +122,6 @@ export default {
 }
 .adoption-body {
   margin: 0;
-  border-bottom: 1px solid #2e0152;
-}
-.adoption-foot {
-  margin: 0;
-  overflow: hidden;
-  box-sizing: border-box;
-  text-align: center;
 }
 
 
@@ -160,21 +149,8 @@ export default {
 .button2:hover {
   background-color: #2e0152;
 }
-.button3:hover {
-  background-color: #2e0152;
-}
-.button4:hover {
-  background-color: #2e0152;
-}
-.button3 {
-  border-right: 1px solid #2e0152;
-  flex-basis: 50%;
-  color: white;
-}
-.button4 {
-  flex-basis: 50%;
-  color: white;
-}
+
+
 
 .el-card {
   margin-top: 30px;
