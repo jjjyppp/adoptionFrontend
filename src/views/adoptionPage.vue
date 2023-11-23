@@ -37,8 +37,8 @@ import PetDisplayCard from "@/components/PetDisplayCard.vue";
                 <label for="sort" class="me-4">排序</label>
                 <select name="sort" id="sort">
                   <option value="">A-Z</option>
-                  <option value="">最新发布</option>
                   <option value="">热门</option>
+                  <option value="">最新发布</option>
                   <option value="">附近</option>
                 </select>
               </form>
@@ -59,6 +59,12 @@ import PetDisplayCard from "@/components/PetDisplayCard.vue";
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt">
                     <label class="form-check-label" for="flexCheckDefaultt">
                       猫
+                    </label>
+                  </div>
+                  <div class="form-check py-2 px-5">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt">
+                    <label class="form-check-label" for="flexCheckDefaultt">
+                      啮齿类宠物
                     </label>
                   </div>
                   <div class="form-check py-2 px-5">
@@ -85,53 +91,77 @@ import PetDisplayCard from "@/components/PetDisplayCard.vue";
 
                 </div>
 
-                <div class="search-box " >
+                <div class="search-box mb-3" >
                   <p class="text-light fs-4 fw-bold py-2">年龄</p>
 
                   <div class="form-check py-2 px-5">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label " for="flexCheckDefault">
-                      幼年（1岁以下）
+                      0~6个月
                     </label>
                   </div>
                   <div class="form-check py-2 px-5">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt">
                     <label class="form-check-label" for="flexCheckDefaultt">
-                      成年
+                      6个月~2岁
+                    </label>
+                  </div>
+                  <div class="form-check py-2 px-5">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt">
+                    <label class="form-check-label" for="flexCheckDefaultt">
+                      2岁~7岁
                     </label>
                   </div>
                   <div class="form-check py-2 px-5">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaulttt">
                     <label class="form-check-label" for="flexCheckDefaulttt">
-                      老年（7岁以上）
+                      大于7岁
                     </label>
                   </div>
                 </div>
+
+                <div class="search-box " >
+                  <p class="text-light fs-4 fw-bold py-2">体型</p>
+
+                  <div class="form-check py-2 px-5">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label " for="flexCheckDefault">
+                      小型
+                    </label>
+                  </div>
+                  <div class="form-check py-2 px-5">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt">
+                    <label class="form-check-label" for="flexCheckDefaultt">
+                      中型
+                    </label>
+                  </div>
+                  <div class="form-check py-2 px-5">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt">
+                    <label class="form-check-label" for="flexCheckDefaultt">
+                      大型
+                    </label>
+                  </div>
+
+                </div>
               </form>
             </div>
-            <div class="search-box " >
-              <p class="text-light fs-4 fw-bold py-2">体重</p>
+
+            <div class="search-box mb-3">
+              <p class="text-light fs-4 fw-bold py-2">领养方式</p>
+
+              <div class="form-check form-check-inline px-5 py-4">
+                <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">有偿</label>
+              </div>
+              <div class="form-check form-check-inline px-5">
+                <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">无偿</label>
+              </div>
+
             </div>
-          <div class="wrapper">
-              <div class="price-input">
-                <div class="field">
-                  <span>Min(kg)</span>
-                  <input type="number" class="input-min" value="0">
-                </div>
-                <div class="separator">-</div>
-                <div class="field">
-                  <span>Max(kg)</span>
-                  <input type="number" class="input-max" value="100">
-                </div>
-              </div>
-              <div class="slider">
-                <div class="progress"></div>
-              </div>
-              <div class="range-input">
-                <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
-                <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
-              </div>
-            </div>
+
+
+
             <a><button class="py-2 px-5 fs-5 my-2 text-light">筛选</button></a>
 
 
