@@ -1,6 +1,7 @@
 <script setup>
 
 import HeaderTag from "@/components/HeaderTag.vue";
+import PetDisplayCard from "@/components/PetDisplayCard.vue";
 </script>
 
 <template>
@@ -141,173 +142,30 @@ import HeaderTag from "@/components/HeaderTag.vue";
           <div class="col-lg-8 col-12">
             <div class="animal py-3 px-3">
               <div class="row justify-content-between">
+                <pet-display-card></pet-display-card>
+                <pet-display-card></pet-display-card>
+                <pet-display-card></pet-display-card>
+
+                <pet-display-card></pet-display-card>
+                <pet-display-card></pet-display-card>
+                <pet-display-card></pet-display-card>
+                <pet-display-card></pet-display-card>
+                <pet-display-card></pet-display-card>
+                <pet-display-card></pet-display-card>
+                <pet-display-card></pet-display-card>
+                <pet-display-card></pet-display-card>
                 <div class="col-xl-3 col-md-3 col-6">
                   <div class="animal-box text-center mb-3">
-                    <a >
+                    <a>
                       <div class="pet-img">
                         <img src="./assets/img/cat1.jpg" alt="">
                       </div>
                       <p class="fs-3 pt-3 mb-0 ">猫猫</p>
-                      <p class="py-0 mb-0">五岁 南京</p>
-                    </a>
-                    <a><span class="bg-light like-button"><i
-                        class="fa-regular fa-heart"></i></span></a>
-                  </div>
-
-                </div>
-                <div class="col-xl-3 col-md-3 col-6">
-                  <div class="animal-box text-center mb-3">
-                    <a>
-                      <div class="pet-img">
-                        <img src="./assets/img/indir.jpg" alt="">
-                      </div>
-                      <p class="fs-3 pt-3 mb-0 ">猫猫</p>
-                      <p class="py-0 mb-0">两岁 南京</p>
-                    </a>
-                    <a><span class="bg-light like-button"><i
-                        class="fa-regular fa-heart"></i></span></a>
-                  </div>
-
-                </div>
-                <div class="col-xl-3 col-md-3 col-6">
-                  <div class="animal-box text-center mb-3">
-                    <a>
-                      <div class="pet-img">
-                        <img src="./assets/img/indir.jpg" alt="">
-                      </div>
-                      <p class="fs-3 pt-3 mb-0 ">猫猫</p>
                       <p class="py-0 mb-0">六岁 南京</p>
                     </a>
                     <a href="#"><span class="bg-light like-button"><i
                         class="fa-regular fa-heart"></i></span></a>
                   </div>
-
-                </div>
-                <div class="col-xl-3 col-md-3 col-6">
-                  <div class="animal-box text-center mb-3">
-                    <a>
-                      <div class="pet-img">
-                        <img src="./assets/img/indir.jpg" alt="">
-                      </div>
-                      <p class="fs-3 pt-3 mb-0 ">猫猫</p>
-                      <p class="py-0 mb-0">七岁 南京</p>
-                    </a>
-                    <a href="#"><span class="bg-light like-button"><i
-                        class="fa-regular fa-heart"></i></span></a>
-                  </div>
-
-                </div>
-                <div class="col-xl-3 col-md-3 col-6">
-                  <div class="animal-box text-center mb-3">
-                    <a>
-                      <div class="pet-img">
-                        <img src="./assets/img/indir.jpg" alt="">
-                      </div>
-                      <p class="fs-3 pt-3 mb-0 ">猫猫</p>
-                      <p class="py-0 mb-0">三岁 南京</p>
-                    </a>
-                    <a href="#"><span class="bg-light like-button"><i
-                        class="fa-regular fa-heart"></i></span></a>
-                  </div>
-
-                </div>
-                <div class="col-xl-3 col-md-3 col-6">
-                  <div class="animal-box text-center mb-3">
-                    <a>
-                      <div class="pet-img">
-                        <img src="./assets/img/indir.jpg" alt="">
-                      </div>
-                      <p class="fs-3 pt-3 mb-0 ">猫猫</p>
-                      <p class="py-0 mb-0">五岁 南京</p>
-                    </a>
-                    <a href="#"><span class="bg-light like-button"><i
-                        class="fa-regular fa-heart"></i></span></a>
-                  </div>
-
-                </div>
-                <div class="col-xl-3 col-md-3 col-6">
-                  <div class="animal-box text-center mb-3">
-                    <a >
-                      <div class="pet-img">
-                        <img src="./assets/img/indir.jpg" alt="">
-                      </div>
-                      <p class="fs-3 pt-3 mb-0 ">猫猫</p>
-                      <p class="py-0 mb-0">九岁 南京</p>
-                    </a>
-                    <a href="#"><span class="bg-light like-button"><i
-                        class="fa-regular fa-heart"></i></span></a>
-                  </div>
-
-                </div>
-                <div class="col-xl-3 col-md-3 col-6">
-                  <div class="animal-box text-center mb-3">
-                    <a>
-                      <div class="pet-img">
-                        <img src="./assets/img/indir.jpg" alt="">
-                      </div>
-                      <p class="fs-3 pt-3 mb-0 ">猫猫</p>
-                      <p class="py-0 mb-0">四岁 南京</p>
-                    </a>
-                    <a href="#"><span class="bg-light like-button"><i
-                        class="fa-regular fa-heart"></i></span></a>
-                  </div>
-
-                </div>
-                <div class="col-xl-3 col-md-3 col-6">
-                  <div class="animal-box text-center mb-3">
-                    <a >
-                      <div class="pet-img">
-                        <img src="./assets/img/indir.jpg" alt="">
-                      </div>
-                      <p class="fs-3 pt-3 mb-0 ">猫猫</p>
-                      <p class="py-0 mb-0">半岁 南京</p>
-                    </a>
-                    <a href="#"><span class="bg-light like-button"><i
-                        class="fa-regular fa-heart"></i></span></a>
-                  </div>
-
-                </div>
-                <div class="col-xl-3 col-md-3 col-6">
-                  <div class="animal-box text-center mb-3">
-                    <a>
-                      <div class="pet-img">
-                        <img src="./assets/img/indir.jpg" alt="">
-                      </div>
-                      <p class="fs-3 pt-3 mb-0 ">猫猫</p>
-                      <p class="py-0 mb-0">六岁 南京</p>
-                    </a>
-                    <a href="#"><span class="bg-light like-button"><i
-                        class="fa-regular fa-heart"></i></span></a>
-                  </div>
-
-                </div>
-                <div class="col-xl-3 col-md-3 col-6">
-                  <div class="animal-box text-center mb-3">
-                    <a>
-                      <div class="pet-img">
-                        <img src="./assets/img/indir.jpg" alt="">
-                      </div>
-                      <p class="fs-3 pt-3 mb-0 ">猫猫</p>
-                      <p class="py-0 mb-0">五岁 南京</p>
-                    </a>
-                    <a href="#"><span class="bg-light like-button"><i
-                        class="fa-regular fa-heart"></i></span></a>
-                  </div>
-
-                </div>
-                <div class="col-xl-3 col-md-3 col-6">
-                  <div class="animal-box text-center mb-3">
-                    <a>
-                      <div class="pet-img">
-                        <img src="./assets/img/indir.jpg" alt="">
-                      </div>
-                      <p class="fs-3 pt-3 mb-0 ">猫猫</p>
-                      <p class="py-0 mb-0">一岁 南京</p>
-                    </a>
-                    <a href="#"><span class="bg-light like-button"><i
-                        class="fa-regular fa-heart"></i></span></a>
-                  </div>
-
                 </div>
               </div>
             </div>
@@ -449,7 +307,6 @@ import HeaderTag from "@/components/HeaderTag.vue";
 </template>
 
 <style scoped>
-/* scoped 样式 */
 /* 本地样式 */
 @import url('./assets/css/plugin.css');
 @import url('./assets/css/main.css');
