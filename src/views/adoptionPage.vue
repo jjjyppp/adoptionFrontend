@@ -154,19 +154,7 @@ import PetDisplayCard from "@/components/PetDisplayCard.vue";
                 <pet-display-card></pet-display-card>
                 <pet-display-card></pet-display-card>
                 <pet-display-card></pet-display-card>
-                <div class="col-xl-3 col-md-3 col-6">
-                  <div class="animal-box text-center mb-3">
-                    <a>
-                      <div class="pet-img">
-                        <img src="./assets/img/cat1.jpg" alt="">
-                      </div>
-                      <p class="fs-3 pt-3 mb-0 ">猫猫</p>
-                      <p class="py-0 mb-0">六岁 南京</p>
-                    </a>
-                    <a href="#"><span class="bg-light like-button"><i
-                        class="fa-regular fa-heart"></i></span></a>
-                  </div>
-                </div>
+                <pet-display-card></pet-display-card>
               </div>
             </div>
           </div>
