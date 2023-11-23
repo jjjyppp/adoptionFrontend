@@ -410,7 +410,7 @@ import HeaderTag from "@/components/HeaderTag.vue";
         <div class="row justify-content-between">
           <div class="col-md-6">
             <p class="mb-0">
-              ©2022 Petfinder.com All trademarks are owned by nju, or used
+              ©2023 Petfinder.com All trademarks are owned by nju, or used
               with permission.
             </p>
           </div>
@@ -450,10 +450,6 @@ import HeaderTag from "@/components/HeaderTag.vue";
 
 <style scoped>
 /* scoped 样式 */
-@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap');
-
 /* 本地样式 */
 @import url('./assets/css/plugin.css');
 @import url('./assets/css/main.css');
