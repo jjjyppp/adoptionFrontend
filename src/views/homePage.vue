@@ -78,8 +78,9 @@
     <div>
   <!--      <pet-display-card></pet-display-card>-->
   <!--      <pet-display-card></pet-display-card>-->
-  <!--      <pet-display-card></pet-display-card>-->
-      </div>
+<!--        <pet-display-card></pet-display-card>-->
+      <pet-display-card v-for="(pet, index) in pets" :key="index" :pet="pet" />
+    </div>
     </div>
   </div>
 </template>
@@ -106,6 +107,14 @@ export default {
       showOther: false,
       searchContent: "",
       searchChoice: [],
+      pets: [
+        { id: 1, name: '猫猫', age: 6, location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 2, name: '猫猫', age: 6, location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 3, name: '猫猫', age: 6, location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 4, name: '猫猫', age: 6, location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 5, name: '猫猫', age: 6, location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 6, name: '猫猫', age: 6, location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+      ],
     }
   },
   mounted() {
