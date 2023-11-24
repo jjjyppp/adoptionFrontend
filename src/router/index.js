@@ -49,7 +49,7 @@ const routes = [
   {
     path: '/petDetail',
     name: 'petDetailPage',
-    component: () => import('../views/petDetail.vue')
+    component: () => import('../views/petDetailPage.vue')
   }
 ]
 

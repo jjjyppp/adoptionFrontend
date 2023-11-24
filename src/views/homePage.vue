@@ -262,7 +262,13 @@ export default {
   position: relative;
   width: 100%;
   z-index: auto;
-  margin: -75px 356px 15px auto;
+  //margin: -75px 356px 15px auto;
+  margin-top: -75px;
+  margin-right: auto;
+  margin-bottom: 15px;
+  margin-left: auto;
+
+
 }
 
 ul li{
