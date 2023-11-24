@@ -26,7 +26,7 @@
         </span>
       </div>
       <div class="footer">
-        <button class="continue">继续</button>
+        <button class="continue" @click="toAdoption">继续</button>
       </div>
     </div>
 </template>
@@ -34,6 +34,7 @@
 <script>
 import { regionData, codeToText } from 'element-china-area-data';
 import { ElCascader, ElSelect, ElOption } from 'element-plus'
+import router from "@/router";
 
 let select_range= [
   {value: 'all', label: '全国'},
@@ -69,6 +70,11 @@ export default {
     },
     back(){
       this.$emit("backToHome", true)
+    },
+    toAdoption(){
+      router.push({
+        name:"adoptionPage"
+      })
     }
   }
 }

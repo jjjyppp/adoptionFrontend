@@ -1,13 +1,13 @@
 <template>
-    <div style="width: 210px; height: 300px">
-      <div class="animal-box text-center">
-        <router-link :to="{ name: 'petDetailPage', params: { id: pet.id } }">
+  <div style="width: 210px; height: 300px">
+    <div class="animal-box text-center" style="height: 278px">
+      <router-link :to="{ name: 'petDetailPage', params: { id: pet.id } }">
         <a>
           <div class="pet-img">
             <img src="src/views/assets/img/cat1.jpg" alt="" style="width: 100%">
           </div>
-          <p class="type">猫猫</p>
-          <p class="info">六岁 南京</p>
+          <p class="type">{{pet.name}}</p>
+          <p class="info">{{pet.age}} {{pet.location}}</p>
         </a>
         <a href="#">
           <span class="bg-light">
@@ -16,9 +16,9 @@
             </div>
           </span>
         </a>
-        </router-link>
-      </div>
+      </router-link>
     </div>
+  </div>
 </template>
 
 <script>

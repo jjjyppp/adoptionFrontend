@@ -143,22 +143,6 @@ import PetDisplayCard from "@/components/PetDisplayCard.vue";
           <div class="col-lg-8 col-12">
             <div class="animal py-3 px-3">
               <div class="row justify-content-between">
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
-<!--                <pet-display-card></pet-display-card>-->
                 <pet-display-card v-for="(pet, index) in pets" :key="index" :pet="pet" />
               </div>
             </div>
@@ -308,12 +292,12 @@ export default {
   data() {
     return {
       pets: [
-        { id: 1, name: '猫猫', age: 6, location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 2, name: '猫猫', age: 6, location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 3, name: '猫猫', age: 6, location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 4, name: '猫猫', age: 6, location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 5, name: '猫猫', age: 6, location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 6, name: '猫猫', age: 6, location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 1, name: '猫猫1', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 2, name: '猫猫2', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 3, name: '猫猫3', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 4, name: '猫猫4', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 5, name: '猫猫5', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 6, name: '猫猫6', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
       ],
     };
   },
