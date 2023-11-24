@@ -1,22 +1,25 @@
 <template>
-  <div style="width: 210px; height: 300px">
-    <div class="animal-box text-center mb-3">
-      <a>
-        <div class="pet-img">
-          <img src="src/views/assets/img/cat1.jpg" alt="" style="width: 100%">
-        </div>
-        <p class="fs-3 pt-3 mb-0 ">猫猫</p>
-        <p class="py-0 mb-0">六岁 南京</p>
-      </a>
-      <a href="#"><span class="bg-light"><i
-          class="fa-regular fa-heart"></i></span></a>
+    <div style="width: 210px; height: 300px">
+      <div class="animal-box text-center mb-3">
+        <router-link :to="{ name: 'petDetailPage', params: { id: pet.id } }">
+        <a>
+          <div class="pet-img">
+            <img src="src/views/assets/img/cat1.jpg" alt="" style="width: 100%">
+          </div>
+          <p class="fs-3 pt-3 mb-0 ">猫猫</p>
+          <p class="py-0 mb-0">六岁 南京</p>
+        </a>
+        <a href="#"><span class="bg-light"><i
+            class="fa-regular fa-heart"></i></span></a>
+        </router-link>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
-  name: "PetDisplayCard"
+  name: "PetDisplayCard",
+  props: ['pet'],
 }
 </script>
 

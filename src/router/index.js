@@ -47,7 +47,7 @@ const routes = [
     component: () => import('../views/findMyPet.vue')
   },
   {
-    path: '/petDetail',
+    path: '/petDetail:id',
     name: 'petDetailPage',
     component: () => import('../views/petDetailPage.vue')
   }
