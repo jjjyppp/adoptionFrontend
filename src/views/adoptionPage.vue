@@ -1,7 +1,7 @@
 <script setup>
 
 import HeaderTag from "@/components/HeaderTag.vue";
-import PetDisplayCard from "@/components/PetDisplayCard.vue";
+import FooterCard from "@/components/FooterCard.vue";
 </script>
 
 <template>
@@ -21,6 +21,7 @@ import PetDisplayCard from "@/components/PetDisplayCard.vue";
     <link rel="stylesheet" href="./assets/css/main.css">
   </head>
   <!--Main start-->
+
   <main>
     <section id="find-animal" class="py-5">
       <div class="container">
@@ -28,6 +29,8 @@ import PetDisplayCard from "@/components/PetDisplayCard.vue";
           <div class="col-lg-4 col-12">
             <div class="sort py-3  mb-3 text-center">
               <form action="">
+
+
                 <label for="sort" class="me-4">排序</label>
                 <select name="sort" id="sort">
                   <option value="">A-Z</option>
@@ -37,10 +40,12 @@ import PetDisplayCard from "@/components/PetDisplayCard.vue";
                 </select>
               </form>
             </div>
+
             <div class="search pb-3  mb-3 text-center">
               <form action="">
-                <div  class="search-box mb-3" style="margin-top: 200px">
+                <div  class="search-box mb-3">
                   <p class="text-light fs-4 fw-bold py-2">种类</p>
+
                   <div class="form-check py-2 px-5">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label " for="flexCheckDefault">
@@ -65,6 +70,7 @@ import PetDisplayCard from "@/components/PetDisplayCard.vue";
                       其他
                     </label>
                   </div>
+
                 </div>
                 <div class="search-box mb-3">
                   <p class="text-light fs-4 fw-bold py-2">性别</p>
@@ -159,110 +165,7 @@ import PetDisplayCard from "@/components/PetDisplayCard.vue";
   <!--Main end-->
 
   <!--Footer start-->
-  <footer>
-    <!--Footer top strat-->
-    <section id="footer-top" class="py-4">
-      <div class="container">
-        <div class="row pt-4">
-          <div class="col-md-2 col-sm-6">
-            <div class="footer-inner">
-              <h5 class="py-2">关于</h5>
-              <ul class="px-0">
-                <a href="#">
-                  <li class="m-0">关于我们</li>
-                </a>
-                <a href="#">
-                  <li>合作单位</li>
-                </a>
-                <a href="#">
-                  <li>新闻</li>
-                </a>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-2 col-sm-6">
-            <div class="footer-inner">
-              <h5 class="py-2">关于宠物</h5>
-              <ul class="px-0">
-                <a href="#">
-                  <li>收养宠物</li>
-                </a>
-                <a href="#">
-                  <li>科学养宠科普</li>
-                </a>
-                <a href="#">
-                  <li>宠物行为</li>
-                </a>
-                <a href="#">
-                  <li>宠物健康</li>
-                </a>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-2 col-sm-6">
-            <div class="footer-inner">
-              <h5 class="py-2">公益事业</h5>
-              <ul class="px-0">
-                <a href="#">
-                  <li>领养或救助</li>
-                </a>
-                <a href="#">
-                  <li>流浪动物收容所</li>
-                </a>
-                <a href="#">
-                  <li>绝育行动</li>
-                </a>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-2 col-sm-6">
-            <div class="footer-inner">
-              <h5 class="py-2">联系电话</h5>
-              <p>
-                +15094378007
-              </p>
-              <h5 class="py-2">地址</h5>
-              <p>
-                南京大学鼓楼校区
-              </p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="sign">
-              <h5 class="py-2">关爱动物，科学养宠，我们在行动</h5>
-              <a class="text-center d-block py-5"><span class="py-2 px-4 fs-5"> 登录</span></a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-    <!--Footer top end-->
-
-    <!--Footer bottom start-->
-    <section id="footer-bottom" class="py-3">
-      <div class="container">
-        <div class="row justify-content-between">
-          <div class="col-md-6">
-            <p class="mb-0">
-              ©2023 Petfinder.com All trademarks are owned by nju, or used
-              with permission.
-            </p>
-          </div>
-          <div class="col-md-4">
-            <div class="social-media text-center">
-              <a href="#"><span><i class="fa-brands fa-facebook-f"></i></span></a>
-              <a href="#"><span><i class="fa-brands fa-twitter"></i></span></a>
-              <a href="#"><span><i class="fa-brands fa-instagram"></i></span></a>
-              <a href="#"><span><i class="fa-brands fa-youtube"></i></span></a>
-              <a href="#"><span><i class="fa-brands fa-pinterest-p"></i></span></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--Footer bottom end-->
-  </footer>
+<footer-card></footer-card>
   <!--Footer end-->
 
 
@@ -298,6 +201,12 @@ export default {
         { id: 4, name: '猫猫4', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
         { id: 5, name: '猫猫5', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
         { id: 6, name: '猫猫6', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 7, name: '猫猫7', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 8, name: '猫猫8', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 9, name: '猫猫9', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 10, name: '猫猫10', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 11, name: '猫猫11', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 12, name: '猫猫12', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
       ],
     };
   },
