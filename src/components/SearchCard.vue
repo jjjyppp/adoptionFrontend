@@ -2,7 +2,7 @@
     <div class="box-card">
       <div class="head">
         <button @click="back" class="button-back">
-          <svg x="1700642760769" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6466" width="75" height="75"><path d="M711.1 928.3c-13.2 0-26.3-5-36.4-15.2L297.8 532.9c-20.1-20.2-20.1-53.1 0-73.3L674.7 79.2c20.1-20.3 52.6-20.3 72.7 0 20.1 20.2 20.1 53.1 0 73.3L406.9 496.2l340.5 343.6c20.1 20.3 20.1 53.1 0 73.3-10 10.1-23.2 15.2-36.3 15.2z" p-id="6467"></path></svg>
+          <svg x="1700642760769" class="back-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6466" width="75" height="75"><path d="M711.1 928.3c-13.2 0-26.3-5-36.4-15.2L297.8 532.9c-20.1-20.2-20.1-53.1 0-73.3L674.7 79.2c20.1-20.3 52.6-20.3 72.7 0 20.1 20.2 20.1 53.1 0 73.3L406.9 496.2l340.5 343.6c20.1 20.3 20.1 53.1 0 73.3-10 10.1-23.2 15.2-36.3 15.2z" p-id="6467"></path></svg>
         </button>
       </div>
       <div style="margin-top: 160px">
@@ -139,7 +139,7 @@ button:hover{
   fill: white;
 }
 
-.icon{
+.back-icon{
   width: 20px;
   height: 20px;
 }

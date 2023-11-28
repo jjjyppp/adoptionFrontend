@@ -4,7 +4,7 @@
       <router-link :to="{ name: 'petDetailPage', params: { id: pet.id } }">
         <a>
           <div class="pet-img">
-            <img src="src/views/assets/img/cat1.jpg" alt="" style="width: 100%">
+            <img src="" ref="img" alt="" style="width: 100%">
           </div>
           <p class="type">{{pet.name}}</p>
           <p class="info">{{pet.age}} {{pet.location}}</p>
@@ -25,6 +25,9 @@
 export default {
   name: "PetDisplayCard",
   props: ['pet'],
+  mounted() {
+    this.$refs.img.src = this.pet.imageUrl;
+  }
 }
 </script>
 

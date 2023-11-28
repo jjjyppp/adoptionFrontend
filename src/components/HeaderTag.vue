@@ -1,86 +1,156 @@
 <template>
-  <div class="info">
-    <span class="country">宠物领养网站</span>
-    <span class="phone">Phone:13811111111</span>
-    <span class="email">Email:0123456789@qq.com</span>
+  <div class="header">
+    <el-link :underline="false" class="logo-link" href="#">网站名</el-link>
+<!--    <div>-->
+    <el-icon size="30" class="location">
+      <location-information/>
+    </el-icon>
+<!--    </div>-->
+    <el-cascader popper-class="pc-sel-area-cascader" placeholder="我的位置" size='large' class="cascader-container" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
+    <el-divider direction="vertical" class="divider"></el-divider>
+    <el-link :underline="false" class="login" href="#/login">注册/登录</el-link>
+    <el-link :underline="false" class="mine" href="#/mine">我的主页</el-link>
   </div>
+  <el-divider class="bottom-divider"></el-divider>
 
-  <div>
-    <el-menu router :default-active="$route.path"
-             class="el-menu-demo"
-             mode="horizontal"
-             background-color="#6504b5"
-             text-color="#fff"
-             active-text-color="#F9F3FE">
-      <el-menu-item index="/" style="width: 120px">首页</el-menu-item>
-      <el-sub-menu index="2" style="width: 120px">
-        <template v-slot:title="title">宠物领养</template>
-        <el-menu-item index="/adoption">我要领养</el-menu-item>
-        <el-menu-item index="/rehome">我要送养</el-menu-item>
-      </el-sub-menu>
-      <el-menu-item index="/board" style="width: 120px">宠物寄养</el-menu-item>
-      <el-menu-item index="/lostPet" style="width: 120px">帮它找家</el-menu-item>
-      <el-menu-item index="/store" style="width: 120px">用品商城</el-menu-item>
-      <el-menu-item index="/login" style="margin-left: 645px;">注册/登录</el-menu-item>
-      <el-menu-item index="/mine">我的主页</el-menu-item>
-    </el-menu>
-  </div>
+  <!--  <div>-->
+<!--    <el-menu router :default-active="$route.path"-->
+<!--             class="el-menu-demo"-->
+<!--             mode="horizontal"-->
+<!--             background-color="#6504b5"-->
+<!--             text-color="#fff"-->
+<!--             active-text-color="#F9F3FE">-->
+<!--      <el-menu-item index="/" style="width: 120px">首页</el-menu-item>-->
+<!--      <el-sub-menu index="2" style="width: 120px">-->
+<!--        <template v-slot:title="title">宠物领养</template>-->
+<!--        <el-menu-item index="/adoption">我要领养</el-menu-item>-->
+<!--        <el-menu-item index="/rehome">我要送养</el-menu-item>-->
+<!--      </el-sub-menu>-->
+<!--      <el-menu-item index="/board" style="width: 120px">宠物寄养</el-menu-item>-->
+<!--      <el-menu-item index="/lostPet" style="width: 120px">帮它找家</el-menu-item>-->
+<!--      <el-menu-item index="/store" style="width: 120px">用品商城</el-menu-item>-->
+<!--      <el-menu-item index="/login" style="margin-left: 645px;">注册/登录</el-menu-item>-->
+<!--      <el-menu-item index="/mine">我的主页</el-menu-item>-->
+<!--    </el-menu>-->
+<!--  </div>-->
 </template>
 
 <script>
-import {ElMenu, ElMenuItem, ElSubMenu, ElButton} from "element-plus";
+import {ElLink, ElCascader, ElIcon, ElDivider} from "element-plus";
+import {codeToText, regionData} from "element-china-area-data";
+import {LocationInformation} from "@element-plus/icons-vue";
 export default {
   name: "HeaderTag",
-  components:{ElMenu, ElMenuItem, ElSubMenu, ElButton},
+  components:{ElLink, ElCascader, ElIcon, LocationInformation, ElDivider},
   data(){
     return{
-
+      options: regionData,
+      selectedOptions: ['110000', '110100', '110101'],
     }
   },
   mounted() {
 
   },
   methods: {
-
+    addressChange (arr) {
+      console.log(this.selectedOptions)
+      console.log(arr)
+      console.log(codeToText[arr[0]]+codeToText[arr[1]]+codeToText[arr[2]])
+    },
   }
 }
 
 </script>
 
 <style scoped>
-.info{
-  height: 50px;
-  text-align: left;
-  padding-top: 2px;
-  //color: #6504B5;
+.header{
+  display: flex;
+  //justify-content: space-between;
+  align-items: center;
+  //text-align: left;
+  //display: flex;
+  //justify-content: left;
 }
 
-.country{
-  margin-left: 30px;
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-  font-weight: 700;
-  font-size: 30px;
+.divider{
+  flex: 0 0 1%;
+  height: 60px;
+  justify-content: end;
+  //margin-left: 20px;
+}
+
+.logo-link{
+  flex: 0 0 30%;
+  //align-items: start;
+  //height: 50px;
+  justify-content: left;
+  padding-left: 50px;
+  //padding-top: 2px;
+  font-size: 26px;
+}
+
+.logo-link:hover{
   color: #6504B5;
 }
 
-.phone{
-  margin-left: 30px;
-}
-
-.email{
-  margin-left: 40px;
+.location{
+  flex: 0 0 30%;
+  justify-content: end;
+  //margin-left: 700px;
+  //margin-top: 12px;
 }
 
 .login{
-  margin-left: 700px;
-}
-
-.myHome{
-  margin-left: 20px;
-}
-
-.el-menu-demo{
+  flex: 0 0 7%;
   height: 50px;
+  justify-content: center;
+  //margin-left: 20px;
+  //padding-top: 2px;
+  font-size: 16px;
+}
+
+.mine{
+  flex: 0 0 7%;
+  justify-content: center;
+  //margin-left: 40px;
+  height: 50px;
+  //padding-top: 2px;
+  font-size: 16px;
+}
+
+.login:hover{
+  color: #6504B5;
+}
+
+.mine:hover{
+  color: #6504B5;
+}
+
+.bottom-divider{
+  height: auto;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .location,
+  .login,
+  .mine,
+  .divider{
+    display: none; /* 隐藏部分链接 */
+  }
+
+  .logo-link{
+    flex: 0 0 10%;
+  }
+  .cascader-container {
+    flex: 0 0 60%; /* 在小屏幕上增加 Cascader 的宽度 */
+  }
+}
+
+.cascader-container{
+  //max-width: 400px;
+  //margin-top: 8px;
+  flex: 0 0 30%;
 }
 
 

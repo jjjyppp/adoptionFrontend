@@ -77,8 +77,24 @@
           </el-icon>
         </el-link>
         <div class="rec-cards">
-          <pet-display-card style="margin-left: 15px"  v-for="(pet, index) in pets" :key="index" :pet="pet" />
+          <pet-display-card style="margin-left: 15px"  v-for="(pet, index) in recommend_pets" :key="index" :pet="pet" />
           <more-animal-card style="margin-left: 15px"></more-animal-card>
+        </div>
+      </div>
+    </div>
+    <div class="articles">
+      <div style="padding-top: 30px">
+        <h2 class="art-question">你准备领养一只宠物吗？</h2>
+      </div>
+      <div class="cards">
+      <article-card v-for="(article, index) in articles" :key="index" :article="article"></article-card>
+      </div>
+    </div>
+    <div class="recent">
+      <div class="rec-sec">
+        <p class="recent-text">最近浏览过的宠物</p>
+        <div class="rec-cards">
+          <pet-display-card style="margin-left: 15px"  v-for="(pet, index) in recent_pets" :key="index" :pet="pet" />
         </div>
       </div>
     </div>
@@ -93,6 +109,7 @@ import {ElAutocomplete, ElCol, ElDivider, ElIcon, ElLink, ElRow} from "element-p
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import MoreAnimalCard from "@/components/MoreAnimalCard.vue";
 import more from "@element-plus/icons/lib/More";
+import ArticleCard from "@/components/ArticleCard.vue";
 export default {
   name: "homePage",
   computed: {
@@ -101,9 +118,10 @@ export default {
     }
   },
   components:{
+    ArticleCard,
     MoreAnimalCard,
     ArrowRight,
-    PetDisplayCard, Search, Burger, HeaderTag, SearchCard, ElDivider, ElRow, ElCol, ElLink,ElIcon, ElAutocomplete},
+    PetDisplayCard, Search, Burger, HeaderTag, SearchCard, ElDivider, ElRow, ElCol, ElLink, ElIcon, ElAutocomplete},
   data(){
     return{
       dogPath:"src/assets/icons/dog.png",
@@ -115,12 +133,24 @@ export default {
       showOther: false,
       searchContent: "",
       searchChoice: [],
-      pets: [
+      recommend_pets: [
         { id: 1, name: '猫猫1', age: null, location: '', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 2, name: '猫猫2', age: null, location: '', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 2, name: '猫猫2', age: null, location: '', imageUrl: 'src/views/assets/img/indir.jpg' },
         { id: 3, name: '猫猫3', age: null, location: '', imageUrl: 'src/views/assets/img/cat1.jpg' },
         { id: 4, name: '猫猫4', age: null, location: '', imageUrl: 'src/views/assets/img/cat1.jpg' },
       ],
+      recent_pets: [
+        { id: 1, name: '猫猫1', age: null, location: '', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 2, name: '猫猫2', age: null, location: '', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 3, name: '猫猫3', age: null, location: '', imageUrl: 'src/views/assets/img/indir.jpg' },
+        { id: 4, name: '猫猫4', age: null, location: '', imageUrl: 'src/views/assets/img/indir.jpg' },
+        { id: 5, name: '猫猫5', age: null, location: '', imageUrl: 'src/views/assets/img/cat1.jpg' },
+      ],
+      articles: [
+        { id: 1, title: '为什么选择领养而非买卖？', subTitle: "我们要使领养过程更加方便和顺利，让领养代替买卖。", src: 'src/assets/icons/adopt.png' },
+        { id: 2, title: '宠物科普 | 为何人人都需要一只宠物', subTitle: "养一只宠物吧~", src: 'src/assets/icons/help.png' },
+        { id: 3, title: '如果决定接纳一条生命，就请陪它一生！', subTitle: "请不要随意地领养或弃养", src: 'src/assets/icons/shelter.png' },
+      ]
     }
   },
   mounted() {
@@ -235,10 +265,6 @@ export default {
   font-size: 18px;
 }
 
-.autocomplete{
-
-}
-
 .title{
   color: white;
   font-size: 30px;
@@ -247,6 +273,7 @@ export default {
   text-shadow: 0 1px 10px #4d4751, 0 0 4px #4d4751;
   //margin-top: 100px;
   margin: 0;
+
 }
 
 .subTitle{
@@ -254,7 +281,7 @@ export default {
   font-size: 18px;
   font-weight: 700;
   text-shadow: 0 1px 10px #4d4751, 0 0 4px #4d4751;
-  //text-align: center;
+
 }
 
 .background{
@@ -264,6 +291,10 @@ export default {
   height: 410px;
   background: #6504b5 url("https://box.nju.edu.cn/thumbnail/134b204a714445f48f20/1024/background4.jpg") no-repeat top;
   background-size: 100% 400px;
+  text-align: center;
+  //display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .choose{
@@ -275,12 +306,20 @@ export default {
   position: relative;
   width: 100%;
   z-index: auto;
-  margin: -75px 356px 15px auto;
-
+  margin: -75px auto 15px auto;
 }
 
-ul li{
-  list-style-type:none;
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrap{
@@ -368,7 +407,7 @@ ul li{
 
 .recommend{
   text-align: center;
-  margin-top: 348px;
+  margin-top: 380px;
   //background-color: #d2d1d3;
   //margin-bottom: 24px;
   //margin: 0 auto;
@@ -395,11 +434,42 @@ ul li{
 
 .rec-cards{
   display: flex;
-  //flex-direction: column;
   justify-content: center;
   text-align: center;
   margin-top: 20px;
 }
 
+.art-question{
+  line-height: 1.2;
+  text-align: center;
+  display: block;
+  font-family: Nexa Regular,arial,helvetica,sans-serif;
+  font-size: 30px;
+}
+
+.articles{
+  background-color: white;
+  margin-top: 60px;
+  height: 500px;
+}
+
+.cards{
+  display: flex;
+  justify-content: center;
+}
+
+.recent{
+  text-align: center;
+  margin-top: 60px;
+}
+
+.recent-text{
+  line-height: 1.2;
+  color: #6504b5;
+  text-align: center;
+  display: block;
+  font-family: Nexa Regular,arial,helvetica,sans-serif;
+  font-size: 30px;
+}
 
 </style>

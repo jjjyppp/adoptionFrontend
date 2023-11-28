@@ -59,7 +59,7 @@ export default{
   font-weight: 700;
   text-shadow: 0 1px 10px #4d4751, 0 0 4px #4d4751;
   width: 220px;
-  height: 50px;
+  height: 60px;
   //margin-top: -40px;
   //padding-left: 60px;
   text-align: center;
