@@ -1,5 +1,4 @@
 <script setup>
-
 import HeaderTag from "@/components/HeaderTag.vue";
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import FooterCard from "@/components/FooterCard.vue";
@@ -200,7 +199,6 @@ import FooterCard from "@/components/FooterCard.vue";
   <!--Footer start-->
  <footer-card></footer-card>
   <!--Footer end-->
-
 
   <!--Js link-->
 
