@@ -111,8 +111,6 @@ export default {
 }
 </script>
 
-
-
 <style scoped>
 @import url('src/views/assets/css/plugin.css');
 @import url('src/views/assets/css/main.css');

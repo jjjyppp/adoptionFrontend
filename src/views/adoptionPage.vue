@@ -70,7 +70,6 @@ import FooterCard from "@/components/FooterCard.vue";
                       其他
                     </label>
                   </div>
-
                 </div>
                 <div class="search-box mb-3">
                   <p class="text-light fs-4 fw-bold py-2">性别</p>
