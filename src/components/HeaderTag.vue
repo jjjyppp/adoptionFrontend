@@ -6,8 +6,9 @@
       <location-information/>
     </el-icon>
 <!--    </div>-->
-    <el-cascader popper-class="pc-sel-area-cascader" placeholder="我的位置" size='large' class="cascader-container" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
-    <el-divider direction="vertical" class="divider"></el-divider>
+    <el-cascader placeholder="我的位置" size='large' class="cascader" style="max-width: 410px; flex: 0 0 28%;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
+    <div style="flex: 0 0 30%"></div>
+<!--    <el-divider direction="vertical" class="divider"></el-divider>-->
     <el-link :underline="false" class="login" href="#/login">注册/登录</el-link>
     <el-link :underline="false" class="mine" href="#/mine">我的主页</el-link>
   </div>
@@ -39,6 +40,7 @@
 import {ElLink, ElCascader, ElIcon, ElDivider} from "element-plus";
 import {codeToText, regionData} from "element-china-area-data";
 import {LocationInformation} from "@element-plus/icons-vue";
+import global from "@/views/assets/js/global_variable.js";
 export default {
   name: "HeaderTag",
   components:{ElLink, ElCascader, ElIcon, LocationInformation, ElDivider},
@@ -49,13 +51,16 @@ export default {
     }
   },
   mounted() {
-
+    if(global.address[0]!==""){
+      this.selectedOptions=global.address
+    }
   },
   methods: {
     addressChange (arr) {
       console.log(this.selectedOptions)
       console.log(arr)
       console.log(codeToText[arr[0]]+codeToText[arr[1]]+codeToText[arr[2]])
+      global.address=this.selectedOptions
     },
   }
 }
@@ -80,7 +85,7 @@ export default {
 }
 
 .logo-link{
-  flex: 0 0 30%;
+  flex: 0 0 24%;
   //align-items: start;
   //height: 50px;
   justify-content: left;
@@ -94,24 +99,24 @@ export default {
 }
 
 .location{
-  flex: 0 0 30%;
-  justify-content: end;
+  flex: 0 0 3%;
+  justify-content: start;
   //margin-left: 700px;
   //margin-top: 12px;
 }
 
 .login{
-  flex: 0 0 7%;
+  flex: 0 0 6%;
   height: 50px;
-  justify-content: center;
+  justify-content: start;
   //margin-left: 20px;
   //padding-top: 2px;
   font-size: 16px;
 }
 
 .mine{
-  flex: 0 0 7%;
-  justify-content: center;
+  flex: 0 0 5%;
+  justify-content: start;
   //margin-left: 40px;
   height: 50px;
   //padding-top: 2px;
@@ -142,15 +147,9 @@ export default {
   .logo-link{
     flex: 0 0 10%;
   }
-  .cascader-container {
+  .cascader {
     flex: 0 0 60%; /* 在小屏幕上增加 Cascader 的宽度 */
   }
-}
-
-.cascader-container{
-  //max-width: 400px;
-  //margin-top: 8px;
-  flex: 0 0 30%;
 }
 
 

@@ -6,67 +6,67 @@ import DetailCard from "@/components/detailCard.vue";
 </script>
 
 <template>
-  <body class="body">
   <header-tag></header-tag>
-  <el-carousel :interval="4000" type="card" height="300px" >
-    <el-carousel-item v-for="(item, index) in images" :key="item">
-      <div class="carousel-item-content">
-        <el-image
-            style="width: 400px; height: 300px"
-            :src="item.url"
-            :fit="item.fit"></el-image>
-      </div>
-    </el-carousel-item>
-  </el-carousel>
-
-
-  <div class="container">
-
-    <detail-card></detail-card>
-
-    <div class="right">
-
-
-      <el-card class="adoption" shadow="hover" style = "border-radius: 15px">
-        <div class="adoption-body">
-          <p class="adoption-title">考虑收养我吗？</p>
-          <el-button class="button1" round>我要收养</el-button><br>
-          <el-button class="button2" round>加入收藏</el-button><br>
+  <body class="body">
+    <el-carousel :interval="4000" type="card" height="300px" >
+      <el-carousel-item v-for="(item, index) in images" :key="item">
+        <div class="carousel-item-content">
+          <el-image
+              style="width: 400px; height: 300px"
+              :src="item.url"
+              :fit="item.fit"></el-image>
         </div>
-      </el-card>
+      </el-carousel-item>
+    </el-carousel>
 
 
-      <el-card class="el-card" shadow="hover" style = "border-radius: 15px">
-        <span class="owner-information-title">送养人信息</span><br>
-        <div class="owner-information">
-            <img class="owner-img" src="https://box.nju.edu.cn/f/2b41d91a7d094e618fc6/?dl=1">
-            <div class="owner-details">
-              <span class="owner-name">张三</span>
-              <el-tag style="color: green ;margin-top: 0" >微信认证用户</el-tag>
+    <div class="container">
+
+      <detail-card></detail-card>
+
+      <div class="right">
+
+
+        <el-card class="adoption" shadow="hover" style = "border-radius: 15px">
+          <div class="adoption-body">
+            <p class="adoption-title">考虑收养我吗？</p>
+            <el-button class="button1" round>我要收养</el-button><br>
+            <el-button class="button2" round>加入收藏</el-button><br>
           </div>
-        </div>
-        <div class="info-container">
+        </el-card>
+
+
+        <el-card class="el-card" shadow="hover" style = "border-radius: 15px">
+          <span class="owner-information-title">送养人信息</span><br>
+          <div class="owner-information">
+              <img class="owner-img" src="https://box.nju.edu.cn/f/2b41d91a7d094e618fc6/?dl=1">
+              <div class="owner-details">
+                <span class="owner-name">张三</span>
+                <el-tag style="color: green ;margin-top: 0" >微信认证用户</el-tag>
+            </div>
+          </div>
+          <div class="info-container">
+            <div class="info-block">
+            <div class="info-number">100%</div>
+            <div class="info-text">用户信誉</div>
+          </div>
+
           <div class="info-block">
-          <div class="info-number">100%</div>
-          <div class="info-text">用户信誉</div>
-        </div>
+            <div class="info-number">0</div>
+            <div class="info-text">已送养数</div>
+          </div>
 
-        <div class="info-block">
-          <div class="info-number">0</div>
-          <div class="info-text">已送养数</div>
-        </div>
+          <div class="info-block">
+            <div class="info-number">0</div>
+            <div class="info-text">已领养数</div>
+          </div>
+          </div>
+        </el-card>
 
-        <div class="info-block">
-          <div class="info-number">0</div>
-          <div class="info-text">已领养数</div>
-        </div>
-        </div>
-      </el-card>
+      </div>
+
 
     </div>
-
-
-  </div>
 
   </body>
 </template>
