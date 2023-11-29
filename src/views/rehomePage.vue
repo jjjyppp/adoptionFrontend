@@ -152,44 +152,38 @@
 
     <div class="input-group">
       <label>所在地区:</label>
-      <el-cascader class="address" placeholder="全国" size='large' style="width: 310px;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
+      <el-cascader class="address" placeholder="请选择您所在的地区" size='large' style="width: 310px;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
     </div>
+    <br>
 
-
-    <div class="input-group">
-      <label>联系人姓名:</label>
-      <el-input v-model="contact.name"></el-input>
-
-      <label>联系电话:</label>
-      <el-input v-model="contact.phone"></el-input>
-
-      <label>联系人微信号:</label>
-      <el-input v-model="contact.wechat"></el-input>
-    </div>
-
-    <div class="input-group">
+    <div class="input-group" style="margin-left: 20px">
       <label>说说ta的故事吧!</label>
     </div>
     <el-input
+        style="width: 85%; margin-left: 55px"
         type="textarea"
         v-model="petExperience"
         placeholder="说说ta的来历，经历或故事吧，这样能让领养人更了解ta"
         rows="4"
-    ></el-input>
+    ></el-input><br>
 
-    <div class="input-group">
+    <div class="input-group" style="margin-left: 35px">
       <label>养护Ta时的注意事项</label>
     </div>
     <el-input
+        style="width: 85%; margin-left: 55px"
         type="textarea"
-        v-model="petExperience"
+        v-model="adoptAttention"
         placeholder="说说Ta的性格和习性吧，还有需要特别注意的事项 (如忌口、药物、伤病史等)"
         rows="4"
     ></el-input>
+    <br>
 
 
-
-    <el-button @click="submitForm" type="primary" color="#6504b5">提交</el-button>
+    <div style="display: flex; justify-content: center;">
+      <el-button @click="submitForm" type="primary" color="#6504b5" style="width: 20%; height: 40px">提交</el-button>
+    </div>
+    <br>
   </div>
 
 
@@ -285,7 +279,8 @@ export default {
         wechat: ''
       },
 
-      petExperience: ''
+      petExperience: '',
+      adoptAttention: ''
     };
   },
 
