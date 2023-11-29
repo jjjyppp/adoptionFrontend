@@ -59,7 +59,7 @@ import FooterCard from "@/components/FooterCard.vue";
                     </label>
                   </div>
                   <div class="form-check py-2 px-5">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt" checked="checked">
                     <label class="form-check-label" for="flexCheckDefaultt">
                       啮齿类宠物
                     </label>

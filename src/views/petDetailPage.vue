@@ -13,11 +13,11 @@ import FooterCard from "@/components/FooterCard.vue";
 
   <body class="body">
 
-    <el-carousel :interval="4000" type="card" height="350px" indicator-position="outside">
-      <el-carousel-item v-for="(item, index) in images" :key="item">
-        <div class="carousel-item-content">
+    <el-carousel @change="handleCarouselChange" :interval="4000" type="card" height="350px" indicator-position="outside">
+      <el-carousel-item v-for="(item, index) in images" :key="item"  style="margin: 10px">
+        <div class="carousel-item-content" :style="{ filter: index !== currentIndex ? 'brightness(50%)' : 'brightness(100%)' }">
           <el-image
-              style="width: 400px; height: 300px"
+              style="width: 460px; height: 350px"
               :src="item.url"
               :fit="item.fit"></el-image>
         </div>
@@ -91,7 +91,7 @@ import FooterCard from "@/components/FooterCard.vue";
     </div>
 
   </body>
-<!--  <footer-card></footer-card>-->
+  <footer-card></footer-card>
 </template>
 
 <script>
@@ -104,6 +104,7 @@ export default {
   },
   data() {
     return {
+      currentIndex: 0,
       fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
       images: [
         { url: "https://box.nju.edu.cn/f/2b41d91a7d094e618fc6/?dl=1", fit: 'fill' },
@@ -117,6 +118,12 @@ export default {
         { id: 3, name: '猫猫3', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
         { id: 4, name: '猫猫4', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
       ],
+    }
+  },
+  methods: {
+    handleCarouselChange(index) {
+      this.currentIndex = index;
+      console.log('Carousel changed. New index:', index);
     }
   }
 }
