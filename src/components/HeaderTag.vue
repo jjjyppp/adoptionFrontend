@@ -7,10 +7,13 @@
     </el-icon>
 <!--    </div>-->
     <el-cascader placeholder="我的位置" size='large' class="cascader" style="max-width: 410px; flex: 0 0 28%;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
-    <div style="flex: 0 0 30%"></div>
+    <div style="flex: 0 0 25%">
+    </div>
+      <el-link :underline="false" class="login" href="#/login">注册/登录</el-link>
+      <el-link :underline="false" class="mine" href="#/mine">我的主页</el-link>
+
 <!--    <el-divider direction="vertical" class="divider"></el-divider>-->
-    <el-link :underline="false" class="login" href="#/login">注册/登录</el-link>
-    <el-link :underline="false" class="mine" href="#/mine">我的主页</el-link>
+
   </div>
   <el-divider class="bottom-divider"></el-divider>
 
@@ -105,17 +108,21 @@ export default {
   //margin-top: 12px;
 }
 
+
 .login{
   flex: 0 0 6%;
+  min-width: 80px;
   height: 50px;
   justify-content: start;
   //margin-left: 20px;
   //padding-top: 2px;
   font-size: 16px;
+  /*border-right: 1px solid gray;*/
 }
 
 .mine{
   flex: 0 0 5%;
+  min-width: 80px;
   justify-content: start;
   //margin-left: 40px;
   height: 50px;

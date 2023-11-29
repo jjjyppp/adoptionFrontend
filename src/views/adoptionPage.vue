@@ -2,6 +2,7 @@
 
 import HeaderTag from "@/components/HeaderTag.vue";
 import FooterCard from "@/components/FooterCard.vue";
+import {ElSelect} from "element-plus";
 </script>
 
 <template>
@@ -22,7 +23,7 @@ import FooterCard from "@/components/FooterCard.vue";
   </head>
   <!--Main start-->
 
-  <main>
+  <main style="background: #f0f0f0">
     <section id="find-animal" class="py-5">
       <div class="container">
         <div class="row py-1 py-md-3">
@@ -143,6 +144,24 @@ import FooterCard from "@/components/FooterCard.vue";
                 <label class="form-check-label" for="inlineRadio2">无偿</label>
               </div>
             </div>
+
+            <strong>领养方式</strong>
+            <el-select
+                v-model="value" placeholder="全部"
+                style="width: 90%; height: 60px"
+                class="custom-select"
+            >
+              <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                  style="background: white;height: 60px;"
+              >
+              </el-option>
+            </el-select>
+
+
             <a><button class="py-2 px-5 fs-5 my-2 text-light">筛选</button></a>
           </div>
           <div class="col-lg-8 col-12">
@@ -218,4 +237,28 @@ export default {
 /* 本地样式 */
 @import url('./assets/css/plugin.css');
 @import url('./assets/css/main.css');
+
+/deep/
+
+.el-input__inner{
+  height: 52px;
+}
+
+/* 下面设置右侧按钮居中 */
+.el-input__suffix {
+  top: 5px;
+}
+.el-input__icon {
+  line-height: inherit;
+}
+.el-input__suffix-inner {
+  display: inline-block;
+}
+
+
+
+
+
+
+
 </style>

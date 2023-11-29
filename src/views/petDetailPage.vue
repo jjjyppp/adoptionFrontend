@@ -5,6 +5,8 @@ import {ElButton, ElCard, ElCarousel, ElCarouselItem,ElImage, ElIcon, ElDialog} 
 import DetailCard from "@/components/DetailCard.vue";
 import RecommendCard from "@/components/RecommendCard.vue";
 import FooterCard from "@/components/FooterCard.vue";
+import AdvertisementCard from "@/components/AdvertisementCard.vue";
+
 </script>
 
 <template>
@@ -27,7 +29,7 @@ import FooterCard from "@/components/FooterCard.vue";
 
       <detail-card></detail-card>
 
-      <div class="right">
+      <div class="right" >
 
 
         <el-card class="adoption" shadow="hover" style = "border-radius: 15px">
@@ -41,8 +43,7 @@ import FooterCard from "@/components/FooterCard.vue";
           </div>
         </el-card>
 
-
-
+        <AdvertisementCard ></AdvertisementCard>
 
         <el-card class="el-card" shadow="hover" style = "border-radius: 15px">
           <span class="owner-information-title">送养人信息</span><br>
@@ -144,18 +145,18 @@ export default {
 .container{
   display: flex;
   flex-wrap: wrap;
-  margin-left: 60px;
+  margin-left: 30px;
   margin-top: 20px;
 }
 .right {
-  width: 30%;
+  width: 32%;
   margin-left:5% ;
-  height: 300px;
+  /*style="display: flex;flex-direction: column;align-items: center;justify-content: center;"*/
 }
 .adoption {
   margin: 0;
   background: #6504B5;
-  height: 270px;
+  height: 250px;
 }
 .adoption-title {
   font-size: 25px;
