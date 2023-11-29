@@ -99,6 +99,7 @@
       </div>
     </div>
   </div>
+  <footer-card></footer-card>
 </template>
 
 <script>
@@ -110,6 +111,7 @@ import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import MoreAnimalCard from "@/components/MoreAnimalCard.vue";
 import more from "@element-plus/icons/lib/More";
 import ArticleCard from "@/components/ArticleCard.vue";
+import FooterCard from "@/components/FooterCard.vue";
 export default {
   name: "homePage",
   computed: {
@@ -118,6 +120,7 @@ export default {
     }
   },
   components:{
+    FooterCard,
     ArticleCard,
     MoreAnimalCard,
     ArrowRight,
