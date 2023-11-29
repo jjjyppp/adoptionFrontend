@@ -1,4 +1,8 @@
 <template>
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+  </head>
   <footer>
     <!--Footer top strat-->
     <section id="footer-top" class="py-4">
