@@ -1,16 +1,14 @@
 <script setup>
 
 import HeaderTag from "@/components/HeaderTag.vue";
-import {ElButton, ElCard, ElFooter, ElCarousel, ElCarouselItem,ElImage, ElIcon} from "element-plus";
+import {ElButton, ElCard, ElCarousel, ElCarouselItem,ElImage, ElIcon, ElDialog} from "element-plus";
 import DetailCard from "@/components/DetailCard.vue";
 import RecommendCard from "@/components/RecommendCard.vue";
-import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import FooterCard from "@/components/FooterCard.vue";
 </script>
 
 <template>
   <header-tag></header-tag>
-
   <body class="body">
 
     <el-carousel @change="handleCarouselChange" :interval="4000" type="card" height="350px" indicator-position="outside">
@@ -37,7 +35,9 @@ import FooterCard from "@/components/FooterCard.vue";
             <p class="adoption-title">考虑收养我吗？</p>
             <el-button class="button1" round>我要收养</el-button><br>
             <el-button class="button2" round>加入收藏</el-button><br>
-            <el-button class="instruction" style = "border-radius: 12px">不清楚领养流程？点击这里</el-button>
+            <el-button class="instruction" style = "border-radius: 12px"  @click="showDialog">不清楚领养流程？点击这里</el-button>
+<!--            <adoption-process-dialog v-model="dialogVisible" @close="handleDialogClose" />-->
+            <adoption-process-dialog v-model="dialogVisible"/>
           </div>
         </el-card>
 
@@ -79,32 +79,27 @@ import FooterCard from "@/components/FooterCard.vue";
       </div>
 
       <RecommendCard></RecommendCard>
-<!--      <div class="recommend">-->
-<!--        <el-card class="recommend-card">-->
-<!--          <div class="rec-cards">-->
-<!--            <pet-display-card style="margin-left: 15px"  v-for="(pet, index) in recent_pets" :key="index" :pet="pet" />-->
-<!--          </div>-->
-<!--        </el-card>-->
-<!--      </div>-->
-
 
     </div>
 
   </body>
+
   <footer-card></footer-card>
 </template>
 
 <script>
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
+import AdoptionProcessDialog from "@/components/AdoptionProcessDialog.vue";
 
 
 export default {
   components: {
-    PetDisplayCard,
+    PetDisplayCard,AdoptionProcessDialog
   },
   data() {
     return {
       currentIndex: 0,
+      dialogVisible: false,
       fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
       images: [
         { url: "https://box.nju.edu.cn/f/2b41d91a7d094e618fc6/?dl=1", fit: 'fill' },
@@ -123,8 +118,12 @@ export default {
   methods: {
     handleCarouselChange(index) {
       this.currentIndex = index;
-      console.log('Carousel changed. New index:', index);
-    }
+      // console.log('Carousel changed. New index:', index);
+    },
+    showDialog() {
+      // console.log('showDialog method called');
+      this.dialogVisible = true;
+    },
   }
 }
 </script>

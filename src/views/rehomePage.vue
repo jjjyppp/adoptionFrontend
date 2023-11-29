@@ -2,6 +2,11 @@
 
 <template>
   <header-tag></header-tag>
+
+  <div>
+    <h1>宠物送养</h1>
+  </div>
+
   <div class="form">
     <div class="input-group">
       <label for="pet-name">宠物名字:</label>
@@ -9,7 +14,7 @@
     </div>
     <div class="input-group">
       <label>宠物种类:</label>
-      <el-select v-model="selectedPetType" @change="onTypeChange">
+      <el-select v-model="selectedPetType" placeholder="请选择宠物种类" @change="onTypeChange">
         <el-option
             v-for="type in petTypes"
             :key="type.pro"
@@ -20,7 +25,7 @@
     </div>
     <div class="input-group" v-if="selectedPetType !== 'other'">
       <label class="show-depend">宠物品种:</label>
-      <el-select  v-model="selectedPetBreed">
+      <el-select   placeholder="请选择宠物品种" v-model="selectedPetBreed">
         <el-option
             v-for="breed in filteredBreeds"
             :key="breed.label"
@@ -32,7 +37,7 @@
 
     <div class="input-group">
       <label for="pet-size">宠物体型:</label>
-      <el-select id="pet-size" v-model="petSize" filterable >
+      <el-select id="pet-size"  placeholder="请选择宠物体型" v-model="petSize" filterable >
         <el-option
             v-for="item in petSizes"
             :key="item.value"
@@ -43,7 +48,7 @@
     </div>
     <div class="input-group">
       <label for="pet-gender">宠物性别:</label>
-      <el-select id="pet-gender" v-model="petGender" filterable >
+      <el-select id="pet-gender" placeholder="请选择宠物性别" v-model="petGender" filterable >
         <el-option
             v-for="item in petGenders"
             :key="item.value"
@@ -54,7 +59,7 @@
     </div>
     <div class="input-group">
       <label for="pet-age">宠物年龄:</label>
-      <el-select id="pet-age" v-model="petAge" filterable >
+      <el-select id="pet-age"  placeholder="请选择宠物年龄" v-model="petAge" filterable >
         <el-option
             v-for="item in petAges"
             :key="item.value"
@@ -66,7 +71,7 @@
 
     <div class="input-group">
       <label for="pet-source">宠物来源:</label>
-      <el-select id="pet-source" v-model="selectedPetSource">
+      <el-select id="pet-source"  placeholder="请选择宠物来源" v-model="selectedPetSource">
         <el-option
             v-for="source in petSources"
             :key="source.value"
@@ -78,7 +83,7 @@
 
     <div class="input-group">
       <label>健康情况:</label>
-      <el-checkbox-group v-model="selectedHealthConditions" >
+      <el-checkbox-group v-model="selectedHealthConditions" style="margin-left: 5px;" >
         <el-checkbox label="已免疫"></el-checkbox>
         <el-checkbox label="已驱虫"></el-checkbox>
         <el-checkbox label="已绝育"></el-checkbox>
@@ -87,21 +92,21 @@
 
     <div class="input-group">
       <label>领养要求:</label>
-      <el-checkbox-group v-model="selectedAdoptNeeds" >
+      <el-checkbox-group v-model="selectedAdoptNeeds" style="margin-left: 10px;" >
         <el-checkbox label="不可转送"></el-checkbox>
         <el-checkbox label="定期免疫"></el-checkbox>
-        <el-checkbox label="仅限同城"></el-checkbox>
+        <el-checkbox label="签订领养合同" style="margin-left: 25px;"></el-checkbox>
         <br/>
-        <el-checkbox label="签订领养合同"></el-checkbox>
-        <el-checkbox label="定期视频回放"></el-checkbox>
-        <el-checkbox label="定期线下回访"></el-checkbox>
+        <el-checkbox label="仅限同城" style="margin-left: 10px;"></el-checkbox>
+        <el-checkbox label="定期视频回放" style="margin-left: 24px;"></el-checkbox>
+        <el-checkbox label="定期线下回访" style="margin-left: 10px;"></el-checkbox>
 
       </el-checkbox-group>
     </div>
 
     <div class="input-group">
       <label>领养方式:</label>
-      <el-select v-model="adoptionType" @change="onAdoptionTypeChange">
+      <el-select v-model="adoptionType"  placeholder="请选择领养方式" @change="onAdoptionTypeChange">
         <el-option label="有偿领养" value="paid">有偿领养</el-option>
         <el-option label="无偿领养" value="free">无偿领养</el-option>
       </el-select>
@@ -109,7 +114,7 @@
 
     <div class="input-group">
       <label v-if="adoptionType === 'paid'" class="show-depend">领养金额:</label>
-      <el-select v-if="adoptionType === 'paid'" v-model="adoptionAmount">
+      <el-select v-if="adoptionType === 'paid'" placeholder="请选择领养金额" v-model="adoptionAmount">
         <el-option label="100元以下" value="below100"></el-option>
         <el-option label="100到300元" value="100to300"></el-option>
         <el-option label="300到500元" value="300to500"></el-option>
@@ -147,7 +152,7 @@
 
     <div class="input-group">
       <label>所在地区:</label>
-      <el-cascader class="address" placeholder="全国" size='large' style="width: 210px;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
+      <el-cascader class="address" placeholder="全国" size='large' style="width: 310px;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
     </div>
 
 
@@ -210,7 +215,7 @@ export default {
       petSize: "",
       petGender: "",
       petAge: "",
-      selectedPetType: 'other',
+      selectedPetType: '',
       selectedPetBreed: '',
       selectedPetSource: '',
       petTypes: [
@@ -401,6 +406,14 @@ export default {
 </script>
 
 <style scoped>
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #6504b5;
+}
+
+
 .form {
   display: flex;
   flex-direction: column;
@@ -427,7 +440,8 @@ export default {
 
 }
 
-.el-select,
+
+.el-select, 
 .el-input {
   width: 200px;
 }
@@ -436,8 +450,8 @@ export default {
   margin-top: 10px;
 }
 
+
 .show-depend {
-  text-align: center;
 
   color: white;
   background-color: #6504b5;
@@ -455,5 +469,7 @@ export default {
   opacity: 0.7;
   border-radius: inherit;
 }
+
+
 
 </style>
