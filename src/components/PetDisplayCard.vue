@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 210px; height: 300px">
+  <div style="width: 210px; height: 300px" >
     <div class="animal-box text-center" style="height: 278px">
       <router-link :to="{ name: 'petDetailPage', params: { id: pet.id } }">
         <a>
