@@ -3,7 +3,6 @@ import {ElIcon, ElCard, ElContainer, ElHeader, ElTag, ElAside, ElMain, ElFooter}
 import {Location} from '@element-plus/icons-vue'
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
 export default {
-  name: "detailCard",
   components:{PetDisplayCard, Location, ElCard, ElTag, ElContainer, ElHeader, ElAside, ElMain, ElFooter, ElIcon},
   data() {
     return {
@@ -12,6 +11,7 @@ export default {
         { id: 2, name: '猫猫2', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
         { id: 3, name: '猫猫3', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
         { id: 4, name: '猫猫4', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 5, name: '猫猫5', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
       ],
     };
   },
@@ -42,7 +42,7 @@ export default {
 
 
 .recommend-container{
-  width: 90%;
+  width: 100%;
   height: 450px;
   background: #4c0586;
   text-align: center;

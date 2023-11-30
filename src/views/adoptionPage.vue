@@ -2,6 +2,7 @@
 
 import HeaderTag from "@/components/HeaderTag.vue";
 import FooterCard from "@/components/FooterCard.vue";
+import {ElSelect} from "element-plus";
 </script>
 
 <template>
@@ -22,7 +23,11 @@ import FooterCard from "@/components/FooterCard.vue";
   </head>
   <!--Main start-->
 
-  <main>
+<<<<<<< HEAD
+  <main style="background: #f0f0f0">
+=======
+  <main style="background-color:#f0f0f0">
+>>>>>>> refs/remotes/origin/main
     <section id="find-animal" class="py-5">
       <div class="container">
         <div class="row py-1 py-md-3">
@@ -41,39 +46,24 @@ import FooterCard from "@/components/FooterCard.vue";
               </form>
             </div>
 
-            <div class="search pb-3  mb-3 text-center">
               <form action="">
-                <div  class="search-box mb-3">
-                  <p class="text-light fs-4 fw-bold py-2">种类</p>
 
-                  <div class="form-check py-2 px-5">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label " for="flexCheckDefault">
-                      狗
-                    </label>
+                  <p class="fs-4 fw-bold py-2">种类</p>
+
+                <div style="text-align:-webkit-center" class="mb-2">
+
+                    <el-select multiple id='pet-type' v-model="PetType" placeholder="请选择宠物种类" filterable>
+                      <el-option
+                          v-for="type in petTypes"
+                          :key="type.value"
+                          :label="type.label"
+                          :value="type.value"
+                      ></el-option>
+                    </el-select>
                   </div>
-                  <div class="form-check py-2 px-5">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt">
-                    <label class="form-check-label" for="flexCheckDefaultt">
-                      猫
-                    </label>
-                  </div>
-                  <div class="form-check py-2 px-5">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt" checked="checked">
-                    <label class="form-check-label" for="flexCheckDefaultt">
-                      啮齿类宠物
-                    </label>
-                  </div>
-                  <div class="form-check py-2 px-5">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaulttt">
-                    <label class="form-check-label" for="flexCheckDefaulttt">
-                      其他
-                    </label>
-                  </div>
-                </div>
-                <div class="search-box mb-3">
-                  <p class="text-light fs-4 fw-bold py-2">性别</p>
-                  <div class="form-check form-check-inline px-5 py-4">
+
+                  <p class="fs-4 fw-bold py-2">性别</p>
+                  <div class="form-check form-check-inline px-5 py-2 mb-1">
                     <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                     <label class="form-check-label" for="inlineRadio1">公</label>
                   </div>
@@ -81,60 +71,56 @@ import FooterCard from "@/components/FooterCard.vue";
                     <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                     <label class="form-check-label" for="inlineRadio2">母</label>
                   </div>
+
+                  <p class="fs-4 fw-bold py-2">年龄</p>
+                <div style="text-align:-webkit-center" class="mb-3">
+
+                  <el-select multiple id="pet-age"  placeholder="请选择宠物年龄" v-model="petAge" filterable >
+                    <el-option
+                        v-for="item in petAges"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                    ></el-option>
+                  </el-select>
                 </div>
-                <div class="search-box mb-3" >
-                  <p class="text-light fs-4 fw-bold py-2">年龄</p>
-                  <div class="form-check py-2 px-5">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label " for="flexCheckDefault">
-                      0~6个月
-                    </label>
-                  </div>
-                  <div class="form-check py-2 px-5">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt">
-                    <label class="form-check-label" for="flexCheckDefaultt">
-                      6个月~2岁
-                    </label>
-                  </div>
-                  <div class="form-check py-2 px-5">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt">
-                    <label class="form-check-label" for="flexCheckDefaultt">
-                      2岁~7岁
-                    </label>
-                  </div>
-                  <div class="form-check py-2 px-5">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaulttt">
-                    <label class="form-check-label" for="flexCheckDefaulttt">
-                      大于7岁
-                    </label>
-                  </div>
+
+                  <p class="fs-4 fw-bold py-2">体型</p>
+                <div style="text-align:-webkit-center" class="mb-3">
+                  <el-select multiple id="pet-size"  placeholder="请选择宠物体型" v-model="petSize" filterable >
+                    <el-option
+                        v-for="item in petSizes"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                    ></el-option>
+                  </el-select>
                 </div>
-                <div class="search-box " >
-                  <p class="text-light fs-4 fw-bold py-2">体型</p>
-                  <div class="form-check py-2 px-5">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label " for="flexCheckDefault">
-                      小型
-                    </label>
+                  <p class="fs-4 fw-bold py-2">来源</p>
+                  <div style="text-align:-webkit-center" class="mb-3">
+                  <el-select  multiple id="pet-source"  placeholder="请选择宠物来源" v-model="selectedPetSource">
+                    <el-option
+                        v-for="source in petSources"
+                        :key="source.value"
+                        :label="source.label"
+                        :value="source.value"
+                    ></el-option>
+                  </el-select>
                   </div>
-                  <div class="form-check py-2 px-5">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt">
-                    <label class="form-check-label" for="flexCheckDefaultt">
-                      中型
-                    </label>
-                  </div>
-                  <div class="form-check py-2 px-5">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultt">
-                    <label class="form-check-label" for="flexCheckDefaultt">
-                      大型
-                    </label>
-                  </div>
-                </div>
               </form>
-            </div>
-            <div class="search-box mb-3">
-              <p class="text-light fs-4 fw-bold py-2">领养方式</p>
-              <div class="form-check form-check-inline px-5 py-4">
+                <p class=" fs-4 fw-bold py-2">健康情况</p>
+                  <div style="text-align:-webkit-center" class="mb-3">
+                  <el-select multiple id="HealthCondition"  placeholder="请选择宠物健康情况" v-model="HealthCondition" >
+                    <el-option
+                        v-for="item in HealthConditions"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                    ></el-option>
+                  </el-select>
+                </div>
+              <p class="fs-4 fw-bold py-2">领养方式</p>
+              <div class="form-check form-check-inline px-5 py-3">
                 <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                 <label class="form-check-label" for="inlineRadio1">有偿</label>
               </div>
@@ -142,8 +128,40 @@ import FooterCard from "@/components/FooterCard.vue";
                 <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                 <label class="form-check-label" for="inlineRadio2">无偿</label>
               </div>
+
+              <p class=" fs-4 fw-bold py-2">领养金额</p>
+                <div style="text-align:-webkit-center" class="mb-3">
+                <el-select multiple placeholder="请选择领养金额(可多选)" v-model="adoptionAmount">
+                  <el-option label="免费" value="0"></el-option>
+                  <el-option label="100元以下" value="below100"></el-option>
+                  <el-option label="100到300元" value="100to300"></el-option>
+                  <el-option label="300到500元" value="300to500"></el-option>
+                  <el-option label="500到1000元" value="500to1000"></el-option>
+                  <el-option label="1000元以上" value="above1000"></el-option>
+                </el-select>
             </div>
+<<<<<<< HEAD
+
+            <strong>领养方式</strong>
+            <el-select
+                v-model="value" placeholder="全部"
+                style="width: 90%; height: 60px"
+                class="custom-select"
+            >
+              <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                  style="background: white;height: 60px;"
+              >
+              </el-option>
+            </el-select>
+
+
             <a><button class="py-2 px-5 fs-5 my-2 text-light">筛选</button></a>
+=======
+>>>>>>> refs/remotes/origin/main
           </div>
           <div class="col-lg-8 col-12">
             <div class="animal py-3 px-3">
@@ -187,9 +205,14 @@ import FooterCard from "@/components/FooterCard.vue";
 
 <script>
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
+import {
+  ElOption,
+  ElSelect,
+} from "element-plus";
 export default {
+  name: "adoptionPage",
   components: {
-    PetDisplayCard,
+    PetDisplayCard,ElSelect, ElOption,
   },
   data() {
     return {
@@ -207,6 +230,54 @@ export default {
         { id: 11, name: '猫猫11', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
         { id: 12, name: '猫猫12', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
       ],
+      petName: "",
+      petSize: "",
+      petGender: "",
+      petAge: "",
+      PetType: '',
+      selectedPetSource: '',
+      HealthCondition:'',
+      petTypes: [
+        { value: 'dog', label: '宠物狗' },
+        { value: 'cat', label: '宠物猫' },
+        { value: 'rabbit', label: '兔子' },
+        { value: 'other', label: '其他' }
+      ],
+
+      petSizes: [
+        { label: "小型", value: "small" },
+        { label: "中型", value: "medium" },
+        { label: "大型", value: "large" },
+        // Add more options for pet sizes
+      ],
+      petGenders: [
+        { label: "公", value: "male" },
+        { label: "母", value: "female" },
+        // Add more options for pet genders
+      ],
+      petAges: [
+        { label: "0~6个月", value: "0-6" },
+        { label: "6个月~2岁", value: "6-24" },
+        { label: "2岁~7岁", value: "24-84" },
+        { label: "大于7岁", value: "84+" },
+        // Add more options for pet ages
+      ],
+      petSources: [
+        { value: 'home', label: '家养' },
+        { value: 'shelter', label: '救助站' },
+        { value: 'save', label: '个人救助' },
+        { value: 'other', label: '其他' }
+      ],
+      HealthConditions:[
+        { value: 'mianyi', label: '已免疫' },
+        { value: 'quchong', label: '已驱虫' },
+        { value: 'jueyu', label: '已绝育' },
+      ],
+      selectedAdoptNeeds : [],
+      adoptionType: '', // 领养方式
+      paymentReason: '',
+
+      adoptionAmount: '', // 金额
     };
   },
 };
@@ -214,8 +285,53 @@ export default {
 
 
 
-<style scoped>
-/* 本地样式 */
+<style>
+
 @import url('./assets/css/plugin.css');
 @import url('./assets/css/main.css');
+
+<<<<<<< HEAD
+/deep/
+
+.el-input__inner{
+  height: 52px;
+}
+
+/* 下面设置右侧按钮居中 */
+.el-input__suffix {
+  top: 5px;
+}
+.el-input__icon {
+  line-height: inherit;
+}
+.el-input__suffix-inner {
+  display: inline-block;
+}
+
+
+
+
+
+
+=======
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #6504b5;
+}
+
+
+.input-group label {
+  justify-content: center;
+  width: 150px;
+  margin-left: 10px;
+  text-align: center;  line-height: 30px; /* 根据实际情况调整行高 */
+}
+
+.el-select {
+  width: 80%;
+}
+>>>>>>> refs/remotes/origin/main
+
 </style>

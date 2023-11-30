@@ -185,7 +185,9 @@
     </div>
     <br>
   </div>
-
+  <br>
+  <br>
+  <footer-card></footer-card>
 
 
 </template>
@@ -195,12 +197,15 @@
 import HeaderTag from "@/components/HeaderTag.vue";
 import {ElPagination, ElButton, ElIcon, ElSelect, ElOption, ElInput, ElCheckboxGroup, ElCheckbox, ElUpload, ElCascader} from "element-plus";
 import { regionData, codeToText} from 'element-china-area-data';
+import FooterCard from "@/components/FooterCard.vue";
 
 
 
 export default {
   name: "rehomePage",
-  components:{ElPagination, ElButton, ElIcon, ElSelect, ElOption, ElInput, ElCheckboxGroup, ElCheckbox, ElUpload, ElCascader, HeaderTag},
+  components:{
+    FooterCard,
+    ElPagination, ElButton, ElIcon, ElSelect, ElOption, ElInput, ElCheckboxGroup, ElCheckbox, ElUpload, ElCascader, HeaderTag},
 
   data() {
     return {

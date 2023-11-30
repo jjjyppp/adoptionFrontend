@@ -67,7 +67,7 @@ export default {
   font-family: sans-serif;
 }
 .card-container{
-  width: 60%;
+  width: 62%;
   //height: 800px;
   //margin: 80px;
   contain: layout;
