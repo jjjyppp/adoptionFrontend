@@ -84,7 +84,7 @@ export default {
 }
 
 .logo-link{
-  flex: 0 0 24%;
+  flex: 0 0 28%;
   //align-items: start;
   //height: 50px;
   justify-content: left;
