@@ -2,8 +2,10 @@
 
 </script>
 <template>
-  <header-tag></header-tag>
-  <div style="background-color: #EFEEF1">
+  <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
+    <header-tag></header-tag>
+  </div>
+  <div style="background-color: #EFEEF1; margin-top: 50px">
     <div class="background">
       <div class="quick-search">
         <div class="text">

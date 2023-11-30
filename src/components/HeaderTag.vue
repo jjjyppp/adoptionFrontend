@@ -6,7 +6,7 @@
       <location-information/>
     </el-icon>
 <!--    </div>-->
-    <el-cascader placeholder="我的位置" size='large' class="cascader" style="max-width: 410px; flex: 0 0 28%;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
+    <el-cascader placeholder="我的位置" size='large' class="cascader" style="max-width: 420px; flex: 0 0 30%;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
     <div style="flex: 0 0 25%">
     </div>
       <el-link :underline="false" class="login" href="#/login">注册/登录</el-link>

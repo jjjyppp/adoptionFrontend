@@ -12,15 +12,15 @@
             <div class="footer-inner">
               <h5 class="py-2">关于</h5>
               <ul class="px-0">
-                <a href="#">
+<!--                <a href="#">-->
                   <li class="m-0">关于我们</li>
-                </a>
-                <a href="#">
+<!--                </a>-->
+<!--                <a href="#">-->
                   <li>合作单位</li>
-                </a>
-                <a href="#">
+<!--                </a>-->
+<!--                <a href="#">-->
                   <li>新闻</li>
-                </a>
+<!--                </a>-->
               </ul>
             </div>
           </div>
@@ -28,18 +28,18 @@
             <div class="footer-inner">
               <h5 class="py-2">关于宠物</h5>
               <ul class="px-0">
-                <a href="#">
+<!--                <a href="#">-->
                   <li>收养宠物</li>
-                </a>
-                <a href="#">
+<!--                </a>-->
+<!--                <a href="#">-->
                   <li>科学养宠科普</li>
-                </a>
-                <a href="#">
+<!--                </a>-->
+<!--                <a href="#">-->
                   <li>宠物行为</li>
-                </a>
-                <a href="#">
+<!--                </a>-->
+<!--                <a href="#">-->
                   <li>宠物健康</li>
-                </a>
+<!--                </a>-->
               </ul>
             </div>
           </div>
@@ -47,15 +47,15 @@
             <div class="footer-inner">
               <h5 class="py-2">公益事业</h5>
               <ul class="px-0">
-                <a href="#">
+<!--                <a href="#">-->
                   <li>领养或救助</li>
-                </a>
-                <a href="#">
+<!--                </a>-->
+<!--                <a href="#">-->
                   <li>流浪动物收容所</li>
-                </a>
-                <a href="#">
+<!--                </a>-->
+<!--                <a href="#">-->
                   <li>绝育行动</li>
-                </a>
+<!--                </a>-->
               </ul>
             </div>
           </div>
@@ -78,7 +78,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
     <!--Footer top end-->
@@ -95,11 +94,21 @@
           </div>
           <div class="col-md-4">
             <div class="social-media text-center">
-              <a href="#"><span><i class="fa-brands fa-facebook-f"></i></span></a>
-              <a href="#"><span><i class="fa-brands fa-twitter"></i></span></a>
-              <a href="#"><span><i class="fa-brands fa-instagram"></i></span></a>
-              <a href="#"><span><i class="fa-brands fa-youtube"></i></span></a>
-              <a href="#"><span><i class="fa-brands fa-pinterest-p"></i></span></a>
+<!--              <a href="#">-->
+                <span><i class="fa-brands fa-facebook-f"></i></span>
+<!--              </a>-->
+<!--              <a href="#">-->
+                <span><i class="fa-brands fa-twitter"></i></span>
+<!--              </a>-->
+<!--              <a href="#">-->
+                <span><i class="fa-brands fa-instagram"></i></span>
+<!--              </a>-->
+<!--              <a href="#">-->
+                <span><i class="fa-brands fa-youtube"></i></span>
+<!--              </a>-->
+<!--              <a href="#">-->
+                <span><i class="fa-brands fa-pinterest-p"></i></span>
+<!--              </a>-->
             </div>
           </div>
         </div>
