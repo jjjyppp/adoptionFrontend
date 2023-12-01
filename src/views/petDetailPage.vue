@@ -14,7 +14,6 @@ import AdvertisementCard from "@/components/AdvertisementCard.vue";
     <header-tag></header-tag>
   </div>
   <body class="body" style="margin-top: 50px">
-
     <el-carousel @change="handleCarouselChange" :interval="4000" type="card" height="350px" indicator-position="outside">
       <el-carousel-item v-for="(item, index) in images" :key="item"  style="margin: 10px">
         <div class="carousel-item-content" :style="{ filter: index !== currentIndex ? 'brightness(50%)' : 'brightness(100%)' }">
@@ -25,15 +24,9 @@ import AdvertisementCard from "@/components/AdvertisementCard.vue";
         </div>
       </el-carousel-item>
     </el-carousel>
-
-
     <div class="container">
-
       <detail-card></detail-card>
-
       <div class="right" >
-
-
         <el-card class="adoption" shadow="hover" style = "border-radius: 15px">
           <div class="adoption-body">
             <p class="adoption-title">考虑收养我吗？</p>
@@ -45,7 +38,7 @@ import AdvertisementCard from "@/components/AdvertisementCard.vue";
           </div>
         </el-card>
 
-        <AdvertisementCard ></AdvertisementCard>
+        <AdvertisementCard></AdvertisementCard>
 
         <el-card class="el-card" shadow="hover" style = "border-radius: 15px">
           <span class="owner-information-title">送养人信息</span><br>
