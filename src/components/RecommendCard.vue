@@ -20,9 +20,9 @@ export default {
 
 <template>
   <div class="recommend-container" style="border-radius: 15px; justify-content: center;">
-    <p class="interest-text">您可能也感兴趣：</p>
+    <p class="interest-text">您可能感兴趣：</p>
     <div class="card-container">
-      <PetDisplayCard style="margin-left: 15px; margin-top: 15px;" v-for="(pet) in pets" :key="pet.id" :pet="pet" />
+      <PetDisplayCard style="margin-left: 7px;margin-right: 7px; margin-top: 15px;" v-for="(pet) in pets" :key="pet.id" :pet="pet" />
     </div>
   </div>
 
@@ -42,19 +42,20 @@ export default {
 
 
 .recommend-container{
+  /*width: 900px;*/
   width: 100%;
   height: 450px;
   background: #4c0586;
   text-align: center;
-  margin: 20px;
-
+  /*margin: 20px;*/
+  padding: 20px;
 }
 
 .interest-text {
   color: white;
   text-align: center;
-  margin-top: 20px; /* 调整上边距根据需要 */
-  font-size: 40px;
+  padding-top: 20px;
+  font-size: 35px;
 }
 .card-container{
   display: flex;

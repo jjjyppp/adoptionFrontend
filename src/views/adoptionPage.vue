@@ -52,14 +52,14 @@
               </div>
 
               <p class="fs-4 fw-bold py-2">性别</p>
-<!--              <div class="form-check form-check-inline px-5 py-2 mb-1">-->
-<!--                <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">-->
-<!--                <label class="form-check-label" for="inlineRadio1">公</label>-->
-<!--              </div>-->
-<!--              <div class="form-check form-check-inline px-5">-->
-<!--                <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">-->
-<!--                <label class="form-check-label" for="inlineRadio2">母</label>-->
-<!--              </div>-->
+              <!--              <div class="form-check form-check-inline px-5 py-2 mb-1">-->
+              <!--                <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">-->
+              <!--                <label class="form-check-label" for="inlineRadio1">公</label>-->
+              <!--              </div>-->
+              <!--              <div class="form-check form-check-inline px-5">-->
+              <!--                <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">-->
+              <!--                <label class="form-check-label" for="inlineRadio2">母</label>-->
+              <!--              </div>-->
 
               <el-checkbox-group v-model="petGender" style="zoom: 140%">
                 <el-checkbox label="公"></el-checkbox>
@@ -113,19 +113,19 @@
                 ></el-option>
               </el-select>
             </div>
-<!--            <p class="fs-4 fw-bold">领养方式</p>-->
-<!--            <el-checkbox-group v-model="adoptionType" style="zoom: 140%">-->
-<!--              <el-checkbox label="有偿领养"></el-checkbox>-->
-<!--              <el-checkbox label="无偿领养"></el-checkbox>-->
-<!--            </el-checkbox-group>-->
-<!--            <div class="form-check form-check-inline px-5 py-3">-->
-<!--              <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">-->
-<!--              <label class="form-check-label" for="inlineRadio1">有偿</label>-->
-<!--            </div>-->
-<!--            <div class="form-check form-check-inline px-5">-->
-<!--              <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">-->
-<!--              <label class="form-check-label" for="inlineRadio2">无偿</label>-->
-<!--            </div>-->
+            <!--            <p class="fs-4 fw-bold">领养方式</p>-->
+            <!--            <el-checkbox-group v-model="adoptionType" style="zoom: 140%">-->
+            <!--              <el-checkbox label="有偿领养"></el-checkbox>-->
+            <!--              <el-checkbox label="无偿领养"></el-checkbox>-->
+            <!--            </el-checkbox-group>-->
+            <!--            <div class="form-check form-check-inline px-5 py-3">-->
+            <!--              <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">-->
+            <!--              <label class="form-check-label" for="inlineRadio1">有偿</label>-->
+            <!--            </div>-->
+            <!--            <div class="form-check form-check-inline px-5">-->
+            <!--              <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">-->
+            <!--              <label class="form-check-label" for="inlineRadio2">无偿</label>-->
+            <!--            </div>-->
 
             <p class=" fs-4 fw-bold py-2">领养金额</p>
             <div style="text-align:-webkit-center" class="mb-3">

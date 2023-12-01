@@ -7,6 +7,7 @@ import RecommendCard from "@/components/RecommendCard.vue";
 import FooterCard from "@/components/FooterCard.vue";
 import AdvertisementCard from "@/components/AdvertisementCard.vue";
 
+
 </script>
 
 <template>
@@ -74,7 +75,7 @@ import AdvertisementCard from "@/components/AdvertisementCard.vue";
 
       </div>
 
-      <RecommendCard></RecommendCard>
+      <RecommendCard style="margin: 20px"></RecommendCard>
 
     </div>
 

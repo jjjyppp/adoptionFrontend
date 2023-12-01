@@ -6,14 +6,21 @@
       <location-information/>
     </el-icon>
 <!--    </div>-->
-    <el-cascader placeholder="我的位置" size='large' class="cascader" style="max-width: 420px; flex: 0 0 30%;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
-    <div style="flex: 0 0 25%">
+    <el-cascader placeholder="我的位置" size='large' class="cascader" style="max-width: 410px; flex: 0 0 28%;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
+    <div style="flex: 0 0 20%">
     </div>
-      <el-link :underline="false" class="login" href="#/login">注册/登录</el-link>
+    <div class="fav" style="display: flex">
+      <img src="../assets/icons/favorites.png" alt="" style="height: 35px; margin-top: 5px">
+      <el-link :underline="false" class="mine" href="#/favorites"  @click="toFavorites">我的收藏</el-link>
+    </div>
+<!--      <el-link :underline="false" class="login" href="#/login">注册/登录</el-link>-->
+    <div class="user" style="display: flex">
+      <img src="../assets/icons/user.png" alt="" style="height: 35px; margin-top: 5px">
       <el-link :underline="false" class="mine" href="#/mine">我的主页</el-link>
-  <!--    <el-divider direction="vertical" class="divider"></el-divider>-->
 
-  </div>
+    </div>
+<!--    <el-divider direction="vertical" class="divider"></el-divider>-->
+   </div>
   <el-divider class="bottom-divider"></el-divider>
 
   <!--  <div>-->
@@ -42,6 +49,7 @@ import {ElLink, ElCascader, ElIcon, ElDivider} from "element-plus";
 import {codeToText, regionData} from "element-china-area-data";
 import {LocationInformation} from "@element-plus/icons-vue";
 import global from "@/views/assets/js/global_variable.js";
+import router from "@/router";
 export default {
   name: "HeaderTag",
   components:{ElLink, ElCascader, ElIcon, LocationInformation, ElDivider},
@@ -63,6 +71,11 @@ export default {
       console.log(codeToText[arr[0]]+codeToText[arr[1]]+codeToText[arr[2]])
       global.address=this.selectedOptions
     },
+    toFavorites(){
+      router.push({
+        name:"myFavoritePage"
+      })
+    }
   }
 }
 
