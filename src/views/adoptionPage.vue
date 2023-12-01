@@ -152,14 +152,6 @@ import {ElSelect} from "element-plus";
               </el-option>
             </el-select>
 
-            <strong style="font-size: 20px ;margin-bottom: 5px">demo</strong>
-
-            <select  class="wjj-select">
-              <option value="" disabled selected>全部</option>
-              <option value="option1">选项1</option>
-              <option value="option2">选项2</option>
-              <option value="option3">选项3</option>
-            </select>
 
 
             <a><button class="py-2 px-5 fs-5 my-2 text-light">筛选</button></a>
@@ -323,22 +315,6 @@ h1 {
 .el-select {
   width: 80%;
 }
-.wjj-select {
-  width: 85%;
-  border: 1px solid white;
-  height: 52px;
-  border-radius: 5px;
-  padding-left: 20px;
-  /*隐藏select的下拉图标 */
-  appearance: none;
-  -moz-appearance:none;
-  -webkit-appearance:none;
-  /*background: url("");*/
 
-}
-.wjj-select:focus {
-  border-color: #6504b5; /* 修改获取焦点时的边框颜色 */
-  outline: 0; /* 去掉默认的外边框样式 */
-}
 
 </style>
