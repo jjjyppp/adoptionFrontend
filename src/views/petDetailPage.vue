@@ -38,7 +38,7 @@ import AdvertisementCard from "@/components/AdvertisementCard.vue";
           </div>
         </el-card>
 
-        <AdvertisementCard></AdvertisementCard>
+        <AdvertisementCard ></AdvertisementCard>
 
         <el-card class="el-card" shadow="hover" style = "border-radius: 15px">
           <span class="owner-information-title">送养人信息</span><br>
