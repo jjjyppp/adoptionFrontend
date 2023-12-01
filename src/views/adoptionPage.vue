@@ -23,11 +23,7 @@ import {ElSelect} from "element-plus";
   </head>
   <!--Main start-->
 
-<<<<<<< HEAD
   <main style="background: #f0f0f0">
-=======
-  <main style="background-color:#f0f0f0">
->>>>>>> refs/remotes/origin/main
     <section id="find-animal" class="py-5">
       <div class="container">
         <div class="row py-1 py-md-3">
@@ -85,7 +81,7 @@ import {ElSelect} from "element-plus";
                   </el-select>
                 </div>
 
-                  <p class="fs-4 fw-bold py-2">体型</p>
+                <p class="fs-4 fw-bold py-2">体型</p>
                 <div style="text-align:-webkit-center" class="mb-3">
                   <el-select multiple id="pet-size"  placeholder="请选择宠物体型" v-model="petSize" filterable >
                     <el-option
@@ -96,8 +92,8 @@ import {ElSelect} from "element-plus";
                     ></el-option>
                   </el-select>
                 </div>
-                  <p class="fs-4 fw-bold py-2">来源</p>
-                  <div style="text-align:-webkit-center" class="mb-3">
+                <p class="fs-4 fw-bold py-2">来源</p>
+                <div style="text-align:-webkit-center" class="mb-3">
                   <el-select  multiple id="pet-source"  placeholder="请选择宠物来源" v-model="selectedPetSource">
                     <el-option
                         v-for="source in petSources"
@@ -106,42 +102,40 @@ import {ElSelect} from "element-plus";
                         :value="source.value"
                     ></el-option>
                   </el-select>
-                  </div>
-              </form>
-                <p class=" fs-4 fw-bold py-2">健康情况</p>
-                  <div style="text-align:-webkit-center" class="mb-3">
-                  <el-select multiple id="HealthCondition"  placeholder="请选择宠物健康情况" v-model="HealthCondition" >
-                    <el-option
-                        v-for="item in HealthConditions"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                    ></el-option>
-                  </el-select>
                 </div>
-              <p class="fs-4 fw-bold py-2">领养方式</p>
-              <div class="form-check form-check-inline px-5 py-3">
-                <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                <label class="form-check-label" for="inlineRadio1">有偿</label>
-              </div>
-              <div class="form-check form-check-inline px-5">
-                <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">无偿</label>
-              </div>
-
-              <p class=" fs-4 fw-bold py-2">领养金额</p>
-                <div style="text-align:-webkit-center" class="mb-3">
-                <el-select multiple placeholder="请选择领养金额(可多选)" v-model="adoptionAmount">
-                  <el-option label="免费" value="0"></el-option>
-                  <el-option label="100元以下" value="below100"></el-option>
-                  <el-option label="100到300元" value="100to300"></el-option>
-                  <el-option label="300到500元" value="300to500"></el-option>
-                  <el-option label="500到1000元" value="500to1000"></el-option>
-                  <el-option label="1000元以上" value="above1000"></el-option>
-                </el-select>
+              </form>
+            <p class=" fs-4 fw-bold py-2">健康情况</p>
+            <div style="text-align:-webkit-center" class="mb-3">
+              <el-select multiple id="HealthCondition"  placeholder="请选择宠物健康情况" v-model="HealthCondition" >
+                <el-option
+                    v-for="item in HealthConditions"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                ></el-option>
+              </el-select>
             </div>
-<<<<<<< HEAD
+            <p class="fs-4 fw-bold py-2">领养方式</p>
+            <div class="form-check form-check-inline px-5 py-3">
+              <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+              <label class="form-check-label" for="inlineRadio1">有偿</label>
+            </div>
+            <div class="form-check form-check-inline px-5">
+              <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+              <label class="form-check-label" for="inlineRadio2">无偿</label>
+            </div>
 
+            <p class=" fs-4 fw-bold py-2">领养金额</p>
+            <div style="text-align:-webkit-center" class="mb-3">
+              <el-select multiple placeholder="请选择领养金额(可多选)" v-model="adoptionAmount">
+                <el-option label="免费" value="0"></el-option>
+                <el-option label="100元以下" value="below100"></el-option>
+                <el-option label="100到300元" value="100to300"></el-option>
+                <el-option label="300到500元" value="300to500"></el-option>
+                <el-option label="500到1000元" value="500to1000"></el-option>
+                <el-option label="1000元以上" value="above1000"></el-option>
+              </el-select>
+            </div>
             <strong>领养方式</strong>
             <el-select
                 v-model="value" placeholder="全部"
@@ -158,10 +152,17 @@ import {ElSelect} from "element-plus";
               </el-option>
             </el-select>
 
+            <strong style="font-size: 20px ;margin-bottom: 5px">demo</strong>
+
+            <select  class="wjj-select">
+              <option value="" disabled selected>全部</option>
+              <option value="option1">选项1</option>
+              <option value="option2">选项2</option>
+              <option value="option3">选项3</option>
+            </select>
+
 
             <a><button class="py-2 px-5 fs-5 my-2 text-light">筛选</button></a>
-=======
->>>>>>> refs/remotes/origin/main
           </div>
           <div class="col-lg-8 col-12">
             <div class="animal py-3 px-3">
@@ -205,14 +206,10 @@ import {ElSelect} from "element-plus";
 
 <script>
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
-import {
-  ElOption,
-  ElSelect,
-} from "element-plus";
 export default {
-  name: "adoptionPage",
+  //name: "adoptionPage",
   components: {
-    PetDisplayCard,ElSelect, ElOption,
+    PetDisplayCard,
   },
   data() {
     return {
@@ -290,7 +287,6 @@ export default {
 @import url('./assets/css/plugin.css');
 @import url('./assets/css/main.css');
 
-<<<<<<< HEAD
 /deep/
 
 .el-input__inner{
@@ -310,11 +306,6 @@ export default {
 
 
 
-
-
-
-=======
-
 h1 {
   font-size: 30px;
   font-weight: bold;
@@ -332,6 +323,22 @@ h1 {
 .el-select {
   width: 80%;
 }
->>>>>>> refs/remotes/origin/main
+.wjj-select {
+  width: 85%;
+  border: 1px solid white;
+  height: 52px;
+  border-radius: 5px;
+  padding-left: 20px;
+  /*隐藏select的下拉图标 */
+  appearance: none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  /*background: url("");*/
+
+}
+.wjj-select:focus {
+  border-color: #6504b5; /* 修改获取焦点时的边框颜色 */
+  outline: 0; /* 去掉默认的外边框样式 */
+}
 
 </style>

@@ -50,6 +50,11 @@ const routes = [
     path: '/petDetail:id',
     name: 'petDetailPage',
     component: () => import('../views/petDetailPage.vue')
+  },
+  {
+    path: '/favorites',
+    name: 'myFavoritePage',
+    component: () => import('../views/myFavoritePage.vue')
   }
 ]
 
