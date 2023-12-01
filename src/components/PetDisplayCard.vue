@@ -11,7 +11,7 @@
         </a>
         <a href="#">
           <span class="bg-light">
-            <div style="margin-top: 1px">
+            <div>
               <img src="../assets/icons/heart.png" alt="" width="26">
             </div>
           </span>

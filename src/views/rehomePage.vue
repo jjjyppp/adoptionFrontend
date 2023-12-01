@@ -1,9 +1,11 @@
 
 
 <template>
-  <header-tag></header-tag>
+  <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
+    <header-tag></header-tag>
+  </div>
 
-  <div>
+  <div style="margin-top: 80px">
     <h1>宠物送养</h1>
   </div>
 
@@ -126,12 +128,18 @@
 
     <div class="input-group" v-if="adoptionType === 'paid'" >
       <label class="show-depend">有偿原因:</label>
-      <el-input  type="textarea" v-model="paymentReason" rows="4" placeholder="请输入有偿原因"> </el-input>
+      <el-input
+          style="width: 85%; margin-left: 55px"
+          type="textarea"
+          v-model="paymentReason"
+          rows="4"
+          placeholder="请输入有偿原因">
+      </el-input>
     </div>
 
 
     <div class="input-group">
-      <label>宠物图片:</label>
+      <label>宠物图片:<p style= "color: crimson">(最多可上传四张)</p></label>
       <el-upload
           class="uploadImage"
           action=""
@@ -152,7 +160,7 @@
 
     <div class="input-group">
       <label>所在地区:</label>
-      <el-cascader class="address" placeholder="请选择您所在的地区" size='large' style="width: 310px;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
+      <el-cascader class="address" placeholder="请选择您所在的地区" size='large' style="width: 420px;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
     </div>
     <br>
 
@@ -168,13 +176,13 @@
     ></el-input><br>
 
     <div class="input-group" style="margin-left: 35px">
-      <label>养护Ta时的注意事项</label>
+      <label>养护ta时的注意事项</label>
     </div>
     <el-input
         style="width: 85%; margin-left: 55px"
         type="textarea"
         v-model="adoptAttention"
-        placeholder="说说Ta的性格和习性吧，还有需要特别注意的事项 (如忌口、药物、伤病史等)"
+        placeholder="说说ta的性格和习性吧，还有需要特别注意的事项 (如忌口、药物、伤病史等)"
         rows="4"
     ></el-input>
     <br>
@@ -198,8 +206,7 @@ import HeaderTag from "@/components/HeaderTag.vue";
 import {ElPagination, ElButton, ElIcon, ElSelect, ElOption, ElInput, ElCheckboxGroup, ElCheckbox, ElUpload, ElCascader} from "element-plus";
 import { regionData, codeToText} from 'element-china-area-data';
 import FooterCard from "@/components/FooterCard.vue";
-
-
+import global from "@/views/assets/js/global_variable";
 
 export default {
   name: "rehomePage",
@@ -289,10 +296,6 @@ export default {
     };
   },
 
-
-
-
-
   computed: {
     filteredBreeds() {
       if (this.selectedPetType === '') {
@@ -303,9 +306,11 @@ export default {
     }
   },
 
-
-
-
+  mounted() {
+    if(global.address[0]!==""){
+      this.selectedOptions=global.address
+    }
+  },
 
   methods: {
     // Existing methods
@@ -357,7 +362,6 @@ export default {
       }
     },
 
-
     //自定义上传
     uploadSectionFile(param){
       var fileObj = param.file;
@@ -392,15 +396,11 @@ export default {
       this.fileList=fileList;
     },
 
-
     addressChange (arr) {
       console.log(this.selectedOptions)
       console.log(arr)
       console.log(codeToText[arr[0]], codeToText[arr[1]], codeToText[arr[2]])
     },
-
-
-
   },
 };
 </script>
@@ -451,12 +451,6 @@ h1 {
 }
 
 
-.show-depend {
-
-  color: white;
-  background-color: #6504b5;
-  border-radius: 10px;
-}
 
 .uploadImage .el-upload {
   background-image: url("../assets/icons/upload_icon.png");

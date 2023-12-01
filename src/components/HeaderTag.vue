@@ -17,12 +17,10 @@
     <div class="user" style="display: flex">
       <img src="../assets/icons/user.png" alt="" style="height: 35px; margin-top: 5px">
       <el-link :underline="false" class="mine" href="#/mine">我的主页</el-link>
+
     </div>
-
-
 <!--    <el-divider direction="vertical" class="divider"></el-divider>-->
-
-  </div>
+   </div>
   <el-divider class="bottom-divider"></el-divider>
 
   <!--  <div>-->
@@ -46,7 +44,6 @@
 <!--    </el-menu>-->
 <!--  </div>-->
 </template>
-
 <script>
 import {ElLink, ElCascader, ElIcon, ElDivider} from "element-plus";
 import {codeToText, regionData} from "element-china-area-data";
@@ -102,7 +99,7 @@ export default {
 }
 
 .logo-link{
-  flex: 0 0 24%;
+  flex: 0 0 28%;
   //align-items: start;
   //height: 50px;
   justify-content: left;

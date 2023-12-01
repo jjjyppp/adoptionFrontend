@@ -11,8 +11,10 @@ import AdvertisementCard from "@/components/AdvertisementCard.vue";
 </script>
 
 <template>
-  <header-tag></header-tag>
-  <body class="body">
+  <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
+    <header-tag></header-tag>
+  </div>
+  <body class="body" style="margin-top: 50px">
 
     <el-carousel @change="handleCarouselChange" :interval="4000" type="card" height="350px" indicator-position="outside">
       <el-carousel-item v-for="(item, index) in images" :key="item"  style="margin: 10px">

@@ -42,7 +42,7 @@ export default{
 }
 
 .img{
-  width: 130px;
+  width: 150px;
   overflow: hidden;
 }
 

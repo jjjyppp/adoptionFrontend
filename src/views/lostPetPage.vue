@@ -18,7 +18,9 @@ export default {
 }
 </script>
 <template>
-  <header-tag></header-tag>
+  <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
+    <header-tag></header-tag>
+  </div>
   <el-tag class="tag" size="large">寻找宠物</el-tag>
   <el-tag class="tag" size="large" color="lightgreen">寻找主人</el-tag>
   <el-button class="button" @click='jump'>丢寻登记</el-button>

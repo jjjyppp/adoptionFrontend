@@ -1,10 +1,11 @@
 <script setup>
 
-import FooterCard from "@/components/FooterCard.vue";
 </script>
 <template>
-  <header-tag></header-tag>
-  <div style="background-color: #EFEEF1">
+  <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
+    <header-tag></header-tag>
+  </div>
+  <div style="background-color: #EFEEF1; margin-top: 50px">
     <div class="background">
       <div class="quick-search">
         <div class="text">
@@ -38,25 +39,25 @@ import FooterCard from "@/components/FooterCard.vue";
         <ul class="list">
           <li>
             <button class="card-button" @click="searchDog">
-              <img src="../assets/icons/dog.png" alt="" class="card-img">
+              <img src="../assets/icons/dog.png" alt="" class="card-bt-img">
               <span class="card-text">宠物狗</span>
             </button>
           </li>
           <li>
             <button class="card-button" @click="searchCat">
-              <img src="../assets/icons/cat.png" alt="" class="card-img">
+              <img src="../assets/icons/cat.png" alt="" class="card-bt-img">
               <span class="card-text">宠物猫</span>
             </button>
           </li>
           <li>
             <button class="card-button" @click="searchOther">
-              <img src="../assets/icons/other.png" alt="" class="card-img">
+              <img src="../assets/icons/other.png" alt="" class="card-bt-img">
               <span class="card-text">其他宠物</span>
             </button>
           </li>
           <li>
             <button class="card-button" @click="searchOther">
-              <img src="../assets/icons/other.png" alt="" class="card-img">
+              <img src="../assets/icons/other.png" alt="" class="card-bt-img">
               <span class="card-text">其他宠物</span>
             </button>
           </li>
@@ -65,9 +66,9 @@ import FooterCard from "@/components/FooterCard.vue";
     </div>
     <div class="search">
       <div class="type">
-        <img id="dogPic" src="../assets/icons/dog.png" alt="" class="search-img" v-show="showDog">
-        <img id="catPic" src="../assets/icons/cat.png" alt="" class="search-img" v-show="showCat">
-        <img id="otherPic" src="../assets/icons/other.png" alt="" class="search-img" v-show="showOther">
+        <img id="dogPic" src="../assets/icons/dog.png" alt="" v-show="showDog">
+        <img id="catPic" src="../assets/icons/cat.png" alt="" v-show="showCat">
+        <img id="otherPic" src="../assets/icons/other.png" alt="" v-show="showOther">
       </div>
       <div style="z-index:0">
         <search-card @backToHome="backToHome" id="search" v-show="show"></search-card>
@@ -115,6 +116,7 @@ import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import MoreAnimalCard from "@/components/MoreAnimalCard.vue";
 import more from "@element-plus/icons/lib/More";
 import ArticleCard from "@/components/ArticleCard.vue";
+import FooterCard from "@/components/FooterCard.vue";
 export default {
   name: "homePage",
   computed: {
@@ -123,6 +125,7 @@ export default {
     }
   },
   components:{
+    FooterCard,
     ArticleCard,
     MoreAnimalCard,
     ArrowRight,
@@ -139,17 +142,17 @@ export default {
       searchContent: "",
       searchChoice: [],
       recommend_pets: [
-        { id: 1, name: '猫猫1', age: null, location: '', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 2, name: '猫猫2', age: null, location: '', imageUrl: 'src/views/assets/img/indir.jpg' },
-        { id: 3, name: '猫猫3', age: null, location: '', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 4, name: '猫猫4', age: null, location: '', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 1, name: '猫猫1', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 2, name: '猫猫2', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/indir.jpg' },
+        { id: 3, name: '猫猫3', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 4, name: '猫猫4', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
       ],
       recent_pets: [
-        { id: 1, name: '猫猫1', age: null, location: '', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 2, name: '猫猫2', age: null, location: '', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 3, name: '猫猫3', age: null, location: '', imageUrl: 'src/views/assets/img/indir.jpg' },
-        { id: 4, name: '猫猫4', age: null, location: '', imageUrl: 'src/views/assets/img/indir.jpg' },
-        { id: 5, name: '猫猫5', age: null, location: '', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 1, name: '猫猫1', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 2, name: '猫猫2', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 3, name: '猫猫3', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/indir.jpg' },
+        { id: 4, name: '猫猫4', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/indir.jpg' },
+        { id: 5, name: '猫猫5', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
       ],
       articles: [
         { id: 1, title: '为什么选择领养而非买卖？', subTitle: "我们要使领养过程更加方便和顺利，让领养代替买卖。", src: 'src/assets/icons/adopt.png' },
@@ -344,11 +347,6 @@ li {
   width: 100%;
 }
 
-.card{
-  font-family: Nexa Regular,arial,helvetica,sans-serif;
-  text-align: center;
-}
-
 .card-button{
   align-items: center;
   background: #fff;
@@ -361,11 +359,11 @@ li {
   flex-direction: column;
   font-size: 16px;
   gap: 16px;
-  height: 100%;
   justify-content: center;
   padding: 16px;
   text-decoration: none;
-  width: 100%;
+  width: 181px;
+  height: 154px;
 }
 
 .card-button:hover{
@@ -373,17 +371,12 @@ li {
   box-shadow: 0 0 0 3px #6504b5;
 }
 
-.card-img {
-  fill: #6504b5;
-  height: 80px;
-  width: 90px;
+.card-bt-img {
+  //fill: #6504b5;
+  //height: 75px;
+  width: 80%;
 }
 
-.search-img {
-  fill: #6504b5;
-  height: 160px;
-  width: 180px;
-}
 
 .type{
   //width: 180px;

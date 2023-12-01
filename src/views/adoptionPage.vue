@@ -1,12 +1,7 @@
-<script setup>
-
-import HeaderTag from "@/components/HeaderTag.vue";
-import FooterCard from "@/components/FooterCard.vue";
-import {ElSelect} from "element-plus";
-</script>
-
 <template>
-  <header-tag></header-tag>
+  <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
+    <header-tag></header-tag>
+  </div>
   <head>
     <link rel="icon" type="image/x-icon" href="./assets/img/petfinder-logo-D1913C04F6-seeklogo.com.png">
 
@@ -23,15 +18,13 @@ import {ElSelect} from "element-plus";
   </head>
   <!--Main start-->
 
-  <main style="background: #f0f0f0">
+  <main style="background-color:#f0f0f0; margin-top: 50px">
     <section id="find-animal" class="py-5">
       <div class="container">
         <div class="row py-1 py-md-3">
           <div class="col-lg-4 col-12">
             <div class="sort py-3  mb-3 text-center">
               <form action="">
-
-
                 <label for="sort" class="me-4">排序</label>
                 <select name="sort" id="sort">
                   <option value="">A-Z</option>
@@ -42,71 +35,76 @@ import {ElSelect} from "element-plus";
               </form>
             </div>
 
-              <form action="">
+            <form action="">
 
-                  <p class="fs-4 fw-bold py-2">种类</p>
+              <p class="fs-4 fw-bold">种类</p>
 
-                <div style="text-align:-webkit-center" class="mb-2">
+              <div style="text-align:-webkit-center" class="mb-2 multiple-select custom-select">
 
-                    <el-select multiple id='pet-type' v-model="PetType" placeholder="请选择宠物种类" filterable>
-                      <el-option
-                          v-for="type in petTypes"
-                          :key="type.value"
-                          :label="type.label"
-                          :value="type.value"
-                      ></el-option>
-                    </el-select>
-                  </div>
+                <el-select multiple id='pet-type' v-model="petType" size="large" :popper-append-to-body="false" popper-class="multiple-select" class="custom-select" placeholder="请选择宠物种类" filterable>
+                  <el-option
+                      v-for="type in petTypes"
+                      :key="type.value"
+                      :label="type.label"
+                      :value="type.value"
+                  ></el-option>
+                </el-select>
+              </div>
 
-                  <p class="fs-4 fw-bold py-2">性别</p>
-                  <div class="form-check form-check-inline px-5 py-2 mb-1">
-                    <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                    <label class="form-check-label" for="inlineRadio1">公</label>
-                  </div>
-                  <div class="form-check form-check-inline px-5">
-                    <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                    <label class="form-check-label" for="inlineRadio2">母</label>
-                  </div>
+              <p class="fs-4 fw-bold py-2">性别</p>
+              <!--              <div class="form-check form-check-inline px-5 py-2 mb-1">-->
+              <!--                <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">-->
+              <!--                <label class="form-check-label" for="inlineRadio1">公</label>-->
+              <!--              </div>-->
+              <!--              <div class="form-check form-check-inline px-5">-->
+              <!--                <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">-->
+              <!--                <label class="form-check-label" for="inlineRadio2">母</label>-->
+              <!--              </div>-->
 
-                  <p class="fs-4 fw-bold py-2">年龄</p>
-                <div style="text-align:-webkit-center" class="mb-3">
+              <el-checkbox-group v-model="petGender" style="zoom: 140%">
+                <el-checkbox label="公"></el-checkbox>
+                <el-checkbox label="母"></el-checkbox>
+              </el-checkbox-group>
 
-                  <el-select multiple id="pet-age"  placeholder="请选择宠物年龄" v-model="petAge" filterable >
-                    <el-option
-                        v-for="item in petAges"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                    ></el-option>
-                  </el-select>
-                </div>
+              <p class="fs-4 fw-bold py-2">年龄</p>
+              <div style="text-align:-webkit-center" class="mb-3">
 
-                <p class="fs-4 fw-bold py-2">体型</p>
-                <div style="text-align:-webkit-center" class="mb-3">
-                  <el-select multiple id="pet-size"  placeholder="请选择宠物体型" v-model="petSize" filterable >
-                    <el-option
-                        v-for="item in petSizes"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                    ></el-option>
-                  </el-select>
-                </div>
-                <p class="fs-4 fw-bold py-2">来源</p>
-                <div style="text-align:-webkit-center" class="mb-3">
-                  <el-select  multiple id="pet-source"  placeholder="请选择宠物来源" v-model="selectedPetSource">
-                    <el-option
-                        v-for="source in petSources"
-                        :key="source.value"
-                        :label="source.label"
-                        :value="source.value"
-                    ></el-option>
-                  </el-select>
-                </div>
-              </form>
+                <el-select multiple id="pet-age" size="large" placeholder="请选择宠物年龄" v-model="petAge" filterable >
+                  <el-option
+                      v-for="item in petAges"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                  ></el-option>
+                </el-select>
+              </div>
+
+              <p class="fs-4 fw-bold py-2">体型</p>
+              <div style="text-align:-webkit-center" class="mb-3">
+                <el-select multiple id="pet-size" size="large" placeholder="请选择宠物体型" v-model="petSize" filterable >
+                  <el-option
+                      v-for="item in petSizes"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                  ></el-option>
+                </el-select>
+              </div>
+              <p class="fs-4 fw-bold py-2">来源</p>
+              <div style="text-align:-webkit-center" class="mb-3">
+                <el-select  multiple id="pet-source" size="large" placeholder="请选择宠物来源" v-model="selectedPetSource">
+                  <el-option
+                      v-for="source in petSources"
+                      :key="source.value"
+                      :label="source.label"
+                      :value="source.value"
+                  ></el-option>
+                </el-select>
+              </div>
+            </form>
             <p class=" fs-4 fw-bold py-2">健康情况</p>
             <div style="text-align:-webkit-center" class="mb-3">
-              <el-select multiple id="HealthCondition"  placeholder="请选择宠物健康情况" v-model="HealthCondition" >
+              <el-select multiple id="HealthCondition" size="large" placeholder="请选择宠物健康情况" v-model="healthCondition" >
                 <el-option
                     v-for="item in HealthConditions"
                     :key="item.value"
@@ -115,19 +113,23 @@ import {ElSelect} from "element-plus";
                 ></el-option>
               </el-select>
             </div>
-            <p class="fs-4 fw-bold py-2">领养方式</p>
-            <div class="form-check form-check-inline px-5 py-3">
-              <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-              <label class="form-check-label" for="inlineRadio1">有偿</label>
-            </div>
-            <div class="form-check form-check-inline px-5">
-              <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-              <label class="form-check-label" for="inlineRadio2">无偿</label>
-            </div>
+            <!--            <p class="fs-4 fw-bold">领养方式</p>-->
+            <!--            <el-checkbox-group v-model="adoptionType" style="zoom: 140%">-->
+            <!--              <el-checkbox label="有偿领养"></el-checkbox>-->
+            <!--              <el-checkbox label="无偿领养"></el-checkbox>-->
+            <!--            </el-checkbox-group>-->
+            <!--            <div class="form-check form-check-inline px-5 py-3">-->
+            <!--              <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">-->
+            <!--              <label class="form-check-label" for="inlineRadio1">有偿</label>-->
+            <!--            </div>-->
+            <!--            <div class="form-check form-check-inline px-5">-->
+            <!--              <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">-->
+            <!--              <label class="form-check-label" for="inlineRadio2">无偿</label>-->
+            <!--            </div>-->
 
             <p class=" fs-4 fw-bold py-2">领养金额</p>
             <div style="text-align:-webkit-center" class="mb-3">
-              <el-select multiple placeholder="请选择领养金额(可多选)" v-model="adoptionAmount">
+              <el-select multiple placeholder="请选择领养金额" size="large" v-model="adoptionAmount">
                 <el-option label="免费" value="0"></el-option>
                 <el-option label="100元以下" value="below100"></el-option>
                 <el-option label="100到300元" value="100to300"></el-option>
@@ -136,25 +138,6 @@ import {ElSelect} from "element-plus";
                 <el-option label="1000元以上" value="above1000"></el-option>
               </el-select>
             </div>
-            <strong>领养方式</strong>
-            <el-select
-                v-model="value" placeholder="全部"
-                style="width: 90%; height: 60px"
-                class="custom-select"
-            >
-              <el-option
-                  v-for="item in options"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                  style="background: white;height: 60px;"
-              >
-              </el-option>
-            </el-select>
-
-
-
-            <a><button class="py-2 px-5 fs-5 my-2 text-light">筛选</button></a>
           </div>
           <div class="col-lg-8 col-12">
             <div class="animal py-3 px-3">
@@ -163,10 +146,9 @@ import {ElSelect} from "element-plus";
               </div>
             </div>
           </div>
-          <div class="col-12 text-end py-2">
-            <a href="#"><button class="py-2 px-3 fs-5 ">
-              &lt; 上一页</button></a>
-            <a href="#"><button class="py-2 px-3 fs-5 ">下一页 ></button></a>
+          <div class="col-12 text-end py-2" style="margin-top: 20px">
+            <button class="py-2 px-3 fs-5 " style="margin-right: 20px">&lt; 上一页</button>
+            <button class="py-2 px-3 fs-5 ">下一页 ></button>
           </div>
         </div>
       </div>
@@ -175,7 +157,7 @@ import {ElSelect} from "element-plus";
   <!--Main end-->
 
   <!--Footer start-->
-<footer-card></footer-card>
+  <footer-card></footer-card>
   <!--Footer end-->
 
 
@@ -198,10 +180,18 @@ import {ElSelect} from "element-plus";
 
 <script>
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
+import HeaderTag from "@/components/HeaderTag.vue";
+import FooterCard from "@/components/FooterCard.vue";
+import {
+  ElCheckbox,
+  ElCheckboxGroup,
+  ElOption,
+  ElSelect,
+} from "element-plus";
 export default {
-  //name: "adoptionPage",
+  name: "adoptionPage",
   components: {
-    PetDisplayCard,
+    PetDisplayCard,ElSelect, ElOption,HeaderTag,FooterCard, ElCheckboxGroup, ElCheckbox
   },
   data() {
     return {
@@ -221,11 +211,11 @@ export default {
       ],
       petName: "",
       petSize: "",
-      petGender: "",
       petAge: "",
-      PetType: '',
+      petType: '',
+      petGender: [],
       selectedPetSource: '',
-      HealthCondition:'',
+      healthCondition:'',
       petTypes: [
         { value: 'dog', label: '宠物狗' },
         { value: 'cat', label: '宠物猫' },
@@ -264,38 +254,20 @@ export default {
       ],
       selectedAdoptNeeds : [],
       adoptionType: '', // 领养方式
-      paymentReason: '',
-
       adoptionAmount: '', // 金额
     };
   },
+  methods:{
+  }
 };
 </script>
 
 
 
-<style>
+<style lang="less">
 
 @import url('./assets/css/plugin.css');
 @import url('./assets/css/main.css');
-
-/deep/
-
-.el-input__inner{
-  height: 52px;
-}
-
-/* 下面设置右侧按钮居中 */
-.el-input__suffix {
-  top: 5px;
-}
-.el-input__icon {
-  line-height: inherit;
-}
-.el-input__suffix-inner {
-  display: inline-block;
-}
-
 
 
 h1 {
@@ -315,6 +287,8 @@ h1 {
 .el-select {
   width: 80%;
 }
+
+
 
 
 </style>
