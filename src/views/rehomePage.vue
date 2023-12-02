@@ -154,7 +154,6 @@
           :on-exceed="exceedFile"
           :on-remove="removeFile">
         <img v-if="imageUrl" :src="imageUrl" class="avatar">
-
       </el-upload>
     </div>
 

@@ -54,7 +54,9 @@ export default{
 }
 
 .bt{
+  border: none;
   color: #fff;
+  background-color: #6504B5;
   font-size: 18px;
   font-weight: 700;
   text-shadow: 0 1px 10px #4d4751, 0 0 4px #4d4751;

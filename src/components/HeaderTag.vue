@@ -1,4 +1,4 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
   <div class="header">
     <el-link :underline="false" class="logo-link" href="#">网站名</el-link>
 <!--    <div>-->
@@ -6,18 +6,17 @@
       <location-information/>
     </el-icon>
 <!--    </div>-->
-    <el-cascader placeholder="我的位置" size='large' class="cascader" style="max-width: 410px; flex: 0 0 28%;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
+    <el-cascader placeholder="我的位置" size='large' class="cascader" style="max-width: 420px; flex: 0 0 30%;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
     <div style="flex: 0 0 20%">
     </div>
     <div class="fav" style="display: flex">
-      <img src="../assets/icons/favorites.png" alt="" style="height: 35px; margin-top: 5px">
-      <el-link :underline="false" class="mine" href="#/favorites"  @click="toFavorites">我的收藏</el-link>
+      <button class="bt" @click="toFavorites"><img src="../assets/icons/favorites.png" alt="" style="height: 35px;"></button>
+      <el-link :underline="false" class="mine" href="#/favorites">我的收藏</el-link>
     </div>
 <!--      <el-link :underline="false" class="login" href="#/login">注册/登录</el-link>-->
     <div class="user" style="display: flex">
-      <img src="../assets/icons/user.png" alt="" style="height: 35px; margin-top: 5px">
+      <button class="bt" @click="toMine"><img src="../assets/icons/user.png" alt="" style="height: 35px;"></button>
       <el-link :underline="false" class="mine" href="#/mine">我的主页</el-link>
-
     </div>
 <!--    <el-divider direction="vertical" class="divider"></el-divider>-->
    </div>
@@ -74,6 +73,11 @@ export default {
     toFavorites(){
       router.push({
         name:"myFavoritePage"
+      })
+    },
+    toMine(){
+      router.push({
+        name:"minePage"
       })
     }
   }
@@ -143,6 +147,11 @@ export default {
 
 .login:hover{
   color: #6504B5;
+}
+
+.bt{
+  border: none;
+  background-color: white
 }
 
 .mine:hover{

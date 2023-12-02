@@ -120,7 +120,7 @@ export default {
   width: 30px;
 }
 
-button{
+.button-back{
   background: transparent;
   border-radius: 5px;
   border: none;
@@ -134,7 +134,7 @@ button{
 
 }
 
-button:hover{
+.button-back:hover{
   background: #6504b5;
   fill: white;
 }
