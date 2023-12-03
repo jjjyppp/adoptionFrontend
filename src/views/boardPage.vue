@@ -8,7 +8,7 @@ import ChatPane from "@/components/ChatPane.vue";
   <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
     <header-tag></header-tag>
   </div>
-  <div style="margin-top: 80px; margin-left: 130px">
+  <div style="z-index: 1000">
     <chat-pane></chat-pane>
   </div>
 </template>

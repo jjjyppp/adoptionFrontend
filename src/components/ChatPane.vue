@@ -1,23 +1,28 @@
 <template>
-  <el-container>
-    <el-aside style="background-color: #dbd9d9">
-      <div class="chat-list">
-        <div v-for="contact in contacts" :key="contact.id" ref="contact" @click="selectContact(contact.id)" class="contact-item" :class="{ 'selected': selectedItemId === contact.id, 'changeColor': changeColorId === contact.id }"  @mouseover="mouseOver(contact.id)" @mouseleave="mouseLeave(contact.id)">
-          <img src="../assets/imgs/avatar1.jpg" alt="avatar" class="contact-avatar" />
-          <div style="margin-left: 10px;width: 214px;}">
-            <div class="info">
-              <div class="contact-name">{{ contact.name }}</div>
-              <div class="last-time">{{ contact.lastTime }}</div>
-            </div>
-            <div class="message">
-              <div class="last-message" >{{ contact.lastMessage }}</div>
-              <svg x="1701499921864" @click.stop="deleteContact(contact.id)" class="delete-icon" :class="{'visible': hoverItemId === contact.id}" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4267" width="16" height="16"><path d="M512 32C251.4285715625 32 32 251.4285715625 32 512s219.4285715625 480 480 480 480-219.4285715625 480-480-219.4285715625-480-480-480z m205.7142853125 617.142856875c20.5714284375 20.5714284375 20.5714284375 48 0 61.714286249999994-20.5714284375 20.5714284375-48 20.5714284375-61.714285312499996 0l-137.142856875-137.1428578125L374.857143125 717.7142853125c-20.5714284375 20.5714284375-48 20.5714284375-68.5714284375 0s-20.5714284375-54.857143125 0-68.5714284375l144-144-137.1428578125-137.142856875c-20.5714284375-13.714285312500001-20.5714284375-41.142856875 0-61.714285312499996 20.5714284375-20.5714284375 48-20.5714284375 61.714286249999994 0l137.142856875 137.142856875 144-144c20.5714284375-20.5714284375 48-20.5714284375 68.5714284375 0 20.5714284375 20.5714284375 20.5714284375 48 0 68.5714284375L580.5714284375 512l137.142856875 137.142856875z" fill="#999999" p-id="4268"></path></svg>
+  <div class="chat-back">
+    <div style="text-align: end; padding-right: 20px; padding-top: 20px" >
+      <svg @click="cancel" x="1701596306400" class="cancel-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5136" width="24" height="24"><path d="M975.069283 746.176494a162.756163 162.756163 0 0 1-230.134685 230.134686L511.97742 743.399162 279.065402 976.31118A162.756163 162.756163 0 0 1 48.930717 746.176494L281.842734 513.241896 48.930717 280.329879a162.688423 162.688423 0 0 1 0-230.112106 162.711003 162.711003 0 0 1 230.134685 0l232.912018 232.889438L744.912018 50.217773a162.711003 162.711003 0 1 1 230.134685 230.112106L742.134686 513.241896l232.934597 232.934598z" fill="#6504b5" p-id="5137"></path></svg>
+    </div>
+<!--  <el-container>-->
+    <div style="display: flex; justify-content: center;">
+      <div class="aside">
+        <div class="chat-list">
+          <div v-for="contact in contacts" :key="contact.id" ref="contact" @click="selectContact(contact.id)" class="contact-item" :class="{ 'selected': selectedItemId === contact.id, 'changeColor': changeColorId === contact.id }"  @mouseover="mouseOver(contact.id)" @mouseleave="mouseLeave(contact.id)">
+            <img src="../assets/imgs/avatar1.jpg" alt="avatar" class="contact-avatar" />
+            <div style="margin-left: 10px;width: 214px;}">
+              <div class="info">
+                <div class="contact-name">{{ contact.name }}</div>
+                <div class="last-time">{{ contact.lastTime }}</div>
+              </div>
+              <div class="message">
+                <div class="last-message" >{{ contact.lastMessage }}</div>
+                <svg x="1701499921864" @click.stop="deleteContact(contact.id)" class="delete-icon" :class="{'visible': hoverItemId === contact.id}" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4267" width="16" height="16"><path d="M512 32C251.4285715625 32 32 251.4285715625 32 512s219.4285715625 480 480 480 480-219.4285715625 480-480-219.4285715625-480-480-480z m205.7142853125 617.142856875c20.5714284375 20.5714284375 20.5714284375 48 0 61.714286249999994-20.5714284375 20.5714284375-48 20.5714284375-61.714285312499996 0l-137.142856875-137.1428578125L374.857143125 717.7142853125c-20.5714284375 20.5714284375-48 20.5714284375-68.5714284375 0s-20.5714284375-54.857143125 0-68.5714284375l144-144-137.1428578125-137.142856875c-20.5714284375-13.714285312500001-20.5714284375-41.142856875 0-61.714285312499996 20.5714284375-20.5714284375 48-20.5714284375 61.714286249999994 0l137.142856875 137.142856875 144-144c20.5714284375-20.5714284375 48-20.5714284375 68.5714284375 0 20.5714284375 20.5714284375 20.5714284375 48 0 68.5714284375L580.5714284375 512l137.142856875 137.142856875z" fill="#999999" p-id="4268"></path></svg>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </el-aside>
-    <el-main style="padding: 0">
+<!--    <div style="padding: 0">-->
       <div class="chat-container">
         <div class="chat-header">{{contacts[selectedItemId].name}}</div>
         <div class="chat-messages" ref="messageContainer">
@@ -43,16 +48,17 @@
           <button class="send-button" @click="sendMessage">发送</button>
         </div>
       </div>
-    </el-main>
-  </el-container>
+    </div>
+<!--  </el-container>-->
+  </div>
 </template>
 
 <script>
 import DetailCard from "@/components/DetailCard.vue";
-import {ElAside, ElContainer, ElDivider, ElMain} from "element-plus";
+import {ElDivider} from "element-plus";
 
 export default {
-  components: {DetailCard, ElContainer, ElAside, ElMain, ElDivider},
+  components: {DetailCard, ElDivider},
   data() {
     return {
       messages: [
@@ -76,7 +82,7 @@ export default {
       ],
       selectedItemId: 0,
       hoverItemId: -1,
-      changeColorId: -1
+      changeColorId: -1,
     };
   },
   methods: {
@@ -142,12 +148,24 @@ export default {
       }
       this.contacts=this.contacts.slice(0, length-1)
       console.log(this.contacts.length)
+    },
+    cancel(){
+      this.$emit("cancelChat", true)
     }
   },
 };
 </script>
 
 <style scoped>
+.chat-back{
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px); /* 这里的值可以根据你的需求调整模糊程度 */
+  background: rgba(0, 0, 0, 0.5);
+  //display: flex;
+  //justify-content: center
+}
+
 .chat-container {
   border: 1px solid #ddd;
   border-radius: 0 10px 10px 0;
@@ -275,7 +293,9 @@ export default {
   border-radius: 50%;
 }
 
-aside{
+.aside{
+  background-color: #dbd9d9;
+  height: 80vh;
   border: 1px solid #ddd;
   border-radius: 10px 0 0 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -389,6 +409,10 @@ aside{
   display: flex;
   -webkit-justify-content: space-between;
   justify-content: space-between;
+}
+
+.cancel-icon :hover{
+  fill: #3c036a;
 }
 
 .selected {

@@ -1,5 +1,6 @@
 <script setup>
 
+import ChatPane from "@/components/ChatPane.vue";
 </script>
 <template>
   <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
@@ -246,7 +247,7 @@ export default {
 }
 
 .quick-search-bt{
-  //background-color: #fff;
+  background-color: #fff;
   //margin-left: 748px;
   //margin-top: -200px;
   border: none;
