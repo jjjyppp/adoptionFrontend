@@ -1,5 +1,3 @@
-
-
 <template>
   <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
     <header-tag></header-tag>
@@ -16,7 +14,7 @@
     </div>
     <div class="input-group">
       <label>宠物种类:</label>
-      <el-select v-model="selectedPetType" placeholder="请选择宠物种类" @change="onTypeChange">
+      <el-select v-model="petType" placeholder="请选择宠物种类" @change="onTypeChange">
         <el-option
             v-for="type in petTypes"
             :key="type.pro"
@@ -25,9 +23,9 @@
         ></el-option>
       </el-select>
     </div>
-    <div class="input-group" v-if="selectedPetType !== 'other'">
+    <div class="input-group" v-if="petType !== 'other'">
       <label class="show-depend">宠物品种:</label>
-      <el-select   placeholder="请选择宠物品种" v-model="selectedPetBreed">
+      <el-select  placeholder="请选择宠物品种" v-model="petBreed">
         <el-option
             v-for="breed in filteredBreeds"
             :key="breed.label"
@@ -73,7 +71,7 @@
 
     <div class="input-group">
       <label for="pet-source">宠物来源:</label>
-      <el-select id="pet-source"  placeholder="请选择宠物来源" v-model="selectedPetSource">
+      <el-select id="pet-source"  placeholder="请选择宠物来源" v-model="petSource">
         <el-option
             v-for="source in petSources"
             :key="source.value"
@@ -185,8 +183,6 @@
         rows="4"
     ></el-input>
     <br>
-
-
     <div style="display: flex; justify-content: center;">
       <el-button @click="submitForm" type="primary" color="#6504b5" style="width: 20%; height: 40px">提交</el-button>
     </div>
@@ -206,6 +202,8 @@ import {ElPagination, ElButton, ElIcon, ElSelect, ElOption, ElInput, ElCheckboxG
 import { regionData, codeToText} from 'element-china-area-data';
 import FooterCard from "@/components/FooterCard.vue";
 import global from "@/views/assets/js/global_variable";
+import {request} from "@/utils/request";
+// import { AxiosError, AxiosResponse } from 'axios';
 
 export default {
   name: "rehomePage",
@@ -216,13 +214,13 @@ export default {
   data() {
     return {
       imageUrl: "src/assets/icons/upload_icon.png",
-      petName: "",
-      petSize: "",
-      petGender: "",
-      petAge: "",
-      selectedPetType: '',
-      selectedPetBreed: '',
-      selectedPetSource: '',
+      petName: '',
+      petSize: '',
+      petGender: '',
+      petAge: '',
+      petType: '',
+      petBreed: '',
+      petSource: '',
       petTypes: [
         { pro: 'dog', label: '宠物狗' },
         { pro: 'cat', label: '宠物猫' },
@@ -254,8 +252,8 @@ export default {
         // Add more options for pet sizes
       ],
       petGenders: [
-        { label: "公", value: "male" },
-        { label: "母", value: "female" },
+        { label: "公", value: "公" },
+        { label: "母", value: "母" },
         // Add more options for pet genders
       ],
       petAges: [
@@ -276,20 +274,10 @@ export default {
       adoptionType: '', // 领养方式
       adoptionAmount: '', // 金额
       paymentReason: '',
-
-
       fileList:[],//上传的文件列表
       limitnum:4,//最大允许上传个数
-
       options: regionData,
       selectedOptions: ['110000', '110100', '110101'],
-
-      contact: {
-        name: '',
-        phone: '',
-        wechat: ''
-      },
-
       petExperience: '',
       adoptAttention: ''
     };
@@ -297,10 +285,10 @@ export default {
 
   computed: {
     filteredBreeds() {
-      if (this.selectedPetType === '') {
+      if (this.petType === '') {
         return [];
       } else {
-        return this.petBreeds.filter(breed => breed.pro === this.selectedPetType);
+        return this.petBreeds.filter(breed => breed.pro === this.petType);
       }
     }
   },
@@ -315,18 +303,65 @@ export default {
     // Existing methods
 
     submitForm() {
-      // Validate the form inputs
       if (
           !this.petName ||
           !this.petType ||
           !this.petBreed ||
           !this.petSize ||
           !this.petGender ||
-          !this.petAge
+          !this.petAge ||
+          !this.petSource ||
+          !this.adoptionType ||
+          !this.selectedOptions ||
+          !this.petExperience ||
+          !this.adoptAttention
       ) {
         // Show an error message or handle the validation as needed
         return;
       }
+
+      let price = '0'
+      if(this.adoptionType==='paid'){
+        if(!this.adoptionAmount || !this.paymentReason) return;
+        price=this.adoptionAmount
+      }
+
+      const r = request({
+        url: '/pet',
+        method: 'POST',
+        data: {
+          name: this.petName,
+          type: this.petType,
+          breed: this.petBreed,
+          size: this.petSize,
+          gender: this.petGender,
+          age: this.petAge,
+          source: this.petSource,
+          health: this.selectedHealthConditions,
+          requirements: this.selectedAdoptNeeds,
+          price: price,
+          reason: this.paymentReason,
+          urls: ["1","1"],
+          address: this.selectedOptions,
+          story: this.petExperience,
+          attention: this.adoptAttention
+        }
+      })
+      r.then(response => {
+          console.log(response)
+      }).catch(error=> {
+
+      })
+
+      // console.log(this.petBreed)
+      // let data = {name: "1",'type': "1",'breed': '1','size': "1",'gender': "1",'age': "1",'source': "1",'health': ["1","1"],'requirements': ["1","1"],
+      //   'price': "1",'reason': "1",'urls': ["1","1"],'address': ["1","1"],'story': "1",'attention': "1"};
+      //
+      // axios.post("http://localhost:8080/pet",qs.stringify({
+      //   data
+      // })).then((response)=>{
+      //   console.log(response)
+      // })
 
       // Create an adoption posting with the form data
       const adoptionPosting = {
@@ -352,7 +387,7 @@ export default {
 
 
     onTypeChange() {
-      this.selectedPetBreed = '';
+      this.petBreed = '';
     },
 
     onAdoptionTypeChange() {

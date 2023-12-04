@@ -38,9 +38,7 @@
             <form action="">
 
               <p class="fs-4 fw-bold">种类</p>
-
               <div style="text-align:-webkit-center" class="mb-2 multiple-select custom-select">
-
                 <el-select multiple id='pet-type' v-model="petType" size="large" :popper-append-to-body="false" popper-class="multiple-select" class="custom-select" placeholder="请选择宠物种类" filterable>
                   <el-option
                       v-for="type in petTypes"
@@ -52,15 +50,6 @@
               </div>
 
               <p class="fs-4 fw-bold py-2">性别</p>
-              <!--              <div class="form-check form-check-inline px-5 py-2 mb-1">-->
-              <!--                <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">-->
-              <!--                <label class="form-check-label" for="inlineRadio1">公</label>-->
-              <!--              </div>-->
-              <!--              <div class="form-check form-check-inline px-5">-->
-              <!--                <input class="form-check-input me-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">-->
-              <!--                <label class="form-check-label" for="inlineRadio2">母</label>-->
-              <!--              </div>-->
-
               <el-checkbox-group v-model="petGender" style="zoom: 140%">
                 <el-checkbox label="公"></el-checkbox>
                 <el-checkbox label="母"></el-checkbox>
@@ -248,9 +237,9 @@ export default {
         { value: 'other', label: '其他' }
       ],
       HealthConditions:[
-        { value: 'mianyi', label: '已免疫' },
-        { value: 'quchong', label: '已驱虫' },
-        { value: 'jueyu', label: '已绝育' },
+        { value: '已免疫', label: '已免疫' },
+        { value: '已驱虫', label: '已驱虫' },
+        { value: '已绝育', label: '已绝育' },
       ],
       selectedAdoptNeeds : [],
       adoptionType: '', // 领养方式

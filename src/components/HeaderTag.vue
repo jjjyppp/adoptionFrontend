@@ -26,11 +26,17 @@
       <el-link :underline="false" class="mine" @click="toFavorites">我的收藏</el-link>
     </div>
     <div class="user" v-if="login" style="display: flex">
-      <button class="icon-bt" @click="toMine"><img src="../assets/icons/user.png" alt="" style="height: 35px;"></button>
+      <button class="icon-bt" @click="toMine">
+        <img src="../assets/icons/user.png" alt="" style="height: 35px;">
+<!--        <svg x="1701608125180" class="mine-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7068" width="32" height="32"><path d="M266.24 267.52a248.32 244.48 0 1 0 496.64 0 248.32 244.48 0 1 0-496.64 0zM628.48 593.28H421.76a320 320 0 0 0-320 315.52v20.48c0 71.04 143.36 71.04 320 71.04h206.72c177.28 0 320 0 320-71.04V908.8a320 320 0 0 0-320-315.52z" fill="#6504B5" p-id="7069"></path></svg>-->
+      </button>
       <el-link :underline="false" class="mine" href="#/mine">我的主页</el-link>
     </div>
     <div class="login" v-if="!login" style="display: flex">
-      <button class="icon-bt" @click="toLogin"><img src="../assets/icons/user.png" alt="" style="height: 35px;"></button>
+      <button class="icon-bt" @click="toLogin">
+<!--        <svg x="1701608125180" class="mine-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7068" width="32" height="32"><path d="M266.24 267.52a248.32 244.48 0 1 0 496.64 0 248.32 244.48 0 1 0-496.64 0zM628.48 593.28H421.76a320 320 0 0 0-320 315.52v20.48c0 71.04 143.36 71.04 320 71.04h206.72c177.28 0 320 0 320-71.04V908.8a320 320 0 0 0-320-315.52z" fill="#6504B5" p-id="7069"></path></svg>-->
+        <img src="../assets/icons/user.png" alt="" style="height: 35px;">
+      </button>
       <el-link :underline="false" class="mine" href="#/login">注册/登录</el-link>
     </div>
    </div>
@@ -161,17 +167,6 @@ export default {
 }
 
 
-.login{
-  flex: 0 0 6%;
-  min-width: 80px;
-  height: 50px;
-  justify-content: start;
-  //margin-left: 20px;
-  //padding-top: 2px;
-  font-size: 16px;
-  /*border-right: 1px solid gray;*/
-}
-
 .message-icon{
   margin-top: 7px;
   cursor: pointer;
@@ -192,17 +187,28 @@ export default {
   font-size: 16px;
 }
 
-.login:hover{
+.mine:hover{
   color: #6504B5;
 }
+
+.mine-icon :hover{
+  fill: #6504B5;
+}
+
+/**
+button.icon-bt:hover ~ .mine {
+  color: #6504B5;
+}
+
+.mine ~ button.icon-bt:hover{
+  color: #6504B5;
+  fill: #6504B5;
+}
+ */
 
 .icon-bt{
   border: none;
   background-color: white
-}
-
-.mine:hover{
-  color: #6504B5;
 }
 
 .bottom-divider{
@@ -227,6 +233,7 @@ export default {
   top: 60px;
   z-index: 100
 }
+
 
 @media (max-width: 1100px) {
   .location,
