@@ -15,7 +15,7 @@ import FooterCard from "@/components/FooterCard.vue";
               <input type="email" name="" id="" placeholder="Email" required>
               <input type="password" name="" id="" placeholder="password" required>
               <a href="#" ><button class="py-2 px-5 fs-5 my-2">LOG IN</button></a>
-              <p >尚未注册账号？<a href="./signin.html">去注册</a></p>
+              <p >尚未注册账号？<a>去注册</a></p>
             </div>
 
           </div>
