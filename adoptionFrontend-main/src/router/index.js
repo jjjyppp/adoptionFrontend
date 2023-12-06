@@ -37,6 +37,11 @@ const routes = [
     component: () => import('../views/minePage.vue')
   },
   {
+    path: '/adoptMore',
+    name: 'AdoptMore',
+    component: () => import('../views/AdoptMore.vue')
+  },
+  {
     path: '/login',
     name: 'loginPage',
     component: () => import('../views/loginPage.vue')
@@ -61,11 +66,6 @@ const routes = [
     name: 'myFavoritePage1',
     component: () => import('../views/myFavoritePage1.vue')
   },
-  {
-    path: '/temp',
-    name: 'tempPage',
-    component: () => import('../views/tempPage.vue')
-  }
 ]
 
 const router = createRouter({
