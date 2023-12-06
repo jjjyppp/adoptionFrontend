@@ -37,17 +37,50 @@
 
             <form action="">
 
-              <p class="fs-4 fw-bold">种类</p>
-              <div style="text-align:-webkit-center" class="mb-2 multiple-select custom-select">
-                <el-select multiple id='pet-type' v-model="petType" size="large" :popper-append-to-body="false" popper-class="multiple-select" class="custom-select" placeholder="请选择宠物种类" filterable>
+              <p class="fs-4 fw-bold py-2">位置</p>
+<!--              <el-icon size="30" class="location">-->
+<!--                <location-information/>-->
+<!--              </el-icon>-->
+              <!--    </div>-->
+              <div style="text-align:-webkit-center" class="mb-3">
+                <el-cascader placeholder="请选择你所在地区" size='large' style="width: 335px" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
+              </div>
+
+              <p class="fs-4 fw-bold py-2">范围</p>
+              <div style="text-align:-webkit-center" class="mb-3">
+                <el-select :teleported="false" :popper-append-to-body="false" popper-class="range" size="large" v-model="range" filterable
+                           placeholder="请选择你能接受的范围">
                   <el-option
-                      v-for="type in petTypes"
-                      :key="type.value"
-                      :label="type.label"
-                      :value="type.value"
+                      v-for="item in select_range"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"></el-option>
+                </el-select>
+              </div>
+
+              <p class="fs-4 fw-bold py-2">品种</p>
+              <div style="text-align:-webkit-center" class="mb-3">
+                <el-select  placeholder="请选择宠物品种" v-model="petBreed">
+                  <el-option
+                      v-for="breed in filteredBreeds"
+                      :key="breed.label"
+                      :label="breed.label"
+                      :value="breed.label"
                   ></el-option>
                 </el-select>
               </div>
+
+<!--              <p class="fs-4 fw-bold">种类</p>-->
+<!--              <div style="text-align:-webkit-center" class="mb-2 multiple-select custom-select">-->
+<!--                <el-select multiple id='pet-type' v-model="petType" size="large" :popper-append-to-body="false" popper-class="multiple-select" class="custom-select" placeholder="请选择宠物种类" filterable>-->
+<!--                  <el-option-->
+<!--                      v-for="type in petTypes"-->
+<!--                      :key="type.value"-->
+<!--                      :label="type.label"-->
+<!--                      :value="type.value"-->
+<!--                  ></el-option>-->
+<!--                </el-select>-->
+<!--              </div>-->
 
               <p class="fs-4 fw-bold py-2">性别</p>
               <el-checkbox-group v-model="petGender" style="zoom: 140%">
@@ -57,7 +90,6 @@
 
               <p class="fs-4 fw-bold py-2">年龄</p>
               <div style="text-align:-webkit-center" class="mb-3">
-
                 <el-select multiple id="pet-age" size="large" placeholder="请选择宠物年龄" v-model="petAge" filterable >
                   <el-option
                       v-for="item in petAges"
@@ -171,16 +203,27 @@
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import HeaderTag from "@/components/HeaderTag.vue";
 import FooterCard from "@/components/FooterCard.vue";
+import {LocationInformation} from "@element-plus/icons-vue";
+
 import {
+  ElCascader,
   ElCheckbox,
-  ElCheckboxGroup,
+  ElCheckboxGroup, ElIcon,
   ElOption,
   ElSelect,
 } from "element-plus";
+import {regionData} from "element-china-area-data";
+
+let select_range= [
+  {value: 'all', label: '全国'},
+  {value: 'district', label: '仅限同城'},
+  {value: 'city', label: '仅限同市'},
+  {value: 'province', label: '仅限同省'},
+]
 export default {
   name: "adoptionPage",
   components: {
-    PetDisplayCard,ElSelect, ElOption,HeaderTag,FooterCard, ElCheckboxGroup, ElCheckbox
+    PetDisplayCard,ElSelect, ElOption,HeaderTag,FooterCard, ElCheckboxGroup, ElCheckbox, ElIcon, ElCascader, LocationInformation
   },
   data() {
     return {
@@ -197,6 +240,10 @@ export default {
         { id: 10, name: '猫猫10', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
         { id: 11, name: '猫猫11', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
         { id: 12, name: '猫猫12', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 13, name: '猫猫13', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 14, name: '猫猫14', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 15, name: '猫猫15', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 16, name: '猫猫16', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
       ],
       petName: "",
       petSize: "",
@@ -211,7 +258,6 @@ export default {
         { value: 'rabbit', label: '兔子' },
         { value: 'other', label: '其他' }
       ],
-
       petSizes: [
         { label: "小型", value: "small" },
         { label: "中型", value: "medium" },
@@ -241,12 +287,41 @@ export default {
         { value: '已驱虫', label: '已驱虫' },
         { value: '已绝育', label: '已绝育' },
       ],
+      petBreeds: [
+        { pro: 'dog', label: '金毛' },
+        { pro: 'dog', label: '拉布拉多' },
+        { pro: 'dog', label: '泰迪' },
+        { pro: 'dog', label: '博美' },
+        { pro: 'dog', label: '中华田园犬' },
+        { pro: 'dog', label: '其他' },
+        { pro: 'cat', label: '加菲猫' },
+        { pro: 'cat', label: '布偶猫' },
+        { pro: 'cat', label: '暹罗猫' },
+        { pro: 'cat', label: '金渐层' },
+        { pro: 'cat', label: '银渐层' },
+        { pro: 'cat', label: '中华田园猫' },
+        { pro: 'cat', label: '其他' },
+        { pro: 'rabbit', label: '垂耳兔' },
+        { pro: 'rabbit', label: '猫猫兔' },
+        { pro: 'rabbit', label: '其他' }
+      ],
       selectedAdoptNeeds : [],
       adoptionType: '', // 领养方式
       adoptionAmount: '', // 金额
+      options: regionData,
+      selectedOptions: ['110000', '110100', '110101'],
+      range: '',
+      select_range: select_range,
     };
   },
   methods:{
+    filteredBreeds() {
+      if (this.petType === '') {
+        return [];
+      } else {
+        return this.petBreeds.filter(breed => breed.pro === this.petType);
+      }
+    }
   }
 };
 </script>

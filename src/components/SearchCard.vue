@@ -12,7 +12,7 @@
       </div>
       <div style="text-align: left">
         <span style="margin-left: 50px">
-          <el-cascader popper-class="pc-sel-area-cascader" placeholder="请选择你所在的区域" size='large' style="width: 420px" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
+          <el-cascader popper-class="pc-sel-area-cascader" placeholder="请选择你所在地区" size='large' style="width: 420px" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
         </span>
         <span style="margin-left: 20px">
           <el-select :teleported="false" :popper-append-to-body="false" popper-class="range" style="width: 210px" size="large" v-model="range" filterable
@@ -42,7 +42,6 @@ let select_range= [
   {value: 'city', label: '仅限同市'},
   {value: 'province', label: '仅限同省'},
 ]
-
 
 export default {
   name: "SearchCard",

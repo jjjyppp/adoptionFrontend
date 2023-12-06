@@ -52,8 +52,8 @@ import ChatPane from "@/components/ChatPane.vue";
           </li>
           <li>
             <button class="card-button" @click="searchOther">
-              <img src="../assets/icons/other.png" alt="" class="card-bt-img">
-              <span class="card-text">其他宠物</span>
+              <img src="../assets/icons/rabbit.png" alt="" class="card-bt-img">
+              <span class="card-text">兔子</span>
             </button>
           </li>
           <li>
@@ -229,7 +229,7 @@ export default {
   text-align:left;
   border-radius: 5px;
   display: inline-block;
-  margin-top: -40px;
+  margin-top: -10px;
   //text-align: center;
 }
 
@@ -243,7 +243,7 @@ export default {
 }
 
 .slogan{
-  margin-bottom: 30px;
+  margin-bottom: 80px;
 }
 
 .quick-search-bt{
@@ -297,9 +297,9 @@ export default {
   display: grid;
   place-items: center;
   width: 100%;
-  height: 410px;
-  background: #6504b5 url("https://box.nju.edu.cn/thumbnail/134b204a714445f48f20/1024/background4.jpg") no-repeat top;
-  background-size: 100% 400px;
+  height: 450px;
+  background: #6504b5 url("https://box.nju.edu.cn/thumbnail/134b204a714445f48f20/1024/background.png") no-repeat top;
+  background-size: 100% 440px;
   text-align: center;
   //display: flex;
   justify-content: center;
@@ -374,8 +374,8 @@ li {
 
 .card-bt-img {
   //fill: #6504b5;
-  //height: 75px;
-  width: 80%;
+  height: 90px;
+  //width: 80%;
 }
 
 
@@ -406,7 +406,7 @@ li {
 
 .recommend{
   text-align: center;
-  margin-top: 380px;
+  margin-top: 280px;
   //background-color: #d2d1d3;
   //margin-bottom: 24px;
   //margin: 0 auto;
