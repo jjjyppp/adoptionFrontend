@@ -85,8 +85,8 @@
           </el-icon>
         </el-link>
         <div class="rec-cards">
-          <pet-display-card style="margin-left: 15px"  v-for="(pet, index) in recommend_pets" :key="index" :pet="pet" />
-          <more-animal-card></more-animal-card>
+          <pet-display-card style="margin-right: 15px"  v-for="(pet, index) in recommend_pets" :key="index" :pet="pet" />
+          <more-animal-card style="margin-left: 15px"></more-animal-card>
         </div>
       </div>
     </div>
