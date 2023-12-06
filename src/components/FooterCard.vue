@@ -74,7 +74,6 @@
           <div class="col-md-4">
             <div class="sign">
               <h5 class="py-2">关爱动物，科学养宠，我们在行动</h5>
-              <a class="text-center d-block py-5"><span class="py-2 px-4 fs-5"> 登录</span></a>
             </div>
           </div>
         </div>
@@ -88,7 +87,7 @@
         <div class="row justify-content-between">
           <div class="col-md-6">
             <p class="mb-0">
-              ©2023 Petfinder.com All trademarks are owned by nju, or used
+              ©2023 PetPat.com All trademarks are owned by nju, or used
               with permission.
             </p>
           </div>

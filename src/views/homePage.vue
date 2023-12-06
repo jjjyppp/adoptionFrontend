@@ -1,13 +1,12 @@
 <script setup>
 
-import ChatPane from "@/components/ChatPane.vue";
 </script>
 <template>
   <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
     <header-tag></header-tag>
   </div>
   <div style="background-color: #EFEEF1; margin-top: 50px">
-    <div class="background">
+    <div class="background" style="margin-top:61px">
       <div class="quick-search">
         <div class="text">
           <span>快速搜索</span>
@@ -51,7 +50,7 @@ import ChatPane from "@/components/ChatPane.vue";
             </button>
           </li>
           <li>
-            <button class="card-button" @click="searchOther">
+            <button class="card-button" @click="searchRabbit">
               <img src="../assets/icons/rabbit.png" alt="" class="card-bt-img">
               <span class="card-text">兔子</span>
             </button>
@@ -67,9 +66,10 @@ import ChatPane from "@/components/ChatPane.vue";
     </div>
     <div class="search">
       <div class="type">
-        <img id="dogPic" src="../assets/icons/dog.png" alt="" v-show="showDog">
-        <img id="catPic" src="../assets/icons/cat.png" alt="" v-show="showCat">
-        <img id="otherPic" src="../assets/icons/other.png" alt="" v-show="showOther">
+        <img src="../assets/icons/dog.png" alt="" v-show="showDog">
+        <img src="../assets/icons/cat.png" alt="" v-show="showCat">
+        <img src="../assets/icons/rabbit.png" alt="" style="height: 160px; margin-top: -40px" v-show="showRabbit">
+        <img src="../assets/icons/other.png" alt="" v-show="showOther">
       </div>
       <div style="z-index:0">
         <search-card @backToHome="backToHome" id="search" v-show="show"></search-card>
@@ -139,6 +139,7 @@ export default {
       show: false,
       showDog: false,
       showCat: false,
+      showRabbit: false,
       showOther: false,
       searchContent: "",
       searchChoice: [],
@@ -170,12 +171,21 @@ export default {
       this.show=true
       this.showDog=true
       this.showCat=false
+      this.showRabbit=false
       this.showOther=false
     },
     searchCat(){
       this.show=true
       this.showCat=true
       this.showDog=false
+      this.showRabbit=false
+      this.showOther=false
+    },
+    searchRabbit(){
+      this.show=true
+      this.showRabbit=true
+      this.showDog=false
+      this.showCat=false
       this.showOther=false
     },
     searchOther(){
@@ -183,12 +193,14 @@ export default {
       this.showOther=true
       this.showDog=false
       this.showCat=false
+      this.showRabbit=false
     },
     backToHome(val){
       console.log(val)
       this.show=false;
       this.showDog=false;
       this.showCat=false;
+      this.showRabbit=false;
       this.showOther=false
     },
     querySearch(queryString, cb) {

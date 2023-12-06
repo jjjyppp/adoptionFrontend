@@ -65,7 +65,7 @@ export default {
 
 .header{
   text-align: left;
-  height: 50px;
+  height: 60px;
 }
 
 .addr-and-date{

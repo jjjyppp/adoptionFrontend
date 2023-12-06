@@ -20,7 +20,9 @@ export default {
 }
 </script>
 <template>
-  <header-tag ></header-tag>
+  <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
+    <header-tag></header-tag>
+  </div>
   <body style="background: #f0f0f0;height: 1050px;align-items: center;justify-content: center;">
   <h1 style="padding-top: 140px;font-family: 'PingFang HK' ; color: #4D4751 ">您还未添加收藏哦！</h1>
   <br>

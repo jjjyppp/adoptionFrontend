@@ -3,7 +3,8 @@
     <header-tag></header-tag>
   </div>
 
-  <div style="margin-top: 80px">
+  <div style="background-color: #EFEEF1; padding: 40px">
+  <div style="padding-top: 60px">
     <h1>宠物送养</h1>
   </div>
 
@@ -188,8 +189,8 @@
     </div>
     <br>
   </div>
-  <br>
-  <br>
+  </div>
+
   <footer-card></footer-card>
 
 
@@ -456,8 +457,9 @@ h1 {
   max-width: 900px;
   padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
 .input-group {
