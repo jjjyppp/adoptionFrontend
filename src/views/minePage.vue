@@ -17,11 +17,13 @@ export default {
   <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
     <header-tag></header-tag>
   </div>
-  <body style=" height: 1050px;align-items: center;justify-content: center;">
+  <body style=" height: 1050px;align-items: center;justify-content: center;background: #f0f0f0">
   <div style="padding-top: 100px">
     <el-row class="tac">
       <el-col :span="3">
         <el-menu
+            background-color="#f0f0f0"
+            active-text-color="#6504b5"
             default-active="1"
             class="el-menu-vertical">
           <el-menu-item index="1">
