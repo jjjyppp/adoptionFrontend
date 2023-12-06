@@ -71,12 +71,20 @@
         <img src="../assets/icons/rabbit.png" alt="" style="height: 160px; margin-top: -40px" v-show="showRabbit">
         <img src="../assets/icons/other.png" alt="" v-show="showOther">
       </div>
-      <div style="z-index:0">
+      <div style="z-index:0" >
         <search-card @backToHome="backToHome" id="search" v-show="show"></search-card>
       </div>
     </div>
     <div class="recommend">
       <div class="rec-sec">
+<!--        <el-link :underline="false" class="rec-text" @click="choose">它正等着你带它回家-->
+<!--          <el-icon>-->
+<!--            <ArrowRight class="arrow-right"/>-->
+<!--          </el-icon>-->
+<!--        </el-link>-->
+
+<!--        <choose-animal-card class="choose-animal-card" @backToHome="backToHomeHandler" alt="" v-show="showChooseCard"></choose-animal-card>-->
+
         <el-link :underline="false" class="rec-text" href="#/adoption">它正等着你带它回家
           <el-icon>
             <ArrowRight class="arrow-right"/>
@@ -141,6 +149,7 @@ export default {
       showCat: false,
       showRabbit: false,
       showOther: false,
+      // showChooseCard:false,
       searchContent: "",
       searchChoice: [],
       recommend_pets: [
@@ -227,7 +236,13 @@ export default {
     },
     handleSelect(item) {
       console.log(item);
-    }
+    },
+    // choose(){
+    //   this.showChooseCard=true
+    // },
+    // backToHomeHandler(){
+    //   this.showChooseCard=false
+    // },
   }
 }
 </script>
@@ -481,6 +496,14 @@ li {
   display: block;
   font-family: Nexa Regular,arial,helvetica,sans-serif;
   font-size: 30px;
+}
+
+.choose-animal-card {
+  position: absolute;
+  margin-left: -450px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 </style>

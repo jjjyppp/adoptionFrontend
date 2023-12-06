@@ -232,7 +232,7 @@ export default {
 }
 
 .blank2{
-  flex: 0 0 14%
+  flex: 0 0 12%;
 }
 
 .blank3{
