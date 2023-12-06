@@ -4,33 +4,33 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: linear-gradient(rgba(182, 118, 23, 0.26), rgba(0, 0, 0, 0.5)), url("../img/Introducing-a-cat-or-kitten-to-your-dog.png");
+  background-color:#f0f0f0;
 }
 #login input {
   margin: 20px auto;
   padding: 10px;
   width: 80%;
   border-radius: 10px;
-  border: none;
+  border: 1px solid #6504b5;
 }
 #login input:focus {
   border: 1px solid #6504b5;
-  outline-color: #d4851e;
+  outline-color: #6504b5;
 }
 #login .log-inner {
-  background-color: rgba(101, 4, 181, 0.3411764706);
+  background-color: white;
   border-radius: 20px;
   box-shadow: 0px 0px 28px rgba(255, 255, 255, 0.329);
 }
 #login a, #login h1 {
-  color: white;
+  color: black;
 }
 #login p {
-  color: #d4851e;
+  color: #6504b5;
 }
 #login button {
-  border: 3px solid #d4851e;
-  background-color: #d4851e;
+  border: 3px solid #6504b5;
+  background-color: #6504b5;
   font-weight: 600;
   color: white;
   border-radius: 20px;
@@ -38,7 +38,7 @@
 }
 #login button:hover {
   background-color: transparent;
-  color: #d4851e;
+  color: #6504b5;
   border-top-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
@@ -51,7 +51,7 @@
   position: absolute;
   width: 100px;
   bottom: 0;
-  background-color: #d4851e;
+  background-color: #6504b5;
   border-radius: 2px;
   left: 50%;
   transform: translate(-50%, -50%);
