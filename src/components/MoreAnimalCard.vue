@@ -7,9 +7,10 @@
     <p class="sentence">这里有来自150000位用户的待领养宠物</p>
     <el-divider style="width:220px; margin: 0"></el-divider>
     <button class="bt" @click="choose">了解更多</button>
-    <choose-animal-card class="choose-animal-card" @backToHome="backToHomeHandler" alt="" v-show="showChooseCard"></choose-animal-card>
   </div>
-
+  <div class="choose-animal-card" v-show="showChooseCard">
+    <choose-animal-card @backToHome="backToHomeHandler"></choose-animal-card>
+  </div>
 
 </template>
 
@@ -17,11 +18,11 @@
 
 
 import {ElDivider} from "element-plus";
-import router from "@/router";
 import chooseAnimalCard from "@/components/ChooseAnimalCard.vue";
+import {Delete} from "@element-plus/icons-vue";
 
 export default{
-  components:{ElDivider,chooseAnimalCard},
+  components:{Delete, ElDivider,chooseAnimalCard},
   data(){
     return{
       showChooseCard:false,
@@ -29,9 +30,11 @@ export default{
   },
   methods:{
     choose(){
+      document.body.style.overflow = 'hidden';
       this.showChooseCard=true
     },
     backToHomeHandler(){
+      document.body.style.overflow = '';
       this.showChooseCard=false
     },
   }
@@ -46,7 +49,6 @@ export default{
   background-color: #6504B5;
   font-weight: 600;
   border-radius: 10px;
-  /*overflow: hidden;*/
   overflow: visible;
   transition: all 1s;
   position: relative;
@@ -85,11 +87,14 @@ export default{
 }
 
 .choose-animal-card {
-  position: absolute;
-  margin-left: -450px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 0;
+  z-index: 50;
+  //position: absolute;
+  //margin-left: -450px;
+  //top: 50%;
+  //left: 50%;
+  //transform: translate(-50%, -50%);
 }
 
 </style>

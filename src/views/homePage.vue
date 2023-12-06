@@ -1,6 +1,3 @@
-<script setup>
-
-</script>
 <template>
   <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
     <header-tag></header-tag>
@@ -82,19 +79,19 @@
 <!--            <ArrowRight class="arrow-right"/>-->
 <!--          </el-icon>-->
 <!--        </el-link>-->
-
-<!--        <choose-animal-card class="choose-animal-card" @backToHome="backToHomeHandler" alt="" v-show="showChooseCard"></choose-animal-card>-->
-
-        <el-link :underline="false" class="rec-text" href="#/adoption">它正等着你带它回家
+        <el-link :underline="false" class="rec-text" @click.native="choose">它正等着你带它回家
           <el-icon>
             <ArrowRight class="arrow-right"/>
           </el-icon>
         </el-link>
         <div class="rec-cards">
           <pet-display-card style="margin-left: 15px"  v-for="(pet, index) in recommend_pets" :key="index" :pet="pet" />
-          <more-animal-card style="margin-left: 15px"></more-animal-card>
+          <more-animal-card></more-animal-card>
         </div>
       </div>
+    </div>
+    <div class="choose-animal-card" v-show="showChooseCard">
+      <choose-animal-card @backToHome="backToHomeHandler"></choose-animal-card>
     </div>
     <div class="articles">
       <div style="padding-top: 30px">
@@ -126,6 +123,7 @@ import MoreAnimalCard from "@/components/MoreAnimalCard.vue";
 import more from "@element-plus/icons/lib/More";
 import ArticleCard from "@/components/ArticleCard.vue";
 import FooterCard from "@/components/FooterCard.vue";
+import ChooseAnimalCard from "@/components/ChooseAnimalCard.vue";
 export default {
   name: "homePage",
   computed: {
@@ -138,9 +136,11 @@ export default {
     ArticleCard,
     MoreAnimalCard,
     ArrowRight,
+    ChooseAnimalCard,
     PetDisplayCard, Search, Burger, HeaderTag, SearchCard, ElDivider, ElRow, ElCol, ElLink, ElIcon, ElAutocomplete},
   data(){
     return{
+      showChooseCard: false,
       dogPath:"src/assets/icons/dog.png",
       catPath:"src/assets/icons/cat.png",
       otherPath:"src/assets/icons/other.png",
@@ -149,7 +149,6 @@ export default {
       showCat: false,
       showRabbit: false,
       showOther: false,
-      // showChooseCard:false,
       searchContent: "",
       searchChoice: [],
       recommend_pets: [
@@ -237,12 +236,14 @@ export default {
     handleSelect(item) {
       console.log(item);
     },
-    // choose(){
-    //   this.showChooseCard=true
-    // },
-    // backToHomeHandler(){
-    //   this.showChooseCard=false
-    // },
+    choose(){
+      document.body.style.overflow = 'hidden';
+      this.showChooseCard=true
+    },
+    backToHomeHandler(){
+      document.body.style.overflow = '';
+      this.showChooseCard=false
+    }
   }
 }
 </script>
@@ -326,7 +327,7 @@ export default {
   width: 100%;
   height: 450px;
   background: #6504b5 url("https://box.nju.edu.cn/thumbnail/134b204a714445f48f20/1024/background.png") no-repeat top;
-  background-size: 100% 440px;
+  background-size: 100% 442px;
   text-align: center;
   //display: flex;
   justify-content: center;
@@ -499,11 +500,13 @@ li {
 }
 
 .choose-animal-card {
-  position: absolute;
-  margin-left: -450px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 0;
+  z-index: 50;
+  //position: absolute;
+  //top: 50%;
+  //left: 50%;
+  //transform: translate(-50%, -50%);
 }
 
 </style>
