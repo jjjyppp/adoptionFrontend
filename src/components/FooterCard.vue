@@ -88,7 +88,7 @@
         <div class="row justify-content-between">
           <div class="col-md-6">
             <p class="mb-0">
-              ©2023 Petfinder.com All trademarks are owned by nju, or used
+              ©2023 Petpat.com All trademarks are owned by nju, or used
               with permission.
             </p>
           </div>
