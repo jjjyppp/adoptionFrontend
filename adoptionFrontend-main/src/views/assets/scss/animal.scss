@@ -1,0 +1,158 @@
+#find-animal {
+    //background-position: ;
+    background-repeat    : no-repeat;
+    background-size      : contain;
+    font-family          : $jura-font;
+    height               : auto;
+
+    button {
+        border          : 3px solid $primary-color;
+        background-color: $primary-color;
+        font-weight     : 600;
+        color           : white;
+        border-radius   : 20px;
+        transition      : all 0.5s;
+
+        &:hover {
+            background-color          : transparent;
+            color                     : $primary-color;
+            border-top-left-radius    : 0px;
+            border-bottom-right-radius: 0px;
+        }
+
+    }
+
+    .search-box,
+    .sort {
+        background-color: #6504b542;
+        border-radius   : 10px;
+        box-shadow      : 0px 0px 28px rgba(80, 78, 78, 0.404);
+        overflow: hidden;
+p{
+    background-color: $primary-color;
+
+}
+        label {
+           font-size: 18px;
+            color      : white;
+        }
+
+        input,
+        select {
+           
+            border-radius: 10px;
+            border       : 1px solid transparent;
+            border-bottom: 3px solid rgb(136, 136, 231);
+
+            &:focus {
+                border       : 1px solid $primary-color;
+                border-bottom: 3px solid $primary-color;
+                outline-color: $primary-color;
+                color: black;
+                
+            }
+            &:checked{
+                background-color: $primary-color;
+            }
+        }
+        input{
+            width:30px;
+            height: 30px;
+        }
+select{
+    width: 80%;
+}
+        // .forDropDown {
+        //     position: relative;
+
+        //     div {
+        //         top             : 35px;
+        //         max-height      : 200px;
+        //         background-color: #EFEEF1;
+        //         overflow-y      : scroll;
+        //         left            : 0;
+        //         width           : 100%;
+        //         text-align      : start;
+        //         z-index         : 1;
+
+        //         li {
+        //             list-style     : none;
+        //             display        : flex;
+        //             justify-content: space-between;
+        //             padding        : 10px 20px;
+        //         }
+        //     }
+        // }
+
+
+
+
+
+    }
+
+    .animal {
+        box-shadow      : 0px 0px 28px rgba(122, 119, 119, 0.404);
+        background-color: #6504b542;
+        border-radius   : 10px;
+a{
+    color: $primary-color;
+}
+        .animal-box {
+            color           : $primary-color;
+            font-weight     : 600;
+            background-color: white;
+            border-radius   : 10px;
+            overflow        : hidden;
+            transition      : all 1s;
+            position        : relative;
+
+            img {
+                transition: all 1s;
+              //  max-width: 100%;
+                object-fit: cover;
+                max-height: 100%;
+            }
+
+
+            .pet-img {
+                width   : 100%;
+                height: 200px;
+                overflow: hidden;
+            }
+
+            p {
+                background-color       : white;
+                border-top-left-radius : 50%;
+                border-top-right-radius: 50%;
+                position               : relative;
+                bottom                 : 25px;
+                transition             : all 1s;
+            }
+
+            &:hover {
+                background-color: $primary-color;
+
+                p {
+                    background-color: $primary-color;
+                    color           : white;
+                    color           : white;
+
+                }
+
+                img {
+                    opacity: 0.5;
+                }
+            }
+
+            span {
+                width        : 45px;
+                height       : 40px;
+                position     : absolute;
+                top          : 10px;
+                right        : 10px;
+                font-size    : 30px;
+                border-radius: 50px;
+            }
+        }
+    }
+}
