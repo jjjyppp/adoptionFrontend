@@ -1,6 +1,6 @@
 <template>
 
-  <div class="unrehome-card">
+  <div class="unrehome-card" @click="toDetail">
     <div>
       <img class="unrehome-img" src="../assets/imgs/cat.jpg" alt="">
     </div>
@@ -9,7 +9,7 @@
       <br>
       <span class="time" style="margin-top: -10px">发布日期:2023-11-11</span>
 <!--    <el-divider style="width:220px; margin: 0"></el-divider>-->
-      <button class="bt" >取消送养</button>
+      <button @click.stop="cancelRehome" class="bt" >取消送养</button>
     </div>
     <br>
 <!--    <div style="text-align: end">-->
@@ -25,6 +25,7 @@
 import {ElDivider} from "element-plus";
 import chooseAnimalCard from "@/components/ChooseAnimalCard.vue";
 import {Delete} from "@element-plus/icons-vue";
+import router from "@/router";
 
 export default{
   components:{Delete, ElDivider,chooseAnimalCard},
@@ -42,6 +43,14 @@ export default{
       document.body.style.overflow = '';
       this.showChooseCard=false
     },
+    toDetail(){
+      router.push({
+        path:"/petDetail1"
+      })
+    },
+    cancelRehome(){
+
+    }
   }
 }
 
@@ -49,6 +58,7 @@ export default{
 
 <style scoped>
 .unrehome-card{
+  cursor: pointer;
   width: 400px;
   height: 120px;
   background-color: white;
