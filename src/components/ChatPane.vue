@@ -25,6 +25,28 @@
 <!--    <div style="padding: 0">-->
       <div class="chat-container">
         <div class="chat-header">{{contacts[selectedItemId].name}}</div>
+        <div class="confirm" style="display: flex; justify-content: space-between;">
+          <img src="https://box.nju.edu.cn/f/5412f3ed6b55425ead4e/?dl=1" style="width: 70px;height: 70px;margin-left: 10%;border-radius: 5px">
+          <div style="margin-left: 0px;">
+
+            <div style="display: flex;margin-top: 15px">
+              <p style="font-size: 20px">小猫佩奇</p>
+              <el-tag type="success" size="small" effect="plain" style="margin-top: 5px;margin-left: 8px">已免疫</el-tag>
+              <el-tag  type="success" size="small" effect="plain" style="margin-top: 5px;margin-left: 3px">已驱虫</el-tag>
+              <el-tag  type="info" size="small" effect="plain" style="margin-top: 5px;margin-left: 3px">未绝育</el-tag>
+            </div>
+
+            <div style="display: flex;margin-top: -12px">
+              <p style="margin-left:6px;font-size: 15px;color: #8a8a8a">免费领养</p>
+              <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 8px;">仅限同城</el-tag>
+              <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 3px;">定期线下回访</el-tag>
+              <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 3px;">签订领养合同</el-tag>
+            </div>
+          </div>
+
+          <el-button class="button" round>确认收养</el-button>
+
+        </div>
         <div class="chat-messages" ref="messageContainer">
           <div v-for="message in messages" :key="message.id" class="chat-message" :class="{ 'my-message': message.isMe, 'other-message': !message.isMe }">
             <div v-if="!message.isMe" style="display: flex">
@@ -55,10 +77,10 @@
 
 <script>
 import DetailCard from "@/components/DetailCard.vue";
-import {ElDivider} from "element-plus";
+import {ElDivider,ElTag,ElButton} from "element-plus";
 
 export default {
-  components: {DetailCard, ElDivider},
+  components: {DetailCard, ElDivider,ElTag,ElButton},
   data() {
     return {
       messages: [
@@ -203,6 +225,27 @@ export default {
   color: white;
   padding: 10px;
   text-align: center;
+}
+.confirm {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background: #f4f4f4;
+  border-bottom: 1px solid rgba(77, 71, 81, 0.2);
+}
+.button {
+  margin-top: 4px;
+  margin-right: 10%;
+  font-size: 18px;
+  width: 20%;
+  height: 40px;
+  background: purple;
+  /*background-color: #6504B5;*/
+  color: #fff;
+}
+.button:hover {
+  background-color: #2e0152;
+  color: white;
 }
 
 .avatar {
