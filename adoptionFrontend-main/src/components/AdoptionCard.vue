@@ -36,9 +36,7 @@ export default {
           <span><label style="color: darkgrey">价格：</label>免费领养</span>
         </el-main>
         <el-footer class="footer">
-          <el-tag type="success" effect="plain" size="small">已免疫</el-tag>
-          <el-tag class="health-label" type="success" effect="plain" size="small">已驱虫</el-tag>
-          <el-tag class="health-label" type="info" effect="plain" size="small">未绝育</el-tag>
+          <button class="cancel-bt">放弃送养</button>
         </el-footer>
       </el-container>
     </el-container>
@@ -113,6 +111,10 @@ export default {
   //height: 18px;
   //margin: 18px 0;
   text-align: left;
+}
+
+.cancel-bt{
+  width: 100px;
 }
 
 

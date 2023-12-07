@@ -1,8 +1,9 @@
 <script>
 import {ElCard, ElContainer, ElHeader, ElTag, ElAside, ElMain, ElFooter} from "element-plus";
+import {Burger} from "@element-plus/icons-vue";
 export default {
   name: "AdoptionCard",
-  components:{ElCard, ElTag, ElContainer, ElHeader, ElAside, ElMain, ElFooter},
+  components:{Burger, ElCard, ElTag, ElContainer, ElHeader, ElAside, ElMain, ElFooter},
 }
 
 </script>
@@ -33,12 +34,10 @@ export default {
           <span><label style="color: darkgrey">品种：</label>中华田园犬</span><br>
           <span><label style="color: darkgrey">年龄：</label>三个月</span><br>
           <span><label style="color: darkgrey">性别：</label>女孩</span><br>
-          <span><label style="color: darkgrey">价格：</label>免费领养</span>
+<!--          <span><label style="color: darkgrey">价格：</label>免费领养</span>-->
         </el-main>
         <el-footer class="footer">
-          <el-tag type="success" effect="plain" size="small">已免疫</el-tag>
-          <el-tag class="health-label" type="success" effect="plain" size="small">已驱虫</el-tag>
-          <el-tag class="health-label" type="info" effect="plain" size="small">未绝育</el-tag>
+          <button>放弃送养</button>
         </el-footer>
       </el-container>
     </el-container>
