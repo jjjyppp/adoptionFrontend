@@ -21,10 +21,11 @@
       <el-menu router :default-active="$route.path"
                class="el-menu"
                mode="horizontal"
+               style="border-bottom: none !important;"
                active-text-color="#DDB4FF"
                background-color="#6504B5"
                text-color="#ffffff">
-        <el-menu-item  index="/" class="item">首页</el-menu-item>
+        <el-menu-item  index="/" class="item" >首页</el-menu-item>
         <el-sub-menu index="2">
           <template v-slot:title="title">宠物领养</template>
           <el-menu-item index="/adoption">宠物狗</el-menu-item>
