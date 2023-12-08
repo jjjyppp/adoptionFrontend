@@ -2,7 +2,7 @@
   <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
     <header-tag></header-tag>
   </div>
-  <body style=" height: 1050px;align-items: center;justify-content: center;background: #f0f0f0">
+  <body style=" min-height: 1050px;align-items: center;justify-content: center;background: #f0f0f0">
   <el-container>
     <el-aside width="200px" style="padding-top: 200px">
 <!--      <el-row class="tac">-->
@@ -37,46 +37,11 @@
     </el-aside>
     <el-main style="padding-top: 100px; padding-left: 40px">
       <div style="display: flex; flex-direction: column">
-      <my-rehome-pane v-show="menuIndex==='2'"></my-rehome-pane>
-      <my-adopt-pane v-show="menuIndex==='3' " ></my-adopt-pane>
-<!--      <div class="unrehome-cards">-->
-<!--        <un-rehome-card style="margin-left: 50px; margin-top: 20px"></un-rehome-card>-->
-<!--        <un-rehome-card style="margin-left: 50px; margin-top: 20px"></un-rehome-card>-->
-<!--        <un-rehome-card style="margin-left: 50px; margin-top: 20px"></un-rehome-card>-->
-<!--        <un-rehome-card style="margin-left: 50px; margin-top: 20px"></un-rehome-card>-->
-<!--      </div>-->
+        <my-rehome-pane v-show="menuIndex==='2'"></my-rehome-pane>
+        <my-adopt-pane v-show="menuIndex==='3' " ></my-adopt-pane>
       </div>
     </el-main>
   </el-container>
-<!--  <div>-->
-<!--    <div style="padding-top: 200px;">-->
-<!--      <el-row class="tac">-->
-<!--        <el-col :span="3">-->
-<!--          <el-menu-->
-<!--              background-color="#f0f0f0"-->
-<!--              active-text-color="#6504b5"-->
-<!--              default-active="1"-->
-<!--              class="el-menu-vertical">-->
-<!--            <el-menu-item index="1">-->
-<!--              <i class="el-icon-menu"></i>-->
-<!--              <span slot="title">个人信息</span>-->
-<!--            </el-menu-item>-->
-<!--            <el-menu-item index="2">-->
-<!--              <i class="el-icon-setting"></i>-->
-<!--              <span slot="title">我的送养</span>-->
-<!--            </el-menu-item>-->
-<!--            <el-menu-item index="3">-->
-<!--              <i class="el-icon-setting"></i>-->
-<!--              <span slot="title">我的领养</span>-->
-<!--            </el-menu-item>-->
-<!--          </el-menu>-->
-<!--        </el-col>-->
-<!--      </el-row>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div>-->
-<!--    <un-rehome-card style="margin-left: 200px"></un-rehome-card>-->
-<!--  </div>-->
   </body>
   <footer-card></footer-card>
 </template>

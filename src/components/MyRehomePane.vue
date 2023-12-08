@@ -9,21 +9,19 @@
       </div>
       <div class="tab-content">
         <div class="tab-rehome" data-tab="tab1">
-          <un-rehome-card class="un-rehome-card"></un-rehome-card>
-          <un-rehome-card class="un-rehome-card"></un-rehome-card>
-          <un-rehome-card class="un-rehome-card"></un-rehome-card>
-          <un-rehome-card class="un-rehome-card"></un-rehome-card>
+          <un-rehome-card class="rehomepane-card"></un-rehome-card>
+          <un-rehome-card class="rehomepane-card"></un-rehome-card>
+          <un-rehome-card class="rehomepane-card"></un-rehome-card>
+          <un-rehome-card class="rehomepane-card"></un-rehome-card>
         </div>
         <div class="tab-rehome" data-tab="tab2" style="display: none">
-          <rehome-card class="un-rehome-card"></rehome-card>
-          <rehome-card class="un-rehome-card"></rehome-card>
-          <rehome-card class="un-rehome-card"></rehome-card>
-          <rehome-card class="un-rehome-card"></rehome-card>
+          <rehome-card class="rehomepane-card"></rehome-card>
+          <rehome-card class="rehomepane-card"></rehome-card>
+          <rehome-card class="rehomepane-card"></rehome-card>
         </div>
         <div class="tab-rehome" data-tab="tab3" style="display: none">
-          <cancel-rehome-card class="un-rehome-card"></cancel-rehome-card>
-          <cancel-rehome-card class="un-rehome-card"></cancel-rehome-card>
-
+          <cancel-rehome-card class="rehomepane-card"></cancel-rehome-card>
+          <cancel-rehome-card class="rehomepane-card"></cancel-rehome-card>
         </div>
       </div>
     </div>
@@ -81,16 +79,6 @@ body {
   color: #808b9f;
 }
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  min-width: 375px;
-  overflow: auto;
-}
-
 .tab-container {
   padding: 24px;
   width: 100%;
@@ -99,7 +87,6 @@ body {
 .tabs {
   width: 380px;
   padding: 4px;
-  /* border-radius: 12px 12px 0 0; */
   border-radius: 5px;
   background: #f0f0f3;
   box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
@@ -133,7 +120,7 @@ body {
   box-shadow: -10px -10px 30px #ffffff, 10px 10px 30px rgba(174, 174, 192, 0.4);
 }
 
-.un-rehome-card{
+.rehomepane-card{
   margin-left: 40px;
   margin-top: 20px;
 }

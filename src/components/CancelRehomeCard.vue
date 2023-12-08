@@ -22,21 +22,12 @@ import chooseAnimalCard from "@/components/ChooseAnimalCard.vue";
 import {Delete} from "@element-plus/icons-vue";
 
 export default{
-  components:{Delete, ElDivider,chooseAnimalCard},
   data(){
     return{
-      showChooseCard:false,
     }
   },
   methods:{
-    choose(){
-      document.body.style.overflow = 'hidden';
-      this.showChooseCard=true
-    },
-    backToHomeHandler(){
-      document.body.style.overflow = '';
-      this.showChooseCard=false
-    },
+
   }
 }
 

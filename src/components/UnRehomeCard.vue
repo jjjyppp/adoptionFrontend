@@ -1,5 +1,4 @@
 <template>
-
   <div class="unrehome-card" @click="toDetail">
     <div>
       <img class="unrehome-img" src="../assets/imgs/cat.jpg" alt="">
@@ -8,41 +7,24 @@
       <span class="name">猫猫1</span>
       <br>
       <span class="time" style="margin-top: -10px">发布日期:2023-11-11</span>
-<!--    <el-divider style="width:220px; margin: 0"></el-divider>-->
       <button @click.stop="cancelRehome" class="bt" >取消送养</button>
     </div>
     <br>
-<!--    <div style="text-align: end">-->
-<!--      <button class="bt" >取消送养</button>-->
-<!--    </div>-->
   </div>
 
 </template>
 
 <script>
 
-
-import {ElDivider} from "element-plus";
-import chooseAnimalCard from "@/components/ChooseAnimalCard.vue";
-import {Delete} from "@element-plus/icons-vue";
 import router from "@/router";
 
 export default{
-  components:{Delete, ElDivider,chooseAnimalCard},
   data(){
     return{
-      showChooseCard:false,
+
     }
   },
   methods:{
-    choose(){
-      document.body.style.overflow = 'hidden';
-      this.showChooseCard=true
-    },
-    backToHomeHandler(){
-      document.body.style.overflow = '';
-      this.showChooseCard=false
-    },
     toDetail(){
       router.push({
         path:"/petDetail1"
@@ -83,6 +65,14 @@ export default{
   transition: 1s;
 }
 
+.unrehome-card:not(:hover) .bt {
+  background-color: #6504B5;
+}
+
+.unrehome-card:not(:hover) .bt:hover {
+  background-color: #3c036a;
+}
+
 .unrehome-img{
   height: 118px;
   width: 120px;
@@ -114,17 +104,6 @@ export default{
 
 .bt:hover{
   background-color: #3c036a;
-}
-
-.choose-animal-card {
-  position: fixed;
-  top: 0;
-  z-index: 50;
-//position: absolute;
-//margin-left: -450px;
-//top: 50%;
-//left: 50%;
-//transform: translate(-50%, -50%);
 }
 
 </style>

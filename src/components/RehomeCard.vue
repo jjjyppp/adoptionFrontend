@@ -1,41 +1,47 @@
 <template>
-  <div class="unrehome-card">
-    <div>
-      <img class="unrehome-img" src="../assets/imgs/cat.jpg" alt="">
-    </div>
-    <div style="text-align: start; margin-left: 10px">
-      <span class="name">猫猫1</span>
+  <div>
+    <div class="rehome-card" @click="toDetail">
+      <div>
+        <img class="rehome-img" src="../assets/imgs/cat.jpg" alt="">
+      </div>
+      <div style="text-align: start; margin-left: 10px">
+        <span class="name">猫猫1</span>
+        <br>
+        <span class="time" style="margin-top: -10px">领养日期:2023-11-11</span>
+        <button @click.stop="visit" class="bt" >我要回访</button>
+      </div>
       <br>
-      <span class="time" style="margin-top: -10px">发布日期:2023-11-11</span>
-      <button class="bt">我要回访</button>
     </div>
-    <br>
+    <div class="chat" v-show="showChat">
+      <chat-pane @cancelChat="cancelChat"></chat-pane>
+    </div>
   </div>
-
 </template>
 
 <script>
-
-
-import {ElDivider} from "element-plus";
-import chooseAnimalCard from "@/components/ChooseAnimalCard.vue";
-import {Delete} from "@element-plus/icons-vue";
+import router from "@/router";
+import ChatPane from "@/components/ChatPane.vue";
 
 export default{
-  components:{Delete, ElDivider,chooseAnimalCard},
+  components: {ChatPane},
   data(){
     return{
-      showChooseCard:false,
+      showChat: false
     }
   },
   methods:{
-    choose(){
+    visit(){
       document.body.style.overflow = 'hidden';
-      this.showChooseCard=true
+      this.showChat=true
     },
-    backToHomeHandler(){
+    cancelChat(){
       document.body.style.overflow = '';
-      this.showChooseCard=false
+      this.showChat=false
+    },
+    toDetail(){
+      router.push({
+        path:"/petDetail1"
+      })
     },
   }
 }
@@ -43,7 +49,15 @@ export default{
 </script>
 
 <style scoped>
-.unrehome-card{
+.chat{
+  position: fixed;
+  top: 60px;
+  left: 0;
+  z-index: 50;
+}
+
+.rehome-card{
+  cursor: pointer;
   width: 400px;
   height: 120px;
   background-color: white;
@@ -59,7 +73,7 @@ export default{
 //box-shadow: 0 4px 4px rgba(0,0,0,.05);
 }
 
-.unrehome-card:hover{
+.rehome-card:hover{
 //background-color: white;
   box-shadow: 0 0 0 3px #6504b5;
 //transition: 0.5s;
@@ -68,7 +82,7 @@ export default{
   transition: 1s;
 }
 
-.unrehome-img{
+.rehome-img{
   height: 118px;
   width: 120px;
   overflow: hidden;
