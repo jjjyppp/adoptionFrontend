@@ -6,21 +6,17 @@
              class="demo-form-inline">
       <!-- 第一部分 -->
       <div class="title">
-        <p>WHATIS YOUR NAME?</p>
+        <p>您的姓名</p>
       </div>
-      <el-form-item label="First name">
-        <el-input v-model="formInline.firstname"
-                  placeholder="First name"
+      <el-form-item label="您的姓名">
+        <el-input v-model="formInline.name"
+                  placeholder="姓名"
                   clearable />
       </el-form-item>
-      <el-form-item label="Last name">
-        <el-input v-model="formInline.lastname"
-                  placeholder="Last name"
-                  clearable />
-      </el-form-item>
+
       <!-- 第二部分 -->
       <div class="title">
-        <p>HOW CAN YOU BE REACHED?</p>
+        <p>您的联系方式</p>
       </div>
       <el-form-item>
         <el-input v-model="formInline.phoneNumber"
@@ -29,11 +25,11 @@
       </el-form-item>
       <!-- 第三部分 -->
       <div class="title">
-        <p>WHERE DO YOU LIVE?</p>
+        <p>您的家庭住址</p>
       </div>
       <el-form-item label="Country (required)">
         <el-select v-model="formInline.country"
-                   placeholder="Country (required)"
+                   placeholder="国家(必选)"
                    clearable>
           <el-option v-for="item in select_range"
                      :key="item.value"
@@ -43,23 +39,23 @@
       </el-form-item>
       <el-form-item label="Street address">
         <el-input v-model="formInline.address"
-                  placeholder="Street address"
+                  placeholder="街道地址"
                   clearable />
       </el-form-item>
-      <el-form-item label="Street address (continued)">
+      <!-- <el-form-item label="Street address (continued)">
         <el-input v-model="formInline.address2"
                   placeholder="Street address (continued)"
                   clearable />
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item label="City / Town">
         <el-input v-model="formInline.Town"
-                  placeholder="City / Town"
+                  placeholder="所在城市/城镇"
                   clearable />
       </el-form-item>
       <el-form-item label="State"
                     style="width:'45%;'">
         <el-select v-model="formInline.State"
-                   placeholder="Choose a state"
+                   placeholder="选择一个省份"
                    clearable>
           <el-option v-for="item in select_range2"
                      :key="item.value"
@@ -69,7 +65,7 @@
       </el-form-item>
       <el-form-item label="ZIP code">
         <el-input v-model="formInline.code"
-                  placeholder="ZIP code"
+                  placeholder="邮政编码"
                   clearable />
       </el-form-item>
     </el-form>
@@ -94,8 +90,7 @@ export default {
   data() {
     return {
       formInline: {
-        firstname: '',
-        lastname: '',
+        name: '',
         phoneNumber: '',
         country: '',
         address: '',
