@@ -137,12 +137,12 @@
             <p class=" fs-4 fw-bold py-2">领养金额</p>
             <div style="text-align:-webkit-center" class="mb-3">
               <el-select multiple placeholder="请选择领养金额" size="large" v-model="adoptionAmount">
-                <el-option label="免费" value="0"></el-option>
-                <el-option label="100元以下" value="below100"></el-option>
-                <el-option label="100到300元" value="100to300"></el-option>
-                <el-option label="300到500元" value="300to500"></el-option>
-                <el-option label="500到1000元" value="500to1000"></el-option>
-                <el-option label="1000元以上" value="above1000"></el-option>
+                <el-option label="免费" value="免费"></el-option>
+                <el-option label="100元以下" value="100元以下"></el-option>
+                <el-option label="100到300元" value="100到300元"></el-option>
+                <el-option label="300到500元" value="300到500元"></el-option>
+                <el-option label="500到1000元" value="500到1000元"></el-option>
+                <el-option label="1000元以上" value="1000元以上"></el-option>
               </el-select>
             </div>
           </div>
@@ -199,12 +199,13 @@ import {
   ElSelect,
 } from "element-plus";
 import {regionData} from "element-china-area-data";
+import axios from "axios";
 
 let select_range= [
-  {value: 'all', label: '全国'},
-  {value: 'district', label: '仅限同城'},
-  {value: 'city', label: '仅限同市'},
-  {value: 'province', label: '仅限同省'},
+  {value: '全国', label: '全国'},
+  {value: '仅限同城', label: '仅限同城'},
+  {value: '仅限同市', label: '仅限同市'},
+  {value: '仅限同省', label: '仅限同省'},
 ]
 export default {
   name: "adoptionPage",
@@ -239,34 +240,34 @@ export default {
       selectedPetSource: '',
       healthCondition:'',
       petTypes: [
-        { value: 'dog', label: '宠物狗' },
-        { value: 'cat', label: '宠物猫' },
-        { value: 'rabbit', label: '兔子' },
-        { value: 'other', label: '其他' }
+        { pro: 'dog', label: '宠物狗' },
+        { pro: 'cat', label: '宠物猫' },
+        { pro: 'rabbit', label: '兔子' },
+        { pro: 'other', label: '其他' }
       ],
       petSizes: [
-        { label: "小型", value: "small" },
-        { label: "中型", value: "medium" },
-        { label: "大型", value: "large" },
+        { label: "小型", value: "小型" },
+        { label: "中型", value: "中型" },
+        { label: "大型", value: "大型" },
         // Add more options for pet sizes
       ],
       petGenders: [
-        { label: "公", value: "male" },
-        { label: "母", value: "female" },
+        { label: "公", value: "公" },
+        { label: "母", value: "母" },
         // Add more options for pet genders
       ],
       petAges: [
-        { label: "0~6个月", value: "0-6" },
-        { label: "6个月~2岁", value: "6-24" },
-        { label: "2岁~7岁", value: "24-84" },
-        { label: "大于7岁", value: "84+" },
+        { label: "0~6个月", value: "0~6个月" },
+        { label: "6个月~2岁", value: "6个月~2岁" },
+        { label: "2岁~7岁", value: "2岁~7岁" },
+        { label: "大于7岁", value: "大于7岁" },
         // Add more options for pet ages
       ],
       petSources: [
-        { value: 'home', label: '家养' },
-        { value: 'shelter', label: '救助站' },
-        { value: 'save', label: '个人救助' },
-        { value: 'other', label: '其他' }
+        { value: '家养', label: '家养' },
+        { value: '救助站', label: '救助站' },
+        { value: '个人救助', label: '个人救助' },
+        { value: '其他', label: '其他' }
       ],
       HealthConditions:[
         { value: '已免疫', label: '已免疫' },
@@ -299,6 +300,12 @@ export default {
       range: '',
       select_range: select_range,
     };
+  },
+  mounted() {
+    axios.get("http://localhost:8080/pets").then(response => {
+      this.pets=response.data
+      console.log(this.pets)
+    })
   },
   methods:{
     filteredBreeds() {

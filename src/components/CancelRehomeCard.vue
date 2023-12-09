@@ -8,6 +8,8 @@
       <span class="name">猫猫1</span>
       <br>
       <span class="time" style="margin-top: -10px">发布日期:2023-11-11</span>
+      <br>
+      <span class="time" style="margin-top: -10px">取消日期:2023-12-11</span>
     </div>
     <br>
   </div>

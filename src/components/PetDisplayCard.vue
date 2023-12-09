@@ -7,7 +7,7 @@
             <img src="" ref="img" alt="" style="width: 100%">
           </div>
           <p class="type">{{pet.name}}</p>
-          <p class="info">{{pet.age}} {{pet.location}}</p>
+          <p class="info">{{pet.age}} {{pet.address}}</p>
         </a>
         <el-button href="#" @click.prevent="addToFavorites">
           <span :class="{ 'bg-light': !isClicked, 'bg-dark': isClicked }">
@@ -32,7 +32,17 @@ export default {
   components:{ElButton,ElNotification},
   props: ['pet'],
   mounted() {
-    this.$refs.img.src = this.pet.imageUrl;
+    // console.log("123"+props.pet)
+    // this.$refs.img.src = this.pet.urls;
+    // console.log(this.pet.urls)
+  },
+  watch: {
+    pet: function(newVal, oldVal) {
+      // 当 myProp 整个对象被替换时触发
+      console.log('myProp 发生变化:', newVal, oldVal);
+      this.$refs.img.src = this.pet.urls;
+      console.log(this.pet.urls[0])
+    }
   },
   data() {
     return {
