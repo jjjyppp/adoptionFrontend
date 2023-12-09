@@ -31,8 +31,8 @@ import AdvertisementCard from "@/components/AdvertisementCard.vue";
         <el-card class="adoption" shadow="hover" style = "border-radius: 15px">
           <div class="adoption-body">
             <p class="adoption-title">考虑收养我吗？</p>
-            <el-button class="button1" round>我要收养</el-button><br>
-            <el-button class="button2" round>加入收藏</el-button><br>
+            <el-button class="button1" @click.stop="visit" round>我要收养</el-button><br>
+            <el-button class="button2" @click="addToFavorites" round>加入收藏</el-button><br>
             <el-button class="instruction" style = "border-radius: 12px"  @click="showDialog">不清楚领养流程？点击这里</el-button>
 <!--            <adoption-process-dialog v-model="dialogVisible" @close="handleDialogClose" />-->
             <adoption-process-dialog v-model="dialogVisible"/>
@@ -74,6 +74,9 @@ import AdvertisementCard from "@/components/AdvertisementCard.vue";
         </el-card>
 
       </div>
+      <div class="chat" v-show="showChat">
+        <chat-pane  @cancelChat="cancelChat"></chat-pane>
+      </div>
 
       <RecommendCard style="margin: 20px"></RecommendCard>
 
@@ -87,14 +90,16 @@ import AdvertisementCard from "@/components/AdvertisementCard.vue";
 <script>
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import AdoptionProcessDialog from "@/components/AdoptionProcessDialog.vue";
-
+import ChatPane from "@/components/ChatPane.vue";
+import {ElNotification} from "element-plus"
 
 export default {
   components: {
-    PetDisplayCard,AdoptionProcessDialog
+    PetDisplayCard,AdoptionProcessDialog,ElNotification,ChatPane
   },
   data() {
     return {
+      showChat: false,
       currentIndex: 0,
       dialogVisible: false,
       fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
@@ -121,7 +126,31 @@ export default {
       // console.log('showDialog method called');
       this.dialogVisible = true;
     },
+    visit(){
+      document.body.style.overflow = 'hidden';
+      this.showChat=true
+    },
+    cancelChat(){
+      document.body.style.overflow = '';
+      this.showChat=false
+    },
+    addToFavorites() {
+      this.isClicked = !this.isClicked;
+
+      if(this.isClicked){
+        ElNotification({
+          title: '您已成功收藏',
+          message: '可以进入"我的收藏"中查看它哦',
+        });
+      } else {
+        ElNotification({
+          title: '您已取消收藏',
+          message: '再看看其他宠物吧？',
+        });
+      }
+    }
   }
+
 }
 </script>
 
@@ -169,6 +198,7 @@ export default {
   background-color: #fff;
   color: #6504B5;
   margin-bottom: 15px;
+  border: none;
 }
 .button1:hover {
   background-color: #2e0152;
@@ -252,5 +282,11 @@ export default {
   color: #888;
 }
 
+.chat{
+  position: fixed;
+  top: 60px;
+  left: 0;
+  z-index: 50;
+}
 
 </style>

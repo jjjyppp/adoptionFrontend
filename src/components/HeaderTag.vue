@@ -244,7 +244,7 @@ export default {
 .chatPane{
   position: absolute;
   top: 60px;
-  z-index: 100
+  z-index: 10
 }
 
 .item{
