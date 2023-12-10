@@ -507,67 +507,67 @@ footer #footer-bottom .social-media a:hover {
   color: white;
   text-shadow: 2px 2px 28px white;
 }
-#signin {
+#signup {
   height: auto;
-  background-image: url("../img/360_F_228670737_QtftGXJAHbLmN4IerXpNqCbuSk1mncX3.jpg");
+  background-color: #f0f0f0;
   background-position: center;
   background-size: cover;
   font-family: "Jura", sans-serif;
 }
-#signin input,
-#signin select {
+#signup input,
+#signup select {
   margin: 10px auto;
   padding: 10px;
   width: 80%;
   border-radius: 10px;
-  border: 1px solid white;
-}
-#signin input:focus,
-#signin select:focus {
   border: 1px solid #6504b5;
-  outline-color: #d4851e;
 }
-#signin button {
-  border: 3px solid #d4851e;
-  background-color: #d4851e;
+#signup input:focus,
+#signup select:focus {
+  border: 1px solid #6504b5;
+  outline-color: #6504b5;
+}
+#signup button {
+  border: 3px solid #6504b5;
+  background-color: #6504b5;
   font-weight: 600;
   color: white;
   border-radius: 20px;
   transition: all 0.5s;
 }
-#signin button:hover {
+#signup button:hover {
   background-color: transparent;
   border-top-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-#signin .sign-inner {
-  background-color: rgba(101, 4, 181, 0.3764705882);
+#signup .sign-inner {
+  background-color: white;
   border-radius: 20px;
-  box-shadow: 0px 0px 28px rgba(199, 53, 187, 0.295);
+  box-shadow: darkgrey;
 }
-#signin p {
+#signup p {
   color: #c60bcc;
   font-weight: 700;
 }
-#signin h1 {
+#signup h1 {
   position: relative;
 }
-#signin i {
-  color: #c77e1e;
+#signup i {
+  color: #6504b5;
   font-size: 25px;
 }
-#signin h1::before {
+#signup h1::before {
   content: "";
   height: 3px;
   position: absolute;
   width: 100px;
   bottom: 0;
-  background-color: #d4851e;
+  background-color: #6504b5;
   border-radius: 2px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-#signin select option {
+#signup select option {
   color: #c71eb9;
   font-weight: 600;
 }
