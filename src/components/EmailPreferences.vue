@@ -22,11 +22,11 @@ export default {
   data() {
     return {
       info:[
-        {index:1,title:'PETFINDER:',content:'Special info on pet adoption, pet care and more, plus occasional messages about important news and offers Read the Privacy Policy andAbout Our Ads.'},
-        {index:2,title:'PURINA AND ITS BRANDS:',content:'Receive the latest special deals, inspiring stories, great advice, and awesome videos via email and other marketing communications fronPurina and its brands. Read the Privacy Policy and About Our Ads.'},
-        {index:3,title:'PETFINDER FOUNDATION:',content:'Updates from the Petfinder Foundation, a nonprofit 501(C)(3) organization that assists the animal shelters and rescue groups that posttheir adoptable pets on Petfinder.com'},
-        {index:4,title:'PARTNER MESSAGES 8 OFFERS:',content:'Communications, special offers and more from our partners'},
-        {index:5,title:'SAVD SEARCH:',content:'Click here to manage your saved search emails'},
+        {index:1,title:'宠物寻找:',content:'有关宠物领养、宠物护理等方面的特别信息，以及有关重要新闻和优惠的不定期消息。阅读隐私政策和关于我们的广告'},
+        // {index:2,title:'PURINA AND ITS BRANDS:',content:'Receive the latest special deals, inspiring stories, great advice, and awesome videos via email and other marketing communications fronPurina and its brands. Read the Privacy Policy and About Our Ads.'},
+        // {index:3,title:'PETFINDER FOUNDATION:',content:'Updates from the Petfinder Foundation, a nonprofit 501(C)(3) organization that assists the animal shelters and rescue groups that posttheir adoptable pets on Petfinder.com'},
+        {index:4,title:'合作伙伴信息和优惠：',content:'来自我们合作伙伴的通信、特别优惠和更多信息。'},
+        {index:5,title:'保存搜索:',content:'单击此处管理已保存的搜索电子邮件'},
       ]
     };
   },

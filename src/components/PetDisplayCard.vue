@@ -23,6 +23,7 @@
   </div>
 </template>
 
+
 <script>
 import {ElButton, ElNotification } from "element-plus"
 
@@ -36,7 +37,6 @@ export default {
   watch: {
     pet: function(newVal, oldVal) {
       this.$refs.img.src = this.pet.urls[0];
-      console.log(this.pet.urls[0])
     }
   },
   data() {

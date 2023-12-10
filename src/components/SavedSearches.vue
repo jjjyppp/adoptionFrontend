@@ -1,9 +1,9 @@
 <template>
   <div class="contentall">
     <div class="title">
-      <span>You have 0 saved searches set up for new pets.Saved searches watch Petfinder for you, so you can get a first look at any newly added pets</span>
+      <span>您已为新宠物设置了 0 个保存搜索。保存搜索会使您可以第一时间查看任何新添加的宠物</span>
       <div class="box">
-      <span>To set one up, use the 'SAVE SEARCH' button that appears above your search results.</span>
+      <span>要进行设置，请使用搜索结果上方的 "保存搜索 "按钮。</span>
       </div>
     </div>
     <div class="fav" style="display: flex">

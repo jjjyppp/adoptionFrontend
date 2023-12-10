@@ -13,17 +13,17 @@
       <br>
     </div>
     <div class="chat" v-show="showChat">
-      <chat-pane @cancelChat="cancelChat"></chat-pane>
+      <chat-pane-revisit  @cancelChat="cancelChat"></chat-pane-revisit>
     </div>
   </div>
 </template>
 
 <script>
 import router from "@/router";
-import ChatPane from "@/components/ChatPane.vue";
+import ChatPaneRevisit from "@/components/ChatPane-revisit.vue";
 
 export default{
-  components: {ChatPane},
+  components: {ChatPaneRevisit},
   data(){
     return{
       showChat: false

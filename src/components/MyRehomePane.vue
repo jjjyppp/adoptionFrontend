@@ -100,10 +100,10 @@ body {
 
 .tab.active {
   border-radius: 5px;
-  background: #eeeeee;
+  background: #6504B5;
   box-shadow: inset -1px -1px 1px rgba(255, 255, 255, 0.7),
   inset 1px 1px 2px rgba(174, 174, 192, 0.2);
-  color: #6504B5;
+  color: white;
 }
 
 .tab-rehome{

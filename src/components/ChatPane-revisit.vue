@@ -3,16 +3,8 @@
     <div style="text-align: end; padding-right: 20px; padding-top: 20px" >
       <svg @click="cancel" x="1701596306400" class="cancel-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5136" width="24" height="24"><path d="M975.069283 746.176494a162.756163 162.756163 0 0 1-230.134685 230.134686L511.97742 743.399162 279.065402 976.31118A162.756163 162.756163 0 0 1 48.930717 746.176494L281.842734 513.241896 48.930717 280.329879a162.688423 162.688423 0 0 1 0-230.112106 162.711003 162.711003 0 0 1 230.134685 0l232.912018 232.889438L744.912018 50.217773a162.711003 162.711003 0 1 1 230.134685 230.112106L742.134686 513.241896l232.934597 232.934598z" fill="#6504b5" p-id="5137"></path></svg>
     </div>
-<!--  <el-container>-->
+    <!--  <el-container>-->
     <div style="display: flex; justify-content: center;">
-      <el-dialog
-          title="提示"
-          :visible="confirmAdoptDialog"
-          width="50%"
-          z-index=50
-          @close="handleClose">
-        <span>这是一段信息</span>
-      </el-dialog>
       <div class="aside">
         <div class="chat-list">
           <div v-for="contact in contacts" :key="contact.id" ref="contact" @click="selectContact(contact.id)" class="contact-item" :class="{ 'selected': selectedItemId === contact.id, 'changeColor': changeColorId === contact.id }"  @mouseover="mouseOver(contact.id)" @mouseleave="mouseLeave(contact.id)">
@@ -30,9 +22,8 @@
           </div>
         </div>
       </div>
-<!--    <div style="padding: 0">-->
+      <!--    <div style="padding: 0">-->
       <div class="chat-container">
-
         <div class="chat-header">{{contacts[selectedItemId].name}}</div>
         <div class="confirm" style="display: flex; justify-content: space-between;">
           <img src="https://box.nju.edu.cn/f/5412f3ed6b55425ead4e/?dl=1" style="width: 70px;height: 70px;margin-left: 10%;border-radius: 5px">
@@ -53,7 +44,7 @@
             </div>
           </div>
 
-          <el-button class="button" @click="showDialog" round>确认收养</el-button>
+          <el-button class="button" round>回访打卡</el-button>
 
         </div>
         <div class="chat-messages" ref="messageContainer">
@@ -78,23 +69,20 @@
           <input class="send-input" v-model="newMessage" @keyup.enter="sendMessage" placeholder="输入消息..." />
           <button class="send-button" @click="sendMessage">发送</button>
         </div>
-
-
       </div>
     </div>
-<!--  </el-container>-->
+    <!--  </el-container>-->
   </div>
 </template>
 
 <script>
 import DetailCard from "@/components/DetailCard.vue";
-import {ElDivider,ElTag,ElButton,ElDialog} from "element-plus";
+import {ElDivider,ElTag,ElButton} from "element-plus";
 
 export default {
-  components: {DetailCard, ElDivider,ElTag,ElButton,ElDialog},
+  components: {DetailCard, ElDivider,ElTag,ElButton},
   data() {
     return {
-      confirmAdoptDialog : false,
       messages: [
         { id: 0, isMe: true, content: '在吗？', date: "2023-12-01", time:"09:40:03" },
         { id: 1, isMe: false, content: '您好！请问有什么问题可以帮您解答？', date: "2023-12-01", time:"09:50:03"  }
@@ -120,10 +108,6 @@ export default {
     };
   },
   methods: {
-    showDialog(){
-      console.log('showDialog method called');
-      this.confirmAdoptDialog=true;
-    },
     getDate(){
       let currentDate = new Date();
       let year = currentDate.getFullYear();
@@ -189,10 +173,7 @@ export default {
     },
     cancel(){
       this.$emit("cancelChat", true)
-    },
-    handleClose() {
-      this.$emit('close'); // 发出 close 事件
-    },
+    }
   },
 };
 </script>
@@ -203,8 +184,8 @@ export default {
   height: 100vh;
   backdrop-filter: blur(5px); /* 这里的值可以根据你的需求调整模糊程度 */
   background: rgba(0, 0, 0, 0.5);
-  //display: flex;
-  //justify-content: center
+//display: flex;
+//justify-content: center
 }
 
 .chat-container {
@@ -280,7 +261,7 @@ export default {
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 8px;
-  //box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+//box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
 }
@@ -289,13 +270,13 @@ export default {
   border: none;
   align-self: flex-end;
   justify-content: end;
-  //background-color: #4CAF50;
-  //color: white;
+//background-color: #4CAF50;
+//color: white;
 }
 
 .other-message {
   align-self: flex-start;
-  //background-color: #ddd;
+//background-color: #ddd;
 }
 
 .other-avatar {
@@ -384,9 +365,9 @@ export default {
 .contact-item{
   border-radius: 5px;
   padding: 10px;
-  //margin-bottom: 10px;
+//margin-bottom: 10px;
   display: flex;
-  //align-items: center;
+//align-items: center;
 }
 
 
