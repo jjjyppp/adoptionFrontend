@@ -537,6 +537,7 @@ footer #footer-bottom .social-media a:hover {
 }
 #signup button:hover {
   background-color: transparent;
+  color: #6504b5;
   border-top-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }

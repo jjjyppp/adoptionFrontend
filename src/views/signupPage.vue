@@ -28,7 +28,7 @@
                     <i class="fa fa-eye-slash fa-lg" v-if="!psw" aria-hidden="true"></i>
                     <i class="fa fa-eye fa-lg" aria-hidden="true" @click="psw=!psw"></i>
                     </span></span>
-                <a href="#"><button class="py-2 px-5 fs-5 my-2" @click.prevent="handlefinish">注册</button></a>
+                <button class="py-2 px-5 fs-5 my-2" @click.prevent="handlefinish">注册</button>
                 <p class="py-3" >已有账号？<a href='' @click.prevent="handlelogin">去登录</a></p>
 
               </form>
