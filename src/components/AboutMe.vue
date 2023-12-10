@@ -1,28 +1,25 @@
 <template>
   <div>
+    <div class="title">
+      <p>真实姓名</p>
+      <div class="box">
+        <span style="display:block;margin-left:20px;">{{srealname}}</span>
+        <span style="color: #6504b5;font-weight: 700;">Change</span>
+      </div>
+    </div>
+    <!-- 第二部分 -->
+    <div class="title">
+      <p>手机号码</p>
+      <div class="box">
+        <span style="display:block;margin-left:20px;">{{stel}}</span>
+        <span style="color: #6504b5;font-weight: 700;">Change</span>
+      </div>
+    </div>
     <el-form :inline="true"
              :model="formInline"
              :label-position="labelPosition"
              class="demo-form-inline">
-      <!-- 第一部分 -->
-      <div class="title">
-        <p>您的姓名</p>
-      </div>
-      <el-form-item label="您的姓名">
-        <el-input v-model="formInline.name"
-                  placeholder="姓名"
-                  clearable />
-      </el-form-item>
 
-      <!-- 第二部分 -->
-      <div class="title">
-        <p>您的联系方式</p>
-      </div>
-      <el-form-item>
-        <el-input v-model="formInline.phoneNumber"
-                  placeholder="电话号码"
-                  clearable />
-      </el-form-item>
       <!-- 第三部分 -->
       <div class="title">
         <p>您的家庭住址</p>
@@ -83,12 +80,14 @@
 </template>
 
 <script>
+name:'Temp';
 import { ElForm, ElOption, ElSelect, ElFormItem, ElInput, ElButton } from 'element-plus';
-
 export default {
   components: { ElForm, ElFormItem, ElOption, ElSelect, ElInput, ElButton },
   data() {
     return {
+      srealname:localStorage.getItem('realname'),
+      stel:localStorage.getItem('tel'),
       formInline: {
         name: '',
         phoneNumber: '',
@@ -152,5 +151,12 @@ export default {
   height: 5%;
   padding-top: 60px;
   padding-bottom: 15px;
+}
+.box{
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  width:50%;
+
 }
 </style>

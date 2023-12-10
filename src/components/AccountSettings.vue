@@ -3,7 +3,7 @@
     <div class="title">
       <p>Email</p>
       <div class="box">
-      <span style="display:block;margin-left:20px;">wei211250141@gmail.com</span>
+      <span style="display:block;margin-left:20px;">{{smail}}</span>
       <span style="color: #6504b5;font-weight: 700;">Change</span>
       </div>
     </div>
@@ -44,6 +44,7 @@ export default {
         password2: '',
       },
       labelPosition: 'top',
+      smail:localStorage.getItem('mail')
     };
   },
   methods: {
