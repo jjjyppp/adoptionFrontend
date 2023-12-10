@@ -99,7 +99,7 @@
         <el-checkbox label="签订领养合同" style="margin-left: 25px;"></el-checkbox>
         <br/>
         <el-checkbox label="仅限同城" style="margin-left: 10px;"></el-checkbox>
-        <el-checkbox label="定期视频回放" style="margin-left: 24px;"></el-checkbox>
+        <el-checkbox label="定期视频回访" style="margin-left: 24px;"></el-checkbox>
         <el-checkbox label="定期线下回访" style="margin-left: 10px;"></el-checkbox>
 
       </el-checkbox-group>
@@ -116,11 +116,11 @@
     <div class="input-group">
       <label v-if="adoptionType === 'paid'" class="show-depend">领养金额:</label>
       <el-select v-if="adoptionType === 'paid'" placeholder="请选择领养金额" v-model="adoptionAmount">
-        <el-option label="100元以下" value="below100"></el-option>
-        <el-option label="100到300元" value="100to300"></el-option>
-        <el-option label="300到500元" value="300to500"></el-option>
-        <el-option label="500到1000元" value="500to1000"></el-option>
-        <el-option label="1000元以上" value="above1000"></el-option>
+        <el-option label="100元以下" value="100元以下"></el-option>
+        <el-option label="100到300元" value="100到300元"></el-option>
+        <el-option label="300到500元" value="300到500元"></el-option>
+        <el-option label="500到1000元" value="500到1000元"></el-option>
+        <el-option label="1000元以上" value="1000元以上"></el-option>
       </el-select>
     </div>
 
@@ -141,19 +141,25 @@
       <label>宠物图片:<p style= "color: crimson">(最多可上传四张)</p></label>
       <el-upload
           class="uploadImage"
-          action=""
+          action="http://localhost:8080/image"
           ref="upload"
           :limit="limitnum"
           list-type="picture-card"
-          :http-request="uploadSectionFile"
           :auto-upload="true"
-          :file-list="fileList"
           :on-error="uploadFileError"
           :on-success="uploadFileSuccess"
           :on-exceed="exceedFile"
-          :on-remove="removeFile">
-        <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          :on-remove="removeFile"
+          :on-preview="handlePreview">
+        <img v-if="imageUrl" :src="imageUrl" alt="" class="avatar">
       </el-upload>
+      <el-image-viewer
+          v-if="showImgViewer"
+          @close="closeImgViewer"
+          :url-list="imagePreviewUrls"
+          :z-index="3000"
+          :initial-index="initialImgPreviewIndex"
+      />
     </div>
 
     <div class="input-group">
@@ -199,22 +205,37 @@
 <script>
 
 import HeaderTag from "@/components/HeaderTag.vue";
-import {ElPagination, ElButton, ElIcon, ElSelect, ElOption, ElInput, ElCheckboxGroup, ElCheckbox, ElUpload, ElCascader} from "element-plus";
+import {
+  ElPagination,
+  ElButton,
+  ElIcon,
+  ElSelect,
+  ElOption,
+  ElInput,
+  ElCheckboxGroup,
+  ElCheckbox,
+  ElUpload,
+  ElCascader,
+  ElImageViewer
+} from "element-plus";
 import { regionData, codeToText} from 'element-china-area-data';
 import FooterCard from "@/components/FooterCard.vue";
 import global from "@/views/assets/js/global_variable";
 import {request} from "@/utils/request";
-// import { AxiosError, AxiosResponse } from 'axios';
 
 export default {
   name: "rehomePage",
   components:{
     FooterCard,
-    ElPagination, ElButton, ElIcon, ElSelect, ElOption, ElInput, ElCheckboxGroup, ElCheckbox, ElUpload, ElCascader, HeaderTag},
+    ElPagination, ElButton, ElIcon, ElSelect, ElOption, ElInput, ElCheckboxGroup, ElCheckbox, ElUpload, ElCascader, HeaderTag, ElImageViewer},
 
   data() {
     return {
       imageUrl: "src/assets/icons/upload_icon.png",
+      showImgViewer: false,
+      imagePreviewUrls: [],
+      imageUrls: [],
+      initialImgPreviewIndex: 0,
       petName: '',
       petSize: '',
       petGender: '',
@@ -222,6 +243,7 @@ export default {
       petType: '',
       petBreed: '',
       petSource: '',
+      petAddress: '',
       petTypes: [
         { pro: 'dog', label: '宠物狗' },
         { pro: 'cat', label: '宠物猫' },
@@ -247,9 +269,9 @@ export default {
         { pro: 'rabbit', label: '其他' }
       ],
       petSizes: [
-        { label: "小型", value: "small" },
-        { label: "中型", value: "medium" },
-        { label: "大型", value: "large" },
+        { label: "小型", value: "小型" },
+        { label: "中型", value: "中型" },
+        { label: "大型", value: "大型" },
         // Add more options for pet sizes
       ],
       petGenders: [
@@ -258,24 +280,23 @@ export default {
         // Add more options for pet genders
       ],
       petAges: [
-        { label: "0~6个月", value: "0-6" },
-        { label: "6个月~2岁", value: "6-24" },
-        { label: "2岁~7岁", value: "24-84" },
-        { label: "大于7岁", value: "84+" },
+        { label: "0~6个月", value: "0~6个月" },
+        { label: "6个月~2岁", value: "6个月~2岁" },
+        { label: "2岁~7岁", value: "2岁~7岁" },
+        { label: "大于7岁", value: "大于7岁" },
         // Add more options for pet ages
       ],
       petSources: [
-        { value: 'home', label: '家养' },
-        { value: 'shelter', label: '救助站' },
-        { value: 'save', label: '个人救助' },
-        { value: 'other', label: '其他' }
+        { value: '家养', label: '家养' },
+        { value: '救助站', label: '救助站' },
+        { value: '个人救助', label: '个人救助' },
+        { value: '其他', label: '其他' }
       ],
       selectedHealthConditions : [],
       selectedAdoptNeeds : [],
       adoptionType: '', // 领养方式
       adoptionAmount: '', // 金额
       paymentReason: '',
-      fileList:[],//上传的文件列表
       limitnum:4,//最大允许上传个数
       options: regionData,
       selectedOptions: ['110000', '110100', '110101'],
@@ -301,8 +322,6 @@ export default {
   },
 
   methods: {
-    // Existing methods
-
     submitForm() {
       if (
           !this.petName ||
@@ -342,8 +361,8 @@ export default {
           requirements: this.selectedAdoptNeeds,
           price: price,
           reason: this.paymentReason,
-          urls: ["1","1"],
-          address: this.selectedOptions,
+          urls: this.imageUrls,
+          address: this.petAddress,
           story: this.petExperience,
           attention: this.adoptAttention
         }
@@ -353,16 +372,6 @@ export default {
       }).catch(error=> {
 
       })
-
-      // console.log(this.petBreed)
-      // let data = {name: "1",'type': "1",'breed': '1','size': "1",'gender': "1",'age': "1",'source': "1",'health': ["1","1"],'requirements': ["1","1"],
-      //   'price': "1",'reason': "1",'urls': ["1","1"],'address': ["1","1"],'story': "1",'attention': "1"};
-      //
-      // axios.post("http://localhost:8080/pet",qs.stringify({
-      //   data
-      // })).then((response)=>{
-      //   console.log(response)
-      // })
 
       // Create an adoption posting with the form data
       const adoptionPosting = {
@@ -388,6 +397,7 @@ export default {
 
 
     onTypeChange() {
+      console.log(this.petType)
       this.petBreed = '';
     },
 
@@ -397,30 +407,14 @@ export default {
       }
     },
 
-    //自定义上传
-    uploadSectionFile(param){
-      var fileObj = param.file;
-      var form = new FormData();
-      // 文件对象
-      form.append("file", fileObj);
-      this.$axios.post('/file/upload',form).then(res => {
-        param.onSuccess(res)
-      }).catch(({err}) => {
-        param.onError(err)
-      })
-    },
     //上传失败
     uploadFileError(err, file, fileList){
       this.$message.error("上传失败！")
     },
     //上传成功
-    uploadFileSuccess(response, file, fileList){
-      if(response.data.error==0){
-        file.response=response.data.data;
-        this.fileList.push(file)
-      }else{
-        this.$message.error(response.data.message);//文件上传错误提示
-      }
+    uploadFileSuccess(res, file, fileList){
+      this.imagePreviewUrls.push(file.url) // 预览图片的数组
+      this.imageUrls.push(res)
     },
     // 文件超出个数限制时的钩子
     exceedFile(files, fileList){
@@ -428,13 +422,38 @@ export default {
     },
     //删除文件
     removeFile(file,fileList) {
-      this.fileList=fileList;
+      let index = this.imagePreviewUrls.indexOf(file.url)
+      if (index > -1) {
+        this.imagePreviewUrls.splice(index, 1)
+        this.imageUrls.splice(index, 1)
+      }
+    },
+
+    handlePreview(file){
+      let index = this.imagePreviewUrls.indexOf(file.url)
+      if (index >= 0) {
+        this.initialImgPreviewIndex = index
+      }
+      this.showImgViewer = true
+    },
+    // 图片预览
+    handlePictureCardPreview (file) {
+      let index = this.imagePreviewUrls.indexOf(file.url)
+      if (index >= 0) {
+        this.initialImgPreviewIndex = index
+      }
+      this.showImgViewer = true
+    },
+
+    closeImgViewer () {
+      this.showImgViewer = false
     },
 
     addressChange (arr) {
       console.log(this.selectedOptions)
       console.log(arr)
       console.log(codeToText[arr[0]], codeToText[arr[1]], codeToText[arr[2]])
+      this.petAddress=codeToText[arr[0]] + codeToText[arr[1]] + codeToText[arr[2]]
     },
   },
 };

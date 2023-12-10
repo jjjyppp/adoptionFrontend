@@ -1,24 +1,23 @@
 <template>
   <div style="width: 210px; height: 300px" >
-    <div class="animal-box text-center" style="height: 278px">
+    <div class="animal-box text-center" style="height: 290px">
       <router-link :to="{ name: 'petDetailPage', params: { id: pet.id } }">
         <a>
           <div class="pet-img">
             <img src="" ref="img" alt="" style="width: 100%">
           </div>
           <p class="type">{{pet.name}}</p>
-          <p class="info">{{pet.age}} {{pet.location}}</p>
+          <p class="info">{{pet.age}}</p>
+          <p class="info">{{pet.address}}</p>
         </a>
-        <el-button href="#" @click.prevent="addToFavorites">
-          <span :class="{ 'bg-light': !isClicked, 'bg-dark': isClicked }">
-            <div style="margin-top: 4px">
+        <span @click.prevent="addToFavorites" :class="{ 'bg-light': !isClicked, 'bg-dark': isClicked }">
+          <div>
 <!--              <img src="../assets/icons/heart.png" alt="" width="26">-->
-              <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="26" height="26" :style="{ fill: isClicked ? '#ffffff' : '#4c0586' }">
-    <path d="M1024 358.156C1024 195.698 892.3 64 729.844 64 643.482 64 565.814 101.218 512 160.49 458.186 101.218 380.518 64 294.156 64 131.698 64 0 195.698 0 358.156 0 444.518 37.218 522.186 96.49 576L96 576l320 320c32 32 64 64 96 64s64-32 96-64l320-320-0.49 0C986.782 522.186 1024 444.518 1024 358.156zM841.468 481.232 517.49 805.49c-1.678 1.678-3.532 3.532-5.49 5.48-1.96-1.95-3.814-3.802-5.49-5.48L182.532 481.234C147.366 449.306 128 405.596 128 358.156 128 266.538 202.538 192 294.156 192c47.44 0 91.15 19.366 123.076 54.532L512 350.912l94.768-104.378C638.696 211.366 682.404 192 729.844 192 821.462 192 896 266.538 896 358.156 896 405.596 876.632 449.306 841.468 481.232z"></path>
-  </svg>
-            </div>
-          </span>
-        </el-button>
+            <svg style="margin-bottom: 4px" class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="26" height="26" :style="{ fill: isClicked ? '#ffffff' : '#4c0586' }">
+              <path d="M1024 358.156C1024 195.698 892.3 64 729.844 64 643.482 64 565.814 101.218 512 160.49 458.186 101.218 380.518 64 294.156 64 131.698 64 0 195.698 0 358.156 0 444.518 37.218 522.186 96.49 576L96 576l320 320c32 32 64 64 96 64s64-32 96-64l320-320-0.49 0C986.782 522.186 1024 444.518 1024 358.156zM841.468 481.232 517.49 805.49c-1.678 1.678-3.532 3.532-5.49 5.48-1.96-1.95-3.814-3.802-5.49-5.48L182.532 481.234C147.366 449.306 128 405.596 128 358.156 128 266.538 202.538 192 294.156 192c47.44 0 91.15 19.366 123.076 54.532L512 350.912l94.768-104.378C638.696 211.366 682.404 192 729.844 192 821.462 192 896 266.538 896 358.156 896 405.596 876.632 449.306 841.468 481.232z"></path>
+            </svg>
+          </div>
+        </span>
       </router-link>
     </div>
   </div>
@@ -32,7 +31,13 @@ export default {
   components:{ElButton,ElNotification},
   props: ['pet'],
   mounted() {
-    this.$refs.img.src = this.pet.imageUrl;
+
+  },
+  watch: {
+    pet: function(newVal, oldVal) {
+      this.$refs.img.src = this.pet.urls[0];
+      console.log(this.pet.urls[0])
+    }
   },
   data() {
     return {
@@ -145,16 +150,22 @@ a{
 
 .type{
   font-size: calc(1.3rem + .6vw)!important;
-  padding-top: 1rem!important;
+  padding-top: 0.4rem!important;
   margin-bottom: 0!important;
   color: #6504B5;
 }
 
 .info{
   margin-bottom: 0!important;
-  padding-top: 0!important;
+  padding-top: 0.2rem!important;
   padding-bottom: 0!important;
   color: #6504B5;
+  //display: inline-block;
+  //width: 160px;
+  padding-left: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .bg-light {

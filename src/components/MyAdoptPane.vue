@@ -8,9 +8,11 @@
       <adoption-card class="adoption-card"></adoption-card>
       <adoption-card class="adoption-card"></adoption-card>
       <adoption-card class="adoption-card"></adoption-card>
-      <adoption-card class="adoption-card"></adoption-card><adoption-card class="adoption-card"></adoption-card>
       <adoption-card class="adoption-card"></adoption-card>
-      <adoption-card class="adoption-card"></adoption-card><adoption-card class="adoption-card"></adoption-card>
+      <adoption-card class="adoption-card"></adoption-card>
+      <adoption-card class="adoption-card"></adoption-card>
+      <adoption-card class="adoption-card"></adoption-card>
+      <adoption-card class="adoption-card"></adoption-card>
       <adoption-card class="adoption-card"></adoption-card>
       <adoption-card class="adoption-card"></adoption-card>
     </div>
