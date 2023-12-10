@@ -1,27 +1,27 @@
 <template>
   <div>
     <div class="title">
-      <p>Profile completion: 1%</p>
+      <p>简介完成度: 1%</p>
     </div>
     <div style="float:left;">
       <img src="../views/assets/img/进度条.png">
-      <div class="tip" >Your profile must be complete to submit inquiries to organizations</div>
+      <div class="tip" >您的个人资料必须完整，才能向组织提交查询</div>
       <el-button class="button"
                  color="#6503b5"
                  size="primary"
-                 round>GUIDE ME</el-button>
+                 round>引导我</el-button>
     </div>
     <div class="title1">
-      <p>ABOUT ME</p>
+      <p>关于我</p>
     </div>
-    <div class="tip1">Tell us about your lifestyle and current home</div>
+    <div class="tip1">请向我们介绍您的生活方式和目前的住所</div>
     <el-form :inline="true"
              :model="formInline"
              :label-position="labelPosition"
              class="demo-form-inline">
       <el-form-item >
         <el-select v-model="formInline.pet"
-                   placeholder="Desired pet"
+                   placeholder="想要的宠物"
                    clearable>
           <el-option v-for="item in select_range"
                      :key="item.value"

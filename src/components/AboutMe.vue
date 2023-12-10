@@ -20,7 +20,7 @@
       </div>
       <el-form-item>
         <el-input v-model="formInline.phoneNumber"
-                  placeholder="Phone number"
+                  placeholder="电话号码"
                   clearable />
       </el-form-item>
       <!-- 第三部分 -->
@@ -71,14 +71,14 @@
     </el-form>
     <!-- 提交按钮 -->
     <div class="title">
-      <p>YOUR CURRENT PETS</p>
+      <p>您现有的宠物</p>
     </div>
     <el-button class="button"
                color="#6503b5"
                size="large"
-               round>add a pet</el-button>
+               round>添加一个宠物</el-button>
     <!-- 提示 -->
-    <div class="tip">you may search our database of thousands of pets looking for forever homes</div>
+    <div class="tip">您可以在我们的数据库中搜索成千上万只正在寻找永久家园的宠物</div>
   </div>
 </template>
 
