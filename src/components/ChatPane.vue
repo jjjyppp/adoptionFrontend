@@ -7,7 +7,7 @@
     <div style="display: flex; justify-content: center;">
       <el-dialog
           title="提示"
-          :visible="confirmAdoptDialog"
+          v-model="confirmAdoptDialog"
           width="50%"
           z-index=50
           @close="handleClose">
