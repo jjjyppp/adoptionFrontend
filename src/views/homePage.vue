@@ -98,7 +98,7 @@
         <h2 class="art-question">你准备领养一只宠物吗？</h2>
       </div>
       <div class="cards">
-      <article-card v-for="(article, index) in articles" :key="index" :article="article"></article-card>
+      <article-card v-for="(article, index) in articles" :key="index" :article="article" :index="index"></article-card>
       </div>
     </div>
     <div class="recent">
@@ -488,6 +488,7 @@ li {
 .recent{
   text-align: center;
   margin-top: 60px;
+  padding-bottom: 100px;
 }
 
 .recent-text{

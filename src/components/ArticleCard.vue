@@ -3,18 +3,26 @@
     <img src="" alt="" class="img" ref="img">
     <h2>{{ article.title }}</h2>
     <p>{{ article.subTitle }}</p>
-    <button>了解更多</button>
+    <button @click="toArticle">了解更多</button>
   </div>
 </template>
 
 <script>
 import {Burger} from "@element-plus/icons-vue";
+import router from "@/router";
 export default {
   name: "ArticleCard",
   components: {Burger},
-  props: ['article'],
+  props: ['article', 'index'],
   mounted() {
     this.$refs.img.src = this.article.src;
+  },
+  methods:{
+    toArticle(){
+      router.push({
+        path:'/article', query: {index: this.index}
+      })
+    }
   }
 }
 </script>
