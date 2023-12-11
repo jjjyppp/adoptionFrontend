@@ -16,17 +16,17 @@ import AdvertisementCard from "@/components/AdvertisementCard.vue";
   </div>
   <body class="body" style="margin-top: 50px">
     <el-carousel @change="handleCarouselChange" :interval="4000" type="card" height="350px" indicator-position="outside">
-      <el-carousel-item v-for="(item, index) in images" :key="item"  style="margin: 10px">
+      <el-carousel-item v-for="(url, index) in pet.urls" :key="item"  style="margin: 10px">
         <div class="carousel-item-content" :style="{ filter: index !== currentIndex ? 'brightness(50%)' : 'brightness(100%)' }">
           <el-image
               style="width: 460px; height: 350px"
-              :src="item.url"
-              :fit="item.fit"></el-image>
+              :src="url"
+              :fit="'fill'"></el-image>
         </div>
       </el-carousel-item>
     </el-carousel>
     <div class="container">
-      <detail-card></detail-card>
+      <detail-card :petId="petId"></detail-card>
       <div class="right" >
         <el-card class="adoption" shadow="hover" style = "border-radius: 15px">
           <div class="adoption-body">
@@ -92,6 +92,9 @@ import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import AdoptionProcessDialog from "@/components/AdoptionProcessDialog.vue";
 import ChatPane from "@/components/ChatPane.vue";
 import {ElNotification} from "element-plus"
+import router from "@/router";
+import axios from "axios";
+import {request} from "@/utils/request";
 
 export default {
   components: {
@@ -99,6 +102,7 @@ export default {
   },
   data() {
     return {
+      petId: -1,
       showChat: false,
       currentIndex: 0,
       dialogVisible: false,
@@ -109,13 +113,39 @@ export default {
         { url: "https://box.nju.edu.cn/f/5412f3ed6b55425ead4e/?dl=1", fit: 'fill' },
         { url: "https://box.nju.edu.cn/f/294b3b3d0e784a06b992/?dl=1", fit: 'fill' },
       ],
-      pets: [
-        { id: 1, name: '猫猫1', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 2, name: '猫猫2', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 3, name: '猫猫3', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 4, name: '猫猫4', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-      ],
+      pet: {
+        id: -1,
+        address: '',
+        age: '',
+        attention: '',
+        breed: '',
+        gender: '',
+        health: [],
+        name: '',
+        price: '',
+        reason: '',
+        requirements: [],
+        type: '',
+        size: '',
+        source: '',
+        story: '',
+        urls: [],
+        pet: ''
+      }
     }
+  },
+  mounted() {
+    this.petId = this.$route.params.id;
+
+    request({
+      url: `http://localhost:8080/pet/${this.petId}`,
+      method: 'GET'
+    }).then((res) => {
+      console.log(res.data)
+      this.pet=res.data
+      console.log(this.pet.urls)
+    }).catch((error) => {
+    })
   },
   methods: {
     handleCarouselChange(index) {

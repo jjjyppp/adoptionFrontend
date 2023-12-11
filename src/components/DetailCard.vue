@@ -1,9 +1,50 @@
 <script>
 import {ElIcon, ElCard, ElContainer, ElHeader, ElTag, ElAside, ElMain, ElFooter} from "element-plus";
 import {Location} from '@element-plus/icons-vue'
+import {request} from "@/utils/request";
+import PetDisplayCard from "@/components/PetDisplayCard.vue";
+
 export default {
   name: "detailCard",
-  components:{Location, ElCard, ElTag, ElContainer, ElHeader, ElAside, ElMain, ElFooter, ElIcon},
+  components:{PetDisplayCard, Location, ElCard, ElTag, ElContainer, ElHeader, ElAside, ElMain, ElFooter, ElIcon},
+  props:['petId'],
+  data(){
+    return{
+      pet: {
+        id: -1,
+        address: '',
+        age: '',
+        attention: '',
+        breed: '',
+        gender: '',
+        health: [],
+        name: '',
+        price: '',
+        reason: '',
+        requirements: [],
+        type: '',
+        size: '',
+        source: '',
+        story: '',
+        urls: [],
+        date: ''
+      }
+    }
+  },
+  mounted() {},
+  watch: {
+    petId: function(newVal, oldVal) {
+      console.log("petId="+this.petId)
+      request({
+        url: `http://localhost:8080/pet/${this.petId}`,
+        method: 'GET'
+      }).then((res) => {
+        console.log(res.data)
+        this.pet=res.data
+      }).catch((error) => {
+      })
+    }
+  },
 }
 </script>
 
@@ -12,45 +53,48 @@ export default {
 
 <!--      <el-container>-->
         <el-header class="header">
-          <span class="name">大黄</span>
+          <span class="name">{{pet.name}}</span>
           <br>
           <el-icon size="30" class="location-icon" style="position: relative; top: 5px;">
             <location/>
           </el-icon>
-          <span class="addr-and-date" >江苏省·南京市</span>
-          <span class="addr-and-date" style="margin-left: 30px">2023-11-11</span>
+          <span class="addr-and-date" >{{pet.address}}</span>
+          <span class="addr-and-date" style="margin-left: 30px">{{pet.date}}</span>
           <br>
         </el-header>
         <el-main class="main">
-          <span><label style="color: darkgrey">品种：</label>中华田园犬</span><br>
-          <span><label style="color: darkgrey">年龄：</label>三个月</span><br>
-          <span><label style="color: darkgrey">性别：</label>母</span><br>
-          <span><label style="color: darkgrey">体型：</label>中型</span><br>
-          <span><label style="color: darkgrey">领养方式：</label>免费领养</span><br>
-          <span><label style="color: darkgrey">宠物来源：</label>家养</span><br>
+          <span><label style="color: darkgrey">品种：</label>{{pet.breed}}</span><br>
+          <span><label style="color: darkgrey">年龄：</label>{{pet.age}}</span><br>
+          <span><label style="color: darkgrey">性别：</label>{{pet.gender}}</span><br>
+          <span><label style="color: darkgrey">体型：</label>{{pet.size}}</span><br>
+          <span><label style="color: darkgrey">领养方式：</label>{{pet.price}}</span><br>
+          <span v-if="pet.price!=='免费'" class="word-break">
+            <label style="color: darkgrey">有偿原因：</label>
+            {{pet.reason}}
+          </span><br v-if="pet.price!=='免费'">
+          <span><label style="color: darkgrey">宠物来源：</label>{{pet.source}}</span><br>
           <span><label style="color: darkgrey">健康情况：</label>
-            <el-tag type="success" effect="plain">已免疫</el-tag>
-            <el-tag  type="success" effect="plain">已驱虫</el-tag>
-            <el-tag  type="info" effect="plain">未绝育</el-tag>
+            <el-tag type="success" effect="plain" v-for="(health, index) in pet.health" :key="index" :pet="pet">{{health}}</el-tag>
+<!--            <el-tag type="success" effect="plain">已免疫</el-tag>-->
+<!--            <el-tag  type="success" effect="plain">已驱虫</el-tag>-->
+<!--            <el-tag  type="info" effect="plain">未绝育</el-tag>-->
           </span><br>
           <span><label style="color: darkgrey">领养要求：</label>
-            <el-tag  effect="plain">仅限同城</el-tag>
-            <el-tag  effect="plain">定期线下回访</el-tag>
-            <el-tag  effect="plain">签订领养合同</el-tag>
+            <el-tag v-for="(requirment, index) in pet.requirements" effect="plain">{{requirment}}</el-tag>
           </span>
         </el-main>
 
         <div class="story">
           <p class="story-title">认识我：</p>
-          <p>
-            一只可爱的金毛犬，失落地漂泊在城市街头。我发现了它，带它回家。金毛犬得到温馨的庇护，重新找到了快乐，成为家庭的忠实伴侣。
+          <p class="word-break">
+            {{pet.story}}
           </p>
 
         </div>
     <div class="attention">
       <p class="story-title">注意事项：</p>
-      <p>
-        领养前请确保提供足够的食物、水源和关爱。及时带宠物看兽医，保持健康。建立日常规律，培养良好行为。耐心沟通，建立亲密关系。
+      <p class="word-break">
+        {{pet.attention}}
       </p>
 
     </div>
@@ -74,7 +118,12 @@ export default {
   --el-card-padding: 0 10px;
 }
 
-
+.word-break{
+  display: inline-block;
+  width: 680px;
+  word-break: break-all;
+  white-space: normal;
+}
 
 .header{
   margin-top: 30px;

@@ -322,6 +322,14 @@ export default {
   },
 
   methods: {
+    getCurrentDate() {
+      let now = new Date();
+      let year = now.getFullYear();
+      let month = now.getMonth() + 1;
+      let day = now.getDate();
+      return year + "-" + month + "-" + day;
+    },
+
     submitForm() {
       if (
           !this.petName ||
@@ -340,7 +348,7 @@ export default {
         return;
       }
 
-      let price = '0'
+      let price = '免费'
       if(this.adoptionType==='paid'){
         if(!this.adoptionAmount || !this.paymentReason) return;
         price=this.adoptionAmount
@@ -364,7 +372,8 @@ export default {
           urls: this.imageUrls,
           address: this.petAddress,
           story: this.petExperience,
-          attention: this.adoptAttention
+          attention: this.adoptAttention,
+          date: this.getCurrentDate()
         }
       })
       r.then(response => {
