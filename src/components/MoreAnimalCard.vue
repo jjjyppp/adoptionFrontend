@@ -5,7 +5,7 @@
       <img class="img" src="../assets/icons/other-white.png" alt="">
     </div>
     <p class="sentence">这里有来自150000位用户的待领养宠物</p>
-    <el-divider style="width:220px; margin: 0"></el-divider>
+    <el-divider style="width:220px; margin: 28px 0 0;"></el-divider>
     <button class="bt" @click="choose">了解更多</button>
   </div>
   <div class="choose-animal-card" v-show="showChooseCard">
@@ -45,7 +45,7 @@ export default{
 <style scoped>
 .more-card{
   width: 220px;
-  height: 278px;
+  height: 286px;
   background-color: #6504B5;
   font-weight: 600;
   border-radius: 10px;

@@ -1,11 +1,14 @@
 <script setup>
 
 import FooterCard from "@/components/FooterCard.vue";
+import HeaderTag from "@/components/HeaderTag.vue";
 </script>
 
 
 <template>
-
+  <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
+    <header-tag></header-tag>
+  </div>
   <section id="login" class="py-5">
       <div class="container">
         <div class="row justify-content-center pt-5 mt-5">
@@ -13,11 +16,10 @@ import FooterCard from "@/components/FooterCard.vue";
             <div class="log-inner py-5">
               <h1 class="py-2"> 登录</h1>
               <input type="text" name="username" v-model.trim="name" id="" placeholder="用户名"  required>
-              <input type="password" name="password" v-model.trim="password" id="" placeholder="password" required>
-              <a href="#" ><button class="py-2 px-5 fs-5 my-2" @click.prevent="handlelogin">LOG IN</button></a>
-              <p >尚未注册账号？<a href='' @click.prevent="handleregister">去注册</a></p>
+              <input type="password" name="password" v-model.trim="password" id="" placeholder="密码" required>
+              <a href="#" ><button class="py-2 px-5 fs-5 my-2" @click.prevent="handlelogin">登录</button></a>
+              <p class="py-3" style="color: #c60bcc; font-weight: 700;">尚未注册账号？<a href='' @click.prevent="handleregister" style="color: #0d6efd; text-decoration: underline;" >去注册</a></p>
             </div>
-
           </div>
         </div>
       </div>

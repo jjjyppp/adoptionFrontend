@@ -78,13 +78,22 @@ const routes = [
   }
 ]
 
+// const router = createRouter({
+//   history: createWebHashHistory(),
+//   routes,
+//   // scrollBehavior(to, from, savedPosition) {
+//   //   // 将滚动位置设置为页面的最顶部
+//   //   return { x: 0, y: 0 };
+//   // },
+// })
+
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-  // scrollBehavior(to, from, savedPosition) {
-  //   // 将滚动位置设置为页面的最顶部
-  //   return { x: 0, y: 0 };
-  // },
+  // 每次切换路由页面滚动到顶部
+  scrollBehavior () {
+    return { top: 0 }
+  }
 })
 
 export default router
