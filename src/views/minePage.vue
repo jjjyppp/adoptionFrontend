@@ -37,6 +37,7 @@
     </el-aside>
     <el-main style="padding-top: 100px; padding-left: 40px">
       <div style="display: flex; flex-direction: column">
+        <my-detail-pane v-show="menuIndex==='1'"></my-detail-pane>
         <my-rehome-pane v-show="menuIndex==='2'"></my-rehome-pane>
         <my-adopt-pane v-show="menuIndex==='3' " ></my-adopt-pane>
       </div>
@@ -56,9 +57,12 @@ import RehomePage from "@/views/rehomePage.vue";
 import UnRehomeCard from "@/components/UnRehomeCard.vue";
 import MyRehomePane from "@/components/MyRehomePane.vue";
 import MyAdoptPane from "@/components/MyAdoptPane.vue";
+import MyDetailPane from "@/components/MyDetailPane.vue";
 
 export default {
-  components: {ElRow, ElCol, ElMenu, ElMenuItem, ElContainer, ElMain, ElAside, HeaderTag, FooterCard, AdoptionCard, RehomePage, UnRehomeCard, MyRehomePane, MyAdoptPane},
+  components: {
+    MyDetailPane,
+    ElRow, ElCol, ElMenu, ElMenuItem, ElContainer, ElMain, ElAside, HeaderTag, FooterCard, AdoptionCard, RehomePage, UnRehomeCard, MyRehomePane, MyAdoptPane},
   data(){
     return{
       menuIndex: -1
