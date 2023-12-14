@@ -11,11 +11,26 @@ import router from "@/router";
 
 export default {
   methods:{
-    toAdoption(){
+    toAdoptionDog(){
       router.push({
-        name:"adoptionPage"
+        name: 'adoptionPage', query:{type: 'dog'}
       })
-    }
+    },
+    toAdoptionCat(){
+      router.push({
+        name: 'adoptionPage', query:{type: 'cat'}
+      })
+    },
+    toAdoptionRabbit(){
+      router.push({
+        name: 'adoptionPage', query:{type: 'rabbit'}
+      })
+    },
+    toAdoptionOther(){
+      router.push({
+        name: 'adoptionPage', query:{type: 'other'}
+      })
+    },
   }
 }
 </script>
@@ -28,10 +43,10 @@ export default {
   <br>
   <p style="font-size: 18px; color: gray">当您看到喜欢的宠物时，可以点击收藏按钮将它添加到收藏列表</p>
   <br>
-  <el-button class="button" round @click="toAdoption">浏览宠物狗</el-button><br>
-  <el-button class="button" round @click="toAdoption">浏览宠物猫</el-button><br>
-  <el-button class="button" round @click="toAdoption">浏览宠物兔</el-button><br>
-  <el-button class="button" round @click="toAdoption" style="margin-bottom: 70px">浏览其他宠物</el-button>
+  <el-button class="button" round @click="toAdoptionDog">浏览宠物狗</el-button><br>
+  <el-button class="button" round @click="toAdoptionCat">浏览宠物猫</el-button><br>
+  <el-button class="button" round @click="toAdoptionRabbit">浏览宠物兔</el-button><br>
+  <el-button class="button" round @click="toAdoptionOther" style="margin-bottom: 70px">浏览其他宠物</el-button>
   <div style="align-items: center;justify-content: center;margin: 40px;">
     <recommend-card></recommend-card>
   </div>
