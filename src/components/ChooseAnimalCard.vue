@@ -16,13 +16,13 @@
      <ul class="list1">
         <li>
           <button class="card-button1">
-            <img src="../assets/icons/dog1.png" alt="" class="card-bt-img" @click="toAdoption">
+            <img src="../assets/icons/dog1.png" alt="" class="card-bt-img" @click="toAdoptionDog">
             <span class="card-text">宠物狗</span>
           </button>
         </li>
         <li>
           <button class="card-button1">
-            <img src="../assets/icons/cat1.png" alt="" class="card-bt-img" @click="toAdoption">
+            <img src="../assets/icons/cat1.png" alt="" class="card-bt-img" @click="toAdoptionCat">
             <span class="card-text">宠物猫</span>
           </button>
         </li>
@@ -32,13 +32,13 @@
       <ul class="list1">
         <li>
           <button class="card-button1">
-            <img src="../assets/icons/rabbit1.png" alt="" class="card-bt-img" @click="toAdoption">
+            <img src="../assets/icons/rabbit1.png" alt="" class="card-bt-img" @click="toAdoptionRabbit">
             <span class="card-text">兔子</span>
           </button>
         </li>
         <li>
           <button class="card-button1">
-            <img src="../assets/icons/other.png" alt="" class="card-bt-img" @click="toAdoption">
+            <img src="../assets/icons/other.png" alt="" class="card-bt-img" @click="toAdoptionOther">
             <span class="card-text">其他</span>
           </button>
         </li>
@@ -74,7 +74,20 @@ export default {
       router.push({
         name:"adoptionPage"
       })
-    }
+    },
+
+    toAdoptionDog(){
+      this.$emit("getType", 'dog')
+    },
+    toAdoptionCat(){
+      this.$emit("getType", 'cat')
+    },
+    toAdoptionRabbit(){
+      this.$emit("getType", 'rabbit')
+    },
+    toAdoptionOther(){
+      this.$emit("getType", 'other')
+    },
   }
 }
 

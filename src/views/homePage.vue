@@ -90,9 +90,9 @@
         </div>
       </div>
     </div>
-    <div class="choose-animal-card" v-show="showChooseCard">
-      <choose-animal-card @backToHome="backToHomeHandler"></choose-animal-card>
-    </div>
+<!--    <div class="choose-animal-card" v-show="showChooseCard">-->
+<!--      <choose-animal-card @backToHome="backToHomeHandler"></choose-animal-card>-->
+<!--    </div>-->
     <div class="articles">
       <div style="padding-top: 30px">
         <h2 class="art-question">你准备领养一只宠物吗？</h2>
@@ -124,6 +124,7 @@ import more from "@element-plus/icons/lib/More";
 import ArticleCard from "@/components/ArticleCard.vue";
 import FooterCard from "@/components/FooterCard.vue";
 import ChooseAnimalCard from "@/components/ChooseAnimalCard.vue";
+import router from "@/router";
 export default {
   name: "homePage",
   computed: {
@@ -237,13 +238,10 @@ export default {
       console.log(item);
     },
     choose(){
-      document.body.style.overflow = 'hidden';
-      this.showChooseCard=true
+      router.push({
+        path: 'adoption'
+      })
     },
-    backToHomeHandler(){
-      document.body.style.overflow = '';
-      this.showChooseCard=false
-    }
   }
 }
 </script>

@@ -8,9 +8,9 @@
     <el-divider style="width:220px; margin: 28px 0 0;"></el-divider>
     <button class="bt" @click="choose">了解更多</button>
   </div>
-  <div class="choose-animal-card" v-show="showChooseCard">
-    <choose-animal-card @backToHome="backToHomeHandler"></choose-animal-card>
-  </div>
+<!--  <div class="choose-animal-card" v-show="showChooseCard">-->
+<!--    <choose-animal-card @backToHome="backToHomeHandler"></choose-animal-card>-->
+<!--  </div>-->
 
 </template>
 
@@ -20,23 +20,27 @@
 import {ElDivider} from "element-plus";
 import chooseAnimalCard from "@/components/ChooseAnimalCard.vue";
 import {Delete} from "@element-plus/icons-vue";
+import router from "@/router";
 
 export default{
   components:{Delete, ElDivider,chooseAnimalCard},
   data(){
     return{
-      showChooseCard:false,
+      // showChooseCard:false,
     }
   },
   methods:{
     choose(){
-      document.body.style.overflow = 'hidden';
-      this.showChooseCard=true
+      router.push({
+        path: 'adoption'
+      })
+      // document.body.style.overflow = 'hidden';
+      // this.showChooseCard=true
     },
-    backToHomeHandler(){
-      document.body.style.overflow = '';
-      this.showChooseCard=false
-    },
+    // backToHomeHandler(){
+    //   document.body.style.overflow = '';
+    //   this.showChooseCard=false
+    // },
   }
 }
 

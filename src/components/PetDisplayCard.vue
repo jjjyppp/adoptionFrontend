@@ -32,7 +32,7 @@ export default {
   components:{ElButton,ElNotification},
   props: ['pet'],
   mounted() {
-
+      this.$refs.img.src = this.pet.urls[0];
   },
   watch: {
     pet: function(newVal, oldVal) {
