@@ -69,7 +69,7 @@
         <img src="../assets/icons/other.png" alt="" v-show="showOther">
       </div>
       <div style="z-index:0" >
-        <search-card @backToHome="backToHome" id="search" v-show="show"></search-card>
+        <search-card @backToHome="backToHome" id="search" v-show="show" :type="type"></search-card>
       </div>
     </div>
     <div class="recommend">
@@ -141,6 +141,7 @@ export default {
     PetDisplayCard, Search, Burger, HeaderTag, SearchCard, ElDivider, ElRow, ElCol, ElLink, ElIcon, ElAutocomplete},
   data(){
     return{
+      type:'',
       showChooseCard: false,
       dogPath:"src/assets/icons/dog.png",
       catPath:"src/assets/icons/cat.png",
@@ -153,17 +154,17 @@ export default {
       searchContent: "",
       searchChoice: [],
       recommend_pets: [
-        { id: 1, name: '猫猫1', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 2, name: '猫猫2', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/indir.jpg' },
-        { id: 3, name: '猫猫3', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 4, name: '猫猫4', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 1, name: '猫猫1', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 2, name: '猫猫2', age: "6岁", location: '南京', urls: 'src/views/assets/img/indir.jpg' },
+        { id: 3, name: '猫猫3', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 4, name: '猫猫4', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
       ],
       recent_pets: [
-        { id: 1, name: '猫猫1', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 2, name: '猫猫2', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 3, name: '猫猫3', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/indir.jpg' },
-        { id: 4, name: '猫猫4', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/indir.jpg' },
-        { id: 5, name: '猫猫5', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 1, name: '猫猫1', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 2, name: '猫猫2', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 3, name: '猫猫3', age: "6岁", location: '南京', urls: 'src/views/assets/img/indir.jpg' },
+        { id: 4, name: '猫猫4', age: "6岁", location: '南京', urls: 'src/views/assets/img/indir.jpg' },
+        { id: 5, name: '猫猫5', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
       ],
       articles: [
         { id: 1, title: '为什么选择领养而非买卖？', subTitle: "我们要使领养过程更加方便和顺利，让领养代替买卖。", src: 'src/assets/icons/adopt.png' },
@@ -177,6 +178,7 @@ export default {
   },
   methods: {
     searchDog(){
+      this.type='dog'
       this.show=true
       this.showDog=true
       this.showCat=false
@@ -184,6 +186,7 @@ export default {
       this.showOther=false
     },
     searchCat(){
+      this.type='cat'
       this.show=true
       this.showCat=true
       this.showDog=false
@@ -191,6 +194,7 @@ export default {
       this.showOther=false
     },
     searchRabbit(){
+      this.type='rabbit'
       this.show=true
       this.showRabbit=true
       this.showDog=false
@@ -198,6 +202,7 @@ export default {
       this.showOther=false
     },
     searchOther(){
+      this.type='other'
       this.show=true
       this.showOther=true
       this.showDog=false
@@ -239,7 +244,7 @@ export default {
     },
     choose(){
       router.push({
-        path: 'adoption'
+        name:"adoptionPage"
       })
     },
   }

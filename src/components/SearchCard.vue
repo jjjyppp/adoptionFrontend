@@ -10,11 +10,11 @@
           你想要寻找哪里的宠物？
         </h3>
       </div>
-      <div style="text-align: left">
-        <span style="margin-left: 50px">
+      <div style="text-align: center">
+        <span>
           <el-cascader popper-class="pc-sel-area-cascader" placeholder="请选择你所在地区" size='large' style="width: 420px" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
         </span>
-        <span style="margin-left: 20px">
+        <span style="margin-left: 20px" :style="{ visibility: selectedOptions.length === 0 ? 'hidden' : 'visible' }" v-if="selectedOptions.length!==0">
           <el-select :teleported="false" :popper-append-to-body="false" popper-class="range" style="width: 210px" size="large" v-model="range" filterable
                      placeholder="请选择你能接受的范围" @change="getRange($event)">
             <el-option
@@ -37,25 +37,26 @@ import { ElCascader, ElSelect, ElOption } from 'element-plus'
 import router from "@/router";
 
 let select_range= [
-  {value: 'all', label: '全国'},
-  {value: 'district', label: '仅限同城'},
-  {value: 'city', label: '仅限同市'},
-  {value: 'province', label: '仅限同省'},
+  {value: '全国', label: '全国'},
+  {value: '仅限同城', label: '仅限同城'},
+  {value: '仅限同市', label: '仅限同市'},
+  {value: '仅限同省', label: '仅限同省'},
 ]
 
 export default {
   name: "SearchCard",
   components: {ElCascader, ElSelect, ElOption},
+  props:['type'],
   data(){
     return{
       options: regionData,
-      selectedOptions: ['110000', '110100', '110101'],
+      selectedOptions: [],
       select_range: select_range,
-      range: ""
+      range: ''
     }
   },
   mounted() {
-
+    console.log(this.type)
   },
 
   methods:{
@@ -72,7 +73,7 @@ export default {
     },
     toAdoption(){
       router.push({
-        name:"adoptionPage"
+        name:"adoptionPage", query:{type: this.type, selectedOptions: this.selectedOptions, range: this.range}
       })
     }
   }

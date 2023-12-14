@@ -28,10 +28,10 @@
         <el-menu-item  index="/" class="item" >首页</el-menu-item>
         <el-sub-menu index="2">
           <template v-slot:title="title">宠物领养</template>
-          <el-menu-item index="/adoption">宠物狗</el-menu-item>
-          <el-menu-item index="/adoption">宠物猫</el-menu-item>
-          <el-menu-item index="/adoption">兔子</el-menu-item>
-          <el-menu-item index="/adoption">其他动物</el-menu-item>
+          <el-menu-item @click="toAdoptionDog" >宠物狗</el-menu-item>
+          <el-menu-item @click="toAdoptionCat">宠物猫</el-menu-item>
+          <el-menu-item @click="toAdoptionRabbit">兔子</el-menu-item>
+          <el-menu-item @click="toAdoptionOther">其他动物</el-menu-item>
         </el-sub-menu>
         <el-menu-item index="/rehome">宠物送养</el-menu-item>
       </el-menu>
@@ -132,6 +132,26 @@ export default {
     cancelChat(val){
       document.body.style.overflow = '';
       this.chat=false
+    },
+    toAdoptionDog(){
+      router.push({
+        name: 'adoptionPage', query:{type: 'dog'}
+      })
+    },
+    toAdoptionCat(){
+      router.push({
+        name: 'adoptionPage', query:{type: 'cat'}
+      })
+    },
+    toAdoptionRabbit(){
+      router.push({
+        name: 'adoptionPage', query:{type: 'rabbit'}
+      })
+    },
+    toAdoptionOther(){
+      router.push({
+        name: 'adoptionPage', query:{type: 'other'}
+      })
     },
   }
 }

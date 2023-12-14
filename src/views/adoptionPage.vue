@@ -32,7 +32,7 @@
 <!--              </el-icon>-->
               <!--    </div>-->
               <div style="text-align:-webkit-center" class="mb-3">
-                <el-cascader placeholder="请选择你所在的地区" size='large' style="width: 335px" :options='options' v-model='selectedOptions' @change='addressChange'>
+                <el-cascader placeholder="请选择你所在地区" size='large' style="width: 335px" :options='options' v-model='selectedOptions' @change='addressChange'>
                 </el-cascader>
               </div>
 
@@ -128,11 +128,12 @@
           <div class="col-lg-8 col-12">
             <div class="animal py-3 px-3">
               <div class="row justify-content-between">
+                <p style="font-size: 26px" v-if="pets.length===0">暂时没有满足您要求的宠物哦！看看其他的宠物吧！</p>
                 <pet-display-card v-for="(pet, index) in pets" :key="index" :pet="pet" />
               </div>
             </div>
           </div>
-          <div class="col-12 text-end py-2" style="margin-top: 20px">
+          <div class="col-12 text-end py-2" v-if="pets.length!==0" style="margin-top: 20px">
             <button class="py-2 px-3 fs-5 " style="margin-right: 20px">&lt; 上一页</button>
             <button class="py-2 px-3 fs-5 ">下一页 ></button>
           </div>
@@ -298,13 +299,17 @@ export default {
     };
   },
   mounted() {
-    // axios.get("http://localhost:8080/pets").then(response => {
-    //   this.pets=response.data
-    //   console.log(this.pets)
-    // })
-    document.body.style.overflow = 'hidden';
-    this.showChooseCard=true
-
+    this.updatePets()
+  },
+  watch: {
+    $route(to, from) {
+      // 在每次路由导航之后执行的逻辑
+      console.log('Route is updated within adoption component');
+      console.log('From:', from);
+      console.log('To:', to);
+      // 执行逻辑
+      this.updatePets();
+    },
   },
   computed: {
     filteredBreeds() {
@@ -317,6 +322,34 @@ export default {
     }
   },
   methods:{
+    updatePets(){
+      this.petType = router.currentRoute.value.query.type;
+      console.log(this.petType)
+
+      let temp = router.currentRoute.value.query.selectedOptions
+      // console.log(this.selectedOptions)
+      if(temp!==undefined&&temp.length!==0){
+        this.selectedOptions=temp
+        let arr=temp
+        this.petAddress=codeToText[arr[0]] + codeToText[arr[1]] + codeToText[arr[2]]
+        this.range = router.currentRoute.value.query.range
+        this.filter()
+      }
+      else if(this.petType===undefined){
+        document.body.style.overflow = 'hidden';
+        this.showChooseCard=true
+      }
+      else{
+        request({
+          url: `http://localhost:8080/petsByType/${this.petType}`,
+          method: 'GET'
+        }).then((res) => {
+          console.log(res.data)
+          this.pets=res.data
+        }).catch((error) => {
+        })
+      }
+    },
     addressChange(arr){
       this.petAddress=codeToText[arr[0]] + codeToText[arr[1]] + codeToText[arr[2]]
       this.filter()
@@ -369,7 +402,7 @@ export default {
     filter(){
       let breed, gender, age, size, source, health, price, address
       if(this.petBreed.length===0){
-        breed=this.allBreeds.map(item => item.label)
+        breed=this.petBreeds.filter(breed => breed.pro === this.petType).map(item => item.label)
       }
       else breed=this.petBreed
 
@@ -407,6 +440,15 @@ export default {
         address='全国'
       }
       else address=this.petAddress
+
+      console.log(breed)
+      console.log(gender)
+      console.log(age)
+      console.log(size)
+      console.log(source)
+      console.log(health)
+      console.log(price)
+      console.log(address)
 
       request({
         url: `http://localhost:8080/filteredPets/${this.petType}/${address}/${breed}/${gender}/${age}/${size}/${source}/${health}/${price}`,

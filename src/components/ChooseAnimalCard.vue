@@ -75,7 +75,6 @@ export default {
         name:"adoptionPage"
       })
     },
-
     toAdoptionDog(){
       this.$emit("getType", 'dog')
     },
