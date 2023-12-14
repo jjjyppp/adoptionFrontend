@@ -32,11 +32,12 @@
 <!--              </el-icon>-->
               <!--    </div>-->
               <div style="text-align:-webkit-center" class="mb-3">
-                <el-cascader placeholder="请选择你所在地区" size='large' style="width: 335px" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
+                <el-cascader placeholder="请选择你所在的地区" size='large' style="width: 335px" :options='options' v-model='selectedOptions' @change='addressChange'>
+                </el-cascader>
               </div>
 
-              <p class="fs-4 fw-bold py-2">范围</p>
-              <div style="text-align:-webkit-center" class="mb-3">
+              <p class="fs-4 fw-bold py-2" v-if="selectedOptions.length!==0">范围</p>
+              <div style="text-align:-webkit-center" class="mb-3" v-if="selectedOptions.length!==0">
                 <el-select :teleported="false" :popper-append-to-body="false" popper-class="range" size="large" v-model="range" filterable
                            placeholder="请选择你能接受的范围">
                   <el-option
@@ -49,7 +50,7 @@
 
               <p class="fs-4 fw-bold py-2">品种</p>
               <div style="text-align:-webkit-center" class="mb-3">
-                <el-select  placeholder="请选择宠物品种" v-model="petBreed" @change="breedChange" multiple>
+                <el-select  placeholder="不限品种" size="large" v-model="petBreed" @change="breedChange" multiple>
                   <el-option
                       v-for="breed in filteredBreeds"
                       :key="breed.label"
@@ -67,7 +68,7 @@
 
               <p class="fs-4 fw-bold py-2">年龄</p>
               <div style="text-align:-webkit-center" class="mb-3">
-                <el-select multiple id="pet-age" size="large" placeholder="请选择宠物年龄" v-model="petAge" filterable @change='ageChange' >
+                <el-select multiple id="pet-age" size="large" placeholder="不限年龄" v-model="petAge" filterable @change='ageChange' >
                   <el-option
                       v-for="item in petAges"
                       :key="item.value"
@@ -79,7 +80,7 @@
 
               <p class="fs-4 fw-bold py-2">体型</p>
               <div style="text-align:-webkit-center" class="mb-3">
-                <el-select multiple id="pet-size" size="large" placeholder="请选择宠物体型" v-model="petSize" filterable @change='sizeChange'>
+                <el-select multiple id="pet-size" size="large" placeholder="不限体型" v-model="petSize" filterable @change='sizeChange'>
                   <el-option
                       v-for="item in petSizes"
                       :key="item.value"
@@ -90,7 +91,7 @@
               </div>
               <p class="fs-4 fw-bold py-2">来源</p>
               <div style="text-align:-webkit-center" class="mb-3">
-                <el-select  multiple id="pet-source" size="large" placeholder="请选择宠物来源" v-model="selectedPetSource" @change='sourceChange'>
+                <el-select  multiple id="pet-source" size="large" placeholder="不限来源" v-model="selectedPetSource" @change='sourceChange'>
                   <el-option
                       v-for="source in petSources"
                       :key="source.value"
@@ -102,7 +103,7 @@
             </form>
             <p class=" fs-4 fw-bold py-2">健康情况</p>
             <div style="text-align:-webkit-center" class="mb-3">
-              <el-select multiple id="HealthCondition" size="large" placeholder="请选择宠物健康情况" v-model="healthCondition" @change='healthChange'>
+              <el-select multiple id="HealthCondition" size="large" placeholder="不限健康情况" v-model="healthCondition" @change='healthChange'>
                 <el-option
                     v-for="item in HealthConditions"
                     :key="item.value"
@@ -114,7 +115,7 @@
 
             <p class=" fs-4 fw-bold py-2">领养金额</p>
             <div style="text-align:-webkit-center" class="mb-3">
-              <el-select multiple placeholder="请选择领养金额" size="large" v-model="adoptionAmount" @change='priceChange'>
+              <el-select multiple placeholder="不限领养金额" size="large" v-model="adoptionAmount" @change='priceChange'>
                 <el-option
                     v-for="item in petPrices"
                     :key="item.value"
@@ -167,7 +168,7 @@
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import HeaderTag from "@/components/HeaderTag.vue";
 import FooterCard from "@/components/FooterCard.vue";
-import {LocationInformation} from "@element-plus/icons-vue";
+import {Delete, LocationInformation} from "@element-plus/icons-vue";
 
 import {
   ElCascader,
@@ -191,6 +192,7 @@ let select_range= [
 export default {
   name: "adoptionPage",
   components: {
+    Delete,
     chooseAnimalCard,
     PetDisplayCard,ElSelect, ElOption,HeaderTag,FooterCard, ElCheckboxGroup, ElCheckbox, ElIcon, ElCascader, LocationInformation
   },
@@ -288,7 +290,7 @@ export default {
       adoptionType: '', // 领养方式
       adoptionAmount: [], // 金额
       options: regionData,
-      selectedOptions: ['110000', '110100', '110101'],
+      selectedOptions: [],
       range: '',
       select_range: select_range,
       petAddress: '',
