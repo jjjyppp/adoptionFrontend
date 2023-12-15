@@ -329,7 +329,7 @@ input {
 
 .error-message{
   text-align: left;
-  margin-left: 110px;
+  margin-left: 125px;
   color: red;
   //margin-top: 10px;
 }

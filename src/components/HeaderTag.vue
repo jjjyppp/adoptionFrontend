@@ -87,7 +87,7 @@ export default {
     return{
       options: regionData,
       selectedOptions: ['110000', '110100', '110101'],
-      login: true,
+      login: false,
       chat: false
     }
   },
