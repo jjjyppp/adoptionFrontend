@@ -225,8 +225,8 @@ export default {
   height: 50px;
   padding-left: 2px;
   font-size: 14px;
-  font-weight: normal;
-  color: white;
+  font-weight: 350;
+  color: #ffffff;
 }
 
 .mine:hover{
@@ -275,7 +275,7 @@ export default {
 }
 
 .item{
-  width: 130px
+  width: 130px;
 }
 
 /*
