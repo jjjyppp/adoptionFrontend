@@ -65,7 +65,7 @@ export default {
     ElRow, ElCol, ElMenu, ElMenuItem, ElContainer, ElMain, ElAside, HeaderTag, FooterCard, AdoptionCard, RehomePage, UnRehomeCard, MyRehomePane, MyAdoptPane},
   data(){
     return{
-      menuIndex: -1
+      menuIndex: 1
     }
   },
   methods:{

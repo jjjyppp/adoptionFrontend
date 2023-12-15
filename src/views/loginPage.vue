@@ -15,11 +15,31 @@ import HeaderTag from "@/components/HeaderTag.vue";
           <div class="col-12 col-lg-6 text-center ">
             <div class="log-inner py-5">
               <h1 class="py-2"> 登录</h1>
+              <label style="margin-right: 8px">用户名</label>
               <input style="margin-bottom: 5px" type="text" name="username" v-model.trim="name" id="" placeholder="用户名"  required @input="checkName" >
               <div v-if="nameError" class="errors">
                 {{ nameError }}
               </div>
-              <input style="margin-bottom: 5px" type="password" name="password" v-model.trim="password" id="" placeholder="密码" required @input="checkPw">
+              <br>
+<!--              <input style="margin-bottom: 5px" type="password" name="password" v-model.trim="password" id="" placeholder="密码" required @input="checkPw">-->
+              <label style="margin-right: 8px">密码</label>
+              <input
+                  style="margin-bottom: 5px"
+                  :type="showPassword ? 'text' : 'password'"
+                  name="password"
+                  v-model.trim="password"
+                  placeholder="密码"
+                  required
+                  @input="checkPw"
+              />
+
+<!--              <label for="showPassword" style="display: flex;margin-bottom: 20px; margin-left: 150px;background: red /* 调整间距 */">-->
+<!--                <input type="checkbox"  id="showPassword" v-model="showPassword" @change="toggleShowPassword"/>-->
+<!--                显示密码-->
+<!--              </label>-->
+              <el-checkbox v-model="showPassword"  style="margin-top:15px;margin-bottom: 25px" >显示密码</el-checkbox><br>
+
+
               <div v-if="pwError" class="errors">
                 {{ pwError }}
               </div>
@@ -34,12 +54,12 @@ import HeaderTag from "@/components/HeaderTag.vue";
  </template>
 <script>
 import {request} from "@/utils/request";
-import {ElMessage} from "element-plus";
+import {ElMessage,ElCheckbox} from "element-plus";
 import HeaderTag from "@/components/HeaderTag.vue";
 import FooterCard from "@/components/FooterCard.vue";
 
 export default {
-  components: {HeaderTag, FooterCard, ElMessage},
+  components: {HeaderTag, FooterCard, ElMessage,ElCheckbox},
   data(){
     return{
       name:"",//姓名，用v-model绑定监听，将输入的字符串赋值给name变量
@@ -47,6 +67,7 @@ export default {
       st:"false",//false为不保存登录
       nameError: null,
       pwError: null,
+      showPassword: false,
     };
   },
   methods:{
@@ -57,6 +78,10 @@ export default {
       else {
         this.nameError=null
       }
+    },
+    toggleShowPassword() {
+      // 切换显示密码的状态
+      this.showPassword = !this.showPassword;
     },
     checkPw() {
       if (this.password === '') {
@@ -97,8 +122,6 @@ export default {
         }
       });
       loginReq.then(response => {
-        localStorage.setItem("loginStatus", "true")
-        localStorage.setItem("username", this.name)
         let res=response.data
         if(res>0) {
           ElMessage({
@@ -106,6 +129,10 @@ export default {
             type: 'success',
             center: true  // 设置消息居中显示
           });
+          localStorage.setItem("loginStatus", "true")
+          localStorage.setItem("userId", res.toString())
+          console.log("res.toString"+res.toString())
+
           this.$router.replace('/');
         }
         else if(res===0){
@@ -125,6 +152,25 @@ export default {
       }).catch(error=> {
 
       })
+
+      //const userId = localStorage.getItem("userId");
+      console.log("userId="+userId);
+      const infoReq = request({
+        url: '/user/'+userId,
+        method: 'GET',
+        data: {
+          userId: localStorage.getItem("userId")
+        }
+      });
+      infoReq.then(response => {
+        let userVO = response.data;
+        // 将UserVO数据存储到localStorage
+        localStorage.setItem("userVO", JSON.stringify(userVO));
+      }).catch(error=> {
+
+      })
+      let storedUserVO = localStorage.getItem("userVO");
+      console.log("storedUserVO="+storedUserVO)
     },
     handleregister:function()
     {
@@ -148,4 +194,14 @@ export default {
   margin-left: 80px;
   color: red;
 }
+label {
+  width: 60px;
+  text-align: right;
+}
+
+.checkbox-container input {
+  margin-right: 18px; /* 调整复选框右侧的间距 */
+}
+
+
 </style>

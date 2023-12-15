@@ -111,7 +111,7 @@ export default {
       global.address=this.selectedOptions
     },
     toFavorites(){
-      if(!this.login){
+      if(!this.isLoggedIn){
         router.push({
           name:"loginPage"
         })

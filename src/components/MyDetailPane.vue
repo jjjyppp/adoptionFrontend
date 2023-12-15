@@ -1,18 +1,46 @@
 <template>
   <body>
   <div class="tab-container">
-    <div class="title">
+
+    <div class="title1">
+      <p>用户名</p>
+      <div class="box1">
+        <span style="display:block;margin-left:20px;">{{susername}}</span>
+        <span style="color: #6504b5;font-weight: 700;">Change</span>
+      </div>
+    </div>
+    <div class="title1">
       <p>真实姓名</p>
-      <div class="box">
+      <div class="box1">
         <span style="display:block;margin-left:20px;">{{srealname}}</span>
         <span style="color: #6504b5;font-weight: 700;">Change</span>
       </div>
     </div>
-    <!-- 第二部分 -->
-    <div class="title">
+    <div class="title1">
+      <p>身份证号</p>
+      <div class="box1">
+        <span style="display:block;margin-left:20px;">{{sidcard}}</span>
+        <span style="color: #6504b5;font-weight: 700;">Change</span>
+      </div>
+    </div>
+    <div class="title1">
+      <p>密码</p>
+      <div class="box1">
+        <span style="display:block;margin-left:20px;">{{spassword}}</span>
+        <span style="color: #6504b5;font-weight: 700;">Change</span>
+      </div>
+    </div>
+    <div class="title1">
       <p>手机号码</p>
-      <div class="box">
+      <div class="box1">
         <span style="display:block;margin-left:20px;">{{stel}}</span>
+        <span style="color: #6504b5;font-weight: 700;">Change</span>
+      </div>
+    </div>
+    <div class="title1">
+      <p>邮箱</p>
+      <div class="box1">
+        <span style="display:block;margin-left:20px;">{{semail}}</span>
         <span style="color: #6504b5;font-weight: 700;">Change</span>
       </div>
     </div>
@@ -22,7 +50,7 @@
              class="demo-form-inline">
 
       <!-- 第三部分 -->
-      <div class="title">
+      <div class="title1">
         <p>您的家庭住址</p>
       </div>
       <el-form-item label="Country (required)">
@@ -78,9 +106,16 @@ import { ElForm, ElOption, ElSelect, ElFormItem, ElInput, ElButton } from 'eleme
 export default {
   components: { ElForm, ElFormItem, ElOption, ElSelect, ElInput, ElButton },
   data() {
+    // 从localStorage中获取userVO字符串, 将userVO字符串解析为JavaScript对象
+    const userVO = JSON.parse(localStorage.getItem("userVO"));
     return {
-      srealname:localStorage.getItem('realname'),
-      stel:localStorage.getItem('tel'),
+      susername:userVO.userName,
+      srealname:userVO.realName,
+      sidcard:userVO.idCard,
+      spassword:userVO.password,
+      semail:userVO.email,
+      stel:userVO.phoneNumber,
+      saddress: userVO.address,
       formInline: {
         name: '',
         phoneNumber: '',
@@ -137,11 +172,11 @@ body {
 
 
 
-.title {
+.title1 {
   width: 100%;
   font-size: 16px;
 }
-.title p {
+.title1 p {
   padding-top: 0px;
   font-weight: 700;
   width: 70%;
@@ -169,7 +204,7 @@ body {
   padding-top: 60px;
   padding-bottom: 15px;
 }
-.box{
+.box1{
   display: flex;
   text-align: center;
   justify-content: space-between;
