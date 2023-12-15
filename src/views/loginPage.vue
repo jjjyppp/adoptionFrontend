@@ -27,7 +27,13 @@ import HeaderTag from "@/components/HeaderTag.vue";
   <footer-card></footer-card>
  </template>
 <script>
+import {request} from "@/utils/request";
+import {ElMessage} from "element-plus";
+import HeaderTag from "@/components/HeaderTag.vue";
+import FooterCard from "@/components/FooterCard.vue";
+
 export default {
+  components: {HeaderTag, FooterCard, ElMessage},
   data(){
     return{
       name:"",//姓名，用v-model绑定监听，将输入的字符串赋值给name变量
@@ -38,11 +44,11 @@ export default {
   methods:{
     handlelogin:function()
     {
-      if(this.name===localStorage['name'] && this.password===localStorage['password'])
-      {
-        this.$router.replace('/');//如果输入的名字以及密码正确路由跳转至home
-      }
-      else if(this.name==='')//名字为空
+      // if(this.name===localStorage['name'] && this.password===localStorage['password'])
+      // {
+      //   this.$router.replace('/');//如果输入的名字以及密码正确路由跳转至home
+      // }
+      if(this.name==='')//名字为空
       {
         alert('用户名不为空');
       }
@@ -50,9 +56,33 @@ export default {
       {
         alert('密码不为空');
       }
-      else{
-        alert('账号不存在，请注册后登录');//查无此号
-      }
+      // else{
+      //   alert('账号不存在，请注册后登录');//查无此号
+      // }
+      const loginReq = request({
+        url: '/login',
+        method: 'POST',
+        data: {
+          userName: this.name,
+          password: this.password,
+        }
+      });
+      loginReq.then(response => {
+        ElMessage({
+          message: '登录成功',
+          type: 'success',
+          center: true  // 设置消息居中显示
+        });
+        console.log(response)
+        this.$router.replace('/');
+      }).catch(error=> {
+        console.error(error.response.data); // 输出后端返回的错误信息
+        ElMessage({
+          message: '登录失败，请检查用户名密码是否正确或注册账号',
+          type: 'error',
+          center: true  // 设置消息居中显示
+        });
+      })
     },
     handleregister:function()
     {

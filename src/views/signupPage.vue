@@ -257,7 +257,11 @@ export default {
         this.$router.replace('/login');
       }).catch(error=> {
         console.error(error); // 输出后端返回的错误信息
-        alert("注册失败：" + error); // 显示错误提示
+        ElMessage({
+          message: '注册失败，请稍后再试',
+          type: 'success',
+          center: true  // 设置消息居中显示
+        }); // 显示错误提示
       })
 
       // if(localStorage['name']===this.name)
