@@ -216,12 +216,13 @@ import {
   ElCheckbox,
   ElUpload,
   ElCascader,
-  ElImageViewer
+  ElImageViewer, ElMessage
 } from "element-plus";
 import { regionData, codeToText} from 'element-china-area-data';
 import FooterCard from "@/components/FooterCard.vue";
 import global from "@/views/assets/js/global_variable";
 import {request} from "@/utils/request";
+import router from "@/router";
 
 export default {
   name: "rehomePage",
@@ -266,7 +267,8 @@ export default {
         { pro: 'cat', label: '其他' },
         { pro: 'rabbit', label: '垂耳兔' },
         { pro: 'rabbit', label: '猫猫兔' },
-        { pro: 'rabbit', label: '其他' }
+        { pro: 'rabbit', label: '其他' },
+        { pro: 'other', label: '其他' }
       ],
       petSizes: [
         { label: "小型", value: "小型" },
@@ -377,37 +379,56 @@ export default {
         }
       })
       r.then(response => {
-          console.log(response)
+        console.log(response)
+        router.push({
+          name: 'adoptionPage', query:{type: this.petType}
+        })
+        this.petName=''
+        this.petType=''
+        this.petBreed=''
+        this.petSize=''
+        this.petGender=''
+        this.petAge=''
+        this.petSource=''
+        this.selectedHealthConditions=[]
+        this.selectedAdoptNeeds=[]
+        this.adoptionType=''
+        this.adoptionAmount=''
+        this.paymentReason=''
+        this.imageUrls=[]
+        this.selectedOptions=[]
+        this.petExperience=''
+        this.adoptAttention=''
+        this.imagePreviewUrls=[]
+        this.initialImgPreviewIndex=0
+
+        console.log(this.imagePreviewUrls)
+
+
+          // ElMessage({
+          //   message: '注册成功',
+          //   type: 'success',
+          //   center: true  // 设置消息居中显示
+          // });
       }).catch(error=> {
 
       })
 
-      // Create an adoption posting with the form data
-      const adoptionPosting = {
-        petName: this.petName,
-        petType: this.petType,
-        petBreed: this.petBreed,
-        petSize: this.petSize,
-        petGender: this.petGender,
-        petAge: this.petAge,
-        // Add other form data properties
-      };
-
-      // Perform the necessary actions with the adoption posting, such as sending it to a server or storing it locally
-
-      // Reset the form fields
-      this.petName = "";
-      this.petType = "all";
-      this.petBreed = "全部品种";
-      this.petSize = "";
-      this.petGender = "";
-      this.petAge = "";
+      // this.petName = "";
+      // this.petType = "all";
+      // this.petBreed = "全部品种";
+      // this.petSize = "";
+      // this.petGender = "";
+      // this.petAge = "";
     },
 
 
     onTypeChange() {
       console.log(this.petType)
-      this.petBreed = '';
+      if(this.petType==='other'){
+        this.petBreed='其他'
+      }
+      else this.petBreed = '';
     },
 
     onAdoptionTypeChange() {
@@ -437,7 +458,6 @@ export default {
         this.imageUrls.splice(index, 1)
       }
     },
-
     handlePreview(file){
       let index = this.imagePreviewUrls.indexOf(file.url)
       if (index >= 0) {
@@ -445,19 +465,9 @@ export default {
       }
       this.showImgViewer = true
     },
-    // 图片预览
-    handlePictureCardPreview (file) {
-      let index = this.imagePreviewUrls.indexOf(file.url)
-      if (index >= 0) {
-        this.initialImgPreviewIndex = index
-      }
-      this.showImgViewer = true
-    },
-
     closeImgViewer () {
       this.showImgViewer = false
     },
-
     addressChange (arr) {
       console.log(this.selectedOptions)
       console.log(arr)
