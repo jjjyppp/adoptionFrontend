@@ -68,7 +68,8 @@
         <svg x="1701608125180" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7068" width="32" height="32"><path d="M266.24 267.52a248.32 244.48 0 1 0 496.64 0 248.32 244.48 0 1 0-496.64 0zM628.48 593.28H421.76a320 320 0 0 0-320 315.52v20.48c0 71.04 143.36 71.04 320 71.04h206.72c177.28 0 320 0 320-71.04V908.8a320 320 0 0 0-320-315.52z" fill="#ffffff" p-id="7069"></path></svg>
 <!--        <img src="../assets/icons/user.png" alt="" style="height: 35px;">-->
       </button>
-      <el-link :underline="false" class="mine" href="#/login">注册/登录</el-link>
+      <el-link :underline="false" class="mine" href="#/mine" v-if="isLoggedIn">我的主页</el-link>
+      <el-link :underline="false" class="mine" href="#/login" v-else>注册/登录</el-link>
     </div>
    </div>
 <!--  <el-divider class="bottom-divider"></el-divider>-->
@@ -85,6 +86,7 @@ export default {
   components:{Discount, ChatPane, ElLink, ElCascader, ElIcon,  ElMenu, ElSubMenu, ElMenuItem, LocationInformation, ElDivider, ChatDotRound},
   data(){
     return{
+      isLoggedIn: false,
       options: regionData,
       selectedOptions: ['110000', '110100', '110101'],
       login: false,
@@ -95,6 +97,11 @@ export default {
     if(global.address[0]!==""){
       this.selectedOptions=global.address
     }
+
+    // 在组件创建时从 localStorage 获取登录状态
+    const loginStatus = localStorage.getItem("loginStatus");
+    // 将获取的字符串值转换为布尔值
+    this.isLoggedIn = loginStatus === "true";
   },
   methods: {
     addressChange (arr) {

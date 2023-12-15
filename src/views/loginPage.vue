@@ -97,6 +97,8 @@ export default {
         }
       });
       loginReq.then(response => {
+        localStorage.setItem("loginStatus", "true")
+        localStorage.setItem("username", this.name)
         let res=response.data
         if(res>0) {
           ElMessage({
