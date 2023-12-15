@@ -48,8 +48,8 @@
                 </el-select>
               </div>
 
-              <p class="fs-4 fw-bold py-2">品种</p>
-              <div style="text-align:-webkit-center" class="mb-3">
+              <p class="fs-4 fw-bold py-2" v-if="petType !== 'other'">品种</p>
+              <div style="text-align:-webkit-center" class="mb-3" v-if="petType !== 'other'">
                 <el-select  placeholder="不限品种" size="large" v-model="petBreed" @change="breedChange" multiple>
                   <el-option
                       v-for="breed in filteredBreeds"
@@ -285,7 +285,8 @@ export default {
         { pro: 'cat', label: '其他' },
         { pro: 'rabbit', label: '垂耳兔' },
         { pro: 'rabbit', label: '猫猫兔' },
-        { pro: 'rabbit', label: '其他' }
+        { pro: 'rabbit', label: '其他' },
+        { pro: 'other', label: '其他' }
       ],
       selectedAdoptNeeds : [],
       adoptionType: '', // 领养方式
