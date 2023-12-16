@@ -45,7 +45,8 @@
         v-model="dialogVisible"
         width="30%"
         typeof="warning"
-        :before-close="handleClose">
+        @close="handleClose"
+    >
       <span style="font-size: 15px">确认退出登录吗？</span>
       <br>
       <span slot="footer" class="dialog-footer">
@@ -84,13 +85,16 @@ export default {
   data(){
     return{
       dialogVisible:false,
-      menuIndex: 1
+      menuIndex: '1'
     }
   },
   methods:{
     handleMenuSelect(index){
       this.menuIndex=index
       console.log(this.menuIndex)
+    },
+    handleClose(){
+
     },
     handleLogout(){
       this.dialogVisible = false;

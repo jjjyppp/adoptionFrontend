@@ -1,12 +1,11 @@
 <script setup>
 
-import HeaderTag from "@/components/HeaderTag.vue";
-import ChatPane from "@/components/ChatPane.vue";
+import AdoptionAgreement from "@/components/AdoptionAgreement.vue";
 </script>
 
 <template>
 
-  <choose-animal-card class="choose-animal-card" alt="" ></choose-animal-card>
+  <adoption-agreement></adoption-agreement>
 
 </template>
 

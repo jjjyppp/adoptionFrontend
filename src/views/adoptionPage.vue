@@ -322,6 +322,17 @@ export default {
       console.log('Route is updated within adoption component');
       console.log('From:', from);
       console.log('To:', to);
+
+      this.petBreed=[]
+      this.petGender=[]
+      this.petAge=[]
+      this.petSize=[]
+      this.selectedPetSource=[]
+      this.healthCondition=[]
+      this.adoptionAmount=[]
+      this.petAddress=''
+      this.range=''
+
       // 执行逻辑
       this.updatePets();
     },

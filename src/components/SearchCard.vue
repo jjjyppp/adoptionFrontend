@@ -12,7 +12,7 @@
       </div>
       <div style="text-align: center">
         <span>
-          <el-cascader popper-class="pc-sel-area-cascader" placeholder="请选择你所在地区" size='large' style="width: 420px" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
+          <el-cascader popper-class="pc-sel-area-cascader" placeholder="你可以选择所在地区" size='large' style="width: 420px" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
         </span>
         <span style="margin-left: 20px" :style="{ visibility: selectedOptions.length === 0 ? 'hidden' : 'visible' }" v-if="selectedOptions.length!==0">
           <el-select :teleported="false" :popper-append-to-body="false" popper-class="range" style="width: 210px" size="large" v-model="range" filterable

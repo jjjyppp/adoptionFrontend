@@ -74,13 +74,13 @@ export default {
           </span><br v-if="pet.price!=='免费'">
           <span><label style="color: darkgrey">宠物来源：</label>{{pet.source}}</span><br>
           <span><label style="color: darkgrey">健康情况：</label>
-            <el-tag type="success" effect="plain" v-for="(health, index) in pet.health" :key="index" :pet="pet">{{health}}</el-tag>
+            <el-tag type="success" effect="plain" v-for="(health, index) in pet.health" :key="index" :pet="pet" style="margin-right: 10px" >{{health}}</el-tag>
 <!--            <el-tag type="success" effect="plain">已免疫</el-tag>-->
 <!--            <el-tag  type="success" effect="plain">已驱虫</el-tag>-->
 <!--            <el-tag  type="info" effect="plain">未绝育</el-tag>-->
           </span><br>
           <span><label style="color: darkgrey">领养要求：</label>
-            <el-tag v-for="(requirment, index) in pet.requirements" effect="plain">{{requirment}}</el-tag>
+            <el-tag v-for="(requirment, index) in pet.requirements" effect="plain" style="margin-right: 10px">{{requirment}}</el-tag>
           </span>
         </el-main>
 
