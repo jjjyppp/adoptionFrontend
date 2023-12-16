@@ -266,6 +266,7 @@ export default {
         { pro: 'cat', label: '暹罗猫' },
         { pro: 'cat', label: '波斯猫' },
         { pro: 'cat', label: '缅因猫' },
+        { pro: 'cat', label: '蓝猫' },
         { pro: 'cat', label: '金渐层' },
         { pro: 'cat', label: '银渐层' },
         { pro: 'cat', label: '狸花猫' },
