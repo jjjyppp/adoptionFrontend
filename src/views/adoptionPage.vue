@@ -39,7 +39,7 @@
               <p class="fs-4 fw-bold py-2" v-if="selectedOptions.length!==0">范围</p>
               <div style="text-align:-webkit-center" class="mb-3" v-if="selectedOptions.length!==0">
                 <el-select :teleported="false" :popper-append-to-body="false" popper-class="range" size="large" v-model="range" filterable
-                           placeholder="请选择你能接受的范围">
+                           placeholder="请选择你能接受的范围" @change="rangeChange" >
                   <el-option
                       v-for="item in select_range"
                       :key="item.value"
@@ -129,7 +129,7 @@
             <div class="animal py-3 px-3">
               <div class="row justify-content-between">
                 <p style="font-size: 26px" v-if="pets.length===0">暂时没有满足您要求的宠物哦！看看其他的宠物吧！</p>
-                <pet-display-card v-for="(index, pet) in pets.slice((currentPage - 1) * pageSize, currentPage * pageSize)" :key="index" :pet="pet" />
+                <pet-display-card v-for="(pet, index) in pets.slice((currentPage - 1) * pageSize, currentPage * pageSize)" :key="index" :pet="pet" />
               </div>
             </div>
           </div>
@@ -137,16 +137,17 @@
 <!--            <button class="py-2 px-3 fs-5 " style="margin-right: 20px">&lt; 上一页</button>-->
 <!--            <button class="py-2 px-3 fs-5 ">下一页 ></button>-->
 <!--          </div>-->
-          <el-pagination
-              :current-page="currentPage"
-              :page-sizes="[5, 10, 15, 20]"
-              :page-size="pageSize"
-              background
-              layout="sizes, prev, pager, next, jumper"
-              :total="1000"
-              @size-change="handleSizeChange"
-              @current-change="handleCurrentChange"
-          />
+          <div class="col-12 text-end py-2" v-if="pets.length!==0" style="margin-top: 20px;">
+            <el-pagination
+                :current-page="currentPage"
+                :page-size="pageSize"
+                background
+                layout="prev, pager, next"
+                :total=pets.length
+                @current-change="handleCurrentChange"
+                style="margin-left: 80%"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -210,25 +211,26 @@ export default {
   data() {
     return {
       currentPage: 1,
-      pageSize: 5,
+      pageSize: 16,
       showChooseCard:false,
       pets: [
         { id: 1, name: '猫猫1', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 2, name: '猫猫2', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 3, name: '猫猫3', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 4, name: '猫猫4', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 5, name: '猫猫5', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 6, name: '猫猫6', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 7, name: '猫猫7', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 8, name: '猫猫8', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 9, name: '猫猫9', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 10, name: '猫猫10', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 11, name: '猫猫11', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 12, name: '猫猫12', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 13, name: '猫猫13', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 14, name: '猫猫14', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 15, name: '猫猫15', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 16, name: '猫猫16', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 2, name: '猫猫2', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 3, name: '猫猫3', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 4, name: '猫猫4', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 5, name: '猫猫5', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 6, name: '猫猫6', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 7, name: '猫猫7', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 8, name: '猫猫8', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 9, name: '猫猫9', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 10, name: '猫猫10', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 11, name: '猫猫11', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 12, name: '猫猫12', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 13, name: '猫猫13', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 14, name: '猫猫14', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 15, name: '猫猫15', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 16, name: '猫猫16', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 17, name: '猫猫17', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
       ],
       petName: [],
       petSize: [],
@@ -388,6 +390,9 @@ export default {
     priceChange(){
       this.filter()
     },
+    rangeChange(){
+      this.filter()
+    },
     backToHomeHandler(){
       document.body.style.overflow = '';
       this.showChooseCard=false
@@ -454,6 +459,10 @@ export default {
       }
       else address=this.petAddress
 
+      if(this.range==='全国'){
+        address='全国'
+      }
+
       console.log(breed)
       console.log(gender)
       console.log(age)
@@ -472,12 +481,13 @@ export default {
       }).catch((error) => {
       })
     },
-    handleSizeChange(val){
-      this.pageSize=val
-    },
     handleCurrentChange(val) {
       this.currentPage = val
-    }
+      this.scrollToTop();
+    },
+    scrollToTop() {
+      document.documentElement.scrollTop = 0;
+    },
   }
 };
 </script>

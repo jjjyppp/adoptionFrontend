@@ -57,6 +57,7 @@ import {request} from "@/utils/request";
 import {ElMessage,ElCheckbox} from "element-plus";
 import HeaderTag from "@/components/HeaderTag.vue";
 import FooterCard from "@/components/FooterCard.vue";
+import router from "@/router";
 
 export default {
   components: {HeaderTag, FooterCard, ElMessage,ElCheckbox},
@@ -152,7 +153,7 @@ export default {
 
           })
 
-          this.$router.replace('/');
+          router.push('/');
         }
         else if(res===0){
           ElMessage({
