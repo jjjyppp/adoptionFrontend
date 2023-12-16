@@ -94,10 +94,6 @@ export default {
     }
   },
   mounted() {
-    if(global.address[0]!==""){
-      this.selectedOptions=global.address
-    }
-
     // 在组件创建时从 localStorage 获取登录状态
     const loginStatus = localStorage.getItem("loginStatus");
     // 将获取的字符串值转换为布尔值

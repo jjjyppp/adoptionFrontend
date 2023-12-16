@@ -129,14 +129,24 @@
             <div class="animal py-3 px-3">
               <div class="row justify-content-between">
                 <p style="font-size: 26px" v-if="pets.length===0">暂时没有满足您要求的宠物哦！看看其他的宠物吧！</p>
-                <pet-display-card v-for="(pet, index) in pets" :key="index" :pet="pet" />
+                <pet-display-card v-for="(index, pet) in pets.slice((currentPage - 1) * pageSize, currentPage * pageSize)" :key="index" :pet="pet" />
               </div>
             </div>
           </div>
-          <div class="col-12 text-end py-2" v-if="pets.length!==0" style="margin-top: 20px">
-            <button class="py-2 px-3 fs-5 " style="margin-right: 20px">&lt; 上一页</button>
-            <button class="py-2 px-3 fs-5 ">下一页 ></button>
-          </div>
+<!--          <div class="col-12 text-end py-2" v-if="pets.length!==0" style="margin-top: 20px">-->
+<!--            <button class="py-2 px-3 fs-5 " style="margin-right: 20px">&lt; 上一页</button>-->
+<!--            <button class="py-2 px-3 fs-5 ">下一页 ></button>-->
+<!--          </div>-->
+          <el-pagination
+              :current-page="currentPage"
+              :page-sizes="[5, 10, 15, 20]"
+              :page-size="pageSize"
+              background
+              layout="sizes, prev, pager, next, jumper"
+              :total="1000"
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+          />
         </div>
       </div>
     </section>
@@ -175,7 +185,7 @@ import {
   ElCascader,
   ElCheckbox,
   ElCheckboxGroup, ElIcon,
-  ElOption,
+  ElOption, ElPagination,
   ElSelect,
 } from "element-plus";
 import {codeToText, regionData} from "element-china-area-data";
@@ -195,28 +205,30 @@ export default {
   components: {
     Delete,
     chooseAnimalCard,
-    PetDisplayCard,ElSelect, ElOption,HeaderTag,FooterCard, ElCheckboxGroup, ElCheckbox, ElIcon, ElCascader, LocationInformation
+    PetDisplayCard,ElSelect, ElOption,HeaderTag,FooterCard, ElCheckboxGroup, ElCheckbox, ElIcon, ElCascader, LocationInformation, ElPagination
   },
   data() {
     return {
+      currentPage: 1,
+      pageSize: 5,
       showChooseCard:false,
       pets: [
-        { id: 1, name: '猫猫1', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' }
-        // { id: 2, name: '猫猫2', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 3, name: '猫猫3', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 4, name: '猫猫4', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 5, name: '猫猫5', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 6, name: '猫猫6', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 7, name: '猫猫7', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 8, name: '猫猫8', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 9, name: '猫猫9', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 10, name: '猫猫10', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 11, name: '猫猫11', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 12, name: '猫猫12', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 13, name: '猫猫13', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 14, name: '猫猫14', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 15, name: '猫猫15', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        // { id: 16, name: '猫猫16', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        { id: 1, name: '猫猫1', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 2, name: '猫猫2', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 3, name: '猫猫3', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 4, name: '猫猫4', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 5, name: '猫猫5', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 6, name: '猫猫6', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 7, name: '猫猫7', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 8, name: '猫猫8', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 9, name: '猫猫9', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 10, name: '猫猫10', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 11, name: '猫猫11', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 12, name: '猫猫12', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 13, name: '猫猫13', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 14, name: '猫猫14', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 15, name: '猫猫15', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        { id: 16, name: '猫猫16', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
       ],
       petName: [],
       petSize: [],
@@ -459,7 +471,12 @@ export default {
         this.pets=res.data
       }).catch((error) => {
       })
-
+    },
+    handleSizeChange(val){
+      this.pageSize=val
+    },
+    handleCurrentChange(val) {
+      this.currentPage = val
     }
   }
 };

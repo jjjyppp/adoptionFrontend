@@ -203,7 +203,7 @@ export default {
         this.pw1Error=null
       }
 
-      this.checkPw2()
+      // this.checkPw2()
     },
     checkPw2(){
       if(this.password2===''){

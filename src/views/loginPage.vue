@@ -133,6 +133,25 @@ export default {
           localStorage.setItem("userId", res.toString())
           console.log("res.toString"+res.toString())
 
+          // const userId = localStorage.getItem("userId");
+          // console.log("userId="+userId);
+          const infoReq = request({
+            url: '/user/'+ res,
+            method: 'GET',
+            data: {
+              userId: res
+            }
+          });
+          infoReq.then(response => {
+            let userVO = response.data;
+            // 将UserVO数据存储到localStorage
+            localStorage.setItem("userVO", JSON.stringify(userVO));
+            let storedUserVO = localStorage.getItem("userVO");
+            console.log("storedUserVO="+storedUserVO)
+          }).catch(error=> {
+
+          })
+
           this.$router.replace('/');
         }
         else if(res===0){
@@ -141,6 +160,7 @@ export default {
             type: 'error',
             center: true  // 设置消息居中显示
           });
+          return
         }
         else if(res===-1){
           ElMessage({
@@ -148,29 +168,14 @@ export default {
             type: 'error',
             center: true  // 设置消息居中显示
           });
+          return;
         }
+
       }).catch(error=> {
 
       })
 
-      //const userId = localStorage.getItem("userId");
-      console.log("userId="+userId);
-      const infoReq = request({
-        url: '/user/'+userId,
-        method: 'GET',
-        data: {
-          userId: localStorage.getItem("userId")
-        }
-      });
-      infoReq.then(response => {
-        let userVO = response.data;
-        // 将UserVO数据存储到localStorage
-        localStorage.setItem("userVO", JSON.stringify(userVO));
-      }).catch(error=> {
 
-      })
-      let storedUserVO = localStorage.getItem("userVO");
-      console.log("storedUserVO="+storedUserVO)
     },
     handleregister:function()
     {
