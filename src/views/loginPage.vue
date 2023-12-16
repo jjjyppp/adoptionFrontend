@@ -20,7 +20,7 @@ import HeaderTag from "@/components/HeaderTag.vue";
               <div v-if="nameError" class="errors">
                 {{ nameError }}
               </div>
-              <br>
+<!--              <br>-->
 <!--              <input style="margin-bottom: 5px" type="password" name="password" v-model.trim="password" id="" placeholder="密码" required @input="checkPw">-->
               <label style="margin-right: 8px">密码</label>
               <input
@@ -37,7 +37,7 @@ import HeaderTag from "@/components/HeaderTag.vue";
 <!--                <input type="checkbox"  id="showPassword" v-model="showPassword" @change="toggleShowPassword"/>-->
 <!--                显示密码-->
 <!--              </label>-->
-              <el-checkbox v-model="showPassword"  style="margin-top:15px;margin-bottom: 25px" >显示密码</el-checkbox><br>
+<!--              <el-checkbox v-model="showPassword"  style="margin-top:15px;margin-bottom: 25px" >显示密码</el-checkbox><br>-->
 
 
               <div v-if="pwError" class="errors">
@@ -160,7 +160,6 @@ export default {
             type: 'error',
             center: true  // 设置消息居中显示
           });
-          return
         }
         else if(res===-1){
           ElMessage({
@@ -168,7 +167,6 @@ export default {
             type: 'error',
             center: true  // 设置消息居中显示
           });
-          return;
         }
 
       }).catch(error=> {
@@ -196,7 +194,7 @@ export default {
 
 .errors{
   text-align: left;
-  margin-left: 80px;
+  margin-left: 100px;
   color: red;
 }
 label {
