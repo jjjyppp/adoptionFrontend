@@ -259,6 +259,7 @@ export default {
         { pro: 'dog', label: '中华田园犬' },
         { pro: 'dog', label: '萨摩耶' },
         { pro: 'dog', label: '边境牧羊犬' },
+        { pro: 'dog', label: '德国牧羊犬' },
         { pro: 'dog', label: '柴犬' },
         { pro: 'dog', label: '其他' },
         { pro: 'cat', label: '加菲猫' },
