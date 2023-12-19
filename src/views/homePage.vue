@@ -85,7 +85,7 @@
           </el-icon>
         </el-link>
         <div class="rec-cards">
-          <pet-display-card style="margin-right: 15px"  v-for="(pet, index) in recommend_pets" :key="index" :pet="pet" />
+          <pet-display-card style="margin-right: 15px"  v-for="(pet, index) in pets.slice(pets.length-4, pets.length)" :key="index" :pet="pet" />
           <more-animal-card style="margin-left: 15px"></more-animal-card>
         </div>
       </div>
@@ -105,7 +105,7 @@
       <div class="rec-sec">
         <p class="recent-text">最近浏览过的宠物</p>
         <div class="rec-cards">
-          <pet-display-card style="margin-left: 15px"  v-for="(pet, index) in recent_pets" :key="index" :pet="pet" />
+          <pet-display-card style="margin-left: 15px"  v-for="(pet, index) in pets.slice(0, 5)" :key="index" :pet="pet" />
         </div>
       </div>
     </div>
@@ -125,6 +125,7 @@ import ArticleCard from "@/components/ArticleCard.vue";
 import FooterCard from "@/components/FooterCard.vue";
 import ChooseAnimalCard from "@/components/ChooseAnimalCard.vue";
 import router from "@/router";
+import {request} from "@/utils/request";
 export default {
   name: "homePage",
   computed: {
@@ -153,6 +154,7 @@ export default {
       showOther: false,
       searchContent: "",
       searchChoice: [],
+      pets: [],
       recommend_pets: [
         { id: 1, name: '猫猫1', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
         { id: 2, name: '猫猫2', age: "6岁", location: '南京', urls: 'src/views/assets/img/indir.jpg' },
@@ -175,6 +177,14 @@ export default {
   },
   mounted() {
     this.searchChoice = this.loadAll();
+    request({
+      url: `http://localhost:8080/pets`,
+      method: 'GET'
+    }).then((res) => {
+      console.log(res.data)
+      this.pets=res.data
+    }).catch((error) => {
+    })
   },
   methods: {
     searchDog(){

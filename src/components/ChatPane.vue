@@ -17,7 +17,7 @@
         <div class="chat-list">
           <div v-for="contact in contacts" :key="contact.id" ref="contact" @click="selectContact(contact.id)" class="contact-item" :class="{ 'selected': selectedItemId === contact.id, 'changeColor': changeColorId === contact.id }"  @mouseover="mouseOver(contact.id)" @mouseleave="mouseLeave(contact.id)">
             <img src="../assets/imgs/avatar1.jpg" alt="avatar" class="contact-avatar" />
-            <div style="margin-left: 10px;width: 214px;}">
+            <div style="margin-left: 10px;width: 214px">
               <div class="info">
                 <div class="contact-name">{{ contact.name }}</div>
                 <div class="last-time">{{ contact.lastTime }}</div>
@@ -53,7 +53,8 @@
             </div>
           </div>
 
-          <el-button class="button" @click="showDialog" round>确认收养</el-button>
+<!--          <el-button class="button" @click="showDialog" round>确认收养</el-button>-->
+          <el-button class="button" @click="toAgreement" round>确认收养</el-button>
 
         </div>
         <div class="chat-messages" ref="messageContainer">
@@ -120,6 +121,9 @@ export default {
     };
   },
   methods: {
+    toAgreement(){
+
+    },
     showDialog(){
       console.log('showDialog method called');
       this.confirmAdoptDialog=true;

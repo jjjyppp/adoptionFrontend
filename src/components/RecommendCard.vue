@@ -2,19 +2,27 @@
 import {ElIcon, ElCard, ElContainer, ElHeader, ElTag, ElAside, ElMain, ElFooter} from "element-plus";
 import {Location} from '@element-plus/icons-vue'
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
+import {request} from "@/utils/request";
 export default {
   components:{PetDisplayCard, Location, ElCard, ElTag, ElContainer, ElHeader, ElAside, ElMain, ElFooter, ElIcon},
   data() {
     return {
-      pets: [
-        { id: 1, name: '猫猫1', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 2, name: '猫猫2', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 3, name: '猫猫3', age: "6岁", location: '南京', urls: 'src/views/assets/img/indir.jpg' },
-        { id: 4, name: '猫猫4', age: "6岁", location: '南京', urls: 'src/views/assets/img/indir.jpg' },
-        { id: 5, name: '猫猫5', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-      ],
+      pets: [],
     };
   },
+  mounted() {
+    request({
+      url: `http://localhost:8080/pets`,
+      method: 'GET'
+    }).then((res) => {
+      console.log(res.data)
+      this.pets=res.data
+    }).catch((error) => {
+    })
+  },
+  methods: {
+
+  }
 }
 </script>
 
@@ -22,7 +30,7 @@ export default {
   <div class="recommend-container" style="border-radius: 15px; justify-content: center;">
     <p class="interest-text">您可能感兴趣：</p>
     <div class="card-container">
-      <PetDisplayCard style="margin-left: 7px;margin-right: 7px; margin-top: 15px;" v-for="(pet) in pets" :key="pet.id" :pet="pet" />
+      <PetDisplayCard style="margin-left: 7px;margin-right: 7px; margin-top: 15px;" v-for="(pet) in pets.slice(0,5)" :key="pet.id" :pet="pet" />
     </div>
   </div>
 
