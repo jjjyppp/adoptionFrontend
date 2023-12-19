@@ -176,6 +176,7 @@
   <div is="vue:script" src="./assets/js/main.js"></div>
 </template>
 
+
 <script>
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import HeaderTag from "@/components/HeaderTag.vue";

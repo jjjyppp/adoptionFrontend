@@ -199,7 +199,6 @@
 
   <footer-card></footer-card>
 
-
 </template>
 
 <script>
