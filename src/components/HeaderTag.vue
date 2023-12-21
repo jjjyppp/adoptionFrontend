@@ -243,7 +243,7 @@ export default {
 }
 
 .el-menu{
-
+  font-family: 'PingFang HK'
 }
 
 .bottom-divider{

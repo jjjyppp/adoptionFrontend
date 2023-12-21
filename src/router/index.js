@@ -62,11 +62,6 @@ const routes = [
     component: () => import('../views/myFavoritePage1.vue')
   },
   {
-    path: '/temp',
-    name: 'tempPage',
-    component: () => import('../views/tempPage.vue')
-  },
-  {
     path: '/signup',
     name: 'signupPage',
     component: () => import('../views/signupPage.vue')
@@ -75,6 +70,11 @@ const routes = [
     path: '/article',
     name: 'articlePage',
     component: () => import('../views/articlePage.vue')
+  },
+  {
+    path: '/temp',
+    name: 'tempAdoptionPage',
+    component: () => import('../views/tempAdoptionPage.vue')
   }
 ]
 

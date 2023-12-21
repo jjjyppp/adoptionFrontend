@@ -339,7 +339,7 @@ export default {
   place-items: center;
   width: 100%;
   height: 450px;
-  background: #6504b5 url("https://box.nju.edu.cn/thumbnail/134b204a714445f48f20/1024/background.png") no-repeat top;
+  background: #6504b5 url("https://box.nju.edu.cn/thumbnail/134b204a714445f48f20/1024/background.jpg") no-repeat top;
   background-size: 100% 442px;
   text-align: center;
   //display: flex;

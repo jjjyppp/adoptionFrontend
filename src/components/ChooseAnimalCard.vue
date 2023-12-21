@@ -16,13 +16,13 @@
      <ul class="list1">
         <li>
           <button class="card-button1">
-            <img src="../assets/icons/dog1.png" alt="" class="card-bt-img" @click="toAdoptionDog">
+            <img src="../assets/icons/dog1.png" alt="" class="choose-card-bt-img" @click="toAdoptionDog">
             <span class="card-text">宠物狗</span>
           </button>
         </li>
         <li>
           <button class="card-button1">
-            <img src="../assets/icons/cat1.png" alt="" class="card-bt-img" @click="toAdoptionCat">
+            <img src="../assets/icons/cat1.png" alt="" class="choose-card-bt-img" @click="toAdoptionCat">
             <span class="card-text">宠物猫</span>
           </button>
         </li>
@@ -32,13 +32,13 @@
       <ul class="list1">
         <li>
           <button class="card-button1">
-            <img src="../assets/icons/rabbit1.png" alt="" class="card-bt-img" @click="toAdoptionRabbit">
+            <img src="../assets/icons/rabbit1.png" alt="" class="choose-card-bt-img" @click="toAdoptionRabbit">
             <span class="card-text">兔子</span>
           </button>
         </li>
         <li>
           <button class="card-button1">
-            <img src="../assets/icons/other.png" alt="" class="card-bt-img" @click="toAdoptionOther">
+            <img src="../assets/icons/other.png" alt="" class="choose-card-bt-img" @click="toAdoptionOther">
             <span class="card-text">其他</span>
           </button>
         </li>
@@ -92,7 +92,22 @@ export default {
 
 </script>
 
-<style lang="less">
+<style scoped>
+ul {
+  list-style-type: none;
+}
+
+li {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.choose-card-bt-img{
+  height: 90px;
+}
+
 .choose-back{
   width: 100vw;
   height: 100vh;
