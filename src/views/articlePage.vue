@@ -20,7 +20,7 @@
     <div class="rec-sec">
       <p class="recent-text">最近浏览过的宠物</p>
       <div class="rec-cards">
-        <pet-display-card style="margin-left: 15px"  v-for="(pet, index) in recent_pets" :key="index" :pet="pet" />
+        <pet-display-card style="margin-left: 15px"  v-for="(pet, index) in pets.slice(0, 5)" :key="index" :pet="pet" />
       </div>
     </div>
   </div>
@@ -34,12 +34,12 @@ import HeaderTag from "@/components/HeaderTag.vue";
 import FooterCard from "@/components/FooterCard.vue";
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import router from "@/router";
-
+import {request} from "@/utils/request";
 export default {
-  components: {PetDisplayCard, ElBreadcrumb, ElBreadcrumbItem, HeaderTag, FooterCard, ElCard },
+  components: {PetDisplayCard, ElBreadcrumb, ElBreadcrumbItem, HeaderTag, FooterCard, ElCard},
   data() {
     return {
-      articles:[
+      articles: [
         {
           src: 'src/assets/imgs/article1.jpg',
           header: '宠物科普 | 为何人人都需要一只宠物',
@@ -152,19 +152,28 @@ export default {
         }
 
       ],
+      pets: [],
       recent_pets: [
-        { id: 1, name: '猫猫1', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 2, name: '猫猫2', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
-        { id: 3, name: '猫猫3', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/indir.jpg' },
-        { id: 4, name: '猫猫4', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/indir.jpg' },
-        { id: 5, name: '猫猫5', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg' },
+        {id: 1, name: '猫猫1', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg'},
+        {id: 2, name: '猫猫2', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg'},
+        {id: 3, name: '猫猫3', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/indir.jpg'},
+        {id: 4, name: '猫猫4', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/indir.jpg'},
+        {id: 5, name: '猫猫5', age: "6岁", location: '南京', imageUrl: 'src/views/assets/img/cat1.jpg'},
       ],
-      index:0
+      index: 0
     };
   },
   mounted() {
     this.index = router.currentRoute.value.query.index;
     console.log(this.index)
+    request({
+      url: `http://localhost:8080/pets`,
+      method: 'GET'
+    }).then((res) => {
+      console.log(res.data)
+      this.pets=res.data
+    }).catch((error) => {
+    })
   }
 }
 
