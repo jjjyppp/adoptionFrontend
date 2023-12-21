@@ -91,6 +91,7 @@ export default {
           </p>
 
         </div>
+
     <div class="attention">
       <p class="story-title">注意事项：</p>
       <p class="word-break">
@@ -98,8 +99,14 @@ export default {
       </p>
 
     </div>
+    <div class="certification">
+      <p class="story-title">宠物健康证明：</p>
+      <div class="box">
+        <div><img src="src/assets/imgs/cer1.png" alt=""></div>
+        <div><img src="src/assets/imgs/cer2.png" alt=""></div>
+      </div>
 
-
+    </div>
 
 <!--      </el-container>-->
 
@@ -172,13 +179,30 @@ export default {
   margin-left: 40px;
   margin-bottom: 40px;
   font-size: 20px;
+  border-bottom: 1px solid #a9a9a9;
+}
+.certification {
+  text-align: start;
+  margin-right: 40px;
+  margin-left: 40px;
+  margin-bottom: 40px;
+  font-size: 20px;
 }
 .story-title {
   font-size: 23px;
 }
+.box{
+  display: flex;
+  height: 400px;
+  border:1px solid #ffffff;
+  justify-content: space-evenly;
+}
 
-
-
+img{
+  width: 100%;
+  height: 400px;
+  padding: 15px;
+}
 
 @container (max-width: 850px) {
   .card {
