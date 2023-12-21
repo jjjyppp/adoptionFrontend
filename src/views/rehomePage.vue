@@ -161,7 +161,30 @@
           :initial-index="initialImgPreviewIndex"
       />
     </div>
-
+    <div class="input-group">
+      <label>健康证明：<p style= "color: crimson">(最多四张，请上传疫苗接种手册、绝育证书、检疫证书等)</p></label>
+      <el-upload
+          class="uploadImage"
+          action="http://localhost:8080/image"
+          ref="upload"
+          :limit="limitnum"
+          list-type="picture-card"
+          :auto-upload="true"
+          :on-error="uploadFileError"
+          :on-success="uploadFileSuccess"
+          :on-exceed="exceedFile"
+          :on-remove="removeFile"
+          :on-preview="handlePreview">
+        <img v-if="imageUrl" :src="imageUrl" alt="" class="avatar">
+      </el-upload>
+      <el-image-viewer
+          v-if="showImgViewer"
+          @close="closeImgViewer"
+          :url-list="imagePreviewUrls"
+          :z-index="3000"
+          :initial-index="initialImgPreviewIndex"
+      />
+    </div>
     <div class="input-group">
       <label>所在地区:</label>
       <el-cascader class="address" placeholder="请选择您所在的地区" size='large' style="width: 420px;" :options='options' v-model='selectedOptions' @change='addressChange'></el-cascader>
