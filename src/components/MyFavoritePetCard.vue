@@ -30,11 +30,11 @@ import router from "@/router";
 import {store} from "@/store/store";
 
 export default {
-  name: "PetDisplayCard",
+  name: "myFavoritePetCard",
   components:{ElButton,ElNotification},
   props: ['pet'],
   mounted() {
-      this.$refs.img.src = this.pet.urls[0];
+    this.$refs.img.src = this.pet.urls[0];
   },
   watch: {
     pet: function(newVal, oldVal) {
@@ -169,8 +169,8 @@ a{
   padding-top: 0.2rem!important;
   padding-bottom: 0!important;
   color: #6504B5;
-  //display: inline-block;
-  //width: 160px;
+//display: inline-block;
+//width: 160px;
   padding-left: 4px;
   overflow: hidden;
   white-space: nowrap;

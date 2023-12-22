@@ -105,6 +105,22 @@
                   </div>
                 </td>
               </tr>
+<!--              <tr class="screen-row" style="height: 30px; line-height: 30px; cursor: pointer"-->
+<!--                  v-show="showtag1"-->
+<!--                  @mouseenter="isHovered = true"-->
+<!--                  @mouseleave="isHovered = false"-->
+<!--                  @click="showTags=true;showtag1=false;showtag2=true"-->
+<!--                  :style="{ color: isHovered ? '#6504B5' : '#707070', textAlign: 'center' }">-->
+<!--                <svg t="1703170675660" @mouseenter="isHovered = true" @mouseleave="isHovered = false" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2687" width="28" height="28" :style="{ fill: isHovered ? '#6504B5' : '#707070' }"><path d="M512.726547 675.318646c-8.063653 0-15.790638-3.245927-21.435195-9.006118L231.175103 400.906809c-11.603269-11.837606-11.410887-30.840402 0.427742-42.442648 11.837606-11.601222 30.841426-11.410887 42.442648 0.427742l238.681054 243.534596L751.407602 358.891903c11.601222-11.839653 30.602995-12.033058 42.442648-0.427742 11.839653 11.603269 12.031011 30.605042 0.427742 42.442648L534.161742 666.312528C528.517185 672.072719 520.791224 675.318646 512.726547 675.318646z" p-id="2688"></path></svg>-->
+<!--                点击展开更多选项</tr>-->
+<!--              <tr class="screen-row" style="height: 30px; line-height: 30px; cursor: pointer"-->
+<!--                  v-show="showtag2"-->
+<!--                  @mouseenter="isHovered = true"-->
+<!--                  @mouseleave="isHovered = false"-->
+<!--                  @click="showTags=false;showtag1=true;showtag2=false"-->
+<!--                  :style="{ color: isHovered ? '#6504B5' : '#707070', textAlign: 'center' }">-->
+<!--                <svg t="1703171231439" @mouseenter="isHovered = true" @mouseleave="isHovered = false" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4103" width="27" height="27" :style="{ fill: isHovered ? '#6504B5' : '#707070' }"><path d="M246.76 686.964l253.604-274.757L753.99 686.964a34.91 34.91 0 1 0 51.316-47.36L526.033 337.06a34.91 34.91 0 0 0-51.316 0L195.444 639.604a34.91 34.91 0 1 0 51.317 47.36"  p-id="4104"></path></svg>-->
+<!--                点击收起</tr>-->
             </table>
           </div>
 
@@ -176,6 +192,10 @@ export default {
       pageSize: 16,
       pets: [],
       showChooseCard:false,
+      showTags:false,
+      showtag1:true,
+      showtag2:false,
+      isHovered:false,
       petTypes: [
         { pro: 'dog', label: '宠物狗' },
         { pro: 'cat', label: '宠物猫' },
