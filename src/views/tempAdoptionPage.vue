@@ -75,16 +75,16 @@
                   </div>
                 </td>
               </tr>
-              <tr class="screen-row">
-                <td class="left-box">宠物来源</td>
-                <td class="right-box">
-                  <div class="tag-box">
-                    <div class="tags">
-                      <span v-for="(item, index) in petSources" :class="{ 'tag-item-chose': isSourceChose[index], 'tag-item': !isSourceChose[index] } " @click="chooseSourceTag(index)">{{item.label}}</span>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+<!--              <tr class="screen-row">-->
+<!--                <td class="left-box">宠物来源</td>-->
+<!--                <td class="right-box">-->
+<!--                  <div class="tag-box">-->
+<!--                    <div class="tags">-->
+<!--                      <span v-for="(item, index) in petSources" :class="{ 'tag-item-chose': isSourceChose[index], 'tag-item': !isSourceChose[index] } " @click="chooseSourceTag(index)">{{item.label}}</span>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </td>-->
+<!--              </tr>-->
               <tr class="screen-row">
                 <td class="left-box">健康情况</td>
                 <td class="right-box">
@@ -123,12 +123,40 @@
 <!--                点击收起</tr>-->
             </table>
           </div>
-
-          <div style="margin-top: 40px">
-              <el-empty description="暂时没有满足您要求的宠物哦！看看其他的宠物吧！" v-if="pets.length===0"></el-empty>
+          <div class="choseTags">
+            <el-tag
+                v-for="tag in choseBreed.concat(choseGender, choseSize, choseHealth)"
+                :key="tag"
+                closable
+                @close="handleClose(tag)"
+                size="large"
+                type="info"
+                style="margin-right: 5px; background-color: white; color: #6504B5; border-color: #6504B5;"
+            >
+              {{tag}}
+            </el-tag>
           </div>
 
-          <div style="width: 80%; background-color: inherit; margin-left: 120px; margin-top: 20px">
+          <div class="my-tabs" style="margin-top: 40px; margin-left: 48px; width: 80%">
+            <el-tabs class="sourceTags" v-model="activeName" type="card" @click="handleClick">
+              <el-tab-pane label="全部" name="全部" :style="{ 'font-size': '30px' }"></el-tab-pane>
+              <el-tab-pane label="家养" name="家养"></el-tab-pane>
+              <el-tab-pane label="个人救助" name="个人救助"></el-tab-pane>
+              <el-tab-pane label="救助站" name="救助站"></el-tab-pane>
+            </el-tabs>
+          </div>
+
+<!--          <div style="width: 80%; background-color: inherit; margin-left: 120px; margin-top: 20px">-->
+<!--            <div class="justify-content-between">-->
+<!--              <pet-display-card style="margin-top: 20px" v-for="(pet, index) in pets.slice((currentPage - 1) * pageSize, currentPage * pageSize)" :key="index" :pet="pet" />-->
+<!--            </div>-->
+<!--          </div>-->
+
+          <div style="margin-top: 40px" v-if="pets.length===0">
+              <el-empty description="暂时没有满足您要求的宠物哦！看看其他的宠物吧！"></el-empty>
+          </div>
+
+          <div style="width: 80%; background-color: inherit; margin-left: 50px">
             <div class="justify-content-between">
               <pet-display-card style="margin-top: 20px" v-for="(pet, index) in pets.slice((currentPage - 1) * pageSize, currentPage * pageSize)" :key="index" :pet="pet" />
             </div>
@@ -181,11 +209,11 @@ import {codeToText} from "element-china-area-data";
 import {request} from "@/utils/request";
 import chooseAnimalCard from "@/components/ChooseAnimalCard.vue";
 import FooterCard from "@/components/FooterCard.vue";
-import {ElEmpty, ElPagination} from "element-plus";
+import {ElEmpty, ElPagination, ElTabPane, ElTabs, ElTag} from "element-plus";
 // import ElPagination from "element-plus"
 
 export default {
-  components: {FooterCard, chooseAnimalCard, PetDisplayCard, HeaderTag, ElPagination, ElEmpty},
+  components: {FooterCard, chooseAnimalCard, PetDisplayCard, HeaderTag, ElPagination, ElEmpty, ElTabs, ElTabPane, ElTag},
   data(){
     return{
       currentPage: 1,
@@ -196,6 +224,7 @@ export default {
       showtag1:true,
       showtag2:false,
       isHovered:false,
+      activeName: '全部',
       petTypes: [
         { pro: 'dog', label: '宠物狗' },
         { pro: 'cat', label: '宠物猫' },
@@ -304,8 +333,8 @@ export default {
         { value: '家养', label: '家养' },
         { value: '救助站', label: '救助站' },
         { value: '个人救助', label: '个人救助' },
-        { value: '其他', label: '其他' }
       ],
+      tags: [],
       isTypeChose: [true],
       isBreedChose: [true],
       isGenderChose: [true],
@@ -324,7 +353,11 @@ export default {
       petPrice: [],
       showAllBreeds: false,
       petAddress: '',
-      allBreeds: []
+      allBreeds: [],
+      choseBreed: [],
+      choseGender: [],
+      choseSize: [],
+      choseHealth: []
     }
   },
   computed: {
@@ -362,6 +395,42 @@ export default {
     },
   },
   methods: {
+    handleClose(tag) {
+      if(this.choseBreed.indexOf(tag)!==-1){
+        let breeds=this.petBreeds.filter(breed => breed.pro === this.petType)
+        for (let i=0;i<breeds.length;i++){
+          if(breeds[i].label===tag){
+            this.chooseBreedTag(i)
+            break
+          }
+        }
+      }
+      if(this.choseSize.indexOf(tag)!==-1){
+        for (let i=0;i<this.petSizes.length;i++){
+          if(this.petSizes[i].label===tag){
+            this.chooseSizeTag(i)
+          }
+        }
+      }
+      if(this.choseGender.indexOf(tag)!==-1){
+        for (let i=0;i<this.petGenders.length;i++){
+          if(this.petGenders[i].label===tag){
+            this.chooseGenderTag(i)
+          }
+        }
+      }
+      if(this.choseHealth.indexOf(tag)!==-1){
+        for (let i=0;i<this.healthConditions.length;i++){
+          if(this.healthConditions[i].label===tag){
+            this.chooseHealthTag(i)
+          }
+        }
+      }
+    },
+    handleClick(tab, event) {
+      console.log(this.activeName)
+      this.filter()
+    },
     updatePets(){
       this.petType = router.currentRoute.value.query.type;
 
@@ -422,7 +491,7 @@ export default {
       })
     },
     filter(){
-      let breed, gender, age, size, source, health, price, address
+      let breed, gender, age, size, source = [], health, price, address
       if(this.petBreed.length===0){
         breed=this.petBreeds.filter(breed => breed.pro === this.petType).map(item => item.label)
       }
@@ -443,10 +512,13 @@ export default {
       }
       else size=this.petSize
 
-      if(this.petSource.length===0){
+
+      if(this.activeName==='全部'){
         source=this.petSources.map(item => item.value)
       }
-      else source=this.petSource
+      else{
+        source.push(this.activeName)
+      }
 
       if(this.healthCondition.length===0){
         health=["none"]
@@ -499,6 +571,25 @@ export default {
           this.isTypeChose[i] = true
           this.petType = this.petTypes[index].pro
           this.isBreedChose = [true]
+          this.isGenderChose = [true]
+          this.isAgeChose = [true]
+          this.isSizeChose = [true]
+          this.isHealthChose = [true]
+          this.isPriceChose = [true]
+          this.choseBreed = []
+          this.choseSize = []
+          this.choseGender = []
+          this.choseHealth = []
+          this.petBreed=[]
+          this.petGender=[]
+          this.petAge=[]
+          this.petSize=[]
+          this.petSource=[]
+          this.healthCondition=[]
+          this.petPrice=[]
+          this.petAddress=''
+          this.range=''
+          this.activeName = '全部'
         } else {
           this.isTypeChose[i] = false
         }
@@ -513,7 +604,11 @@ export default {
             this.isBreedChose[i]=false
             let label = this.filteredBreeds[index].label
             let pos = this.petBreed.indexOf(label)
+            this.choseBreed.splice(this.choseBreed.indexOf(label),1)
             this.petBreed.splice(pos, 1)
+            if(this.isBreedChose.indexOf(true)===-1){
+              this.isBreedChose[0]=true
+            }
           }
           else {
             if(i===0){
@@ -524,6 +619,7 @@ export default {
               this.isBreedChose[0] = false
               this.isBreedChose[i] = true
               this.petBreed.push(this.filteredBreeds[index].label)
+              this.choseBreed.push(this.filteredBreeds[index].label)
             }
           }
         }
@@ -539,6 +635,7 @@ export default {
             this.isGenderChose[i]=false
             let label = this.petGenders[index].label
             let pos = this.petGender.indexOf(label)
+            this.choseGender.splice(this.choseGender.indexOf(label),1)
             this.petGender.splice(pos, 1)
             if(this.isGenderChose.indexOf(true)===-1){
               this.isGenderChose[0]=true
@@ -553,6 +650,7 @@ export default {
               this.isGenderChose[0] = false
               this.isGenderChose[i] = true
               this.petGender.push(this.petGenders[index].label)
+              this.choseGender.push(this.petGenders[index].label)
             }
           }
         }
@@ -597,6 +695,7 @@ export default {
             this.isSizeChose[i]=false
             let label = this.petSizes[index].label
             let pos = this.petSize.indexOf(label)
+            this.choseSize.splice(this.choseSize.indexOf(label),1)
             this.petSize.splice(pos, 1)
             if(this.isSizeChose.indexOf(true)===-1){
               this.isSizeChose[0]=true
@@ -611,6 +710,7 @@ export default {
               this.isSizeChose[0] = false
               this.isSizeChose[i] = true
               this.petSize.push(this.petSizes[index].label)
+              this.choseSize.push(this.petSizes[index].label)
             }
           }
         }
@@ -618,35 +718,35 @@ export default {
       this.filter()
       console.log(this.petSize)
     },
-    chooseSourceTag(index){
-      for (let i = 0; i < this.petSources.length; i++) {
-        if (i === index) {
-          if(this.isSourceChose[i]){
-            if(i===0) break
-            this.isSourceChose[i]=false
-            let label = this.petSources[index].label
-            let pos = this.petSource.indexOf(label)
-            this.petSource.splice(pos, 1)
-            if(this.isSourceChose.indexOf(true)===-1){
-              this.isSourceChose[0]=true
-            }
-          }
-          else {
-            if(i===0){
-              this.isSourceChose = [true]
-              this.petSource=[]
-            }
-            else {
-              this.isSourceChose[0] = false
-              this.isSourceChose[i] = true
-              this.petSource.push(this.petSources[index].label)
-            }
-          }
-        }
-      }
-      this.filter()
-      console.log(this.petSource)
-    },
+    // chooseSourceTag(index){
+    //   for (let i = 0; i < this.petSources.length; i++) {
+    //     if (i === index) {
+    //       if(this.isSourceChose[i]){
+    //         if(i===0) break
+    //         this.isSourceChose[i]=false
+    //         let label = this.petSources[index].label
+    //         let pos = this.petSource.indexOf(label)
+    //         this.petSource.splice(pos, 1)
+    //         if(this.isSourceChose.indexOf(true)===-1){
+    //           this.isSourceChose[0]=true
+    //         }
+    //       }
+    //       else {
+    //         if(i===0){
+    //           this.isSourceChose = [true]
+    //           this.petSource=[]
+    //         }
+    //         else {
+    //           this.isSourceChose[0] = false
+    //           this.isSourceChose[i] = true
+    //           this.petSource.push(this.petSources[index].label)
+    //         }
+    //       }
+    //     }
+    //   }
+    //   this.filter()
+    //   console.log(this.petSource)
+    // },
     chooseHealthTag(index){
       for (let i = 0; i < this.healthConditions.length; i++) {
         if (i === index) {
@@ -655,6 +755,7 @@ export default {
             this.isHealthChose[i]=false
             let label = this.healthConditions[index].label
             let pos = this.healthCondition.indexOf(label)
+            this.choseHealth.splice(this.choseHealth.indexOf(label),1)
             this.healthCondition.splice(pos, 1)
             if(this.isHealthChose.indexOf(true)===-1){
               this.isHealthChose[0]=true
@@ -669,6 +770,7 @@ export default {
               this.isHealthChose[0] = false
               this.isHealthChose[i] = true
               this.healthCondition.push(this.healthConditions[index].label)
+              this.choseHealth.push(this.healthConditions[index].label)
             }
           }
         }
@@ -720,6 +822,69 @@ export default {
 
 @import url('./assets/css/plugin.css');
 @import url('./assets/css/main.css');
+
+.choseTags{
+  text-align: left;
+  padding-top: 10px;
+  margin-left: 48px;
+}
+
+// 修改el-tabs
+.my-tabs .el-tabs__item.is-active {
+  background: rgba(0, 102, 255, 0.08);
+  border-radius: 4px 4px 3px 3px;
+  color: #6504B5;
+}
+
+.my-tabs .el-tabs__active-bar {
+  background-color: #166fe8; /* 修改底部横杠的颜色 */
+  height: 3px; /* 修改底部横杠的高度 */
+}
+.my-tabs /deep/ .el-tabs__active-bar::after{
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 39%;
+  bottom:2px;
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-bottom: 5px solid #166fe8;
+}
+.my-tabs /deep/ .el-tabs__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px !important;
+  padding: 0 !important;
+}
+.my-tabs /deep/ .el-tabs__nav.is-top{
+  display: flex;
+}
+.my-tabs /deep/ .el-tabs__nav.is-top > div {
+  width: 100px;
+  text-align: center;
+}
+
+.el-tabs__active-bar.is-top {
+  padding: 0 24px;
+  box-sizing: border-box !important;
+  background-clip: content-box !important;
+}
+
+.el-tabs__item{
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-size: 22px;
+  color: #495056;
+  cursor: pointer;
+  position: relative;
+}
+
+.el-tabs__item:hover{
+  color: #6504B5;
+}
+
 
 .filter{
   width: 100%;

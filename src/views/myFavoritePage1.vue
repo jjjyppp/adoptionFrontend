@@ -29,18 +29,19 @@ export default {
     // }
   },
   methods: {
-    getPetById(petId) {
-      request({
-        url: `http://localhost:8080/pet/${petId}`,
-        method: 'GET'
-      }).then((res) => {
-        console.log(res.data)
-        return res.data
-      }).catch((error) => {
-      })
-
-      return null;
-    },
+    async getPetById(petId) {
+      try {
+        const response = await request({
+          url: `http://localhost:8080/pet/${petId}`,
+          method: 'GET'
+        })
+        console.log(response.data)
+        return response.data
+      } catch (error) {
+        console.error(error)
+        throw error
+      }
+    }
   },
 }
 </script>

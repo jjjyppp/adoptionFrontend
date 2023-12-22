@@ -324,7 +324,6 @@ export default {
         { value: '家养', label: '家养' },
         { value: '救助站', label: '救助站' },
         { value: '个人救助', label: '个人救助' },
-        { value: '其他', label: '其他' }
       ],
       selectedHealthConditions : [],
       selectedAdoptNeeds : [],
