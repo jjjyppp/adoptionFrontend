@@ -4,7 +4,7 @@
   </div>
   <!--Main start-->
 
-  <main style="background-color:#f0f0f0; margin-top: 50px">
+  <main style="background-color:#f0f0f0; margin-top: 20px">
     <div class="choose-animal-card" v-show="showChooseCard">
       <choose-animal-card @getType="getType" @backToHome="backToHomeHandler"></choose-animal-card>
     </div>
@@ -55,16 +55,16 @@
                   </div>
                 </td>
               </tr>
-              <tr class="screen-row">
-                <td class="left-box">年龄</td>
-                <td class="right-box">
-                  <div class="tag-box">
-                    <div class="tags">
-                      <span v-for="(item, index) in petAges" :class="{ 'tag-item-chose': isAgeChose[index], 'tag-item': !isAgeChose[index] } " @click="chooseAgeTag(index)">{{item.label}}</span>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+<!--              <tr class="screen-row">-->
+<!--                <td class="left-box">年龄</td>-->
+<!--                <td class="right-box">-->
+<!--                  <div class="tag-box">-->
+<!--                    <div class="tags">-->
+<!--                      <span v-for="(item, index) in petAges" :class="{ 'tag-item-chose': isAgeChose[index], 'tag-item': !isAgeChose[index] } " @click="chooseAgeTag(index)">{{item.label}}</span>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </td>-->
+<!--              </tr>-->
               <tr class="screen-row">
                 <td class="left-box">体型</td>
                 <td class="right-box">
@@ -95,16 +95,16 @@
                   </div>
                 </td>
               </tr>
-              <tr class="screen-row">
-                <td class="left-box">领养金额</td>
-                <td class="right-box">
-                  <div class="tag-box">
-                    <div class="tags">
-                      <span v-for="(item, index) in petPrices" :class="{ 'tag-item-chose': isPriceChose[index], 'tag-item': !isPriceChose[index] } " @click="choosePriceTag(index)">{{item.label}}</span>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+<!--              <tr class="screen-row">-->
+<!--                <td class="left-box">领养金额</td>-->
+<!--                <td class="right-box">-->
+<!--                  <div class="tag-box">-->
+<!--                    <div class="tags">-->
+<!--                      <span v-for="(item, index) in petPrices" :class="{ 'tag-item-chose': isPriceChose[index], 'tag-item': !isPriceChose[index] } " @click="choosePriceTag(index)">{{item.label}}</span>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </td>-->
+<!--              </tr>-->
 <!--              <tr class="screen-row" style="height: 30px; line-height: 30px; cursor: pointer"-->
 <!--                  v-show="showtag1"-->
 <!--                  @mouseenter="isHovered = true"-->
@@ -131,19 +131,34 @@
                 @close="handleClose(tag)"
                 size="large"
                 type="info"
-                style="margin-right: 5px; background-color: white; color: #6504B5; border-color: #6504B5;"
-            >
+                style="margin-right: 5px; background-color: white; color: #6504B5; border-color: #6504B5;">
               {{tag}}
             </el-tag>
           </div>
 
-          <div class="my-tabs" style="margin-top: 40px; margin-left: 48px; width: 80%">
+          <div style="display: flex; margin-top: 40px;" >
+          <div class="my-tabs" style="margin-left: 48px; width: 36%">
             <el-tabs class="sourceTags" v-model="activeName" type="card" @click="handleClick">
               <el-tab-pane label="全部" name="全部" :style="{ 'font-size': '30px' }"></el-tab-pane>
               <el-tab-pane label="家养" name="家养"></el-tab-pane>
               <el-tab-pane label="个人救助" name="个人救助"></el-tab-pane>
               <el-tab-pane label="救助站" name="救助站"></el-tab-pane>
             </el-tabs>
+          </div>
+
+          <div style="margin-top: 10px; margin-left: 250px">
+            <span>综合排序</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>高价优先</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>低价优先</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>幼年优先</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>老年优先</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>最新发布</span>
+          </div>
           </div>
 
 <!--          <div style="width: 80%; background-color: inherit; margin-left: 120px; margin-top: 20px">-->
@@ -156,7 +171,7 @@
               <el-empty description="暂时没有满足您要求的宠物哦！看看其他的宠物吧！"></el-empty>
           </div>
 
-          <div style="width: 80%; background-color: inherit; margin-left: 50px">
+          <div style="width: 92%; background-color: inherit; margin-left: 52px">
             <div class="justify-content-between">
               <pet-display-card style="margin-top: 20px" v-for="(pet, index) in pets.slice((currentPage - 1) * pageSize, currentPage * pageSize)" :key="index" :pet="pet" />
             </div>
@@ -209,11 +224,14 @@ import {codeToText} from "element-china-area-data";
 import {request} from "@/utils/request";
 import chooseAnimalCard from "@/components/ChooseAnimalCard.vue";
 import FooterCard from "@/components/FooterCard.vue";
-import {ElEmpty, ElPagination, ElTabPane, ElTabs, ElTag} from "element-plus";
+import {ElDivider, ElEmpty, ElPagination, ElTabPane, ElTabs, ElTag} from "element-plus";
+import {Discount} from "@element-plus/icons-vue";
 // import ElPagination from "element-plus"
 
 export default {
-  components: {FooterCard, chooseAnimalCard, PetDisplayCard, HeaderTag, ElPagination, ElEmpty, ElTabs, ElTabPane, ElTag},
+  components: {
+    Discount,
+    FooterCard, chooseAnimalCard, PetDisplayCard, HeaderTag, ElPagination, ElEmpty, ElTabs, ElTabPane, ElTag, ElDivider},
   data(){
     return{
       currentPage: 1,
@@ -893,9 +911,10 @@ export default {
 }
 
 .screen{
-  border-top: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
-  border-left: 1px solid #e6e6e6;
+  border-top: 2px solid #e6e6e6;
+  border-right: 2px solid #e6e6e6;
+  border-left: 2px solid #e6e6e6;
+  border-bottom: 2px solid #e6e6e6;
   color: #495056;
 }
 
@@ -1010,8 +1029,8 @@ h1 {
 .justify-content-between{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
+  //justify-content: center;
+  //text-align: center;
 }
 
 
