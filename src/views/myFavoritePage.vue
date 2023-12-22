@@ -7,19 +7,21 @@ import RecommendCard from "@/components/RecommendCard.vue";
 
 </script>
 <script>
-import { store } from "@/store/store";
+//import { store } from "@/store/store";
 import router from "@/router";
 
 export default {
   mounted() {
     // 检查 store.favoritePets 是否为空
-    if (store.favoritePets.length > 0) {
-      // 如果非空，导航到 MyFavoritePage1
-      this.$router.push({ name: 'myFavoritePage1' });
-    } else {
-      // 如果为空，你可以选择执行其他操作，或者不执行任何操作
-      console.log('Favorite pets is empty');
-    }
+    // if (store.favoritePets.length > 0) {
+    //   // 如果非空，导航到 MyFavoritePage1
+    //   router.push({
+    //     name: 'myFavoritePage1', query:{type: 'cat'}
+    //   })
+    // } else {
+    //   // 如果为空，你可以选择执行其他操作，或者不执行任何操作
+    //   console.log('Favorite pets is empty');
+    // }
   },
   methods:{
 
