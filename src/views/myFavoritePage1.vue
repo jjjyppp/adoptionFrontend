@@ -8,6 +8,8 @@ import { store } from "@/store/store";
 </script>
 <script>
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
+import {request} from "@/utils/request";
+import {store} from "@/store/store";
 
 export default {
   components:{PetDisplayCard},
@@ -20,17 +22,26 @@ export default {
       ],
     };
   },
-  computed: {
-    // 使用计算属性获取所有宠物信息
-    pets() {
-      return this.$store.state.pets;  // 假设你的所有宠物信息存储在 state.pets 中
+  mounted() {
+    // let ids=store.favoritePets
+    // for(let i=0;i<ids.length; i++){
+    //   this.pets.push(this.getPetById(ids[i]))
+    // }
+  },
+  methods: {
+    getPetById(petId) {
+      request({
+        url: `http://localhost:8080/pet/${petId}`,
+        method: 'GET'
+      }).then((res) => {
+        console.log(res.data)
+        return res.data
+      }).catch((error) => {
+      })
+
+      return null;
     },
   },
-  // methods() {
-  //   getPetById(petId) {
-  //     return this.pets.find(pet => pet.id === petId);
-  //   },
-  // },
 }
 </script>
 <template>
@@ -41,9 +52,9 @@ export default {
   <div class="pet-container">
     <PetDisplayCard
         style="margin-right: 10px"
-        v-for="(petId) in store.favoritePets"
-        :key="petId"
-        :pet="getPetById(petId)" />
+        v-for="(id, index) in store.favoritePets"
+        :key="index"
+        :pet="getPetById(id)" />
   </div>
 
   <div style="align-items: center;justify-content: center;padding: 40px;">
