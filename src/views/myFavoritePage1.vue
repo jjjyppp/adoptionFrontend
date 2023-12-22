@@ -3,9 +3,7 @@
 import HeaderTag from "@/components/HeaderTag.vue";
 import FooterCard from "@/components/FooterCard.vue";
 import RecommendCard from "@/components/RecommendCard.vue";
-import { store } from "@/store/store";
-
-</script>
+import {store} from "@/store/store";</script>
 <script>
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import {request} from "@/utils/request";
@@ -22,25 +20,48 @@ export default {
       ],
     };
   },
-  mounted() {
-    // let ids=store.favoritePets
-    // for(let i=0;i<ids.length; i++){
-    //   this.pets.push(this.getPetById(ids[i]))
-    // }
+  async mounted() {
+    try {
+      // 获取所有宠物的 ID
+      const petIds = store.favoritePets;
+      console.log(petIds)
+
+      // 使用 Promise.all 来并行获取所有宠物数据
+      // 将获取的宠物数据保存到组件的数据中
+      this.pets = await Promise.all(
+          petIds.map((petId) => this.getPetById(petId))
+      );
+    } catch (error) {
+      console.error('Error fetching pet data:', error);
+      // 处理错误
+    }
   },
   methods: {
-    getPetById(petId) {
-      request({
-        url: `http://localhost:8080/pet/${petId}`,
-        method: 'GET'
-      }).then((res) => {
-        console.log(res.data)
-        return res.data
-      }).catch((error) => {
-      })
-
-      return null;
-    },
+    async getPetById(petId) {
+      try {
+        const response = await request({
+          url: `http://localhost:8080/pet/${petId}`,
+          method: 'GET'
+        })
+        console.log(response.data)
+        return response.data
+      } catch (error) {
+        console.error(error)
+        throw error
+      }
+    }
+    // getPetById(petId) {
+    //   request({
+    //     url: `http://localhost:8080/pet/${petId}`,
+    //     method: 'GET'
+    //   }).then((res) => {
+    //     this.pet = res.data()
+    //     console.log(res.data)
+    //     return res.data
+    //   }).catch((error) => {
+    //   })
+    //   //return null;
+    // },
   },
 }
 </script>
@@ -50,11 +71,17 @@ export default {
   <h1 style="padding-top: 40px;padding-left: 60px;font-family: 'PingFang HK';text-align: left; color: #4D4751">我的收藏</h1>
   <br>
   <div class="pet-container">
+<!--    <PetDisplayCard-->
+<!--        style="margin-right: 10px"-->
+<!--        v-for="(petId, index) in store.favoritePets"-->
+<!--        :key="index"-->
+<!--        :pet="getPetById(petId)" />-->
     <PetDisplayCard
         style="margin-right: 10px"
-        v-for="(id, index) in store.favoritePets"
+        v-for="(pet, index) in pets"
         :key="index"
-        :pet="getPetById(id)" />
+        :pet="pet"
+    />
   </div>
 
   <div style="align-items: center;justify-content: center;padding: 40px;">
