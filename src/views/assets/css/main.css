@@ -807,8 +807,7 @@ footer #footer-bottom .social-media a:hover {
 
 #animal-detail {
   font-family: "Jura", sans-serif;
-  background-image: linear-gradient(rgba(5, 4, 4, 0.39), rgba(0, 0, 0, 0.075)), url("../img/animal.png");
-}
+  }
 #animal-detail .carousel-item {
   height: 50vh;
   background-color: black;
@@ -819,12 +818,7 @@ footer #footer-bottom .social-media a:hover {
   display: inline;
   margin: auto;
 }
-#animal-detail .animal-detail-inner {
-  background-color: rgba(107, 6, 238, 0.5490196078);
-  color: #f7f7f7;
-  border-radius: 20px;
-  box-shadow: 0px 0px 28px grey;
-}
+
 #animal-detail .animal-detail-inner h1,
 #animal-detail .animal-detail-inner h2 {
   position: relative;
@@ -850,14 +844,15 @@ footer #footer-bottom .social-media a:hover {
   font-size: 50px;
 }
 #animal-detail .shelter-box {
+  background-color: white;
   position: relative;
-  background-color: rgba(147, 88, 223, 0.4039215686);
-  color: white;
+  color: black;
   border-radius: 20px;
   box-shadow: 0px 0px 28px grey;
   margin: 70px 0;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 22px;
+  width: 450px;
 }
 #animal-detail .shelter-box .img {
   position: absolute;

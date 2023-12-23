@@ -101,6 +101,11 @@
       <article-card v-for="(article, index) in articles" :key="index" :article="article" :index="index"></article-card>
       </div>
     </div>
+    <div class="operation">
+    <div class="cards">
+      <certification-card></certification-card>
+    </div>
+    </div>
     <div class="recent">
       <div class="rec-sec">
         <p class="recent-text">最近浏览过的宠物</p>
@@ -126,6 +131,7 @@ import FooterCard from "@/components/FooterCard.vue";
 import ChooseAnimalCard from "@/components/ChooseAnimalCard.vue";
 import router from "@/router";
 import {request} from "@/utils/request";
+import CertificationCard from "@/components/CertificationCard.vue";
 export default {
   name: "homePage",
   computed: {
@@ -134,6 +140,7 @@ export default {
     }
   },
   components:{
+    CertificationCard,
     FooterCard,
     ArticleCard,
     MoreAnimalCard,
