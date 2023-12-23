@@ -5,7 +5,8 @@ import {ElButton, ElCard, ElCarousel, ElCarouselItem,ElImage, ElIcon, ElDialog} 
 import DetailCard from "@/components/DetailCard.vue";
 import RecommendCard from "@/components/RecommendCard.vue";
 import FooterCard from "@/components/FooterCard.vue";
-import AdvertisementCard from "@/components/AdvertisementCard.vue";
+import AdvertisementCard2 from "@/components/AdvertisementCard2.vue";
+import DetailCard1 from "@/components/DetailCard1.vue";
 
 
 </script>
@@ -15,8 +16,25 @@ import AdvertisementCard from "@/components/AdvertisementCard.vue";
     <header-tag></header-tag>
   </div>
   <body class="body" style="margin-top: 50px">
+
+  <div style="display: flex;margin: 10px;width: 90%">
+    <div style="width: 60%">
+        <el-carousel height="450px" style="margin-top: 70px;margin-left: 200px">
+          <el-carousel-item v-for="(url, index) in pet.urls" :key="index">
+            <el-image
+                style="width: 560px; height: 400px"
+                :src="url"
+                :fit="'fill'"></el-image>
+          </el-carousel-item>
+        </el-carousel>
+      </div>
+    <div style="width: 40%;margin-left: 5%">
+      <detail-card1 :petId="petId"></detail-card1>
+    </div>
+  </div>
+
     <el-carousel @change="handleCarouselChange" :interval="4000" type="card" height="350px" indicator-position="outside">
-      <el-carousel-item v-for="(url, index) in pet.urls" :key="item"  style="margin: 10px">
+      <el-carousel-item v-for="(url, index) in pet.urls" :key="index"  style="margin: 10px">
         <div class="carousel-item-content" :style="{ filter: index !== currentIndex ? 'brightness(50%)' : 'brightness(100%)' }">
           <el-image
               style="width: 460px; height: 350px"
@@ -39,7 +57,7 @@ import AdvertisementCard from "@/components/AdvertisementCard.vue";
           </div>
         </el-card>
 
-        <AdvertisementCard ></AdvertisementCard>
+        <AdvertisementCard2 ></AdvertisementCard2>
 
         <el-card class="el-card" shadow="hover" style = "border-radius: 15px">
           <span class="owner-information-title">送养人信息</span><br>
@@ -184,7 +202,6 @@ export default {
 </script>
 
 <style scoped>
-
 .carousel-item-content {
   height: 100%;
   display: flex;
