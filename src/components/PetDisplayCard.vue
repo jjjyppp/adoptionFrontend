@@ -1,7 +1,7 @@
 <template>
   <div style="width: 210px; height: 300px" >
     <div class="animal-box text-center" style="height: 290px">
-      <router-link :to="{ name: 'petDetailPage', params: { id: pet.id } }">
+      <div @click="toPetDetailPage">
         <a>
           <div class="pet-img">
             <img src="" ref="img" alt="" style="width: 100%">
@@ -10,7 +10,7 @@
           <p class="info">{{pet.age}}</p>
           <p class="info">{{pet.address}}</p>
         </a>
-        <span @click.prevent="handleClick" :class="{ 'bg-light': !isClicked, 'bg-dark': isClicked }">
+        <span @click.stop.prevent="handleClick" :class="{ 'bg-light': !isClicked, 'bg-dark': isClicked }">
           <div>
 <!--              <img src="../assets/icons/heart.png" alt="" width="26">-->
             <svg style="margin-bottom: 4px" class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="26" height="26" :style="{ fill: isClicked ? '#ffffff' : '#4c0586' }">
@@ -18,7 +18,7 @@
             </svg>
           </div>
         </span>
-      </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -35,6 +35,9 @@ export default {
   props: ['pet'],
   mounted() {
       this.$refs.img.src = this.pet.urls[0];
+      if(store.favoritePets.indexOf(this.pet)!==-1){
+        this.isClicked=true
+      }
   },
   watch: {
     pet: function(newVal, oldVal) {
@@ -48,24 +51,35 @@ export default {
     };
   },
   methods: {
+    toPetDetailPage(){
+      router.push({
+        name: 'petDetailPage', query:{id: this.pet.id}
+      })
+    },
     handleClick() {
       this.isClicked = !this.isClicked;
 
       if(this.isClicked){
-        store.favoritePets.push(this.pet.id);
+        if(store.favoritePets.indexOf(this.pet)===-1){
+          store.favoritePets.push(this.pet);
+        }
         console.log(store.favoritePets);
         //this.favoritePets.push(this.pet.id);
         //console.log(this.favoritePets);
         ElNotification({
           title: '您已成功收藏',
           message: '可以进入"我的收藏"中查看它哦',
+          offset: 50,
+          type: 'success'
         });
       } else {
-        store.favoritePets = store.favoritePets.filter(petId => petId !== this.pet.id);
+        store.favoritePets = store.favoritePets.filter(petId => petId !== this.pet);
         console.log(store.favoritePets);
         ElNotification({
           title: '您已取消收藏',
-          message: '再看看其他宠物吧？',
+          message: '再看看其他宠物吧!',
+          offset: 50,
+          type: 'error'
         });
       }
     }

@@ -135,9 +135,7 @@ export default {
     }
   },
   mounted() {
-    this.petId = this.$route.params.id;
-    console.log(this.petId)
-
+    this.petId=router.currentRoute.value.query.id
     request({
       url: `http://localhost:8080/pet/${this.petId}`,
       method: 'GET'
