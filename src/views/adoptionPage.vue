@@ -146,19 +146,29 @@
               </el-tabs>
             </div>
 
-            <div style="margin-top: 10px; margin-left: 250px">
-              <span>综合排序</span>
-              <el-divider direction="vertical"></el-divider>
-              <span>高价优先</span>
-              <el-divider direction="vertical"></el-divider>
-              <span>低价优先</span>
-              <el-divider direction="vertical"></el-divider>
-              <span>幼年优先</span>
-              <el-divider direction="vertical"></el-divider>
-              <span>老年优先</span>
-              <el-divider direction="vertical"></el-divider>
-              <span>最新发布</span>
+            <div style="margin-top: 10px; margin-left: 240px">
+              <span
+                  v-for="(tag, index) in sortTags"
+                  :key="index"
+                  @click="selectSortTag(index)"
+                  :class="{ 'sort-tag': true, 'selected': selectedIndex === index }">
+              {{tag}}
+                <el-divider v-if="index!==sortTags.length-1" direction="vertical"></el-divider>
+              </span>
+<!--              <span class="sort-tag">综合排序</span>-->
+<!--              <el-divider direction="vertical"></el-divider>-->
+<!--              <span class="sort-tag">高价优先</span>-->
+<!--              <el-divider direction="vertical"></el-divider>-->
+<!--              <span class="sort-tag">低价优先</span>-->
+<!--              <el-divider direction="vertical"></el-divider>-->
+<!--              <span class="sort-tag">幼年优先</span>-->
+<!--              <el-divider direction="vertical"></el-divider>-->
+<!--              <span class="sort-tag">老年优先</span>-->
+<!--              <el-divider direction="vertical"></el-divider>-->
+<!--              <span class="sort-tag">最新发布</span>-->
             </div>
+
+
           </div>
 
           <!--          <div style="width: 80%; background-color: inherit; margin-left: 120px; margin-top: 20px">-->
@@ -185,7 +195,7 @@
                 layout="prev, pager, next"
                 :total=pets.length
                 @current-change="handleCurrentChange"
-                style="margin-left: 76%"
+                style="margin-left: 84%"
             />
           </div>
         </div>
@@ -234,6 +244,8 @@ export default {
     FooterCard, chooseAnimalCard, PetDisplayCard, HeaderTag, ElPagination, ElEmpty, ElTabs, ElTabPane, ElTag, ElDivider},
   data(){
     return{
+      sortTags: ['综合排序', '高价优先', '低价优先', '幼年优先', '老年优先', '最新发布'],
+      selectedIndex: 0,
       currentPage: 1,
       pageSize: 15,
       pets: [],
@@ -413,6 +425,10 @@ export default {
     },
   },
   methods: {
+    selectSortTag(index) {
+      this.selectedIndex = index;
+      // 在这里可以执行相应的排序逻辑
+    },
     handleClose(tag) {
       if(this.choseBreed.indexOf(tag)!==-1){
         let breeds=this.petBreeds.filter(breed => breed.pro === this.petType)
@@ -840,6 +856,16 @@ export default {
 
 @import url('./assets/css/plugin.css');
 @import url('./assets/css/main.css');
+
+
+.selected {
+  color: #6504B5; /* 变色样式，可以根据实际需求修改 */
+  font-weight: bold; /* 加粗样式，可以根据实际需求修改 */
+}
+
+.sort-tag{
+
+}
 
 .choseTags{
   text-align: left;
