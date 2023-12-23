@@ -114,17 +114,9 @@ export default {
         })
       }
       else {
-        if (store.favoritePets.length > 0) {
-          // 如果非空，导航到 MyFavoritePage1
-          router.push({
-            // name: 'myFavoritePage1', query:{type: 'cat'}
-            name: 'myFavoritePage1'
-          })
-        } else {
-          router.push({
-            name: "myFavoritePage"
-          })
-        }
+        router.push({
+          name: "myFavoritePage"
+        })
 
       }
     },

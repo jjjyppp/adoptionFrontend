@@ -52,15 +52,15 @@ const routes = [
     component: () => import('../views/petDetailPage.vue')
   },
   {
-    path: '/emptyFavorites',
+    path: '/favorites',
     name: 'myFavoritePage',
     component: () => import('../views/myFavoritePage.vue')
   },
-  {
-    path: '/favorites',
-    name: 'myFavoritePage1',
-    component: () => import('../views/myFavoritePage1.vue')
-  },
+  // {
+  //   path: '/favorites',
+  //   name: 'myFavoritePage1',
+  //   component: () => import('../views/myFavoritePage1.vue')
+  // },
   {
     path: '/signup',
     name: 'signupPage',
