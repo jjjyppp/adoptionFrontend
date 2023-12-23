@@ -3,13 +3,37 @@ import {ElIcon, ElCard, ElContainer, ElHeader, ElTag, ElAside, ElMain, ElFooter}
 import {Location} from '@element-plus/icons-vue'
 import {request} from "@/utils/request";
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
-
+import {ElImage, ElDialog} from "element-plus";
 export default {
   name: "detailCard",
-  components:{PetDisplayCard, Location, ElCard, ElTag, ElContainer, ElHeader, ElAside, ElMain, ElFooter, ElIcon},
-  props:['petId'],
-  data(){
-    return{
+  components: {
+    PetDisplayCard,
+    Location,
+    ElCard,
+    ElTag,
+    ElContainer,
+    ElHeader,
+    ElAside,
+    ElMain,
+    ElFooter,
+    ElIcon,
+    ElImage,
+    ElDialog
+  },
+  props: ['petId'],
+  data() {
+
+    return {
+      url: 'https://box.nju.edu.cn/f/331fa5bc8e4241d48744/?dl=1',
+      srcList: [
+        'https://box.nju.edu.cn/f/331fa5bc8e4241d48744/?dl=1',
+      ],
+      url2: 'https://box.nju.edu.cn/f/12b4959d4b874c27895b/?dl=1',
+      srcList2: [
+        'https://box.nju.edu.cn/f/12b4959d4b874c27895b/?dl=1',
+      ],
+      dialogVisible: false,
+      dialogVisible2: false,
       pet: {
         id: -1,
         address: '',
@@ -27,24 +51,33 @@ export default {
         source: '',
         story: '',
         urls: [],
-        date: ''
+        date: '',
       }
     }
   },
-  mounted() {},
+  mounted() {
+  },
   watch: {
-    petId: function(newVal, oldVal) {
-      console.log("petId="+this.petId)
+    petId: function (newVal, oldVal) {
+      console.log("petId=" + this.petId)
       request({
         url: `http://localhost:8080/pet/${this.petId}`,
         method: 'GET'
       }).then((res) => {
         console.log(res.data)
-        this.pet=res.data
+        this.pet = res.data
       }).catch((error) => {
       })
     }
   },
+  methods: {
+    openFullScreenPreview() {
+      this.dialogVisible = true;
+    },
+    openFullScreenPreview2() {
+      this.dialogVisible2 = true;
+    },
+}
 }
 </script>
 
@@ -102,10 +135,51 @@ export default {
     <div class="certification">
       <p class="story-title">宠物健康证明：</p>
       <div class="box">
-        <div><img src="src/assets/imgs/cer1.png" alt=""></div>
-        <div><img src="src/assets/imgs/cer2.png" alt=""></div>
+        <el-image
+            style="width: 100%;height: 400px;padding: 15px"
+            :src="url"
+            :zoom-rate="1.2"
+            :max-scale="7"
+            :min-scale="0.2"
+            fit="cover"
+            @click="openFullScreenPreview"
+        />
+        <el-dialog
+            v-model="dialogVisible"
+            :fullscreen="true"
+            :close-on-click-modal="false"
+            append-to-body
+        >
+          <el-image
+              style="width: 100%; height: 100%"
+              :src="url"
+              :initial-index="4"
+              fit="cover"
+          />
+        </el-dialog>
+        <el-image
+            style="width: 100%;height: 400px;padding: 15px"
+            :src="url2"
+            :zoom-rate="1.2"
+            :max-scale="7"
+            :min-scale="0.2"
+            fit="cover"
+            @click="openFullScreenPreview2"
+        />
       </div>
-
+      <el-dialog
+          v-model="dialogVisible2"
+          :fullscreen="true"
+          :close-on-click-modal="false"
+          append-to-body
+      >
+        <el-image
+            style="width: 100%; height: 100%"
+            :src="url2"
+            :initial-index="4"
+            fit="cover"
+        />
+      </el-dialog>
     </div>
 
 <!--      </el-container>-->
