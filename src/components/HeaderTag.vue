@@ -81,6 +81,7 @@ import {LocationInformation, ChatDotRound, Discount} from "@element-plus/icons-v
 import global from "@/views/assets/js/global_variable.js";
 import router from "@/router";
 import ChatPane from "@/components/ChatPane.vue";
+import { store } from "@/store/store";
 export default {
   name: "HeaderTag",
   components:{Discount, ChatPane, ElLink, ElCascader, ElIcon,  ElMenu, ElSubMenu, ElMenuItem, LocationInformation, ElDivider, ChatDotRound},
@@ -113,9 +114,18 @@ export default {
         })
       }
       else {
-        router.push({
-          name: "myFavoritePage"
-        })
+        if (store.favoritePets.length > 0) {
+          // 如果非空，导航到 MyFavoritePage1
+          router.push({
+            // name: 'myFavoritePage1', query:{type: 'cat'}
+            name: 'myFavoritePage1'
+          })
+        } else {
+          router.push({
+            name: "myFavoritePage"
+          })
+        }
+
       }
     },
     toMine(){
@@ -243,7 +253,7 @@ export default {
 }
 
 .el-menu{
-
+  font-family: 'PingFang HK'
 }
 
 .bottom-divider{

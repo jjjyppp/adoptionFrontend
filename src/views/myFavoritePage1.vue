@@ -3,29 +3,54 @@
 import HeaderTag from "@/components/HeaderTag.vue";
 import FooterCard from "@/components/FooterCard.vue";
 import RecommendCard from "@/components/RecommendCard.vue";
-
-</script>
+import {store} from "@/store/store";</script>
 <script>
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
+import {request} from "@/utils/request";
+import {store} from "@/store/store";
 
 export default {
   components:{PetDisplayCard},
   data() {
     return {
       pets: [
-        { id: 1, name: '猫猫1', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 2, name: '猫猫2', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 3, name: '猫猫3', age: "6岁", location: '南京', urls: 'src/views/assets/img/indir.jpg' },
-        { id: 4, name: '猫猫4', age: "6岁", location: '南京', urls: 'src/views/assets/img/indir.jpg' },
-        { id: 5, name: '猫猫5', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 6, name: '猫猫6', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 7, name: '猫猫7', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
-        { id: 8, name: '猫猫8', age: "6岁", location: '南京', urls: 'src/views/assets/img/indir.jpg' },
-        { id: 9, name: '猫猫9', age: "6岁", location: '南京', urls: 'src/views/assets/img/indir.jpg' },
-        { id: 10, name: '猫猫10', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 1, name: '猫猫1', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+        // { id: 2, name: '猫猫2', age: "6岁", location: '南京', urls: 'src/views/assets/img/cat1.jpg' },
+
       ],
     };
   },
+  async mounted() {
+    try {
+      // 获取所有宠物的 ID
+      const petIds = store.favoritePets;
+      console.log(petIds)
+
+      // 使用 Promise.all 来并行获取所有宠物数据
+      // 将获取的宠物数据保存到组件的数据中
+      this.pets = await Promise.all(
+          petIds.map((petId) => this.getPetById(petId))
+      );
+    } catch (error) {
+      console.error('Error fetching pet data:', error);
+      // 处理错误
+    }
+  },
+  methods: {
+    async getPetById(petId) {
+      try {
+        const response = await request({
+          url: `http://localhost:8080/pet/${petId}`,
+          method: 'GET'
+        })
+        console.log(response.data)
+        return response.data
+      } catch (error) {
+        console.error(error)
+        throw error
+      }
+    }
+  }
 }
 </script>
 <template>
@@ -34,7 +59,17 @@ export default {
   <h1 style="padding-top: 40px;padding-left: 60px;font-family: 'PingFang HK';text-align: left; color: #4D4751">我的收藏</h1>
   <br>
   <div class="pet-container">
-    <PetDisplayCard style="margin-right: 10px" v-for="(pet) in pets" :key="pet.id" :pet="pet" />
+<!--    <PetDisplayCard-->
+<!--        style="margin-right: 10px"-->
+<!--        v-for="(petId, index) in store.favoritePets"-->
+<!--        :key="index"-->
+<!--        :pet="getPetById(petId)" />-->
+    <PetDisplayCard
+        style="margin-right: 10px"
+        v-for="(pet, index) in pets"
+        :key="index"
+        :pet="pet"
+    />
   </div>
 
   <div style="align-items: center;justify-content: center;padding: 40px;">

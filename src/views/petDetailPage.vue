@@ -136,6 +136,7 @@ export default {
   },
   mounted() {
     this.petId = this.$route.params.id;
+    console.log(this.petId)
 
     request({
       url: `http://localhost:8080/pet/${this.petId}`,

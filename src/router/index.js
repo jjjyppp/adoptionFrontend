@@ -47,24 +47,19 @@ const routes = [
     component: () => import('../views/findMyPet.vue')
   },
   {
-    path: '/petDetail:id',
+    path: '/petDetail',
     name: 'petDetailPage',
     component: () => import('../views/petDetailPage.vue')
   },
   {
-    path: '/favorites',
+    path: '/emptyFavorites',
     name: 'myFavoritePage',
     component: () => import('../views/myFavoritePage.vue')
   },
   {
-    path: '/favorites1',
+    path: '/favorites',
     name: 'myFavoritePage1',
     component: () => import('../views/myFavoritePage1.vue')
-  },
-  {
-    path: '/temp',
-    name: 'tempPage',
-    component: () => import('../views/tempPage.vue')
   },
   {
     path: '/signup',
@@ -75,6 +70,11 @@ const routes = [
     path: '/article',
     name: 'articlePage',
     component: () => import('../views/articlePage.vue')
+  },
+  {
+    path: '/temp',
+    name: 'tempAdoptionPage',
+    component: () => import('../views/tempAdoptionPage.vue')
   }
 ]
 
