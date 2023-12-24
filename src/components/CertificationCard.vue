@@ -20,7 +20,7 @@
           <hr>
           <p align="left"><span class="pe-4"><i class="fa-solid fa-envelope"></i></span>jssdwxh@163.com</p>
           <hr>
-          <button style="-webkit-appearance: none;
+          <button @click="toStation" style="-webkit-appearance: none;
                                 color: #6504B5;
                                 width: 600px;
                                 height: 40px;
@@ -56,7 +56,15 @@
   <div is="vue:script" src="src/views/assets/js/main.js"></div>
 </template>
 <script>
+import router from "@/router";
 export default {
-  name: "CertificationCard"
+  name: "CertificationCard",
+  methods: {
+    toStation(){
+      router.push({
+        name:"rescueStationPage"
+      })
+    }
+  }
 }
 </script>
