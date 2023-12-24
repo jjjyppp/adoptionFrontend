@@ -4,6 +4,11 @@ import {Location} from '@element-plus/icons-vue'
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import {request} from "@/utils/request";
 export default {
+  watch: {
+    $route(to, from) {
+      window.location.reload(); //监测到路由发生跳转时刷新一次页面
+    },
+  },
   components:{PetDisplayCard, Location, ElCard, ElTag, ElContainer, ElHeader, ElAside, ElMain, ElFooter, ElIcon},
   data() {
     return {
