@@ -18,30 +18,6 @@ import CertificationCard from "@/components/CertificationCard.vue";
   </div>
   <body class="body" style="margin-top: 50px">
 
-<!--  <div style="display: flex;margin: 10px;width: 90%">-->
-<!--    <div style="width: 60%">-->
-<!--        <el-carousel height="450px" style="margin-top: 70px;margin-left: 200px">-->
-<!--          <el-carousel-item v-for="(url, index) in pet.urls" :key="index">-->
-<!--            <el-image-->
-<!--                style="width: 560px; height: 400px"-->
-<!--                :src="url"-->
-<!--                :fit="'fill'"></el-image>-->
-<!--          </el-carousel-item>-->
-<!--        </el-carousel>-->
-<!--      </div>-->
-<!--    <div style="width: 40%;margin-left: 5%">-->
-<!--      <detail-card1 :petId="petId"></detail-card1>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--    <div class="carousel-container">-->
-<!--      <div class="carousel">-->
-<!--        <div v-for="(url, index) in pet.urls" :key="index" class="carousel-item">-->
-<!--          <img :src="url.src" :alt="url.alt" />-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
     <el-carousel @change="handleCarouselChange" :interval="4000" type="card" height="380px" style="background-color: rgba(0, 0, 0, 0.8)" indicator-position="outside">
       <el-carousel-item v-for="(url, index) in pet.urls" :key="index" style="margin-top: 30px; background: transparent; height: 350px;">
           <el-image
@@ -108,7 +84,7 @@ import CertificationCard from "@/components/CertificationCard.vue";
         <chat-pane  @cancelChat="cancelChat"></chat-pane>
       </div>
 
-      <RecommendCard style="margin: 20px"></RecommendCard>
+      <RecommendCard style="margin: 60px"></RecommendCard>
 
     </div>
 
@@ -226,12 +202,14 @@ export default {
 .container{
   display: flex;
   flex-wrap: wrap;
-  margin-left: 30px;
+  margin-left: 60px;
   margin-top: 20px;
+  margin-right: 0;
 }
 .right {
-  width: 32%;
-  margin-left:5% ;
+  width: 28%;
+  margin-left: 2% ;
+  //padding-left: 0%;
   /*style="display: flex;flex-direction: column;align-items: center;justify-content: center;"*/
 }
 .adoption {

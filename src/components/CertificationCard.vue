@@ -12,7 +12,7 @@
   <section id="animal-detail">
         <div class="shelter-box py-5 px-4 ">
           <div class="img d-inline p-3"> <img src="src/assets/imgs/pet-house.png" alt=""></div>
-          <h1 class="mt-3">江苏省动物学会</h1>
+          <h1 class="mt-3" style="font-size: 30px">江苏省动物学会</h1>
           <h5 class="mt-3">江苏 南京</h5>
 
           <p><span class="pe-5"></span></p>
