@@ -30,7 +30,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .advertise {
   background-image: url("../assets/imgs/ad02.jpeg");
   background-size: cover;
