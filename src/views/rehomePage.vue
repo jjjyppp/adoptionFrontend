@@ -279,6 +279,7 @@ export default {
         { pro: 'dog', label: '拉布拉多' },
         { pro: 'dog', label: '泰迪' },
         { pro: 'dog', label: '比熊' },
+        { pro: 'dog', label: '柯基' },
         { pro: 'dog', label: '雪纳瑞' },
         { pro: 'dog', label: '吉娃娃' },
         { pro: 'dog', label: '巨型贵宾犬' },
