@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/views/assets/css/main.css">
   </head>
 
@@ -16,9 +15,9 @@
           <h5 class="mt-3">江苏 南京</h5>
 
           <p><span class="pe-5"></span></p>
-          <p class="mt-3" align="left"><span class="pe-5"><i class="fa-solid fa-location" ></i></span>江苏省南京市栖霞区文苑路一号</p>
+          <p class="mt-3" align="left"><span class="pe-4"><i class="fa-solid fa-location" ></i></span>江苏省南京市栖霞区文苑路一号</p>
           <hr>
-          <p align="left"><span class="pe-5"><i class="fa-solid fa-envelope"></i></span>jssdwxh@163.com</p>
+          <p align="left"><span class="pe-4"><i class="fa-solid fa-envelope"></i></span>jssdwxh@163.com</p>
           <hr>
           <button style="-webkit-appearance: none;
                                 color: #6504B5;
@@ -60,5 +59,3 @@ export default {
   name: "CertificationCard"
 }
 </script>
-<style>
-</style>

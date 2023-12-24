@@ -7,6 +7,7 @@ import RecommendCard from "@/components/RecommendCard.vue";
 import FooterCard from "@/components/FooterCard.vue";
 import AdvertisementCard2 from "@/components/AdvertisementCard2.vue";
 import DetailCard1 from "@/components/DetailCard1.vue";
+import CertificationCard from "@/components/CertificationCard.vue";
 
 
 </script>
@@ -33,16 +34,25 @@ import DetailCard1 from "@/components/DetailCard1.vue";
 <!--    </div>-->
 <!--  </div>-->
 
-    <el-carousel @change="handleCarouselChange" :interval="4000" type="card"  height="350px" style="background-color: rgba(0, 0, 0, 0.8)" indicator-position="outside">
-      <el-carousel-item v-for="(url, index) in pet.urls" :key="index"  style="margin: 10px;background: transparent">
-        <div class="carousel-item-content" :style="{ filter: index !== currentIndex ? 'brightness(50%)' : 'brightness(100%)' }">
+<!--    <div class="carousel-container">-->
+<!--      <div class="carousel">-->
+<!--        <div v-for="(url, index) in pet.urls" :key="index" class="carousel-item">-->
+<!--          <img :src="url.src" :alt="url.alt" />-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <el-carousel @change="handleCarouselChange" :interval="4000" type="card" height="380px" style="background-color: rgba(0, 0, 0, 0.8)" indicator-position="outside">
+      <el-carousel-item v-for="(url, index) in pet.urls" :key="index" style="margin-top: 30px; background: transparent; height: 350px;">
           <el-image
-              style="width: 460px; height: 350px"
+              style="width: 100%; height: 100%; object-fit: cover;"
+              :style="{ filter: index !== currentIndex ? 'brightness(50%)' : 'brightness(100%)'}"
               :src="url"
-              :fit="'fill'"></el-image>
-        </div>
+              fit="cover"
+          ></el-image>
       </el-carousel-item>
     </el-carousel>
+
     <div class="container">
       <detail-card :petId="petId"></detail-card>
       <div class="right" >
@@ -59,37 +69,39 @@ import DetailCard1 from "@/components/DetailCard1.vue";
 
         <AdvertisementCard2 ></AdvertisementCard2>
 
-        <el-card class="el-card" shadow="hover" style = "border-radius: 15px">
-          <span class="owner-information-title">送养人信息</span><br>
-          <div class="owner-information">
-              <img class="owner-img" src="https://box.nju.edu.cn/f/2b41d91a7d094e618fc6/?dl=1">
-              <div class="owner-details">
-                <span class="owner-name">张三</span>
-                <div style="display: flex; align-items: center;">
-                  <el-icon size="30">
-                    <img src="../assets/icons/wechat.png" alt="" class="wechat-img" style="width: 25px; height: 25px;">
-                  </el-icon>
-                  <el-tag style="color: green ;margin-top: 0" >微信认证用户</el-tag>
-                </div>
-            </div>
-          </div>
-          <div class="info-container">
-            <div class="info-block">
-            <div class="info-number">100%</div>
-            <div class="info-text">用户信誉</div>
-          </div>
+<!--        <el-card class="el-card" shadow="hover" style = "border-radius: 15px">-->
+<!--          <span class="owner-information-title">送养人信息</span><br>-->
+<!--          <div class="owner-information">-->
+<!--              <img class="owner-img" src="https://box.nju.edu.cn/f/2b41d91a7d094e618fc6/?dl=1">-->
+<!--              <div class="owner-details">-->
+<!--                <span class="owner-name">张三</span>-->
+<!--                <div style="display: flex; align-items: center;">-->
+<!--                  <el-icon size="30">-->
+<!--                    <img src="../assets/icons/wechat.png" alt="" class="wechat-img" style="width: 25px; height: 25px;">-->
+<!--                  </el-icon>-->
+<!--                  <el-tag style="color: green ;margin-top: 0" >微信认证用户</el-tag>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="info-container">-->
+<!--            <div class="info-block">-->
+<!--            <div class="info-number">100%</div>-->
+<!--            <div class="info-text">用户信誉</div>-->
+<!--          </div>-->
 
-          <div class="info-block">
-            <div class="info-number">0</div>
-            <div class="info-text">已送养数</div>
-          </div>
+<!--          <div class="info-block">-->
+<!--            <div class="info-number">0</div>-->
+<!--            <div class="info-text">已送养数</div>-->
+<!--          </div>-->
 
-          <div class="info-block">
-            <div class="info-number">0</div>
-            <div class="info-text">已领养数</div>
-          </div>
-          </div>
-        </el-card>
+<!--          <div class="info-block">-->
+<!--            <div class="info-number">0</div>-->
+<!--            <div class="info-text">已领养数</div>-->
+<!--          </div>-->
+<!--          </div>-->
+<!--        </el-card>-->
+
+        <certification-card></certification-card>
 
       </div>
       <div class="chat" v-show="showChat">
@@ -167,10 +179,8 @@ export default {
   methods: {
     handleCarouselChange(index) {
       this.currentIndex = index;
-      // console.log('Carousel changed. New index:', index);
     },
     showDialog() {
-      // console.log('showDialog method called');
       this.dialogVisible = true;
     },
     visit(){

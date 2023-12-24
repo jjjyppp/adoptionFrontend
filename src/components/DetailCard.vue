@@ -136,7 +136,7 @@ export default {
       <p class="story-title">宠物健康证明：</p>
       <div class="box">
         <el-image
-            style="width: 100%;height: 400px;padding: 15px"
+            style="width: 100%;height: 400px;padding: 15px;cursor:pointer;"
             :src="url"
             :zoom-rate="1.2"
             :max-scale="7"
@@ -158,7 +158,7 @@ export default {
           />
         </el-dialog>
         <el-image
-            style="width: 100%;height: 400px;padding: 15px"
+            style="width: 100%;height: 400px;padding: 15px;cursor:pointer;"
             :src="url2"
             :zoom-rate="1.2"
             :max-scale="7"
