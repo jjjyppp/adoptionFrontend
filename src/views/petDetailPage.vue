@@ -8,6 +8,7 @@ import FooterCard from "@/components/FooterCard.vue";
 import AdvertisementCard2 from "@/components/AdvertisementCard2.vue";
 import DetailCard1 from "@/components/DetailCard1.vue";
 import CertificationCard from "@/components/CertificationCard.vue";
+import PersonalCertificationCard from "@/components/PersonalCertificationCard.vue";
 
 
 </script>
@@ -77,7 +78,8 @@ import CertificationCard from "@/components/CertificationCard.vue";
 <!--          </div>-->
 <!--        </el-card>-->
 
-        <certification-card></certification-card>
+        <personal-certification-card v-if="pet.source!=='救助站'"></personal-certification-card>
+        <certification-card v-else></certification-card>
 
       </div>
       <div class="chat" v-show="showChat">
