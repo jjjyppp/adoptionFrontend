@@ -107,7 +107,7 @@
     </div>
     <div class="operation">
     <div class="cards">
-      <certification-card></certification-card>
+      <personal-certification-card></personal-certification-card>
     </div>
     </div>
     <div class="recent">
@@ -136,6 +136,7 @@ import ChooseAnimalCard from "@/components/ChooseAnimalCard.vue";
 import router from "@/router";
 import {request} from "@/utils/request";
 import CertificationCard from "@/components/CertificationCard.vue";
+import PersonalCertificationCard from "@/components/PersonalCertificationCard.vue";
 import AdvertisementCardsLong from "@/components/AdvertisementCardsLong.vue";
 export default {
   name: "homePage",
@@ -152,7 +153,7 @@ export default {
     MoreAnimalCard,
     ArrowRight,
     ChooseAnimalCard,
-    PetDisplayCard, Search, Burger, HeaderTag, SearchCard, ElDivider, ElRow, ElCol, ElLink, ElIcon, ElAutocomplete},
+    PetDisplayCard, Search, Burger, HeaderTag, SearchCard, ElDivider, ElRow, ElCol, ElLink, ElIcon, ElAutocomplete, PersonalCertificationCard},
   data(){
     return{
       type:'',
