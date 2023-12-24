@@ -11,9 +11,29 @@
     <section id="find-animal" class="py-5">
       <div class="container">
         <div class="row py-1 py-md-3">
-
           <div class="filter">
             <table class="screen">
+              <tr class="screen-row">
+                <td class="left-box">地址</td>
+                <td class="right-box">
+                  <div class="tag-box">
+                    <div class="tags" style="margin-top: -6px; margin-left: -40px">
+                      <el-cascader placeholder="请选择你所在地区" style="width: 500px; margin-left: 48px" :options='options' v-model='selectedOptions' @change='addressChange'>
+                      </el-cascader>
+
+                      <el-select v-if="selectedOptions.length!==0" style="width: 200px; margin-left: 20px;" v-model="range" filterable placeholder="请选择你能接受的范围" @change="rangeChange" >
+                        <el-option
+                            v-for="item in select_range"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value"
+                        >
+                        </el-option>
+                      </el-select>
+                    </div>
+                  </div>
+                </td>
+              </tr>
               <tr class="screen-row">
                 <td class="left-box">种类</td>
                 <td class="right-box">
@@ -55,16 +75,6 @@
                   </div>
                 </td>
               </tr>
-              <!--              <tr class="screen-row">-->
-              <!--                <td class="left-box">年龄</td>-->
-              <!--                <td class="right-box">-->
-              <!--                  <div class="tag-box">-->
-              <!--                    <div class="tags">-->
-              <!--                      <span v-for="(item, index) in petAges" :class="{ 'tag-item-chose': isAgeChose[index], 'tag-item': !isAgeChose[index] } " @click="chooseAgeTag(index)">{{item.label}}</span>-->
-              <!--                    </div>-->
-              <!--                  </div>-->
-              <!--                </td>-->
-              <!--              </tr>-->
               <tr class="screen-row">
                 <td class="left-box">体型</td>
                 <td class="right-box">
@@ -75,16 +85,6 @@
                   </div>
                 </td>
               </tr>
-              <!--              <tr class="screen-row">-->
-              <!--                <td class="left-box">宠物来源</td>-->
-              <!--                <td class="right-box">-->
-              <!--                  <div class="tag-box">-->
-              <!--                    <div class="tags">-->
-              <!--                      <span v-for="(item, index) in petSources" :class="{ 'tag-item-chose': isSourceChose[index], 'tag-item': !isSourceChose[index] } " @click="chooseSourceTag(index)">{{item.label}}</span>-->
-              <!--                    </div>-->
-              <!--                  </div>-->
-              <!--                </td>-->
-              <!--              </tr>-->
               <tr class="screen-row">
                 <td class="left-box">健康情况</td>
                 <td class="right-box">
@@ -95,32 +95,6 @@
                   </div>
                 </td>
               </tr>
-              <!--              <tr class="screen-row">-->
-              <!--                <td class="left-box">领养金额</td>-->
-              <!--                <td class="right-box">-->
-              <!--                  <div class="tag-box">-->
-              <!--                    <div class="tags">-->
-              <!--                      <span v-for="(item, index) in petPrices" :class="{ 'tag-item-chose': isPriceChose[index], 'tag-item': !isPriceChose[index] } " @click="choosePriceTag(index)">{{item.label}}</span>-->
-              <!--                    </div>-->
-              <!--                  </div>-->
-              <!--                </td>-->
-              <!--              </tr>-->
-              <!--              <tr class="screen-row" style="height: 30px; line-height: 30px; cursor: pointer"-->
-              <!--                  v-show="showtag1"-->
-              <!--                  @mouseenter="isHovered = true"-->
-              <!--                  @mouseleave="isHovered = false"-->
-              <!--                  @click="showTags=true;showtag1=false;showtag2=true"-->
-              <!--                  :style="{ color: isHovered ? '#6504B5' : '#707070', textAlign: 'center' }">-->
-              <!--                <svg t="1703170675660" @mouseenter="isHovered = true" @mouseleave="isHovered = false" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2687" width="28" height="28" :style="{ fill: isHovered ? '#6504B5' : '#707070' }"><path d="M512.726547 675.318646c-8.063653 0-15.790638-3.245927-21.435195-9.006118L231.175103 400.906809c-11.603269-11.837606-11.410887-30.840402 0.427742-42.442648 11.837606-11.601222 30.841426-11.410887 42.442648 0.427742l238.681054 243.534596L751.407602 358.891903c11.601222-11.839653 30.602995-12.033058 42.442648-0.427742 11.839653 11.603269 12.031011 30.605042 0.427742 42.442648L534.161742 666.312528C528.517185 672.072719 520.791224 675.318646 512.726547 675.318646z" p-id="2688"></path></svg>-->
-              <!--                点击展开更多选项</tr>-->
-              <!--              <tr class="screen-row" style="height: 30px; line-height: 30px; cursor: pointer"-->
-              <!--                  v-show="showtag2"-->
-              <!--                  @mouseenter="isHovered = true"-->
-              <!--                  @mouseleave="isHovered = false"-->
-              <!--                  @click="showTags=false;showtag1=true;showtag2=false"-->
-              <!--                  :style="{ color: isHovered ? '#6504B5' : '#707070', textAlign: 'center' }">-->
-              <!--                <svg t="1703171231439" @mouseenter="isHovered = true" @mouseleave="isHovered = false" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4103" width="27" height="27" :style="{ fill: isHovered ? '#6504B5' : '#707070' }"><path d="M246.76 686.964l253.604-274.757L753.99 686.964a34.91 34.91 0 1 0 51.316-47.36L526.033 337.06a34.91 34.91 0 0 0-51.316 0L195.444 639.604a34.91 34.91 0 1 0 51.317 47.36"  p-id="4104"></path></svg>-->
-              <!--                点击收起</tr>-->
             </table>
           </div>
           <div class="choseTags">
@@ -170,12 +144,6 @@
 
 
           </div>
-
-          <!--          <div style="width: 80%; background-color: inherit; margin-left: 120px; margin-top: 20px">-->
-          <!--            <div class="justify-content-between">-->
-          <!--              <pet-display-card style="margin-top: 20px" v-for="(pet, index) in pets.slice((currentPage - 1) * pageSize, currentPage * pageSize)" :key="index" :pet="pet" />-->
-          <!--            </div>-->
-          <!--          </div>-->
 
           <div style="margin-top: 40px" v-if="pets.length===0">
             <el-empty description="暂时没有满足您要求的宠物哦！看看其他的宠物吧！"></el-empty>
@@ -230,20 +198,31 @@
 import HeaderTag from "@/components/HeaderTag.vue";
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import router from "@/router";
-import {codeToText} from "element-china-area-data";
+import {codeToText, regionData} from "element-china-area-data";
 import {request} from "@/utils/request";
 import chooseAnimalCard from "@/components/ChooseAnimalCard.vue";
 import FooterCard from "@/components/FooterCard.vue";
-import {ElDivider, ElEmpty, ElPagination, ElTabPane, ElTabs, ElTag} from "element-plus";
+import {ElCascader, ElDivider, ElEmpty, ElOption, ElPagination, ElSelect, ElTabPane, ElTabs, ElTag} from "element-plus";
 import {Discount} from "@element-plus/icons-vue";
 // import ElPagination from "element-plus"
+
+let select_range= [
+  {value: '全国', label: '全国'},
+  {value: '仅限同城', label: '仅限同城'},
+  {value: '仅限同市', label: '仅限同市'},
+  {value: '仅限同省', label: '仅限同省'},
+]
 
 export default {
   components: {
     Discount,
-    FooterCard, chooseAnimalCard, PetDisplayCard, HeaderTag, ElPagination, ElEmpty, ElTabs, ElTabPane, ElTag, ElDivider},
+    FooterCard, chooseAnimalCard, PetDisplayCard, HeaderTag, ElPagination, ElEmpty, ElTabs, ElTabPane, ElTag, ElDivider, ElCascader, ElOption, ElSelect},
   data(){
     return{
+      options: regionData,
+      selectedOptions: [],
+      range: '',
+      select_range: select_range,
       sortTags: ['综合排序', '高价优先', '低价优先', '幼年优先', '老年优先', '最新发布'],
       selectedIndex: 0,
       currentPage: 1,
@@ -425,6 +404,13 @@ export default {
     },
   },
   methods: {
+    addressChange(arr){
+      this.petAddress=codeToText[arr[0]] + codeToText[arr[1]] + codeToText[arr[2]]
+      this.filter()
+    },
+    rangeChange(){
+      this.filter()
+    },
     selectSortTag(index) {
       this.selectedIndex = index;
       // 在这里可以执行相应的排序逻辑
@@ -622,6 +608,7 @@ export default {
           this.healthCondition=[]
           this.petPrice=[]
           this.petAddress=''
+          this.selectedOptions=[]
           this.range=''
           this.activeName = '全部'
         } else {
