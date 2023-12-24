@@ -44,8 +44,8 @@
                                 text-transform: uppercase;
                                 transition: background-color .1s,border-color .1s,box-shadow .1s,color .1s;
                                 white-space: nowrap;"
-                  onmouseover="this.style.backgroundColor='#6504B5'; this.style.color='white'; this.style.marginBottom='20px'"
-                  onmouseout="this.style.backgroundColor='white'; this.style.color='#6504B5'; this.style.marginBottom='20px'"
+                  onmouseover="this.style.backgroundColor='#6504B5'; this.style.color='white'"
+                  onmouseout="this.style.backgroundColor='white'; this.style.color='#6504B5'"
           >了解更多</button>
         </div>
   </section>
