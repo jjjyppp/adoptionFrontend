@@ -569,7 +569,7 @@ li {
 
 
 .imageList{
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   height:210px;
   margin: 50px;
@@ -578,4 +578,7 @@ li {
   background: white;
 }
 
+.imageList:hover {
+  overflow-x: auto;
+}
 </style>
