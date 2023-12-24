@@ -84,7 +84,7 @@ import CertificationCard from "@/components/CertificationCard.vue";
         <chat-pane  @cancelChat="cancelChat"></chat-pane>
       </div>
 
-      <RecommendCard style="margin: 20px"></RecommendCard>
+      <RecommendCard style="margin: 60px"></RecommendCard>
 
     </div>
 
