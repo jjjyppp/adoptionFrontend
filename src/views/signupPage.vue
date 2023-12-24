@@ -331,7 +331,6 @@ input {
   text-align: left;
   margin-left: 110px;
   color: red;
-  //margin-top: 10px;
 }
 
 </style>

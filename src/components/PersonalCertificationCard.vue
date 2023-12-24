@@ -11,8 +11,9 @@
 
   <section id="animal-detail">
     <div class="shelter-box py-5 px-4 ">
-      <div class="img d-inline p-3" style=" border-radius: 50%; overflow: hidden; width: 104px; height: 104px"><img src="src/assets/imgs/avatar4.jpg" alt="" style="width: 120px; margin-left: -20px; margin-top: -20px;
-  object-fit: cover;"></div>
+      <div class="img d-inline p-3" style=" border-radius: 50%; overflow: hidden; width: 104px; height: 104px">
+        <img src="src/assets/imgs/avatar4.jpg" alt="" style="width: 120px; margin-left: -20px; margin-top: -20px; object-fit: cover;">
+      </div>
       <h1 class="mt-3" style="font-size: 30px">Molly</h1>
       <h5 class="mt-3">福建 厦门</h5>
 
