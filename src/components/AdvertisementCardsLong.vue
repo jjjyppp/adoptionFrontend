@@ -25,8 +25,8 @@
       style="padding: 18px"
   >
     <p style="font-size: 17px;text-align: left">欢迎来到PetPat！</p>
-    <p style="font-size: 17px;text-align: left">我们致力于为每个宠物找到一个幸福的家，截至目前已经为超过40000名用户提供了服务。这一切离不开热心人士的慷慨的捐助和支持。您的捐款将帮助我们提供救助、医疗和精心的宠物配对服务，让更多的宠物与爱心家庭相聚，成就一段动人的温馨故事。</p>
-<!--    <p style="font-size: 17px;text-align: left">让我们一起为宠物和爱心家庭搭建桥梁，共同书写幸福的未来！</p>-->
+    <p style="font-size: 17px;text-align: left">我们致力于为每个宠物找到一个幸福的家，截至目前已经为超过40000名用户提供了服务。这一切离不开热心人士的慷慨的捐助和支持。</p>
+    <p style="font-size: 17px;text-align: left">您的捐款将帮助我们提供救助、医疗和精心的宠物配对服务，让更多的宠物与爱心家庭相聚，成就一段动人的温馨故事。</p>
     <br>
     <p style="font-size: 15px;text-align: left;font-weight: bold">如果您愿意帮助这些动物找到新家，欢迎通过以下渠道支持我们：</p>
     <footer>
@@ -53,9 +53,8 @@
 
 <script>
 import {ElCard, ElButton, ElIcon, ElImage, ElDialog} from "element-plus";
-import FooterCard from "@/components/FooterCard.vue";
 export default {
-  components: {FooterCard, ElCard, ElButton, ElIcon, ElImage, ElDialog},
+  components: {ElCard, ElButton, ElIcon, ElImage, ElDialog},
   data() {
     return {
       dialogVisible:false,
