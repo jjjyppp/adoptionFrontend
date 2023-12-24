@@ -59,5 +59,3 @@ export default {
   name: "CertificationCard"
 }
 </script>
-<style>
-</style>

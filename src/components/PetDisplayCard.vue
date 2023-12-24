@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 210px; height: 300px" >
+  <div style="width: 210px; height: 300px;cursor:pointer;" >
     <div class="animal-box text-center" style="height: 290px">
       <div @click="toPetDetailPage">
         <a>
