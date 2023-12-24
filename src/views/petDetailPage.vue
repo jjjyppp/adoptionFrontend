@@ -34,16 +34,25 @@ import CertificationCard from "@/components/CertificationCard.vue";
 <!--    </div>-->
 <!--  </div>-->
 
-    <el-carousel @change="handleCarouselChange" :interval="4000" type="card"  height="350px" style="background-color: rgba(0, 0, 0, 0.8)" indicator-position="outside">
-      <el-carousel-item v-for="(url, index) in pet.urls" :key="index"  style="margin: 10px;background: transparent">
-        <div class="carousel-item-content" :style="{ filter: index !== currentIndex ? 'brightness(50%)' : 'brightness(100%)' }">
+<!--    <div class="carousel-container">-->
+<!--      <div class="carousel">-->
+<!--        <div v-for="(url, index) in pet.urls" :key="index" class="carousel-item">-->
+<!--          <img :src="url.src" :alt="url.alt" />-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <el-carousel @change="handleCarouselChange" :interval="4000" type="card" height="380px" style="background-color: rgba(0, 0, 0, 0.8)" indicator-position="outside">
+      <el-carousel-item v-for="(url, index) in pet.urls" :key="index" style="margin-top: 30px; background: transparent; height: 350px;">
           <el-image
-              style="width: 460px; height: 350px"
+              style="width: 100%; height: 100%; object-fit: cover;"
+              :style="{ filter: index !== currentIndex ? 'brightness(50%)' : 'brightness(100%)'}"
               :src="url"
-              :fit="'fill'"></el-image>
-        </div>
+              fit="cover"
+          ></el-image>
       </el-carousel-item>
     </el-carousel>
+
     <div class="container">
       <detail-card :petId="petId"></detail-card>
       <div class="right" >

@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .advertise {
   background-image: url("../assets/imgs/ad01.jpg");
   background-size: cover;

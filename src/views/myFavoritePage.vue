@@ -8,13 +8,13 @@ import {ElButton} from "element-plus";
 </script>
 
 <script>
-import PetDisplayCard from "@/components/PetDisplayCard.vue";
+import PetDisplayCardInFav from "@/components/PetDisplayCardInFav.vue";
 import {request} from "@/utils/request";
 import {store} from "@/store/store";
 import router from "@/router";
 
 export default {
-  components:{PetDisplayCard},
+  components:{PetDisplayCardInFav},
   data() {
     return {
       pets: [
@@ -55,7 +55,7 @@ export default {
   <h1 style="padding-top: 40px;padding-left: 60px;font-family: 'PingFang HK';text-align: left; color: #4D4751">我的收藏</h1>
   <br>
   <div class="pet-container" v-show="store.favoritePets.length!==0">
-    <PetDisplayCard
+    <PetDisplayCardInFav
         style="margin-right: 10px"
         v-for="(pet, index) in store.favoritePets"
         :key="index"
@@ -80,7 +80,7 @@ export default {
   </div>
 
   <div style="align-items: center;justify-content: center;padding: 40px;">
-    <recommend-card></recommend-card>
+    <recommend-card v-show="store.favoritePets.length===0"></recommend-card>
   </div>
   </body>
   <footer-card></footer-card>
