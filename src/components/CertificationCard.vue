@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/views/assets/css/main.css">
   </head>
 
@@ -43,8 +44,8 @@
                                 text-transform: uppercase;
                                 transition: background-color .1s,border-color .1s,box-shadow .1s,color .1s;
                                 white-space: nowrap;"
-                  onmouseover="this.style.backgroundColor='#6504B5'; this.style.color='white'; this.style.marginBottom='20px'"
-                  onmouseout="this.style.backgroundColor='white'; this.style.color='#6504B5'; this.style.marginBottom='20px'"
+                  onmouseover="this.style.backgroundColor='#6504B5'; this.style.color='white'"
+                  onmouseout="this.style.backgroundColor='white'; this.style.color='#6504B5'"
           >了解更多</button>
         </div>
   </section>
