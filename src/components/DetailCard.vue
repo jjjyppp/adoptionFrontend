@@ -107,13 +107,15 @@ export default {
           </span><br v-if="pet.price!=='免费'">
           <span><label style="color: darkgrey">宠物来源：</label>{{pet.source}}</span><br>
           <span><label style="color: darkgrey">健康情况：</label>
-            <el-tag type="success" effect="plain" v-for="(health, index) in pet.health" :key="index" :pet="pet" style="margin-right: 10px" >{{health}}</el-tag>
+            <span v-if="pet.health.length===0">暂无</span>
+            <el-tag type="success" effect="plain" v-for="(health, index) in pet.health" v-if="pet.health.length!==0" :key="index" :pet="pet" style="margin-right: 10px" >{{health}}</el-tag>
 <!--            <el-tag type="success" effect="plain">已免疫</el-tag>-->
 <!--            <el-tag  type="success" effect="plain">已驱虫</el-tag>-->
 <!--            <el-tag  type="info" effect="plain">未绝育</el-tag>-->
           </span><br>
           <span><label style="color: darkgrey">领养要求：</label>
-            <el-tag v-for="(requirment, index) in pet.requirements" effect="plain" style="margin-right: 10px">{{requirment}}</el-tag>
+            <span v-if="pet.requirements.length===0">暂无</span>
+            <el-tag v-for="(requirment, index) in pet.requirements" v-if="pet.requirements.length!==0" effect="plain" style="margin-right: 10px">{{requirment}}</el-tag>
           </span>
         </el-main>
 
@@ -192,7 +194,7 @@ export default {
   font-family: sans-serif;
 }
 .card-container{
-  width: 62%;
+  width: 70%;
   //height: 800px;
   //margin: 80px;
   contain: layout;
@@ -201,7 +203,7 @@ export default {
 
 .word-break{
   display: inline-block;
-  width: 680px;
+  width: 780px;
   word-break: break-all;
   white-space: normal;
 }
@@ -232,7 +234,7 @@ export default {
 .main{
   text-align: start;
   margin-right: 30px;
-  margin-left: 30px;
+  margin-left: 20px;
   margin-bottom: 40px;
   border-bottom: 1px solid #a9a9a9;
   font-size: 20px;
@@ -264,6 +266,7 @@ export default {
 }
 .story-title {
   font-size: 23px;
+  color: darkgrey
 }
 .box{
   display: flex;
