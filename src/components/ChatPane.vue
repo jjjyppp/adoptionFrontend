@@ -60,7 +60,7 @@
         <div class="chat-messages" ref="messageContainer">
           <div v-for="message in messages" :key="message.id" class="chat-message" :class="{ 'my-message': message.isMe, 'other-message': !message.isMe }">
             <div v-if="!message.isMe" style="display: flex">
-              <img src='../assets/imgs/avatar1.jpg' alt="avatar" class="avatar other-avatar"/>
+              <img src='../assets/imgs/avatar1.png' alt="avatar" class="avatar other-avatar"/>
               <div style="text-align: left">
                 <div class="time">{{message.date}} {{message.time}}</div>
                 <div class="message-content" style="background-color: white">{{ message.content }}</div>
@@ -102,18 +102,18 @@ export default {
       ],
       newMessage: '',
       contacts: [
-        { id: 0, name: '用户1', avatar: '../assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容1', lastTime: "9:50" },
-        { id: 1, name: '用户2', avatar: '../assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "8:00" },
-        { id: 2, name: '用户3', avatar: '../assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容1', lastTime: "6:50" },
-        { id: 3, name: '用户4', avatar: '../assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-29" },
-        { id: 4, name: '用户5', avatar: '../assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容1', lastTime: "2023-11-29" },
-        { id: 5, name: '用户6', avatar: '../assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-28" },
-        { id: 6, name: '用户7', avatar: '../assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容1', lastTime: "2023-11-28" },
-        { id: 7, name: '用户8', avatar: '../assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-27" },
+        { id: 0, name: '用户1', avatar: '../assets/imgs/avatar1.png', lastMessage: '最近的消息内容1', lastTime: "9:50" },
+        { id: 1, name: '用户2', avatar: '../assets/imgs/avatar2.png', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "8:00" },
+        { id: 2, name: '用户3', avatar: '../assets/imgs/avatar3.jpg', lastMessage: '最近的消息内容1', lastTime: "6:50" },
+        { id: 3, name: '用户4', avatar: '../assets/imgs/avatar4.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-29" },
+        { id: 4, name: '用户5', avatar: '../assets/imgs/avatar5.jpeg', lastMessage: '最近的消息内容1', lastTime: "2023-11-29" },
+        { id: 5, name: '用户6', avatar: '../assets/imgs/avatar6.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-28" },
+        { id: 6, name: '用户7', avatar: '../assets/imgs/avatar7.jpeg', lastMessage: '最近的消息内容1', lastTime: "2023-11-28" },
+        { id: 7, name: '用户8', avatar: '../assets/imgs/avatar8.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-27" },
         { id: 8, name: '用户9', avatar: '../assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容1', lastTime: "2023-11-26" },
-        { id: 9, name: '用户10', avatar: '../assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-25" },
-        { id: 10, name: '用户11', avatar: '../assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容1', lastTime: "2023-11-24" },
-        { id: 11, name: '用户12', avatar: '../assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-10-01" },
+        { id: 9, name: '用户10', avatar: '../assets/imgs/avatar2.jpg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-25" },
+        { id: 10, name: '用户11', avatar: '../assets/imgs/avatar4.jpg', lastMessage: '最近的消息内容1', lastTime: "2023-11-24" },
+        { id: 11, name: '用户12', avatar: '../assets/imgs/avatar1.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-10-01" },
       ],
       selectedItemId: 0,
       hoverItemId: -1,
