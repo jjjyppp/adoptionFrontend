@@ -72,6 +72,10 @@
         <search-card @backToHome="backToHome" id="search" v-show="show" :type="type"></search-card>
       </div>
     </div>
+    <div style="margin-top: 180px;width: 80%;height:150px; margin-left: 10% ">
+      <AdvertisementCardsLong></AdvertisementCardsLong>
+    </div>
+
     <div class="recommend">
       <div class="rec-sec">
 <!--        <el-link :underline="false" class="rec-text" @click="choose">它正等着你带它回家-->
@@ -132,6 +136,7 @@ import ChooseAnimalCard from "@/components/ChooseAnimalCard.vue";
 import router from "@/router";
 import {request} from "@/utils/request";
 import CertificationCard from "@/components/CertificationCard.vue";
+import AdvertisementCardsLong from "@/components/AdvertisementCardsLong.vue";
 export default {
   name: "homePage",
   computed: {
@@ -140,6 +145,7 @@ export default {
     }
   },
   components:{
+    AdvertisementCardsLong,
     CertificationCard,
     FooterCard,
     ArticleCard,
@@ -454,7 +460,7 @@ li {
 
 .recommend{
   text-align: center;
-  margin-top: 280px;
+  margin-top: 40px;
   //background-color: #d2d1d3;
   //margin-bottom: 24px;
   //margin: 0 auto;
