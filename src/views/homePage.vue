@@ -105,12 +105,31 @@
       <article-card v-for="(article, index) in articles" :key="index" :article="article" :index="index"></article-card>
       </div>
     </div>
-    <div class="operation">
-    <div class="cards">
-      <personal-certification-card></personal-certification-card>
+
+    <div style="padding-top: 30px;background: transparent;margin-top: 60px">
+      <h2 class="art-question">我们已经与这些机构达成合作：</h2>
+      <div class="imageList" style="display: flex;margin-top: 20px">
+        <p style="margin-right: 20px"></p>
+        <img  style="height: 170px;width: 170px;margin: 10px" src="../assets/imgs/Org.-WWF.jpg">
+        <img  style="height: 170px;width: 210px;margin: 10px" src="../assets/imgs/Org.-bill_gates.jpg">
+        <img  style="height: 170px;width: 170px;margin: 10px" src="../assets/imgs/Org.-PETA.jpg">
+        <img  style="height: 170px;width: 170px;margin: 10px" src="../assets/imgs/Org.-animal_protection.jpg">
+        <img  style="height: 170px;width: 270px;margin: 10px" src="../assets/imgs/Org.-ASPCA.jpg">
+        <img  style="height: 170px;width: 170px;margin: 10px" src="../assets/imgs/Org.-CSAPA.jpg">
+        <img  style="height: 170px;width: 170px;margin: 10px" src="../assets/imgs/Org.-shanghai.jpg">
+        <img  style="height: 150px;width: 280px;margin: 15px" src="../assets/imgs/Org.-wuhan.png">
+        <img  style="height: 170px;width: 170px;margin: 10px" src="../assets/imgs/Org.-nanjing.jpg">
+        <p style="margin-left: 20px"></p>
+      </div>
+      <br>
     </div>
-      <avatar></avatar>
-    </div>
+
+
+<!--    <div class="operation">-->
+<!--    <div class="cards">-->
+<!--      <personal-certification-card></personal-certification-card>-->
+<!--    </div>-->
+<!--    </div>-->
     <div class="recent">
       <div class="rec-sec">
         <p class="recent-text">最近浏览过的宠物</p>
@@ -119,7 +138,15 @@
         </div>
       </div>
     </div>
+
+    <div style="width: 90%;height:250px; margin-left: 5%;">
+      <AdvertisementCardsLong2></AdvertisementCardsLong2>
+    </div>
+    <div style="height: 100px"></div>
   </div>
+
+
+
   <footer-card></footer-card>
 </template>
 
@@ -139,7 +166,7 @@ import {request} from "@/utils/request";
 import CertificationCard from "@/components/CertificationCard.vue";
 import PersonalCertificationCard from "@/components/PersonalCertificationCard.vue";
 import AdvertisementCardsLong from "@/components/AdvertisementCardsLong.vue";
-import Avatar from "@/components/Avatar.vue";
+import AdvertisementCardsLong2 from "@/components/AdvertisementCardsLong2.vue";
 export default {
   name: "homePage",
   computed: {
@@ -148,8 +175,8 @@ export default {
     }
   },
   components:{
-    Avatar,
     AdvertisementCardsLong,
+    AdvertisementCardsLong2,
     CertificationCard,
     FooterCard,
     ArticleCard,
@@ -538,6 +565,17 @@ li {
   //top: 50%;
   //left: 50%;
   //transform: translate(-50%, -50%);
+}
+
+
+.imageList{
+  overflow-x: auto;
+  overflow-y: hidden;
+  height:210px;
+  margin: 50px;
+  display: flex;
+  white-space: nowrap;
+  background: white;
 }
 
 </style>
