@@ -109,6 +109,7 @@
     <div class="cards">
       <personal-certification-card></personal-certification-card>
     </div>
+      <avatar></avatar>
     </div>
     <div class="recent">
       <div class="rec-sec">
@@ -138,6 +139,7 @@ import {request} from "@/utils/request";
 import CertificationCard from "@/components/CertificationCard.vue";
 import PersonalCertificationCard from "@/components/PersonalCertificationCard.vue";
 import AdvertisementCardsLong from "@/components/AdvertisementCardsLong.vue";
+import Avatar from "@/components/Avatar.vue";
 export default {
   name: "homePage",
   computed: {
@@ -146,6 +148,7 @@ export default {
     }
   },
   components:{
+    Avatar,
     AdvertisementCardsLong,
     CertificationCard,
     FooterCard,
