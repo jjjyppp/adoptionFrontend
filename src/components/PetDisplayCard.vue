@@ -67,7 +67,7 @@ export default {
         // }
         console.log(store.favoritePets);
         //this.favoritePets.push(this.pet.id);
-        //console.log(this.favoritePets);
+        //console.log(this.favoritePe/ts);
         ElNotification({
           title: '您已成功收藏',
           message: '可以进入"我的收藏"中查看它哦',
