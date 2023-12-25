@@ -98,7 +98,7 @@
             </table>
           </div>
           <div class="choseTags" v-if="choseBreed.concat(choseGender, choseSize, choseHealth).length!==0">
-            <p style="color: rgba(0,0,0,0.35)">当前筛选：</p>
+            <p style="color: rgba(0,0,0,0.67); font-weight: 580">当前筛选：</p>
             <el-tag
                 v-for="tag in choseBreed.concat(choseGender, choseSize, choseHealth)"
                 :key="tag"
@@ -113,7 +113,7 @@
           </div>
 
           <div style="margin-left: 48px; margin-top: 20px; text-align: left">
-            <p style="color: rgba(0,0,0,0.35)">共为您找到{{this.pets.length}}个符合条件的宠物</p>
+            <p style="color: rgba(0,0,0,0.67); font-weight: 580;">共为您找到{{this.pets.length}}个符合条件的宠物</p>
           </div>
           <div style="display: flex" >
             <div class="my-tabs" style="margin-left: 48px; width: 36%">
@@ -885,6 +885,11 @@ export default {
 .selected {
   color: #6504B5; /* 变色样式，可以根据实际需求修改 */
   font-weight: bold; /* 加粗样式，可以根据实际需求修改 */
+}
+
+.clear{
+  font-weight: 580;
+  color: black;
 }
 
 .clear:hover{
