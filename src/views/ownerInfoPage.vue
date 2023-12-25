@@ -139,7 +139,7 @@ export default {
           <div class="rescue-pets">
             <h2 class="art-question" id="animal-center-title" >Molly发布的所有宠物</h2>
             <div style="display: flex; flex-wrap: wrap; text-align: center; justify-content: center; margin-left: 40px">
-              <pet-display-card style="margin-top: 20px; margin-right: 30px" v-for="(pet, index) in pets.slice((currentPage - 1) * pageSize, currentPage * pageSize)" :key="index" :pet="pet" />
+              <pet-display-card style="margin-top: 20px; margin-right: 30px" v-for="(pet, index) in pets.slice(0,2)" :key="index" :pet="pet" />
             </div>
             <div class="col-12 text-end py-2" v-if="pets.length!==0" style="margin-top: 20px;">
               <el-pagination
