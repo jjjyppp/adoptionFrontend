@@ -1,4 +1,24 @@
 <template>
+  <teleport to="body">
+    <el-dialog
+        :title="dialogTitle"
+        v-if="dialogVisible"
+        v-model="dialogVisible"
+        width="40%"
+        typeof="warning"
+        style="padding: 18px"
+    >
+      <!-- 根据选中项显示不同的弹窗内容 -->
+      <p v-if="selectedValue === '领养的具体流程'" style="font-size: 17px; text-align: left">领养流程的具体内容</p>
+      <p v-if="selectedValue === '送养的具体流程'" style="font-size: 17px; text-align: left">送养流程的具体内容</p>
+      <p v-if="selectedValue === '网站如何保障领养双方顺利交易'" style="font-size: 17px; text-align: left">保障双方的具体内容</p>
+      <p v-if="selectedValue === '领养到有问题的宠物怎么办'" style="font-size: 17px; text-align: left">有问题的具体内容</p>
+      <p v-if="selectedValue === '宠物没有被领养人善待怎么办'" style="font-size: 17px; text-align: left">虐待的具体内容</p>
+      <p v-if="selectedValue === '如何挑选适合我的宠物'" style="font-size: 17px; text-align: left">挑选宠物的具体内容</p>
+      <p v-if="selectedValue === '领养人需要具备什么条件'" style="font-size: 17px; text-align: left">领养人条件的具体内容</p>
+      <!-- 其他选项的欢迎消息... -->
+    </el-dialog>
+  </teleport>
   <div style="width: 100%; position: fixed; top: 0; background-color: white; z-index: 100">
     <header-tag></header-tag>
   </div>
@@ -21,7 +41,7 @@
           </el-row>
         </div>
         <div style="margin-top: -50px; margin-left: 748px">
-          <button class="quick-search-bt">
+          <button class="quick-search-bt" @click="openDialog">
             <svg x="1700709169066" class="quick-search-img" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4100" width="75" height="75"><path d="M447.325002 129.919978c-178.868807 0-323.872319 145.003512-323.872319 323.874365s145.003512 323.874365 323.872319 323.874365c178.870854 0 323.874365-145.003512 323.874365-323.874365S626.195855 129.919978 447.325002 129.919978zM447.325002 713.712071c-143.31915 0-259.915681-116.598578-259.915681-259.917728s116.596532-259.917728 259.915681-259.917728 259.917728 116.598578 259.917728 259.917728S590.643128 713.712071 447.325002 713.712071z" p-id="4101"></path><path d="M891.573945 840.061734 748.236376 696.699606c-13.43601 16.625656-28.371164 31.91385-44.338834 46.099944l142.458549 142.481062c6.246261 6.246261 14.427594 9.368368 22.60995 9.368368s16.363689-3.123131 22.60995-9.368368C904.065444 872.789113 904.065444 852.553233 891.573945 840.061734z" p-id="4102"></path></svg>
           </button>
         </div>
@@ -154,7 +174,7 @@
 import HeaderTag from "@/components/HeaderTag.vue";
 import SearchCard from "@/components/SearchCard.vue";
 import {Burger, Search, ArrowRight} from "@element-plus/icons-vue";
-import {ElAutocomplete, ElCol, ElDivider, ElIcon, ElLink, ElRow} from "element-plus";
+import {ElAutocomplete, ElCol, ElDivider, ElIcon, ElLink, ElRow,ElDialog} from "element-plus";
 import PetDisplayCard from "@/components/PetDisplayCard.vue";
 import MoreAnimalCard from "@/components/MoreAnimalCard.vue";
 import more from "@element-plus/icons/lib/More";
@@ -172,7 +192,27 @@ export default {
   computed: {
     more() {
       return more
-    }
+    },
+    dialogTitle() {
+      switch (this.selectedValue) {
+        case '领养的具体流程':
+          return '领养流程';
+        case '送养的具体流程':
+          return '送养流程';
+        case '网站如何保障领养双方顺利交易':
+          return '保障';
+        case '领养到有问题的宠物怎么办':
+          return '有问题的宠物';
+        case '宠物没有被领养人善待怎么办':
+          return '善待';
+        case '如何挑选适合我的宠物':
+          return '挑选';
+        case '领养人需要具备什么条件':
+          return '条件';
+        default:
+          return ''; // 默认情况下返回空字符串
+      }
+    },
   },
   components:{
     AdvertisementCardsLong,
@@ -183,9 +223,11 @@ export default {
     MoreAnimalCard,
     ArrowRight,
     ChooseAnimalCard,
-    PetDisplayCard, Search, Burger, HeaderTag, SearchCard, ElDivider, ElRow, ElCol, ElLink, ElIcon, ElAutocomplete, PersonalCertificationCard},
+    PetDisplayCard, Search, Burger, HeaderTag, SearchCard, ElDivider, ElRow, ElCol, ElLink, ElIcon, ElAutocomplete, ElDialog,PersonalCertificationCard},
   data(){
     return{
+      dialogVisible:false,
+      selectedValue: '', // 存储选中的值
       type:'',
       showChooseCard: false,
       dogPath:"src/assets/icons/dog.png",
@@ -231,6 +273,9 @@ export default {
     })
   },
   methods: {
+    openDialog() {
+      this.dialogVisible = true;
+    },
     searchDog(){
       this.type='dog'
       this.show=true
@@ -295,6 +340,7 @@ export default {
     },
     handleSelect(item) {
       console.log(item);
+      this.selectedValue = item.value; // 记录选中的值
     },
     choose(){
       router.push({
