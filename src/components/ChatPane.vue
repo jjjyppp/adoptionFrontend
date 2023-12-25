@@ -35,28 +35,38 @@
       <div class="chat-container">
 
         <div class="chat-header">{{contacts[selectedItemId].name}}</div>
-        <div class="confirm" style="display: flex; justify-content: space-between;">
+        <div class="confirm" style="display: flex;">
           <img src="https://box.nju.edu.cn/f/5412f3ed6b55425ead4e/?dl=1" style="width: 70px;height: 70px;margin-left: 5%;border-radius: 5px">
-            <p style="margin-top: 15px; font-size: 27px">小福</p>
-          <div style="margin-left: 0px;">
+            <p style="margin-top: 15px; margin-left: 20px; font-size: 27px">小福</p>
+          <div style="margin-left: 20px;">
             <p style="margin-top: 10px; text-align: left;color: #8a8a8a">江苏省·南京市·鼓楼区</p>
 
             <div style="display: flex;margin-top: -10px">
               <p style="font-size: 16px;color: #8a8a8a">免费领养</p>
-              <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 8px; color: #3a0466;border:1px solid #3a0466">仅限同城</el-tag>
-              <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 3px;color: #3a0466;border:1px solid #3a0466">定期线下回访</el-tag>
-              <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 3px;color: #3a0466;border:1px solid #3a0466">签订领养合同</el-tag>
+            </div>
+          </div>
+
+          <div style="margin-left: 220px; text-align: end">
+            <div>
+              <el-tag size="default" effect="plain" style="color: #6504B5; border:1px solid #6504B5">已免疫</el-tag>
+              <el-tag size="default" effect="plain" style="margin-left: 3px;color: #6504B5; border:1px solid #6504B5">已驱虫</el-tag>
+              <el-tag size="default" effect="plain" style="margin-left: 3px;color: #6504B5; border:1px solid #6504B5">已绝育</el-tag>
+            </div>
+            <div style="margin-top: 4px">
+              <el-tag size="default" effect="plain" style="color: #6504B5;border:1px solid #6504B5">仅限同城</el-tag>
+              <el-tag size="default" effect="plain" style="margin-left: 3px;color: #6504B5;border:1px solid #6504B5">定期线下回访</el-tag>
+              <el-tag size="default" effect="plain" style="margin-left: 3px;color: #6504B5;border:1px solid #6504B5">签订领养合同</el-tag>
             </div>
           </div>
 
 <!--          <el-button class="button" @click="showDialog" round>确认收养</el-button>-->
-          <el-button class="button" @click="toAgreement" round>确认收养</el-button>
+<!--          <el-button class="button" @click="toAgreement" round>确认收养</el-button>-->
 
         </div>
         <div class="chat-messages" ref="messageContainer">
           <div v-for="message in messages" :key="message.id" class="chat-message" :class="{ 'my-message': message.isMe, 'other-message': !message.isMe }">
             <div v-if="!message.isMe" style="display: flex">
-              <img src='../assets/imgs/avatar1.png' alt="avatar" class="avatar other-avatar"/>
+              <img :src='contacts[selectedItemId].avatar' alt="avatar" class="avatar other-avatar"/>
               <div style="text-align: left">
                 <div class="time">{{message.date}} {{message.time}}</div>
                 <div class="message-content" style="background-color: white">{{ message.content }}</div>
@@ -98,16 +108,16 @@ export default {
       ],
       newMessage: '',
       contacts: [
-        { id: 0, name: '翛', avatar: 'src/assets/imgs/avatar1.png', lastMessage: '您好，在的！', lastTime: "9:50" },
+        { id: 0, name: 'Molly', avatar: 'src/assets/imgs/avatar4.jpg', lastMessage: '您好，在的！', lastTime: "9:50" },
         { id: 1, name: '莫里', avatar: 'src/assets/imgs/avatar2.png', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "8:00" },
         { id: 2, name: 'piiii🦕', avatar: 'src/assets/imgs/avatar3.jpeg', lastMessage: '最近的消息内容1', lastTime: "6:50" },
         { id: 3, name: '无恙', avatar: 'src/assets/imgs/avatar9.png', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-25" },
-        { id: 9, name: 'Aziop', avatar: 'src/assets/imgs/avatar4.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-29" },
-        { id: 4, name: 'HYC', avatar: 'src/assets/imgs/avatar5.jpeg', lastMessage: '最近的消息内容1', lastTime: "2023-11-29" },
-        { id: 5, name: '书洲', avatar: 'src/assets/imgs/avatar6.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-28" },
-        { id: 6, name: '我是火柴人', avatar: 'src/assets/imgs/avatar7.jpeg', lastMessage: '最近的消息内容1', lastTime: "2023-11-28" },
-        { id: 7, name: 'zrs', avatar: 'src/assets/imgs/avatar8.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-27" },
-        { id: 8, name: 'wjj', avatar: 'src/assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容1', lastTime: "2023-11-26" },
+        { id: 4, name: 'Aziop', avatar: 'src/assets/imgs/avatar4.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-29" },
+        { id: 5, name: 'HYC', avatar: 'src/assets/imgs/avatar5.jpeg', lastMessage: '最近的消息内容1', lastTime: "2023-11-29" },
+        { id: 6, name: '书洲', avatar: 'src/assets/imgs/avatar6.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-28" },
+        { id: 7, name: '我是火柴人', avatar: 'src/assets/imgs/avatar7.jpeg', lastMessage: '最近的消息内容1', lastTime: "2023-11-28" },
+        { id: 8, name: 'zrs', avatar: 'src/assets/imgs/avatar8.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-27" },
+        { id: 9, name: 'wjj', avatar: 'src/assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容1', lastTime: "2023-11-26" },
         { id: 10, name: '壬.', avatar: 'src/assets/imgs/avatar10.png', lastMessage: '最近的消息内容1', lastTime: "2023-11-24" },
         { id: 11, name: 'Carnival', avatar: 'src/assets/imgs/avatar2.jpg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-10-01" },
       ],
@@ -220,7 +230,7 @@ export default {
 
 .chat-messages {
   flex: 1;
-  overflow-y: auto; /* 显示滚动条 */
+  overflow: auto; /* 显示滚动条 */
   max-height: 70vh; /* 设置最大高度，超过部分出现滚动条 */
   padding: 10px;
   background-color: #f4f4f4;
@@ -231,7 +241,7 @@ export default {
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-  background-color: #6504B5; /* 设置滚动条滑块颜色 */
+  background-color: #D2D2D2; /* 设置滚动条滑块颜色 */
   border-radius: 8px;
 }
 
@@ -260,7 +270,7 @@ export default {
   font-size: 18px;
   width: 15%;
   height: 40px;
-  background: purple;
+  background: #6504B5;
   /*background-color: #6504B5;*/
   color: #fff;
   border: none;
@@ -360,7 +370,7 @@ export default {
 }
 
 .aside{
-  background-color: #dbd9d9;
+  background-color: white;
   height: 80vh;
   border: 1px solid #ddd;
   border-radius: 10px 0 0 10px;
@@ -420,7 +430,7 @@ export default {
 }
 
 .chat-list::-webkit-scrollbar-thumb {
-  background-color: #6504B5; /* 设置滚动条滑块颜色 */
+  background-color: #D2D2D2; /* 设置滚动条滑块颜色 */
   border-radius: 4px;
 }
 
@@ -482,11 +492,11 @@ export default {
 }
 
 .selected {
-  background-color: #C8BFE7; /* 选中时的背景颜色 */
+  background-color: #C4C4C4; /* 选中时的背景颜色 */
 }
 
 .changeColor{
-  background-color: #F9F3FE;
+  background-color: #EBE8E7;
 }
 
 </style>
