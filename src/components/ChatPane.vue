@@ -43,9 +43,9 @@
 
             <div style="display: flex;margin-top: -10px">
               <p style="font-size: 16px;color: #8a8a8a">免费领养</p>
-              <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 8px;">仅限同城</el-tag>
-              <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 3px;">定期线下回访</el-tag>
-              <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 3px;">签订领养合同</el-tag>
+              <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 8px; color: #3a0466;border:1px solid #3a0466">仅限同城</el-tag>
+              <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 3px;color: #3a0466;border:1px solid #3a0466">定期线下回访</el-tag>
+              <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 3px;color: #3a0466;border:1px solid #3a0466">签订领养合同</el-tag>
             </div>
           </div>
 
@@ -334,11 +334,12 @@ export default {
 }
 
 .send-button {
+  width: 15%;
   margin-left: 10px;
   padding: 8px 16px;
   border: none;
-  border-radius: 5px;
-  background-color: #6504B5;
+  border-radius: 10px;
+  background-color: purple;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
