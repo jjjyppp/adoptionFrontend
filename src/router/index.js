@@ -80,6 +80,11 @@ const routes = [
     path: '/rescueStation',
     name: 'rescueStationPage',
     component: () => import('../views/rescueStationPage.vue')
+  },
+  {
+    path: '/ownerInfo',
+    name: 'ownerInfoPage',
+    component: () => import('../views/ownerInfoPage.vue')
   }
 ]
 

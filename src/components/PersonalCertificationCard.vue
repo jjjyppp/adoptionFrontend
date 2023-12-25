@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="src/views/assets/css/main.css">
   </head>
 
+
   <section id="animal-detail">
     <div class="shelter-box py-5 px-4 ">
       <div class="img d-inline p-3" style=" border-radius: 50%; overflow: hidden; width: 104px; height: 104px">
@@ -22,7 +23,7 @@
       <hr>
       <p align="left"><span class="pe-4"><i class="fa-solid fa-envelope"></i></span>1042822303@qq.com</p>
       <hr>
-      <button style="-webkit-appearance: none;
+      <button   @click = "toOwnerPage" style="-webkit-appearance: none;
                                 color: #6504B5;
                                 width: 600px;
                                 height: 40px;
@@ -58,7 +59,16 @@
   <div is="vue:script" src="src/views/assets/js/main.js"></div>
 </template>
 <script>
+import router from "@/router";
+
 export default {
-  name: "CertificationCard"
+  name: "CertificationCard",
+  methods: {
+    toOwnerPage(){
+      router.push({
+        name:"ownerInfoPage"
+      })
+    }
+  }
 }
 </script>
