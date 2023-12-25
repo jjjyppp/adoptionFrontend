@@ -30,7 +30,7 @@ export default {
 <style scoped>
 .article{
   background-color: white;
-  width: 420px;
+  width: 60%;
   height: 319px;
   border:none;
 }
