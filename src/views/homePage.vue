@@ -9,13 +9,88 @@
         style="padding: 18px"
     >
       <!-- 根据选中项显示不同的弹窗内容 -->
-      <p v-if="selectedValue === '领养的具体流程'" style="font-size: 17px; text-align: left">领养流程的具体内容</p>
-      <p v-if="selectedValue === '送养的具体流程'" style="font-size: 17px; text-align: left">送养流程的具体内容</p>
-      <p v-if="selectedValue === '网站如何保障领养双方顺利交易'" style="font-size: 17px; text-align: left">保障双方的具体内容</p>
-      <p v-if="selectedValue === '领养到有问题的宠物怎么办'" style="font-size: 17px; text-align: left">有问题的具体内容</p>
-      <p v-if="selectedValue === '宠物没有被领养人善待怎么办'" style="font-size: 17px; text-align: left">虐待的具体内容</p>
-      <p v-if="selectedValue === '如何挑选适合我的宠物'" style="font-size: 17px; text-align: left">挑选宠物的具体内容</p>
-      <p v-if="selectedValue === '领养人需要具备什么条件'" style="font-size: 17px; text-align: left">领养人条件的具体内容</p>
+      <p v-if="selectedValue === '领养的具体流程'" style="font-size: 17px; text-align: left">
+        <p style="font-size: 17px;text-align: left">A：</p>
+        <p style="font-size: 17px;text-align: left">欢迎来到PetPat！</p>
+        <p style="font-size: 17px;text-align: left">以下是领养的具体流程，让您更好地了解如何在这里寻找并领养您心仪的小伙伴。</p>
+        <p style="font-size: 17px;text-align: left">1. 浏览宠物库： 首先，您可以浏览我们丰富的宠物库，通过筛选条件找到符合您要求的宠物。每只宠物都有详细的信息和照片，帮助您更全面地了解它们。</p>
+        <p style="font-size: 17px;text-align: left">2. 点击“我要收养”： 当您发现一只喜欢的宠物时，只需点击“我要领养”按钮，系统将引导您进入领养申请流程。</p>
+        <p style="font-size: 17px;text-align: left">3. 私聊卖家： 领养申请提交后，系统将自动通知卖家。您可以在站内信中与卖家进行私聊，讨论更多关于宠物的信息，包括性格、饲养习惯等。</p>
+        <p style="font-size: 17px;text-align: left">4. 确认领养： 在与卖家充分沟通并确认一切无误后，您可以选择确认领养。这将触发支付流程，您可以选择合适的支付方式完成领养费用的支付（如有）。</p>
+        <p style="font-size: 17px;text-align: left">5. 线下交易： 领养费用支付成功（如有）后，您和卖家将协商线下交易事宜，包括具体的交接地点和时间。请确保在公共场所进行交易，确保双方的安全。</p>
+        <p style="font-size: 17px;text-align: left">6. 领养成功： 宠物正式交接后，恭喜您完成领养过程！我们希望您和新伙伴能够在未来的日子里共同创造美好回忆。</p>
+        <p style="font-size: 17px;text-align: left">如果有任何疑问，随时与我们的客服团队联系。祝您在我们的网站上找到一个温馨的家庭成员！</p>
+      </p>
+      <p v-if="selectedValue === '送养的具体流程'" style="font-size: 17px; text-align: left">
+        <p style="font-size: 17px;text-align: left">A：</p>
+        <p style="font-size: 17px;text-align: left">感谢您选择使用PetPat，为宠物寻找一个温暖的新家。以下是送养的具体流程，希望这些步骤可以帮助您成功地将宠物送到有爱心的新家。</p>
+        <p style="font-size: 17px;text-align: left">1. 登录并上传宠物信息： 首先，请登录您的账户，然后点击“我要送养”按钮。按照系统提示填写宠物的详细信息，包括种类、年龄、性别、健康状况等，并上传照片。</p>
+        <p style="font-size: 17px;text-align: left">2. 审核发布： 提交宠物信息后，我们的团队将会审核您的发布内容，以确保信息的真实性和完整性。一旦审核通过，您的宠物信息将在网站上显示。</p>
+        <p style="font-size: 17px;text-align: left">3. 等待领养申请： 一旦您的宠物信息上线，感兴趣的领养者将可以看到它。当有领养者提交领养申请时，系统将立即通知您。</p>
+        <p style="font-size: 17px;text-align: left">4. 私聊领养者： 您可以通过站内信与领养者进行私聊，了解他们的居住环境、饲养经验以及对宠物的态度。确保双方在领养决策上有清晰的了解。</p>
+        <p style="font-size: 17px;text-align: left">5. 确认领养者： 在与领养者充分沟通并确保他们能够提供良好的饲养环境后，您可以选择确认领养。这将通知领养者进行支付(如需）。</p>
+        <p style="font-size: 17px;text-align: left">6. 完成送养： 领养者支付成功（如有）后，您和领养者可以协商具体的交接时间和地点。请确保在交接时提供一份宠物的健康证明和相关资料。</p>
+        <p style="font-size: 17px;text-align: left">感谢您为宠物的幸福贡献力量！如果您有任何疑问或需要帮助，请随时联系我们的客服团队。祝您的宠物找到一个幸福的新家！</p>
+      </p>
+      <p v-if="selectedValue === '网站如何保障领养双方顺利交易'" style="font-size: 17px; text-align: left">
+        <p style="font-size: 17px;text-align: left">A：</p>
+        <p style="font-size: 17px;text-align: left">1. 身份验证与审核： 请确保您的个人信息得到验证，并上传宠物的真实信息和照片。 我们进行身份验证和信息审核，以提高领养双方的安全性。</p>
+        <p style="font-size: 17px;text-align: left">2. 站内信沟通： 使用我们的站内信系统进行沟通，以确保交流记录被记录，作为潜在的证据。 </p>
+        <p style="font-size: 17px;text-align: left">3. 安全交易推荐： 建议在公共场所进行交易，例如宠物商店、社区中心等，以增加交易的安全性。请警惕在陌生环境中的交易，确保双方都感到安全。</p>
+        <p style="font-size: 17px;text-align: left">4. 第三方支付和担保交易： 考虑使用第三方支付或担保交易服务，确保支付的安全性。这有助于减少欺诈风险，为交易双方提供额外的信任保障。</p>
+        <p style="font-size: 17px;text-align: left">5. 宠物信息透明度： 提供详细的宠物档案，包括健康状况、疫苗情况等。请确保宠物信息的透明度，让领养者能够充分了解宠物的背景。</p>
+        <p style="font-size: 17px;text-align: left">6. 法律合规与服务条款： 了解并遵守我们的服务条款和法律法规。 我们致力于提供合法、透明和受保护的领养平台。</p>
+        <p style="font-size: 17px;text-align: left">7. 教育用户与安全指南： 阅读我们的安全指南，了解如何在网站上进行安全的领养交易。 教育自己和其他用户，共同创建一个安全可靠的社区。</p>
+        <p style="font-size: 17px;text-align: left">8. 高效的客服支持： 我们提供高效的客服支持，帮助您解决在交易过程中遇到的问题。 有问题时，请随时联系我们的客服团队。</p>
+      </p>
+      <p v-if="selectedValue === '领养到有问题的宠物怎么办'" style="font-size: 17px; text-align: left">
+        <p style="font-size: 17px;text-align: left">A：</p>
+        <p style="font-size: 17px;text-align: left">1. 立即联系卖家： 如果您在领养后发现宠物存在健康或行为问题，请立即联系卖家。通过站内客服系统详细描述问题，并要求提供任何可能有助于解决问题的信息。</p>
+        <p style="font-size: 17px;text-align: left">2. 请求兽医证明： 如果问题涉及宠物的健康状况，请要求卖家提供兽医证明或之前的健康检查记录。这有助于您更全面地了解宠物的状况。</p>
+        <p style="font-size: 17px;text-align: left">3. 拍照和记录问题： 拍摄照片或录制视频，记录宠物存在的问题。这将为您提供证据，并在需要时与卖家、兽医或网站客服共享。</p>
+        <p style="font-size: 17px;text-align: left">4. 联系网站客服： 如果您无法解决问题，立即联系网站客服。提供详细的情况说明和相关证据，以便客服团队协助您处理纠纷并提供解决方案。</p>
+        <p style="font-size: 17px;text-align: left">5. 考虑退还宠物： 如果问题无法解决且符合网站的退还政策，您可能需要考虑将宠物退还给卖家。在此之前，请确保您已经与卖家协商好具体的退还事宜。</p>
+        <p style="font-size: 17px;text-align: left">6. 留下评价与反馈： 一旦问题解决，或者在网站客服的协助下得到解决，您可以考虑在网站上留下评价和反馈。这有助于其他用户了解卖家的信誉和宠物的实际状况。</p>
+        <p style="font-size: 17px;text-align: left">7. 学习和预防： 总结经验，了解问题的根本原因，并在将来的领养中采取预防措施。这可能包括更仔细的调查、要求更多的信息或选择更有经验的卖家。</p>
+      </p>
+      <p v-if="selectedValue === '宠物没有被领养人善待怎么办'" style="font-size: 17px; text-align: left">
+        <p style="font-size: 17px;text-align: left">A：</p>
+        <p style="font-size: 17px;text-align: left">1. 立即联系领养人： 如果您担心领养到的宠物没有被善待，请立即通过站内信联系领养人。尽量以理性和冷静的态度表达您的关切，并要求解释相关情况。</p>
+        <p style="font-size: 17px;text-align: left">2. 要求详细描述状况： 要求领养人详细描述宠物的日常生活条件、饮食习惯和任何可能的健康问题。这将帮助您了解状况的全貌。</p>
+        <p style="font-size: 17px;text-align: left">3. 提供建议与指导： 如果可能，为领养人提供合适的建议和指导，帮助他们更好地照顾宠物。可能是关于饮食、环境、训练等方面的建议。</p>
+        <p style="font-size: 17px;text-align: left">4. 寻求网站客服协助： 如果您无法通过站内信解决问题，立即联系网站客服。提供详细的信息和证据，让客服团队介入并尽快采取措施。</p>
+        <p style="font-size: 17px;text-align: left">5. 报告虐待行为： 如果有证据表明宠物受到虐待，请立即报告给当地的动物保护组织、动物控制机构或警方。虐待行为是违法的，需要得到及时处理。</p>
+        <p style="font-size: 17px;text-align: left">6. 兽医检查： 如果您担心宠物的健康状况，请考虑带宠物去兽医那里进行检查。兽医的专业意见可以作为处理纠纷的重要证据。</p>
+        <p style="font-size: 17px;text-align: left">7. 寻求法律建议： 如果纠纷仍未解决，考虑咨询专业的法律顾问，了解您的权利和可行的法律途径。</p>
+        <p style="font-size: 17px;text-align: left">请记住，宠物福利是第一位的，如果您有任何疑虑，请及时采取行动。网站客服团队将竭尽所能协助解决问题，同时也建议您与相关法律和动物保护组织合作，确保宠物得到妥善照顾。</p>
+      </p>
+      <p v-if="selectedValue === '如何挑选适合我的宠物'" style="font-size: 17px; text-align: left">
+        <p style="font-size: 17px;text-align: left">A：</p>
+        <p style="font-size: 17px;text-align: left">1. 了解自己的生活方式： 考虑自己的生活节奏、工作时间、家庭成员等因素。选择一只与您的生活方式相匹配的宠物，以确保它能够融入您的日常生活。</p>
+        <p style="font-size: 17px;text-align: left">2. 考虑宠物的大小和活动水平： 不同品种的宠物有不同的大小和活动水平。确保您有足够的空间和时间来满足宠物的需求。一些品种可能需要更多的运动和活动。</p>
+        <p style="font-size: 17px;text-align: left">3. 了解宠物的饲养需求： 每种宠物都有其特定的饲养需求，包括饮食、卫生、医疗等。确保您具备提供这些需求的能力和责任心。</p>
+        <p style="font-size: 17px;text-align: left">4. 考虑宠物的寿命： 不同宠物的寿命差异较大。选择一只宠物时，请考虑您对长期责任的承诺，确保您有足够的时间和资源来照顾宠物的整个生命周期。</p>
+        <p style="font-size: 17px;text-align: left">5. 了解宠物的性格特征： 不同的宠物品种有不同的性格特征。一些可能需要更多的关爱和陪伴，而另一些可能更独立。选择与您相符合的宠物性格。</p>
+        <p style="font-size: 17px;text-align: left">6. 考虑过敏和健康问题： 考虑家庭成员是否对宠物过敏，以及是否有家庭成员有慢性疾病，这可能影响您选择宠物的决策。</p>
+        <p style="font-size: 17px;text-align: left">7. 咨询专业人士： 在选择宠物前，咨询兽医、宠物顾问或其他专业人士。他们可以为您提供关于不同宠物品种的信息，帮助您做出明智的决策。</p>
+        <p style="font-size: 17px;text-align: left">8. 领养代替购买： 考虑领养宠物，给流浪动物一个新的家。领养中心通常有各种品种和年龄的宠物，您可以找到一个适合您的新伙伴。</p>
+        <p style="font-size: 17px;text-align: left">9. 慎重考虑： 选择宠物是一项长期承诺。慎重考虑您的决定，确保您对宠物的需求和责任心有充分的认识。</p>
+      </p>
+      <p v-if="selectedValue === '领养人需要具备什么条件'" style="font-size: 17px; text-align: left">
+      <p style="font-size: 17px;text-align: left">A：</p>
+      <p style="font-size: 17px;text-align: left">领养宠物是一项需要责任心和考虑周到的决定。领养人需要具备一系列条件，以确保他们能够提供宠物所需的照顾和爱护。以下是一些领养宠物时需要具备的条件：</p>
+      <p style="font-size: 17px;text-align: left">1. 经济能力： 领养人需要有足够的经济能力来负担宠物的饲养费用，包括食物、医疗、保健品等。宠物的生活费用随其种类和健康状况而异。</p>
+      <p style="font-size: 17px;text-align: left">2. 时间和精力： 宠物需要花费时间和精力进行陪伴、训练和游戏。领养人需要确保他们有足够的时间来满足宠物的社交和活动需求。</p>
+      <p style="font-size: 17px;text-align: left">3. 空间和居住环境： 不同品种的宠物需要不同的居住环境和空间。领养人应确保自己的居住条件适合所选择的宠物，例如是否有足够的户外空间、宠物友好的住房等。</p>
+      <p style="font-size: 17px;text-align: left">4. 责任心： 领养人需要有强烈的责任心，愿意承担照顾宠物的责任。这包括提供适当的饮食、定期的兽医检查、必要的训练等。</p>
+      <p style="font-size: 17px;text-align: left">5. 家庭同意： 如果领养人共同居住，需要确保家庭中的每个成员都同意并能够投入到宠物的照顾中。这有助于建立宠物与家庭成员之间的良好关系。</p>
+      <p style="font-size: 17px;text-align: left">6. 了解宠物需求： 领养人需要有足够的知识了解所选择宠物的特点、饲养需求、行为习惯等。这有助于提供更好的照顾和理解宠物。</p>
+      <p style="font-size: 17px;text-align: left">7. 兽医保健： 领养人需要有意愿提供宠物定期的兽医保健，包括疫苗接种、体检、预防措施等，以确保宠物的健康状况。</p>
+      <p style="font-size: 17px;text-align: left">8. 长期承诺： 领养是一项长期承诺，领养人需要有长远的计划和意愿，愿意陪伴宠物度过整个生命周期。</p>
+      <p style="font-size: 17px;text-align: left">9. 法规遵守： 领养人需要遵守当地和国家的相关法规和规定，包括宠物登记、兽医保健等方面的法律要求。</p>
+      <p style="font-size: 17px;text-align: left">10.情感支持： 宠物是需要关爱和陪伴的生命，领养人需要能够提供充足的爱与情感支持。</p>
+      <p style="font-size: 17px;text-align: left">如果具备这些条件，领养人就可以更好地满足宠物的需求，确保它们在一个温馨、健康的家庭中得到适当的关心和照顾。</p>
+      </p>
       <!-- 其他选项的欢迎消息... -->
     </el-dialog>
   </teleport>
@@ -196,21 +271,21 @@ export default {
     dialogTitle() {
       switch (this.selectedValue) {
         case '领养的具体流程':
-          return '领养流程';
+          return 'Q：领养的具体流程？';
         case '送养的具体流程':
-          return '送养流程';
+          return 'Q：送养的具体流程？';
         case '网站如何保障领养双方顺利交易':
-          return '保障';
+          return 'Q：网站如何保障领养双方顺利交易？';
         case '领养到有问题的宠物怎么办':
-          return '有问题的宠物';
+          return 'Q：领养到有问题的宠物怎么办？';
         case '宠物没有被领养人善待怎么办':
-          return '善待';
+          return 'Q：宠物没有被领养人善待怎么办？';
         case '如何挑选适合我的宠物':
-          return '挑选';
+          return 'Q：如何挑选适合我的宠物？';
         case '领养人需要具备什么条件':
-          return '条件';
+          return 'Q：领养人需要具备什么条件？';
         default:
-          return ''; // 默认情况下返回空字符串
+          return "请输入搜索内容"; // 默认情况下返回空字符串
       }
     },
   },
