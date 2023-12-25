@@ -16,7 +16,8 @@
       <div class="aside">
         <div class="chat-list">
           <div v-for="contact in contacts" :key="contact.id" ref="contact" @click="selectContact(contact.id)" class="contact-item" :class="{ 'selected': selectedItemId === contact.id, 'changeColor': changeColorId === contact.id }"  @mouseover="mouseOver(contact.id)" @mouseleave="mouseLeave(contact.id)">
-            <img src="../assets/imgs/avatar1.jpg" alt="avatar" class="contact-avatar" />
+<!--            <img src="../assets/imgs/avatar1.jpg" alt="avatar" class="contact-avatar" />-->
+            <img :src="contact.avatar" alt="avatar" class="contact-avatar">
             <div style="margin-left: 10px;width: 214px">
               <div class="info">
                 <div class="contact-name">{{ contact.name }}</div>
@@ -35,18 +36,13 @@
 
         <div class="chat-header">{{contacts[selectedItemId].name}}</div>
         <div class="confirm" style="display: flex; justify-content: space-between;">
-          <img src="https://box.nju.edu.cn/f/5412f3ed6b55425ead4e/?dl=1" style="width: 70px;height: 70px;margin-left: 10%;border-radius: 5px">
+          <img src="https://box.nju.edu.cn/f/5412f3ed6b55425ead4e/?dl=1" style="width: 70px;height: 70px;margin-left: 5%;border-radius: 5px">
+            <p style="margin-top: 15px; font-size: 27px">小福</p>
           <div style="margin-left: 0px;">
+            <p style="margin-top: 10px; text-align: left;color: #8a8a8a">江苏省·南京市·鼓楼区</p>
 
-            <div style="display: flex;margin-top: 15px">
-              <p style="font-size: 20px">小猫佩奇</p>
-              <el-tag type="success" size="small" effect="plain" style="margin-top: 5px;margin-left: 8px">已免疫</el-tag>
-              <el-tag  type="success" size="small" effect="plain" style="margin-top: 5px;margin-left: 3px">已驱虫</el-tag>
-              <el-tag  type="info" size="small" effect="plain" style="margin-top: 5px;margin-left: 3px">未绝育</el-tag>
-            </div>
-
-            <div style="display: flex;margin-top: -12px">
-              <p style="margin-left:6px;font-size: 15px;color: #8a8a8a">免费领养</p>
+            <div style="display: flex;margin-top: -10px">
+              <p style="font-size: 16px;color: #8a8a8a">免费领养</p>
               <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 8px;">仅限同城</el-tag>
               <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 3px;">定期线下回访</el-tag>
               <el-tag size="small" effect="plain" style="margin-top: 1px; margin-left: 3px;">签订领养合同</el-tag>
@@ -71,7 +67,7 @@
                 <div class="time">{{message.date}} {{message.time}}</div>
                 <div class="message-content" style="background-color: #CFE2F7; text-align: left">{{ message.content }}</div>
               </div>
-              <img src="../assets/imgs/avatar2.jpg" alt="avatar" class="avatar my-avatar" />
+              <img src="../assets/imgs/avatar-me.jpeg" alt="avatar" class="avatar my-avatar" />
             </div>
           </div>
         </div>
@@ -97,23 +93,23 @@ export default {
     return {
       confirmAdoptDialog : false,
       messages: [
-        { id: 0, isMe: true, content: '在吗？', date: "2023-12-01", time:"09:40:03" },
-        { id: 1, isMe: false, content: '您好！请问有什么问题可以帮您解答？', date: "2023-12-01", time:"09:50:03"  }
+        { id: 0, isMe: true, content: '请问这只小猫还在吗？', date: "2023-12-01", time:"09:40:03" },
+        { id: 1, isMe: false, content: '您好，在的！', date: "2023-12-01", time:"09:50:03"  }
       ],
       newMessage: '',
       contacts: [
-        { id: 0, name: '用户1', avatar: '../assets/imgs/avatar1.png', lastMessage: '最近的消息内容1', lastTime: "9:50" },
-        { id: 1, name: '用户2', avatar: '../assets/imgs/avatar2.png', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "8:00" },
-        { id: 2, name: '用户3', avatar: '../assets/imgs/avatar3.jpg', lastMessage: '最近的消息内容1', lastTime: "6:50" },
-        { id: 3, name: '用户4', avatar: '../assets/imgs/avatar4.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-29" },
-        { id: 4, name: '用户5', avatar: '../assets/imgs/avatar5.jpeg', lastMessage: '最近的消息内容1', lastTime: "2023-11-29" },
-        { id: 5, name: '用户6', avatar: '../assets/imgs/avatar6.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-28" },
-        { id: 6, name: '用户7', avatar: '../assets/imgs/avatar7.jpeg', lastMessage: '最近的消息内容1', lastTime: "2023-11-28" },
-        { id: 7, name: '用户8', avatar: '../assets/imgs/avatar8.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-27" },
-        { id: 8, name: '用户9', avatar: '../assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容1', lastTime: "2023-11-26" },
-        { id: 9, name: '用户10', avatar: '../assets/imgs/avatar2.jpg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-25" },
-        { id: 10, name: '用户11', avatar: '../assets/imgs/avatar4.jpg', lastMessage: '最近的消息内容1', lastTime: "2023-11-24" },
-        { id: 11, name: '用户12', avatar: '../assets/imgs/avatar1.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-10-01" },
+        { id: 0, name: '翛', avatar: 'src/assets/imgs/avatar1.png', lastMessage: '您好，在的！', lastTime: "9:50" },
+        { id: 1, name: '莫里', avatar: 'src/assets/imgs/avatar2.png', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "8:00" },
+        { id: 2, name: 'piiii🦕', avatar: 'src/assets/imgs/avatar3.jpeg', lastMessage: '最近的消息内容1', lastTime: "6:50" },
+        { id: 3, name: '无恙', avatar: 'src/assets/imgs/avatar9.png', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-25" },
+        { id: 9, name: 'Aziop', avatar: 'src/assets/imgs/avatar4.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-29" },
+        { id: 4, name: 'HYC', avatar: 'src/assets/imgs/avatar5.jpeg', lastMessage: '最近的消息内容1', lastTime: "2023-11-29" },
+        { id: 5, name: '书洲', avatar: 'src/assets/imgs/avatar6.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-28" },
+        { id: 6, name: '我是火柴人', avatar: 'src/assets/imgs/avatar7.jpeg', lastMessage: '最近的消息内容1', lastTime: "2023-11-28" },
+        { id: 7, name: 'zrs', avatar: 'src/assets/imgs/avatar8.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-27" },
+        { id: 8, name: 'wjj', avatar: 'src/assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容1', lastTime: "2023-11-26" },
+        { id: 10, name: '壬.', avatar: 'src/assets/imgs/avatar10.png', lastMessage: '最近的消息内容1', lastTime: "2023-11-24" },
+        { id: 11, name: 'Carnival', avatar: 'src/assets/imgs/avatar2.jpg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-10-01" },
       ],
       selectedItemId: 0,
       hoverItemId: -1,
@@ -244,23 +240,25 @@ export default {
 }
 
 .chat-header {
-  background-color: #6504B5;
-  color: white;
+  background-color: #f4f4f4;
+  font-weight: bolder;
   padding: 10px;
   text-align: center;
+  border-bottom: 1px solid rgba(77, 71, 81, 0.2);
 }
 .confirm {
   display: flex;
   align-items: center;
   height: 80px;
-  background: #f4f4f4;
+  //background: #f4f4f4;
+  background: white;
   border-bottom: 1px solid rgba(77, 71, 81, 0.2);
 }
 .button {
   margin-top: 4px;
   margin-right: 10%;
   font-size: 18px;
-  width: 20%;
+  width: 15%;
   height: 40px;
   background: purple;
   /*background-color: #6504B5;*/
