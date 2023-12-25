@@ -37,7 +37,7 @@ import PersonalCertificationCard from "@/components/PersonalCertificationCard.vu
           <div class="adoption-body">
             <p class="adoption-title">考虑收养我吗？</p>
             <el-button class="button1" @click.stop="visit" round>我要收养</el-button><br>
-            <el-button class="button2" @click="addToFavorites" round>加入收藏</el-button><br>
+            <el-button class="button2" @click="addToFavorites"  round>加入收藏</el-button><br>
             <el-button class="instruction" style = "border-radius: 12px"  @click="showDialog">不清楚领养流程？点击这里</el-button>
 <!--            <adoption-process-dialog v-model="dialogVisible" @close="handleDialogClose" />-->
             <adoption-process-dialog v-model="dialogVisible"/>
@@ -103,6 +103,7 @@ import {ElNotification} from "element-plus"
 import router from "@/router";
 import axios from "axios";
 import {request} from "@/utils/request";
+import {store} from "@/store/store";
 
 export default {
   components: {
@@ -173,15 +174,27 @@ export default {
       this.isClicked = !this.isClicked;
 
       if(this.isClicked){
+        const isPetInStore = store.favoritePets.find(pet => (pet.id===this.pet.id));
+        if(!isPetInStore) {
+          store.favoritePets.push(this.pet);
+        }
+        console.log(store.favoritePets);
         ElNotification({
           title: '您已成功收藏',
           message: '可以进入"我的收藏"中查看它哦',
+          offset: 50,
+          type: 'success'
         });
       } else {
+        store.favoritePets = store.favoritePets.filter(pet => pet.id !== this.pet.id);
+        console.log(store.favoritePets);
         ElNotification({
           title: '您已取消收藏',
-          message: '再看看其他宠物吧？',
+          message: '再看看其他宠物吧!',
+          offset: 50,
+          type: 'error'
         });
+
       }
     }
   }
