@@ -97,20 +97,25 @@
               </tr>
             </table>
           </div>
-          <div class="choseTags">
+          <div class="choseTags" v-if="choseBreed.concat(choseGender, choseSize, choseHealth).length!==0">
+            <p style="color: rgba(0,0,0,0.35)">当前筛选：</p>
             <el-tag
                 v-for="tag in choseBreed.concat(choseGender, choseSize, choseHealth)"
                 :key="tag"
                 closable
                 @close="handleClose(tag)"
-                size="large"
+                size="default"
                 type="info"
                 style="margin-right: 5px; background-color: white; color: #6504B5; border-color: #6504B5;">
               {{tag}}
             </el-tag>
+            <p class="clear" @click="clear">重置条件</p>
           </div>
 
-          <div style="display: flex; margin-top: 40px;" >
+          <div style="margin-left: 48px; margin-top: 20px; text-align: left">
+            <p style="color: rgba(0,0,0,0.35)">共为您找到{{this.pets.length}}个符合条件的宠物</p>
+          </div>
+          <div style="display: flex" >
             <div class="my-tabs" style="margin-left: 48px; width: 36%">
               <el-tabs class="sourceTags" v-model="activeName" type="card" @click="handleClick">
                 <el-tab-pane label="全部" name="全部" :style="{ 'font-size': '30px' }"></el-tab-pane>
@@ -412,6 +417,30 @@ export default {
     },
   },
   methods: {
+    clear(){
+      this.isBreedChose = [true]
+      this.isGenderChose = [true]
+      this.isAgeChose = [true]
+      this.isSizeChose = [true]
+      this.isHealthChose = [true]
+      this.isPriceChose = [true]
+      this.choseBreed = []
+      this.choseSize = []
+      this.choseGender = []
+      this.choseHealth = []
+      this.petBreed=[]
+      this.petGender=[]
+      this.petAge=[]
+      this.petSize=[]
+      this.petSource=[]
+      this.healthCondition=[]
+      this.petPrice=[]
+      // this.petAddress=''
+      // this.selectedOptions=[]
+      // this.range=''
+      this.activeName = '全部'
+      this.filter()
+    },
     addressChange(arr){
       this.petAddress=codeToText[arr[0]] + codeToText[arr[1]] + codeToText[arr[2]]
       this.filter()
@@ -858,11 +887,13 @@ export default {
   font-weight: bold; /* 加粗样式，可以根据实际需求修改 */
 }
 
-.sort-tag{
-
+.clear:hover{
+  color: #6504B5;
+  cursor: pointer;
 }
 
 .choseTags{
+  display: flex;
   text-align: left;
   padding-top: 10px;
   margin-left: 48px;
