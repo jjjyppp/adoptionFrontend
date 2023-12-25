@@ -615,9 +615,9 @@ export default {
           this.petSource=[]
           this.healthCondition=[]
           this.petPrice=[]
-          this.petAddress=''
-          this.selectedOptions=[]
-          this.range=''
+          // this.petAddress=''
+          // this.selectedOptions=[]
+          // this.range=''
           this.activeName = '全部'
         } else {
           this.isTypeChose[i] = false
