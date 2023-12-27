@@ -3,20 +3,34 @@
     <header-tag></header-tag>
   </div>
 
+  <el-dialog v-model="dialogVisible">
+    <p style="font-size: 17px;text-align: left">A：</p>
+    <p style="font-size: 17px;text-align: left">感谢您选择使用PetPat，为宠物寻找一个温暖的新家。以下是送养的具体流程，希望这些步骤可以帮助您成功地将宠物送到有爱心的新家。</p>
+    <p style="font-size: 17px;text-align: left">1. 登录并上传宠物信息： 首先，请登录您的账户，然后点击“我要送养”按钮。按照系统提示填写宠物的详细信息，包括种类、年龄、性别、健康状况等，并上传照片。</p>
+    <p style="font-size: 17px;text-align: left">2. 审核发布： 提交宠物信息后，我们的团队将会审核您的发布内容，以确保信息的真实性和完整性。一旦审核通过，您的宠物信息将在网站上显示。</p>
+    <p style="font-size: 17px;text-align: left">3. 等待领养申请： 一旦您的宠物信息上线，感兴趣的领养者将可以看到它。当有领养者提交领养申请时，系统将立即通知您。</p>
+    <p style="font-size: 17px;text-align: left">4. 私聊领养者： 您可以通过站内信与领养者进行私聊，了解他们的居住环境、饲养经验以及对宠物的态度。确保双方在领养决策上有清晰的了解。</p>
+    <p style="font-size: 17px;text-align: left">5. 确认领养者： 在与领养者充分沟通并确保他们能够提供良好的饲养环境后，您可以选择确认领养。这将通知领养者进行支付(如需）。</p>
+    <p style="font-size: 17px;text-align: left">6. 完成送养： 领养者支付成功（如有）后，您和领养者可以协商具体的交接时间和地点。请确保在交接时提供一份宠物的健康证明和相关资料。</p>
+    <p style="font-size: 17px;text-align: left">感谢您为宠物的幸福贡献力量！如果您有任何疑问或需要帮助，请随时联系我们的客服团队。祝您的宠物找到一个幸福的新家！</p>
+  </el-dialog>
   <div style="background-color: #EFEEF1; padding-bottom: 40px">
-    <div class="progress-bar" style="padding-top: 60px;width: 100%;height:120px;background: #EFEEF1; position: fixed;z-index: 3;display: flex">
-      <p style="margin-left:10%;margin-top: 39px;font-weight: bolder;font-size: 25px;color: #4c0586">您已完成：</p>
-      <el-progress style="width:70%;height: 50px;margin-top: 35px"
+    <div class="progress-bar" style="padding-top: 60px;width: 100%;height:120px;background: #EFEEF1; position: fixed;z-index: 3;display: flex;flex-direction: row">
+      <p style="margin-left:0%;margin-top: 10px;font-weight: bolder;font-size: 25px;color: #4c0586; width: 10%;text-align: right">您已完成：</p>
+      <el-progress style="width:70%;height: 60px"
                    :percentage="completedPercentage"
                    :color="progressColor"
                    :stroke-width="15"
-                   :format="sfd"
       ></el-progress>
     </div>
 
-  <div style="padding-top: 160px">
-    <h1>宠物送养</h1>
+    <div style="height: 10px"></div>
+
+  <div style="padding-top: 160px;margin: -20px">
+    <h1 >宠物送养</h1>
   </div>
+
+    <el-button class="instruction"  @click="this.dialogVisible = true;">不清楚送养流程？点击这里</el-button>
 
   <div class="form">
     <div class="input-group">
@@ -281,6 +295,7 @@ export default {
 
   data() {
     return {
+      dialogVisible: false,
       progressColor: "#2e0152",
       confirmDialogVisible: false,
       imageUrl: "src/assets/icons/upload_icon.png",
@@ -654,7 +669,7 @@ export default {
 
 <style scoped>
 
-.progress-bar >>> .el-progress-bar__outer {
+.progress-bar :deep(.el-progress-bar__outer) {
   background-color: #DDB4FF;
 }
 
@@ -662,6 +677,18 @@ h1 {
   font-size: 30px;
   font-weight: bold;
   color: #6504b5;
+}
+
+.instruction {
+  font-size: 15px;
+  margin-top: 10px;
+  background: transparent;
+  color: #8a8a8a;
+  border: transparent;
+  text-decoration: underline;
+}
+.instruction:hover{
+  color: cornflowerblue;
 }
 
 .form {
