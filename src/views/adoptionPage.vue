@@ -575,7 +575,6 @@ export default {
       }
       else size=this.petSize
 
-
       if(this.activeName==='全部'){
         source=this.petSources.map(item => item.value)
       }
