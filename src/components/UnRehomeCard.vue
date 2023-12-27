@@ -57,6 +57,7 @@ import {ElButton, ElNotification, ElDialog } from "element-plus"
 import router from "@/router";
 import {store} from "@/store/store";
 import {Delete} from "@element-plus/icons-vue";
+import {request} from "@/utils/request";
 
 export default {
   name: "PetDisplayCard",
@@ -95,6 +96,13 @@ export default {
         type: 'info'
       });
       this.dialogVisible = false
+      request({
+        url: `http://localhost:8080/pet/${this.pet.id}`,
+        method: 'DELETE'
+      }).then((res) => {
+        console.log(res.data)
+      }).catch((error) => {
+      })
     },
     handleSuccess() {
       store.unrehomes = store.unrehomes.filter(pet => pet.id !== this.pet.id);
@@ -105,6 +113,14 @@ export default {
         type: 'success'
       });
       this.successDialogVisible = false
+      request({
+        url: `http://localhost:8080/pet/${this.pet.id}`,
+        method: 'DELETE'
+      }).then((res) => {
+        console.log(123)
+        console.log(res.data)
+      }).catch((error) => {
+      })
     }
   }
 }
