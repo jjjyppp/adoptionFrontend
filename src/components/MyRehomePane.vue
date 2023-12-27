@@ -1,6 +1,5 @@
 <template>
   <body>
-<!--  <main class="container">-->
     <div class="tab-container">
       <div class="tabs">
         <div id="tab1" class="tab active">待送养</div>
@@ -9,23 +8,34 @@
       </div>
       <div class="tab-content">
         <div class="tab-rehome" data-tab="tab1">
-          <un-rehome-card class="rehomepane-card"></un-rehome-card>
-          <un-rehome-card class="rehomepane-card"></un-rehome-card>
-          <un-rehome-card class="rehomepane-card"></un-rehome-card>
-          <un-rehome-card class="rehomepane-card"></un-rehome-card>
+          <div style="margin-top: 40px;" v-if="store.unrehomes.length===0">
+            <el-empty description="您还未送养宠物"></el-empty>
+          </div>
+          <un-rehome-card
+              v-for="(pet, index) in store.unrehomes"
+              :key="index"
+              :pet="pet" />
         </div>
         <div class="tab-rehome" data-tab="tab2" style="display: none">
-          <rehome-card class="rehomepane-card"></rehome-card>
-          <rehome-card class="rehomepane-card"></rehome-card>
-          <rehome-card class="rehomepane-card"></rehome-card>
+          <div style="margin-top: 40px;" v-if="store.rehomes.length===0">
+            <el-empty description="您还没有送养成功的宠物"></el-empty>
+          </div>
+          <rehome-card
+              v-for="(pet, index) in store.rehomes"
+              :key="index"
+              :pet="pet" />
         </div>
         <div class="tab-rehome" data-tab="tab3" style="display: none">
-          <cancel-rehome-card class="rehomepane-card"></cancel-rehome-card>
-          <cancel-rehome-card class="rehomepane-card"></cancel-rehome-card>
+          <div style="margin-top: 40px;" v-if="store.cancelCards.length===0">
+            <el-empty description="您还没有取消送养的宠物"></el-empty>
+          </div>
+          <cancel-rehome-card
+              v-for="(pet, index) in store.cancelCards"
+              :key="index"
+              :pet="pet" />
         </div>
       </div>
     </div>
-<!--  </main>-->
   </body>
 </template>
 
@@ -35,9 +45,28 @@
 import UnRehomeCard from "@/components/UnRehomeCard.vue";
 import RehomeCard from "@/components/RehomeCard.vue";
 import CancelRehomeCard from "@/components/CancelRehomeCard.vue";
+import {store} from "@/store/store";
+import PetDisplayCardInFav from "@/components/PetDisplayCardInFav.vue";
+import unRehomeCard from "@/components/UnRehomeCard.vue";
+import {ElEmpty} from "element-plus";
 
 export default {
-  components: {CancelRehomeCard, UnRehomeCard, RehomeCard},
+  data(){
+    return{
+      unrehomes: store.unrehomes,
+      rehomes: store.rehomes,
+      cancelCards: store.cancelCards,
+    }
+  },
+  computed: {
+    unRehomeCard() {
+      return unRehomeCard
+    },
+    store() {
+      return store
+    }
+  },
+  components: {CancelRehomeCard, UnRehomeCard, RehomeCard, PetDisplayCardInFav, ElEmpty},
   mounted() {
     const tabContainer = document.querySelector(".tabs");
     const tabs = document.querySelectorAll(".tab");
@@ -80,7 +109,8 @@ body {
 }
 
 .tab-container {
-  padding: 24px;
+  padding-top: 56px;
+  padding-left: 24px;
   width: 100%;
 }
 
@@ -88,7 +118,7 @@ body {
   width: 380px;
   padding: 4px;
   border-radius: 5px;
-  background: #f0f0f3;
+  background: #ffffff;
   box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
   display: flex;
 }
@@ -109,15 +139,17 @@ body {
 .tab-rehome{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .tab-content {
-  width: 90%;
+  width: 92.2%;
+  min-height: 715px;
   margin-top: 36px;
   padding: 36px;
   border-radius: 16px;
-  background: #f0f0f3;
-  box-shadow: -10px -10px 30px #ffffff, 10px 10px 30px rgba(174, 174, 192, 0.4);
+  background: rgba(238, 238, 238, 0.07);
+  box-shadow: -10px -10px 50px #ffffff, 10px 10px 50px rgba(174, 174, 192, 0.4);
 }
 
 .rehomepane-card{

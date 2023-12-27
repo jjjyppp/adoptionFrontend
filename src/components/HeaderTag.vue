@@ -56,14 +56,14 @@
       </button>
       <el-link :underline="false" class="mine" @click="toFavorites">我的收藏</el-link>
     </div>
-    <div class="user" v-if="login" style="display: flex">
-      <button class="icon-button" @click="toMine">
-<!--        <img src="../assets/icons/user.png" alt="" style="height: 35px;background-color: #F9F3FE">-->
-        <svg x="1701608125180" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7068" width="25" height="25"><path d="M266.24 267.52a248.32 244.48 0 1 0 496.64 0 248.32 244.48 0 1 0-496.64 0zM628.48 593.28H421.76a320 320 0 0 0-320 315.52v20.48c0 71.04 143.36 71.04 320 71.04h206.72c177.28 0 320 0 320-71.04V908.8a320 320 0 0 0-320-315.52z" fill="#ffffff" p-id="7069"></path></svg>
-      </button>
-      <el-link :underline="false" class="mine" href="#/mine">我的主页</el-link>
-    </div>
-    <div class="login" v-if="!login" style="display: flex">
+<!--    <div class="user" v-if="login" style="display: flex">-->
+<!--      <button class="icon-button" @click="toMine">-->
+<!--&lt;!&ndash;        <img src="../assets/icons/user.png" alt="" style="height: 35px;background-color: #F9F3FE">&ndash;&gt;-->
+<!--        <svg x="1701608125180" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7068" width="25" height="25"><path d="M266.24 267.52a248.32 244.48 0 1 0 496.64 0 248.32 244.48 0 1 0-496.64 0zM628.48 593.28H421.76a320 320 0 0 0-320 315.52v20.48c0 71.04 143.36 71.04 320 71.04h206.72c177.28 0 320 0 320-71.04V908.8a320 320 0 0 0-320-315.52z" fill="#ffffff" p-id="7069"></path></svg>-->
+<!--      </button>-->
+<!--      <el-link :underline="false" class="mine" href="#/mine">我的主页</el-link>-->
+<!--    </div>-->
+    <div class="login" style="display: flex">
       <button class="icon-button" @click="toLogin">
         <svg x="1701608125180" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7068" width="32" height="32"><path d="M266.24 267.52a248.32 244.48 0 1 0 496.64 0 248.32 244.48 0 1 0-496.64 0zM628.48 593.28H421.76a320 320 0 0 0-320 315.52v20.48c0 71.04 143.36 71.04 320 71.04h206.72c177.28 0 320 0 320-71.04V908.8a320 320 0 0 0-320-315.52z" fill="#ffffff" p-id="7069"></path></svg>
 <!--        <img src="../assets/icons/user.png" alt="" style="height: 35px;">-->
@@ -117,7 +117,6 @@ export default {
         router.push({
           name: "myFavoritePage"
         })
-
       }
     },
     toMine(){
@@ -126,9 +125,16 @@ export default {
       })
     },
     toLogin(){
-      router.push({
-        name:"loginPage"
-      })
+      if(!this.isLoggedIn){
+        router.push({
+          name:"loginPage"
+        })
+      }
+      else {
+        router.push({
+          name: "minePage"
+        })
+      }
     },
     showChat(){
       document.body.style.overflow = 'hidden';

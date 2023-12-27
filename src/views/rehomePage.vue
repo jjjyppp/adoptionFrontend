@@ -170,19 +170,19 @@
           :limit="limitnum"
           list-type="picture-card"
           :auto-upload="true"
-          :on-error="uploadFileError"
-          :on-success="uploadFileSuccess"
-          :on-exceed="exceedFile"
-          :on-remove="removeFile"
-          :on-preview="handlePreview">
+          :on-error="uploadCerFileError"
+          :on-success="uploadCerFileSuccess"
+          :on-exceed="exceedCerFile"
+          :on-remove="removeCerFile"
+          :on-preview="handleCerPreview">
         <img v-if="imageUrl" :src="imageUrl" alt="" class="avatar">
       </el-upload>
       <el-image-viewer
-          v-if="showImgViewer"
-          @close="closeImgViewer"
-          :url-list="imagePreviewUrls"
+          v-if="showCerImgViewer"
+          @close="closeCerImgViewer"
+          :url-list="imageCerPreviewUrls"
           :z-index="3000"
-          :initial-index="initialImgPreviewIndex"
+          :initial-index="initialCerImgPreviewIndex"
       />
     </div>
     <div class="input-group">
@@ -220,6 +220,21 @@
   </div>
   </div>
 
+  <el-dialog
+      title="提示"
+      v-model="confirmDialogVisible"
+      width="30%"
+      typeof="warning"
+      @close="handleClose"
+  >
+    <span style="font-size: 15px">您确认要提交送养信息吗？提交后不可修改</span>
+    <br>
+    <span slot="footer" class="dialog-footer">
+        <el-button style="margin-top: 40px;" @click="confirmDialogVisible = false">取 消</el-button>
+        <el-button style="background-color: #3a0466;margin-top: 40px;color: white" @click="confirmSubmit">确 定</el-button>
+      </span>
+  </el-dialog>
+
   <footer-card></footer-card>
 
 </template>
@@ -238,27 +253,33 @@ import {
   ElCheckbox,
   ElUpload,
   ElCascader,
-  ElImageViewer, ElMessage
+  ElImageViewer, ElMessage, ElDialog
 } from "element-plus";
 import { regionData, codeToText} from 'element-china-area-data';
 import FooterCard from "@/components/FooterCard.vue";
 import global from "@/views/assets/js/global_variable";
 import {request} from "@/utils/request";
 import router from "@/router";
+import {store} from "@/store/store";
 
 export default {
   name: "rehomePage",
   components:{
     FooterCard,
-    ElPagination, ElButton, ElIcon, ElSelect, ElOption, ElInput, ElCheckboxGroup, ElCheckbox, ElUpload, ElCascader, HeaderTag, ElImageViewer},
+    ElPagination, ElButton, ElIcon, ElSelect, ElOption, ElInput, ElCheckboxGroup, ElCheckbox, ElUpload, ElCascader, HeaderTag, ElImageViewer, ElDialog},
 
   data() {
     return {
+      confirmDialogVisible: false,
       imageUrl: "src/assets/icons/upload_icon.png",
       showImgViewer: false,
       imagePreviewUrls: [],
       imageUrls: [],
       initialImgPreviewIndex: 0,
+      showCerImgViewer: false,
+      imageCerPreviewUrls: [],
+      imageCerUrls: [],
+      initialCerImgPreviewIndex: 0,
       petName: '',
       petSize: '',
       petGender: '',
@@ -400,7 +421,7 @@ export default {
       return year + "-" + month + "-" + day;
     },
 
-    submitForm() {
+    submitForm(){
       if (
           !this.petName ||
           !this.petType ||
@@ -412,11 +433,23 @@ export default {
           !this.adoptionType ||
           !this.selectedOptions ||
           !this.petExperience ||
-          !this.adoptAttention
+          !this.adoptAttention ||
+          this.imageUrls.length===0||
+          this.imageCerUrls.length===0
       ) {
-        // Show an error message or handle the validation as needed
+        ElMessage({
+          type: 'warning',
+          message: '您的送养信息未填写完整'
+        });
+
         return;
       }
+
+      this.confirmDialogVisible=true
+    },
+
+    confirmSubmit() {
+      this.confirmDialogVisible= false
 
       let price = '免费'
       if(this.adoptionType==='paid'){
@@ -448,11 +481,30 @@ export default {
       })
       r.then(response => {
         console.log(response)
-        router.push({
-          name: 'adoptionPage', query:{type: this.petType}
+
+        request({
+          url: `http://localhost:8080/pets`,
+          method: 'GET'
+        }).then((res) => {
+          console.log(res.data)
+          this.pets=res.data
+          store.unrehomes.push(this.pets[0])
+        }).catch((error) => {
         })
+
+        ElMessage({
+          type: 'success',
+          message: '您已成功提交送养信息'
+        });
+
+        setTimeout(() => {
+          router.push({
+            name: 'adoptionPage', query:{type: this.petType}
+          })
+        }, 1000);
+
         this.petName=''
-        this.petType=''
+        // this.petType=''
         this.petBreed=''
         this.petSize=''
         this.petGender=''
@@ -471,25 +523,10 @@ export default {
         this.initialImgPreviewIndex=0
 
         console.log(this.imagePreviewUrls)
-
-
-          // ElMessage({
-          //   message: '注册成功',
-          //   type: 'success',
-          //   center: true  // 设置消息居中显示
-          // });
       }).catch(error=> {
 
       })
-
-      // this.petName = "";
-      // this.petType = "all";
-      // this.petBreed = "全部品种";
-      // this.petSize = "";
-      // this.petGender = "";
-      // this.petAge = "";
     },
-
 
     onTypeChange() {
       console.log(this.petType)
@@ -535,6 +572,37 @@ export default {
     },
     closeImgViewer () {
       this.showImgViewer = false
+    },
+
+    uploadCerFileError(err, file, fileList){
+      this.$message.error("上传失败！")
+    },
+    //上传成功
+    uploadCerFileSuccess(res, file, fileList){
+      this.imageCerPreviewUrls.push(file.url) // 预览图片的数组
+      this.imageCerUrls.push(res)
+    },
+    // 文件超出个数限制时的钩子
+    exceedCerFile(files, fileList){
+      this.$message.error('只能上传'+this.limitnum+'个文件');
+    },
+    //删除文件
+    removeCerFile(file,fileList) {
+      let index = this.imageCerPreviewUrls.indexOf(file.url)
+      if (index > -1) {
+        this.imageCerPreviewUrls.splice(index, 1)
+        this.imageCerUrls.splice(index, 1)
+      }
+    },
+    handleCerPreview(file){
+      let index = this.imageCerPreviewUrls.indexOf(file.url)
+      if (index >= 0) {
+        this.initialCerImgPreviewIndex = index
+      }
+      this.showCerImgViewer = true
+    },
+    closeCerImgViewer () {
+      this.showCerImgViewer = false
     },
     addressChange (arr) {
       console.log(this.selectedOptions)

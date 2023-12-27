@@ -1,6 +1,6 @@
 <template>
   <body>
-  <div class="tab-container">
+  <div class="my-container">
     <p style="font-size: 30px; font-weight: 600; color: #4d4751; text-align: left">个人信息</p>
 
     <div class="title1" style="margin-top:40px; margin-left: 60px; display: flex; justify-content: flex-start; align-items: center;">
@@ -73,7 +73,6 @@
 <script>
 import {Paperclip} from "@element-plus/icons-vue";
 
-name:'Temp';
 import { ElForm, ElOption, ElSelect, ElFormItem, ElInput, ElButton, ElIcon} from 'element-plus';
 export default {
   components: {Paperclip, ElForm, ElFormItem, ElOption, ElSelect, ElInput, ElButton, ElIcon },
@@ -307,7 +306,7 @@ body {
   font-weight: 700;
 }
 
-.tab-container {
+.my-container {
   min-height: 800px;
   width: 90%;
   margin-top: 60px;
@@ -315,7 +314,7 @@ body {
   padding: 36px;
   border-radius: 16px;
   background: #ffffff;
-  box-shadow: -10px -10px 30px #ffffff, 10px 10px 30px rgba(174, 174, 192, 0.4);
+  box-shadow: -10px -10px 50px #ffffff, 10px 10px 50px rgba(174, 174, 192, 0.4);
 }
 
 .title1 {

@@ -79,7 +79,7 @@ export default {
         title: '您已取消收藏',
         message: '再看看其他宠物吧!',
         offset: 50,
-        type: 'error'
+        type: 'info'
       });
       this.isClicked = false
       this.dialogVisible = false
