@@ -332,6 +332,7 @@ export default {
         { pro: 'dog', label: '伯恩山犬' },
         { pro: 'dog', label: '藏獒' },
         { pro: 'dog', label: '史毕诺犬' },
+        { pro: 'dog', label: '其它' },
         { pro: 'cat', label: '狸花猫' },
         { pro: 'cat', label: '橘猫' },
         { pro: 'cat', label: '奶牛猫' },
@@ -356,9 +357,11 @@ export default {
         { pro: 'cat', label: '喜马拉雅猫' },
         { pro: 'cat', label: '金吉拉' },
         { pro: 'cat', label: '热带草原猫' },
+        { pro: 'cat', label: '其它' },
         { pro: 'rabbit', label: '垂耳兔' },
         { pro: 'rabbit', label: '猫猫兔' },
-        { pro: 'other', label: '不限' }
+        { pro: 'rabbit', label: '其它' },
+        { pro: 'other', label: '不限' },
       ],
       petSizes: [
         { label: "小型", value: "小型" },
@@ -622,7 +625,6 @@ h1 {
   color: #6504b5;
 }
 
-
 .form {
   display: flex;
   flex-direction: column;
@@ -673,7 +675,5 @@ h1 {
   opacity: 0.7;
   border-radius: inherit;
 }
-
-
 
 </style>
