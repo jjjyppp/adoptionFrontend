@@ -284,7 +284,7 @@ export default {
         { pro: 'dog', label: '伯恩山犬' },
         { pro: 'dog', label: '藏獒' },
         { pro: 'dog', label: '史毕诺犬' },
-        { pro: 'dog', label: '其它' },
+        { pro: 'dog', label: '其他' },
         { pro: 'cat', label: '不限' },
         { pro: 'cat', label: '狸花猫' },
         { pro: 'cat', label: '橘猫' },
@@ -310,11 +310,11 @@ export default {
         { pro: 'cat', label: '喜马拉雅猫' },
         { pro: 'cat', label: '金吉拉' },
         { pro: 'cat', label: '热带草原猫' },
-        { pro: 'cat', label: '其它' },
+        { pro: 'cat', label: '其他' },
         { pro: 'rabbit', label: '不限' },
         { pro: 'rabbit', label: '垂耳兔' },
         { pro: 'rabbit', label: '猫猫兔' },
-        { pro: 'rabbit', label: '其它' },
+        { pro: 'rabbit', label: '其他' },
         { pro: 'other', label: '不限' },
       ],
       petGenders: [
@@ -549,10 +549,16 @@ export default {
     },
     filter(){
       let breed, gender, age, size, source = [], health, price, address
-      if(this.petBreed.length===0){
-        breed=this.petBreeds.filter(breed => breed.pro === this.petType).map(item => item.label)
+
+      if(this.petType==='other'){
+        breed='其他'
       }
-      else breed=this.petBreed
+      else {
+        if (this.petBreed.length === 0) {
+          breed = this.petBreeds.filter(breed => breed.pro === this.petType).map(item => item.label)
+        }
+        else breed = this.petBreed
+      }
 
       if(this.petGender.length===0){
         gender=this.petGenders.map(item => item.value)
