@@ -3,8 +3,18 @@
     <header-tag></header-tag>
   </div>
 
-  <div style="background-color: #EFEEF1; padding: 40px">
-  <div style="padding-top: 60px">
+  <div style="background-color: #EFEEF1; padding-bottom: 40px">
+    <div class="progress-bar" style="padding-top: 60px;width: 100%;height:120px;background: #EFEEF1; position: fixed;z-index: 3;display: flex">
+      <p style="margin-left:10%;margin-top: 39px;font-weight: bolder;font-size: 25px;color: #4c0586">您已完成：</p>
+      <el-progress style="width:70%;height: 50px;margin-top: 35px"
+                   :percentage="completedPercentage"
+                   :color="progressColor"
+                   :stroke-width="15"
+                   :format="sfd"
+      ></el-progress>
+    </div>
+
+  <div style="padding-top: 160px">
     <h1>宠物送养</h1>
   </div>
 
@@ -253,7 +263,8 @@ import {
   ElCheckbox,
   ElUpload,
   ElCascader,
-  ElImageViewer, ElMessage, ElDialog
+  ElImageViewer, ElMessage, ElDialog,
+    ElProgress
 } from "element-plus";
 import { regionData, codeToText} from 'element-china-area-data';
 import FooterCard from "@/components/FooterCard.vue";
@@ -266,10 +277,11 @@ export default {
   name: "rehomePage",
   components:{
     FooterCard,
-    ElPagination, ElButton, ElIcon, ElSelect, ElOption, ElInput, ElCheckboxGroup, ElCheckbox, ElUpload, ElCascader, HeaderTag, ElImageViewer, ElDialog},
+    ElPagination, ElButton, ElIcon, ElSelect, ElOption, ElInput, ElCheckboxGroup, ElCheckbox, ElUpload, ElCascader, HeaderTag, ElImageViewer, ElDialog, ElProgress},
 
   data() {
     return {
+      progressColor: "#2e0152",
       confirmDialogVisible: false,
       imageUrl: "src/assets/icons/upload_icon.png",
       showImgViewer: false,
@@ -406,6 +418,29 @@ export default {
       } else {
         return this.petBreeds.filter(breed => breed.pro === this.petType);
       }
+    },
+    completedPercentage() {
+      const totalFields = 15; // 总字段数量（根据实际情况修改）
+      let filledFields = 0; // 已填写的字段数量
+
+      // 判断每个字段是否已填写，进行累加
+      if (this.petName !== '') filledFields++;
+      if (this.petType !== '') filledFields++;
+      if (this.petBreed !== '') filledFields++;
+      if (this.petSize !== '') filledFields++;
+      if (this.petGender !== '') filledFields++;
+      if (this.petAge !== '') filledFields++;
+      if (this.petSource !== '') filledFields++;
+      if (this.selectedHealthConditions.length !== 0) filledFields++;
+      if (this.selectedAdoptNeeds.length !== 0) filledFields++;
+      if (this.adoptionType !== '') filledFields++;
+      if (this.imageUrls.length !== 0) filledFields++;
+      if (this.imageCerUrls.length !== 0) filledFields++;
+      if (this.petAddress !== '') filledFields++;
+      if (this.petExperience !== '') filledFields++;
+      if (this.adoptAttention !== '') filledFields++;
+
+      return (filledFields/totalFields*100).toFixed(2);
     }
   },
 
@@ -618,6 +653,10 @@ export default {
 </script>
 
 <style scoped>
+
+.progress-bar >>> .el-progress-bar__outer {
+  background-color: #DDB4FF;
+}
 
 h1 {
   font-size: 30px;
