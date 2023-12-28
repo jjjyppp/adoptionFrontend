@@ -116,13 +116,13 @@ export default {
         return
       }
       console.log(this.name)
-      const nameRegex = /^[a-zA-Z\d-_]*$/
+      // const nameRegex = /^[a-zA-Z\d-_]*$/
       if(this.name.length<4||this.name.length>16){
         this.nameError = '用户名长度不符合要求(4-16)'
       }
-      else if(!nameRegex.test(this.name)){
-        this.nameError = '用户名只能包含大小写字母,数字,下划线和连字符'
-      }
+      // else if(!nameRegex.test(this.name)){
+      //   this.nameError = '用户名只能包含大小写字母,数字,下划线和连字符'
+      // }
       else{
         this.nameError=null
       }
@@ -243,7 +243,6 @@ export default {
           idCard: this.idnumber,
           phoneNumber: this.tel,
           email: this.mail,
-          address: ["Jiangsu","Nanjing"]
         }
       })
 
@@ -259,7 +258,7 @@ export default {
         console.error(error); // 输出后端返回的错误信息
         ElMessage({
           message: '注册失败，请稍后再试',
-          type: 'success',
+          type: 'warning',
           center: true  // 设置消息居中显示
         }); // 显示错误提示
       })

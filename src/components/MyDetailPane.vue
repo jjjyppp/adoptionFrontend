@@ -144,9 +144,6 @@ export default {
       if(this.susername.length<4||this.susername.length>16){
         this.nameError = '用户名长度不符合要求(4-16)'
       }
-      else if(!nameRegex.test(this.susername)){
-        this.nameError = '用户名只能包含大小写字母,数字,下划线和连字符'
-      }
       else{
         this.nameError=null
       }

@@ -81,7 +81,7 @@ export default {
           title: '您已取消收藏',
           message: '再看看其他宠物吧!',
           offset: 50,
-          type: 'error'
+          type: 'info'
         });
 
         if(window.location.href==='http://localhost:5173/#/favorites'){

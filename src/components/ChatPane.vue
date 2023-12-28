@@ -36,10 +36,10 @@
 
         <div class="chat-header">{{contacts[selectedItemId].name}}</div>
         <div class="confirm" style="display: flex;">
-          <img src="https://box.nju.edu.cn/f/5412f3ed6b55425ead4e/?dl=1" style="width: 70px;height: 70px;margin-left: 5%;border-radius: 5px">
-            <p style="margin-top: 15px; margin-left: 20px; font-size: 27px">小福</p>
+          <img src="src/assets/imgs/qibao.jpeg" style="width: 70px;height: 70px;margin-left: 5%;border-radius: 5px">
+            <p style="margin-top: 15px; margin-left: 20px; font-size: 27px">七宝</p>
           <div style="margin-left: 20px;">
-            <p style="margin-top: 10px; text-align: left;color: #8a8a8a">江苏省·南京市·鼓楼区</p>
+            <p style="margin-top: 10px; text-align: left;color: #8a8a8a">江苏省·南京市·栖霞区</p>
 
             <div style="display: flex;margin-top: -10px">
               <p style="font-size: 16px;color: #8a8a8a">免费领养</p>
@@ -109,17 +109,17 @@ export default {
       newMessage: '',
       contacts: [
         { id: 0, name: 'Molly', avatar: 'src/assets/imgs/avatar4.jpg', lastMessage: '您好，在的！', lastTime: "9:50" },
-        { id: 1, name: '莫里', avatar: 'src/assets/imgs/avatar2.png', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "8:00" },
-        { id: 2, name: 'piiii🦕', avatar: 'src/assets/imgs/avatar3.jpeg', lastMessage: '最近的消息内容1', lastTime: "6:50" },
-        { id: 3, name: '无恙', avatar: 'src/assets/imgs/avatar9.png', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-25" },
-        { id: 4, name: 'Aziop', avatar: 'src/assets/imgs/avatar4.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-29" },
-        { id: 5, name: 'HYC', avatar: 'src/assets/imgs/avatar5.jpeg', lastMessage: '最近的消息内容1', lastTime: "2023-11-29" },
-        { id: 6, name: '书洲', avatar: 'src/assets/imgs/avatar6.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-28" },
-        { id: 7, name: '我是火柴人', avatar: 'src/assets/imgs/avatar7.jpeg', lastMessage: '最近的消息内容1', lastTime: "2023-11-28" },
-        { id: 8, name: 'zrs', avatar: 'src/assets/imgs/avatar8.jpeg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-11-27" },
-        { id: 9, name: 'wjj', avatar: 'src/assets/imgs/avatar1.jpg', lastMessage: '最近的消息内容1', lastTime: "2023-11-26" },
-        { id: 10, name: '壬.', avatar: 'src/assets/imgs/avatar10.png', lastMessage: '最近的消息内容1', lastTime: "2023-11-24" },
-        { id: 11, name: 'Carnival', avatar: 'src/assets/imgs/avatar2.jpg', lastMessage: '最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2最近的消息内容2', lastTime: "2023-10-01" },
+        { id: 1, name: '莫里', avatar: 'src/assets/imgs/avatar2.png', lastMessage: '我希望能找一个离我近一点的，方便我回访', lastTime: "8:00" },
+        { id: 2, name: 'piiii🦕', avatar: 'src/assets/imgs/avatar3.jpeg', lastMessage: '不在同城可能不太合适', lastTime: "6:50" },
+        { id: 3, name: '无恙', avatar: 'src/assets/imgs/avatar9.png', lastMessage: '你工作会很忙吗？我的小猫比较粘人', lastTime: "2023-12-12" },
+        { id: 4, name: 'Aziop', avatar: 'src/assets/imgs/avatar4.jpeg', lastMessage: '好的谢谢', lastTime: "2023-11-29" },
+        { id: 5, name: 'HYC', avatar: 'src/assets/imgs/avatar5.jpeg', lastMessage: '不好意思，我再看看吧', lastTime: "2023-11-29" },
+        { id: 6, name: '书洲', avatar: 'src/assets/imgs/avatar6.jpeg', lastMessage: '嗯嗯', lastTime: "2023-11-28" },
+        { id: 7, name: '我是火柴人', avatar: 'src/assets/imgs/avatar7.jpeg', lastMessage: '小猫很可爱', lastTime: "2023-11-28" },
+        { id: 8, name: 'zrs', avatar: 'src/assets/imgs/avatar8.jpeg', lastMessage: '好耶', lastTime: "2023-11-27" },
+        { id: 9, name: 'wjj', avatar: 'src/assets/imgs/avatar1.jpg', lastMessage: '好的我再看看', lastTime: "2023-11-26" },
+        { id: 10, name: '壬.', avatar: 'src/assets/imgs/avatar10.png', lastMessage: '好滴好滴', lastTime: "2023-11-24" },
+        { id: 11, name: 'Carnival', avatar: 'src/assets/imgs/avatar2.jpg', lastMessage: '那我再考虑考虑吧，可能需要问问我的家人', lastTime: "2023-10-01" },
       ],
       selectedItemId: 0,
       hoverItemId: -1,

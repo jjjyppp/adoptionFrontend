@@ -267,7 +267,6 @@ export default {
         { pro: 'dog', label: '贵宾犬' },
         { pro: 'dog', label: '比熊' },
         { pro: 'dog', label: '法国斗牛犬' },
-        { pro: 'dog', label: '雪纳瑞' },
         { pro: 'dog', label: '松狮犬' },
         { pro: 'dog', label: '吉娃娃' },
         { pro: 'dog', label: '马尔济斯犬' },
@@ -499,6 +498,11 @@ export default {
         this.petAddress=codeToText[arr[0]] + codeToText[arr[1]] + codeToText[arr[2]]
         this.range = router.currentRoute.value.query.range
         this.filter()
+        for (let i=0;i<this.petTypes.length;i++){
+          if(this.petTypes[i].pro===this.petType){
+            this.chooseTypeTag(i)
+          }
+        }
       }
       else if(this.petType===undefined){
         document.body.style.overflow = 'hidden';
@@ -677,6 +681,7 @@ export default {
             if(i===0){
               this.isBreedChose = [true]
               this.petBreed=[]
+              this.choseBreed=[]
             }
             else {
               this.isBreedChose[0] = false
@@ -708,6 +713,7 @@ export default {
             if(i===0){
               this.isGenderChose = [true]
               this.petGender=[]
+              this.choseGender=[]
             }
             else {
               this.isGenderChose[0] = false
@@ -768,6 +774,7 @@ export default {
             if(i===0){
               this.isSizeChose = [true]
               this.petSize=[]
+              this.choseSize=[]
             }
             else {
               this.isSizeChose[0] = false
@@ -828,6 +835,7 @@ export default {
             if(i===0){
               this.isHealthChose = [true]
               this.healthCondition=[]
+              this.choseHealth=[]
             }
             else {
               this.isHealthChose[0] = false

@@ -8,9 +8,9 @@
 <!--      <el-row class="tac">-->
 <!--        <el-col :span="3">-->
           <div class="shelter-box py-5 px-4" style="margin-left: 70px">
-            <div class="img p-3" style="border-radius: 50%; overflow: hidden; width: 120px; height: 120px"> <img src="src/assets/imgs/avatar4.jpg" alt="" style="width: 120px; margin-left: -20px; margin-top: -20px; object-fit: cover;"></div>
+            <div class="img p-3" style="border-radius: 50%; overflow: hidden; width: 120px; height: 120px"> <img src="src/assets/imgs/avatar-me.jpeg" alt="" style="width: 120px; margin-left: -20px; margin-top: -20px; object-fit: cover;"></div>
           </div>
-          <div style="font-size: 30px; color: #6504B5; margin-top: 50px">Molly</div>
+          <div style="font-size: 30px; color: #6504B5; margin-top: 50px">章鱼哥</div>
           <el-menu
               @select="handleMenuSelect"
               background-color="white"

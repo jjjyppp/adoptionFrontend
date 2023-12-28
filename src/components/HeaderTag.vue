@@ -38,11 +38,14 @@
     </div>
 
     <div class="blank3"></div>
-    <div style="margin-right: 5px">
-      <el-icon size="32" class="message-icon" @click="showChat" >
-        <ChatDotRound style="color: white"/>
-      </el-icon>
-    </div>
+<!--    <div style="">-->
+<!--      <el-badge v-if="isLoggedIn&&badgeValue>0" :value="badgeValue" style="z-index: 3; margin-top: -10px; margin-right: -40px"></el-badge>-->
+      <div v-if="isLoggedIn" style="margin-right: 20px">
+        <el-icon size="32" class="message-icon" @click="showChat" >
+          <ChatDotRound style="color: white"/>
+        </el-icon>
+      </div>
+<!--    </div>-->
     <div v-show="chat" class="chatPane">
       <chat-pane @cancelChat="cancelChat"></chat-pane>
     </div>
@@ -75,7 +78,7 @@
 <!--  <el-divider class="bottom-divider"></el-divider>-->
 </template>
 <script>
-import {ElLink, ElCascader, ElIcon, ElDivider, ElMenu, ElSubMenu, ElMenuItem} from "element-plus";
+import {ElLink, ElCascader, ElIcon, ElDivider, ElMenu, ElSubMenu, ElMenuItem, ElBadge} from "element-plus";
 import {codeToText, regionData} from "element-china-area-data";
 import {LocationInformation, ChatDotRound, Discount} from "@element-plus/icons-vue";
 import global from "@/views/assets/js/global_variable.js";
@@ -84,9 +87,10 @@ import ChatPane from "@/components/ChatPane.vue";
 import { store } from "@/store/store";
 export default {
   name: "HeaderTag",
-  components:{Discount, ChatPane, ElLink, ElCascader, ElIcon,  ElMenu, ElSubMenu, ElMenuItem, LocationInformation, ElDivider, ChatDotRound},
+  components:{Discount, ChatPane, ElLink, ElCascader, ElIcon,  ElMenu, ElSubMenu, ElMenuItem, LocationInformation, ElDivider, ElBadge, ChatDotRound},
   data(){
     return{
+      badgeValue: 1,
       isLoggedIn: false,
       options: regionData,
       selectedOptions: ['110000', '110100', '110101'],
@@ -138,6 +142,7 @@ export default {
     },
     showChat(){
       document.body.style.overflow = 'hidden';
+      this.badgeValue=0
       this.chat=true
     },
     cancelChat(val){
@@ -212,7 +217,7 @@ export default {
 
 .message-icon{
   margin-top: 7px;
-  margin-right: 6px;
+  //margin-right: 6px;
   cursor: pointer;
   border-radius: 5px;
 }
