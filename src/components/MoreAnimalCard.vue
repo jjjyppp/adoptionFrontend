@@ -4,7 +4,7 @@
     <div style="margin-top: 20px">
       <img class="img" src="../assets/icons/other-white.png" alt="">
     </div>
-    <p class="sentence">这里有来自150000位用户的待领养宠物</p>
+    <p class="sentence">这里有来自40000位用户的待领养宠物</p>
     <el-divider style="width:220px; margin: 28px 0 0;"></el-divider>
     <button class="bt" @click="choose">了解更多</button>
   </div>

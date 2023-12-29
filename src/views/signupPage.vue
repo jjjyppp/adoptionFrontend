@@ -247,20 +247,24 @@ export default {
       })
 
       usrReq.then(response => {
-        ElMessage({
-          message: '注册成功',
-          type: 'success',
-          center: true  // 设置消息居中显示
-        });
-        console.log(response)
-        this.$router.replace('/login');
+        if(response.data) {
+          ElMessage({
+            message: '注册成功',
+            type: 'success',
+            center: true  // 设置消息居中显示
+          });
+          console.log(response)
+          this.$router.replace('/login');
+        }
+        else {
+          ElMessage({
+            message: '用户名已存在',
+            type: 'warning',
+            center: true  // 设置消息居中显示
+          }); // 显示错误提示
+        }
       }).catch(error=> {
         console.error(error); // 输出后端返回的错误信息
-        ElMessage({
-          message: '注册失败，请稍后再试',
-          type: 'warning',
-          center: true  // 设置消息居中显示
-        }); // 显示错误提示
       })
 
       // if(localStorage['name']===this.name)

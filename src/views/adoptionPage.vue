@@ -134,17 +134,17 @@
               {{tag}}
                 <el-divider v-if="index!==sortTags.length-1" direction="vertical"></el-divider>
               </span>
-<!--              <span class="sort-tag">综合排序</span>-->
-<!--              <el-divider direction="vertical"></el-divider>-->
-<!--              <span class="sort-tag">高价优先</span>-->
-<!--              <el-divider direction="vertical"></el-divider>-->
-<!--              <span class="sort-tag">低价优先</span>-->
-<!--              <el-divider direction="vertical"></el-divider>-->
-<!--              <span class="sort-tag">幼年优先</span>-->
-<!--              <el-divider direction="vertical"></el-divider>-->
-<!--              <span class="sort-tag">老年优先</span>-->
-<!--              <el-divider direction="vertical"></el-divider>-->
-<!--              <span class="sort-tag">最新发布</span>-->
+              <!--              <span class="sort-tag">综合排序</span>-->
+              <!--              <el-divider direction="vertical"></el-divider>-->
+              <!--              <span class="sort-tag">高价优先</span>-->
+              <!--              <el-divider direction="vertical"></el-divider>-->
+              <!--              <span class="sort-tag">低价优先</span>-->
+              <!--              <el-divider direction="vertical"></el-divider>-->
+              <!--              <span class="sort-tag">幼年优先</span>-->
+              <!--              <el-divider direction="vertical"></el-divider>-->
+              <!--              <span class="sort-tag">老年优先</span>-->
+              <!--              <el-divider direction="vertical"></el-divider>-->
+              <!--              <span class="sort-tag">最新发布</span>-->
             </div>
 
 
